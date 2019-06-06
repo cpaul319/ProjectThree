@@ -1,0 +1,118 @@
+Project Three Pseudocode:
+
+1. One dynamic react page:
+
+   a.	When user opens the web-site, he/she is navigated to log in page, with "Got Swag?" title
+
+   b.   It has two buttons:
+
+	i.  Log in.
+
+	    -	When user clicks it, he/she is asked (through dynamic react element) to enter user name and password in two seperate text boxes and click on "Enter" button.
+
+		If the user enters either wrong/blank username/password and clicks enter, "Invalid username/password" declination message is displayed.
+
+		If the user enters correct username/password and clicks enter (exists in user table), all log in page elements (log in textboxes/buttons) are deactivated, and new elements are dynamically displayed including:
+
+		-	Hello "username" (header)
+
+		-	User account button (header)
+
+		-	Orders button (header)
+
+		- 	Log out button
+
+		-	Items for Sale
+
+			Under this section, there are several game of thrones souvenirs displayed including picture, name, description, price, and purchase button.
+
+			If orders button is clicked:
+
+			-	All react elements except for header elements are deactivated.
+
+			-	New section for purchased items is created in dynamic react element.
+
+			-	The purchased item (as it appeared on last page) is prepended to the purchased items section.
+
+			-	Purchase is added to user table (count, price, name)
+
+			-	New buttons are added for account, buy items (previous page is loaded if it is clicked), and log out button.
+
+		If the user the user clicks on orders button (steps above are repeated)
+
+		If the user clicks on user account button steps below are performed (except all the text boxes have correct values).
+
+		If the user clicks on log-out button, all react elements are deactivated, and previous log-in page elements are activated and displayed.
+
+	Forgot password.
+
+	   - If the button is clicked, all previous react elements are deactivated, and the react elements below are activated and displayed.
+
+	   - e-mail text box
+
+	   - submit button
+
+	   - "Please enter e-mail to reset your password"
+
+	   - If the user does not enter valid e-mail and clicks submit, "Please enter valid e-mail" message is displayed
+
+	   - If the user enters valid e-mail that is not in users table and clicks submit, "this user is not registered" message is displayed
+
+	   - If the user enters valid e-mail that exists in users table, an e-mail is sent to that e-mail with link to correct user account page, when user opens it, he/she is navigated to correct user account page, where all the fields are filled out except the password fields, user is required to re-register the accout, and users table is appropriately updated.
+
+
+	ii. Register
+
+	    -	When user clicks on "Register" button, all dynamic react elements are deactivated, the dynamic react elements are created and displayed (initially blank).
+
+		- Username text box
+
+		- first name text box
+
+		- last name text box
+
+		- e-mail textbox
+
+		- address textbox
+
+		- zip code text box
+
+		- state text box
+
+		- city text box
+
+		- password textbox
+
+		- confirm password text box
+
+		- credit card number text box
+
+		- credit card expiration date text box
+
+		- credit card cvv text box
+
+		- register button
+
+	   - If the user clicks on register button without filling all of the following text boxes, "Please fill out all text boxes" message appears
+
+	   - If the user clicks on register button and passwords are not the same, "Please enter the same passwords" message appears
+
+	   - If the user clicks on register button without entering valid e-mail format, "Please enter valid e-mail" message appears
+
+	   - If the user clicks on register button without entering 16 digit credit card number, "Please enter valid credit card number" message appears
+
+	   - If the user clicks on register button without entering valid date format, "Please enter valid date" message appears
+
+	   - If the user clicks on register button without entering valid 3 digit credit card security code, "Please enter valid cvv" message appears
+
+	   - If the user enters username that is already in user table, a message stating "this user already exists" message is displayed.
+
+	   - If the user enters otherwise correct data, new user is added to users table with all the information above.
+
+	   - User can update the information by entering new values and clicking "Register" button
+
+
+
+
+		
+
