@@ -40,7 +40,7 @@ Project Three Pseudocode:
 
 		If the user the user clicks on orders button (steps above are repeated)
 
-		If the user clicks on user account button steps below are performed (except all the text boxes have correct values).
+		If the user clicks on user account button steps below are performed (ii. Register - except all the text boxes have correct values).
 
 		If the user clicks on log-out button, all react elements are deactivated, and previous log-in page elements are activated and displayed.
 
@@ -52,7 +52,7 @@ Project Three Pseudocode:
 
 	   - submit button
 
-	   - "Please enter e-mail to reset your password"
+	   - "Please enter e-mail to reset your password" title is displayed
 
 	   - If the user does not enter valid e-mail and clicks submit, "Please enter valid e-mail" message is displayed
 
