@@ -21,6 +21,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import LogIn from "./pages/LogIn";
 
 function App() {
+  console.log("in the app.js");
   return (
     <Router>
       <div>
