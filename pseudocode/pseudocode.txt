@@ -26,7 +26,7 @@ Project Three Pseudocode:
 
 			Under this section, there are several game of thrones souvenirs displayed including picture, name, description, price, and purchase button.
 
-			If orders button is clicked:
+			If purchase button is clicked:
 
 			-	All react elements except for header elements are deactivated.
 
@@ -38,7 +38,7 @@ Project Three Pseudocode:
 
 			-	New buttons are added for account, buy items (previous page is loaded if it is clicked), and log out button.
 
-		If the user the user clicks on orders button (steps above are repeated)
+		If the user clicks on orders button (steps above are repeated, except no sale item is prepended to the next page or added to db Users table).
 
 		If the user clicks on user account button steps below are performed (ii. Register - except all the text boxes have correct values).
 
@@ -81,7 +81,7 @@ Project Three Pseudocode:
 
 		- city text box
 
-		- password textbox
+		- password text box
 
 		- confirm password text box
 
@@ -101,7 +101,7 @@ Project Three Pseudocode:
 
 	   - If the user clicks on register button without entering 16 digit credit card number, "Please enter valid credit card number" message appears
 
-	   - If the user clicks on register button without entering valid date format, "Please enter valid date" message appears
+	   - If the user clicks on register button without entering valid date format or date in the past, "Please enter valid date" message appears
 
 	   - If the user clicks on register button without entering valid 3 digit credit card security code, "Please enter valid cvv" message appears
 
