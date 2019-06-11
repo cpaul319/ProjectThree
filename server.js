@@ -8,6 +8,8 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 var db = require("./models");
 
+console.log("beginning of server");
+
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -37,6 +39,4 @@ db.sequelize.sync(syncOptions).then(function() {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`🌎 ==> API server now on port ${PORT}!`);
-});
+console.log("works up till here");
