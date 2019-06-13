@@ -5,14 +5,14 @@ import { isAbsolute } from "path";
 
 
 console.log("before Log In function is called.");
-function LogIn() {
+function NoMatch() {
     return (
-        <div className="App">
+        <div className="NotFound">
          
-            <p>GoT Swag?</p>
+            <p>Not Found</p>
         </div>
     );
 }
 console.log("after Log In function is called.");
 
-export default LogIn;
+export default NoMatch;
