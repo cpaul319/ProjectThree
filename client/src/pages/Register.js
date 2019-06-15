@@ -4,7 +4,9 @@ import { isAbsolute } from "path";
 
 function Register() {
     return (
-        <div></div>
+        <div>
+            <p>Registration page</p>
+        </div>
 //         <Form>
 //             <Form.Group controlId="formBasicEmail">
 //                 <Form.Label>Email address</Form.Label>

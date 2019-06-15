@@ -31,14 +31,10 @@ function App() {
       <Nav />
       <Switch>
         <Route exact path="/" component={LogIn} />
-<<<<<<< HEAD
+        <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Enter} />
-=======
-        <Route exact path="/Register" component={Register} />
         <Route component={NoMatch} />
-
       </Switch>  
->>>>>>> 5012e39b287f61eaf672b16bdc84e6d35dc060cb
       </div>
     </Router>
   );
