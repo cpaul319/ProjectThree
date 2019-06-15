@@ -1,17 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./style.css";
 
 function Nav() {
   return (
+    <header>
     <nav className="navbar navbar-dark bg-dark">
-      <a className="navbar-brand" href="#">
-        Log In
-      </a>
-      <span>  </span>
-      <a className="navbar-brand" href="#">
-        Register
-      </a>
+       <Link to="/login">Log In</Link> &nbsp; | &nbsp;
+            <Link to="/register">Register</Link>
+   
     </nav>
+    </header>
   );
 }
 
