@@ -24,6 +24,7 @@ import LogIn from "./pages/LogIn";
 import Enter from "./pages/Enter";
 import Forgot from "./pages/Forgot";
 import Sale from "./pages/Sale";
+import Order from "./pages/Orders";
 
 function App() {
   console.log("in the app.js");
@@ -36,6 +37,7 @@ function App() {
           <Route exact path="/login" component={Enter} />
           <Route exect path="/forgot" component={Forgot} />
           <Route exact path = "/sale" component = {Sale} />
+          <Route exact path = "/orders" component = {Order} />
           <Route component={NoMatch} />
         </Switch>
       </div>
