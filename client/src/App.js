@@ -19,7 +19,7 @@ export default App;*/
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import LogIn from "./pages/LogIn";
-//import Enter from "./pages/Enter";
+import Enter from "./pages/Enter";
 
 function App() {
   console.log("in the app.js");
@@ -27,7 +27,7 @@ function App() {
     <Router>
       <div>
         <Route exact path="/" component={LogIn} />
-        
+        <Route exact path="/login" component={Enter} />
       </div>
     </Router>
   );
