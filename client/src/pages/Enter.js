@@ -21,14 +21,15 @@ export default Enter; */
 import React, { Component } from "react";
 import ReactDOM from 'react-dom';
 import { isAbsolute } from "path";
-
+import Nav from "../components/Nav";
 
 console.log("before Log In function is called.");
 function Enter() {
     return (
         <div className="App">
+            <Nav />
             <p>Login page</p>
-            <p><a href = '#'>Log In</a></p>
+            <p><a href = '/sale'>Log In</a></p>
             <p><a href = '/forgot'>Forgot</a></p>
         </div>
     );
@@ -36,4 +37,3 @@ function Enter() {
 console.log("after Log In function is called.");
 
 export default Enter;
-

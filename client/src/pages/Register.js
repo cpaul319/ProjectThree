@@ -5,8 +5,9 @@ import { isAbsolute } from "path";
 function Register() {
     return (
         <div>
+            <Nav />
             <p>Registration page</p>
-            <a href = '#'>Register</a>
+            <a href = '/sale'>Register</a>
         </div>
 //         <Form>
 //             <Form.Group controlId="formBasicEmail">
