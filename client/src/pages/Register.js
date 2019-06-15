@@ -2,7 +2,7 @@ import React from "react";
 import Nav from "../components/Nav";
 import { isAbsolute } from "path";
 
-function Enter() {
+function Register() {
     return (
         <div></div>
 //         <Form>
@@ -28,4 +28,4 @@ function Enter() {
     );
 }
 
-export default Enter;
+export default Register;
