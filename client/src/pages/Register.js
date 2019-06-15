@@ -6,6 +6,7 @@ function Register() {
     return (
         <div>
             <p>Registration page</p>
+            <a href = '#'>Register</a>
         </div>
 //         <Form>
 //             <Form.Group controlId="formBasicEmail">

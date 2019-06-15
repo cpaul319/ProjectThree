@@ -27,8 +27,9 @@ console.log("before Log In function is called.");
 function Enter() {
     return (
         <div className="App">
-         
             <p>Login page</p>
+            <p><a href = '#'>Log In</a></p>
+            <p><a href = '#'>Forgot</a></p>
         </div>
     );
 }
