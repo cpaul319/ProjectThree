@@ -16,7 +16,7 @@ class App extends Component {
 /*<Route exact path="/login" component={Enter} />
 export default App;*/
 import Nav from "./components/Nav";
-import Enter from "./pages/Enter";
+import Register from "./pages/Register";
 import NoMatch from "./pages/NoMatch";
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -31,7 +31,7 @@ function App() {
       <Nav />
       <Switch>
         <Route exact path="/" component={LogIn} />
-        <Route exact path="/enter" component={Enter} />
+        <Route exact path="/Register" component={Register} />
         <Route component={NoMatch} />
 
       </Switch>  

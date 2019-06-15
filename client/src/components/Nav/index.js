@@ -7,7 +7,7 @@ function Nav() {
     <header>
     <nav className="navbar navbar-dark bg-dark">
        <Link to="/login">Log In</Link> &nbsp; | &nbsp;
-            <Link to="/enter">Register</Link>
+            <Link to="/register">Register</Link>
    
     </nav>
     </header>
