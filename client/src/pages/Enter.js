@@ -13,7 +13,7 @@ class Enter extends React.Component {
         <input type="submit" value="Submit" />
     </form>*/
 
-   /* );
+/* );
 }
 
 export default Enter; */
@@ -22,6 +22,7 @@ import React, { Component } from "react";
 import ReactDOM from 'react-dom';
 import { isAbsolute } from "path";
 import Nav from "../components/Nav";
+import { Input, TextArea, FormBtn } from "../components/Form";
 
 console.log("before Log In function is called.");
 function Enter() {
@@ -29,8 +30,18 @@ function Enter() {
         <div className="App">
             <Nav />
             <p>Login page</p>
-            <p><a href = '/sale'>Log In</a></p>
-            <p><a href = '/forgot'>Forgot</a></p>
+            <form>
+                <Input
+                    name="email"
+                    placeholder="email (required)"
+                />
+                <Input
+                    name="password"
+                    placeholder="password (required)"
+                />
+            </form>
+            <p><a href='/sale'>Log In</a></p>
+            <p><a href='/forgot'>Forgot</a></p>
         </div>
     );
 }

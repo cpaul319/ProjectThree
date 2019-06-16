@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 import { isAbsolute } from "path";
 import Nav from "../components/Nav";
 
-
 console.log("before Log In function is called.");
 function LogIn() {
     return (
