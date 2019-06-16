@@ -1,34 +1,69 @@
 import React from "react";
 import Nav from "../components/Nav";
 import { isAbsolute } from "path";
+import { Input, TextArea, FormBtn } from "../components/Form";
 
 function Register() {
     return (
         <div>
             <Nav />
             <p>Registration page</p>
+            <form>
+                <Input
+                    name="username"
+                    placeholder="username (required)"
+                />
+                <Input
+                    name="First Name"
+                    placeholder="First Name (required)"
+                />
+                <Input
+                    name="Last Name"
+                    placeholder="Last Name (required)"
+                />
+                <Input
+                    name="e-mail"
+                    placeholder="e-mail (required)"
+                />
+                <Input
+                    name="password"
+                    placeholder="password (required)"
+                />
+                <Input
+                    name="confirm password"
+                    placeholder="confirm password (required)"
+                />
+                <Input
+                    name="address"
+                    placeholder="address (required)"
+                />
+                <Input
+                    name="city"
+                    placeholder="city (required)"
+                />
+                <Input
+                    name="State"
+                    placeholder="State (required)"
+                />
+                <Input
+                    name="Zip code"
+                    placeholder="Zip code (required)"
+                />
+                <Input
+                    name="Credit card number"
+                    placeholder="Credit Card Number (required)"
+                />
+                <Input
+                    name="Expiration Date"
+                    placeholder="Expiration Date (required)"
+                />
+                <Input
+                    name="cvv"
+                    placeholder="cvv (required)"
+                />
+            </form>
             <a href = '/sale'>Register</a>
         </div>
-//         <Form>
-//             <Form.Group controlId="formBasicEmail">
-//                 <Form.Label>Email address</Form.Label>
-//                 <Form.Control type="email" placeholder="Enter email" />
-//                 <Form.Text className="text-muted">
-//                     We'll never share your email with anyone else.
-//     </Form.Text>
-//             </Form.Group>
-
-//             <Form.Group controlId="formBasicPassword">
-//                 <Form.Label>Password</Form.Label>
-//                 <Form.Control type="password" placeholder="Password" />
-//             </Form.Group>
-//             <Form.Group controlId="formBasicChecbox">
-//                 <Form.Check type="checkbox" label="Check me out" />
-//             </Form.Group>
-//             <Button variant="primary" type="submit">
-//                 Submit
-//   </Button>
-//         </Form>
     );
 }
 
