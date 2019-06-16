@@ -1,0 +1,13 @@
+.carousel-caption {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.form {
+    align-items: center;
+}
+
+/* img {
+    max-width: 100%;
+    max-height: 100%;
+} */
