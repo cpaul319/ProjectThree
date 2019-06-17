@@ -24,6 +24,7 @@ import { isAbsolute } from "path";
 import Nav from "../components/Nav";
 import { Link } from "react-router-dom";
 import { Input, TextArea, FormBtn } from "../components/Form";
+import { Redirect } from 'react-router-dom';
 //import { Container, Row, Col, Jumbotron, Card, CardBody } from "reactstrap";
 /*import { MDBContainer, MDBRow, MDBCol, MDBBtn } from 'mdbreact';
 
@@ -90,18 +91,32 @@ console.log("after Log In function is called.");
 
 */
 
-class Enter extends Component   {
+class Enter extends Component {
     state = {
         email: "",
-        password: ""
+        password: "",
+        redirect: false
     };
 
-    handleInputChange = event =>    {
+    setRedirect = () => {
+        this.setState({
+            redirect: true
+        })
+    }
+
+    handleInputChange = event => {
         const { name, value } = event.target;
         this.setState({
-          [name]: value
+            [name]: value
         });
         console.log("value is " + value);
+    }
+
+    renderRedirect = () => {
+        console.log("redirect works!");
+        if (this.state.redirect) {
+            return <Redirect to='/sale' />
+        }
     }
 
     handleFormSubmit = event => {
@@ -109,34 +124,38 @@ class Enter extends Component   {
         console.log("email: " + this.state.email);
         console.log("password: " + this.state.password);
         if (!this.state.email) {
-
+            console.log("e-mail empty");
+        } else {
+            this.setRedirect();
+            this.renderRedirect();
         }
     }
 
-    render()    {
+    render() {
         return (
             <div className="App">
-            <Nav />
-            <p>Login page</p>
-            <form>
-                <Input
-                    name="email"
-                    placeholder="email (required)"
-                    onChange={this.handleInputChange}
-                />
-                <Input
-                    name="password"
-                    placeholder="password (required)"
-                    onChange={this.handleInputChange}
-                />
-                <p><Link to = '/sale' onClick = {this.handleFormSubmit}>Submit</Link></p>
-                <p><Link to = '/forgot'>Forgot Password</Link></p>
-                {/*<FormBtn src = '/sale'>Submit</FormBtn>
+                <Nav />
+                <p>Login page</p>
+                {this.renderRedirect()}
+                <form>
+                    <Input
+                        name="email"
+                        placeholder="email (required)"
+                        onChange={this.handleInputChange}
+                    />
+                    <Input
+                        name="password"
+                        placeholder="password (required)"
+                        onChange={this.handleInputChange}
+                    />
+                    <p><Link to='#' onClick={this.handleFormSubmit}>Submit</Link></p>
+                    <p><Link to='/forgot'>Forgot Password</Link></p>
+                    {/*<FormBtn src = '/sale'>Submit</FormBtn>
                 <FormBtn>Forgot</FormBtn>*/}
-            </form>
-            {/*<p><a href='/sale'>Log In</a></p>
+                </form>
+                {/*<p><a href='/sale'>Log In</a></p>
             <p><a href='/forgot'>Forgot</a></p>*/}
-        </div>
+            </div>
         )
     }
 }
