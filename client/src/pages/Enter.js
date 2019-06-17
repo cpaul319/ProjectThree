@@ -25,6 +25,9 @@ import Nav from "../components/Nav";
 import { Link } from "react-router-dom";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import { Redirect } from 'react-router-dom';
+import { AvForm, AvField } from 'availity-reactstrap-validation';
+import { Button } from 'reactstrap';
+
 //import { Container, Row, Col, Jumbotron, Card, CardBody } from "reactstrap";
 /*import { MDBContainer, MDBRow, MDBCol, MDBBtn } from 'mdbreact';
 
@@ -137,6 +140,22 @@ class Enter extends Component {
                 <Nav />
                 <p>Login page</p>
                 {this.renderRedirect()}
+                <AvForm>
+                    <AvField name="email" label="Name (default error message)" type="text" errorMessage="Invalid e-mail" onChange={this.handleInputChange} validate={{
+                        required: { value: true },
+                        pattern: { value: '^[A-Za-z0-9]+$' },
+                        minLength: { value: 6 },
+                        maxLength: { value: 16 }
+                    }} />
+                    <AvField name="password" label="Name (custom error message)" type="text" onChange={this.handleInputChange} validate={{
+                        required: { value: true, errorMessage: 'Please enter a name' },
+                        pattern: { value: '^[A-Za-z0-9]+$', errorMessage: 'Your name must be composed only with letter and numbers' },
+                        minLength: { value: 6, errorMessage: 'Your name must be between 6 and 16 characters' },
+                        maxLength: { value: 16, errorMessage: 'Your name must be between 6 and 16 characters' }
+                    }} />
+                    <Button color="primary"  onClick={this.handleFormSubmit}>Submit</Button>
+                </AvForm>
+                {/*
                 <form>
                     <Input
                         name="email"
@@ -152,7 +171,7 @@ class Enter extends Component {
                     <p><Link to='/forgot'>Forgot Password</Link></p>
                     {/*<FormBtn src = '/sale'>Submit</FormBtn>
                 <FormBtn>Forgot</FormBtn>*/}
-                </form>
+                {/*</form>*/}
                 {/*<p><a href='/sale'>Log In</a></p>
             <p><a href='/forgot'>Forgot</a></p>*/}
             </div>
