@@ -1,20 +1,3 @@
-/*import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import Nav from "./components/Nav";
-
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Nav />
-        <p>GoT Swag?</p>
-      </div>
-    );
-  }
-}
-/*<Route exact path="/login" component={Enter} />
-export default App;*/
 import Nav from "./components/Nav";
 import Register from "./pages/Register";
 import NoMatch from "./pages/NoMatch";
