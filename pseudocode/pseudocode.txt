@@ -38,11 +38,11 @@ Project Three Pseudocode:
 
 		If the user clicks on user account button steps below are performed (ii. Register - except all the text boxes have correct values).
 
-		If the user clicks on log-out button, all react elements are deactivated, and previous log-in page elements are activated and displayed.
+		If the user clicks on log-out button, home page is opened.
 
 	Forgot password.
 
-	   - If the button is clicked, all previous react elements are deactivated, and the react elements below are activated and displayed.
+	   - If the button is clicked, page with below information is displayed.
 
 	   - e-mail text box
 
@@ -56,10 +56,9 @@ Project Three Pseudocode:
 
 	   - If the user enters valid e-mail that exists in users table, an e-mail is sent to that e-mail with link to correct user account page, when user opens it, he/she is navigated to correct user account page, where all the fields are filled out except the password fields, user is required to re-register the accout, and users table is appropriately updated.
 
-
 	ii. Register
 
-	    -	When user clicks on "Register" button, all dynamic react elements are deactivated, the dynamic react elements are created and displayed (initially blank).
+	    -	When user clicks on "Register" button, register page is opened with the following elements.
 
 		- Username text box
 
@@ -103,7 +102,7 @@ Project Three Pseudocode:
 
 	   - If the user enters username that is already in user table, a message stating "this user already exists" message is displayed.
 
-	   - If the user enters otherwise correct data, new user is added to users table with all the information above.
+	   - If the user enters otherwise correct data, new user is added to users table with all the information above, user is navigated to sale page.
 
 	   - User can update the information by entering new values and clicking "Register" button
 

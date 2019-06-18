@@ -41,15 +41,3 @@ class Forgot extends Component  {
 }
 
 export default Forgot;
-
-/*
-function Forgot() {
-    return (
-        <div className="App">
-            <Nav />
-            <p>Forgot login page</p>
-        </div>
-    );
-}
-
-export default Forgot; */
