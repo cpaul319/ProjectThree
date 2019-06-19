@@ -2,17 +2,17 @@
 import React, { Component } from "react";
 import ReactDOM from 'react-dom';
 import { isAbsolute } from "path";
-import Nav from "../components/Nav";
+import OrderNav from "../components/OrderNav";
 
 console.log("before Log In function is called.");
-function LogIn() {
+function Orders() {
     return (
-        <div className="App">    
-            <Nav />
-            <p>GoT Swag?</p>
+        <div className="App">   
+            <OrderNav />
+            <p>Orders page</p>
         </div>
     );
 }
 console.log("after Log In function is called.");
 
-export default LogIn;
+export default Orders;

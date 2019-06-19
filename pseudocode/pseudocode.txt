@@ -12,7 +12,7 @@ Project Three Pseudocode:
 
 		If the user enters either wrong/blank username/password and clicks enter, "Invalid username/password" declination message is displayed.
 
-		If the user enters correct username/password and clicks enter (exists in user table), all log in page elements (log in textboxes/buttons) are deactivated, and new elements are dynamically displayed including:
+		If the user enters correct username/password and clicks enter (exists in user table), user is navigated to new page including:
 
 		-	Hello "username" (header)
 
@@ -28,25 +28,21 @@ Project Three Pseudocode:
 
 			If purchase button is clicked:
 
-			-	All react elements except for header elements are deactivated.
-
-			-	New section for purchased items is created in dynamic react element.
+			-	New page is opened with the following elements.
 
 			-	The purchased item (as it appeared on last page) is prepended to the purchased items section.
 
 			-	Purchase is added to user table (count, price, name)
 
-			-	New buttons are added for account, buy items (previous page is loaded if it is clicked), and log out button.
-
 		If the user clicks on orders button (steps above are repeated, except no sale item is prepended to the next page or added to db Users table).
 
 		If the user clicks on user account button steps below are performed (ii. Register - except all the text boxes have correct values).
 
-		If the user clicks on log-out button, all react elements are deactivated, and previous log-in page elements are activated and displayed.
+		If the user clicks on log-out button, home page is opened.
 
 	Forgot password.
 
-	   - If the button is clicked, all previous react elements are deactivated, and the react elements below are activated and displayed.
+	   - If the button is clicked, page with below information is displayed.
 
 	   - e-mail text box
 
@@ -60,10 +56,9 @@ Project Three Pseudocode:
 
 	   - If the user enters valid e-mail that exists in users table, an e-mail is sent to that e-mail with link to correct user account page, when user opens it, he/she is navigated to correct user account page, where all the fields are filled out except the password fields, user is required to re-register the accout, and users table is appropriately updated.
 
-
 	ii. Register
 
-	    -	When user clicks on "Register" button, all dynamic react elements are deactivated, the dynamic react elements are created and displayed (initially blank).
+	    -	When user clicks on "Register" button, register page is opened with the following elements.
 
 		- Username text box
 
@@ -107,7 +102,7 @@ Project Three Pseudocode:
 
 	   - If the user enters username that is already in user table, a message stating "this user already exists" message is displayed.
 
-	   - If the user enters otherwise correct data, new user is added to users table with all the information above.
+	   - If the user enters otherwise correct data, new user is added to users table with all the information above, user is navigated to sale page.
 
 	   - User can update the information by entering new values and clicking "Register" button
 
