@@ -7,6 +7,7 @@ import React, { Component } from "react";
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import { Button } from 'reactstrap';
 import {register} from '../components/UserFunction';
+ 
 // const User = require('../models/User');
 // const Users= require( "../routes/users");
 class Register extends Component {
@@ -71,11 +72,8 @@ class Register extends Component {
             creditCardNumber: this.state.creditCardNumber,
             expDate: this.state.expDate,
             cvv: this.state.cvv
-            
-
-
-
         }
+        console.log(user);
         if (!this.state.email) {
             console.log("e-mail empty");
         } else {
@@ -106,19 +104,19 @@ class Register extends Component {
                 <p>Registration page</p>
                 <AvForm>
                 <AvField
-                        name="username"
+                        name="userName"
                         placeholder="username (required)"
                         value={this.state.userName}
                         onChange={this.handleInputChange}
                     />
                     <AvField
-                        name="First Name"
+                        name="firstName"
                         placeholder="First Name (required)"
                         value={this.state.firstName}
                         onChange={this.handleInputChange}
                     />
                     <AvField
-                        name="Last Name"
+                        name="lastName"
                         placeholder="Last Name (required)"
                         value={this.state.lastName}
                         onChange={this.handleInputChange}
@@ -153,25 +151,25 @@ class Register extends Component {
                         onChange={this.handleInputChange}
                     />
                    <AvField
-                        name="State"
+                        name="state"
                         placeholder="State (required)"
                         value={this.state.state}
                         onChange={this.handleInputChange}
                     />
                     <AvField
-                        name="Zip code"
+                        name="zip"
                         placeholder="Zip code (required)"
                         value={this.state.zip}
                         onChange={this.handleInputChange}
                     />
                     <AvField
-                        name="Credit card number"
+                        name="creditCardNumber"
                         placeholder="Credit Card Number (required)"
                         value={this.state.creditCardNumber}
                         onChange={this.handleInputChange}
                     />
                     <AvField
-                        name="Expiration Date"
+                        name="expDate"
                         placeholder="Expiration Date (required)"
                         value={this.state.expDate}
                         onChange={this.handleInputChange}
