@@ -8,6 +8,8 @@ import { Redirect } from 'react-router-dom';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import { Button } from 'reactstrap';
 
+ 
+
 class Enter extends Component {
     state = {
         email: "",
@@ -60,6 +62,8 @@ class Enter extends Component {
         }
         return passValidation;
     }
+  
+   
 
     render() {
         return (
@@ -81,5 +85,6 @@ class Enter extends Component {
         )
     }
 }
+
 
 export default Enter;
