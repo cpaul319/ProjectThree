@@ -16,6 +16,7 @@ module.exports = {
             res.json(dbUser);
         });
     },
+
     delete: function (req, res) {
         db.User.destroy({
             where: {

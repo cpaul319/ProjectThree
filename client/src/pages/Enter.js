@@ -40,12 +40,25 @@ class Enter extends Component {
         console.log("submit!");
         console.log("email: " + this.state.email);
         console.log("password: " + this.state.password);
-        if (!this.state.email) {
-            console.log("e-mail empty");
-        } else {
+        if (this.state.email && this.ValidateEmail() && this.state.password) {
             this.setRedirect();
             this.renderRedirect();
+
+        } else {
+            console.log("e-mail empty");
         }
+    }
+
+    ValidateEmail() {
+        //  Check if e-mail has @ in the middle and ends with .com.
+        const emailFormat = new Regex("^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
+        let passValidation = true;
+        if (!emailFormat.test(this.state.email)) {
+
+            passValidation = false;
+            //doesn't pass validation
+        }
+        return passValidation;
     }
 
     render() {
@@ -55,7 +68,7 @@ class Enter extends Component {
                 <p>Login page</p>
                 {this.renderRedirect()}
                 <AvForm>
-                    <AvField name="email" label="Email" type="email" onChange={this.handleInputChange} validate={{ email: true }}/>
+                    <AvField name="email" label="Email" type="email" onChange={this.handleInputChange} validate={{ email: true }} />
                     <AvField name="password" label="Password" type="text" onChange={this.handleInputChange} validate={{
                         required: { value: true, errorMessage: 'Please enter a name' },
                         pattern: { value: '^[A-Za-z0-9]+$', errorMessage: 'Your name must be composed only with letter and numbers' },
