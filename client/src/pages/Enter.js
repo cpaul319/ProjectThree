@@ -49,6 +49,7 @@ class Enter extends Component {
             this.renderRedirect();
         }
     }
+  
    
 
     render() {

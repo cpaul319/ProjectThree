@@ -6,7 +6,9 @@ import { Link, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import { Button } from 'reactstrap';
-// import Users from "./routes/users";
+import {register} from '../components/UserFunction';
+// const User = require('../models/User');
+// const Users= require( "../routes/users");
 class Register extends Component {
 
     state = {
@@ -31,6 +33,7 @@ class Register extends Component {
         })
     }
     handleInputChange = event => {
+        
         const { name, value } = event.target;
         this.setState({
             [name]: value
@@ -38,108 +41,142 @@ class Register extends Component {
         console.log("value is " + value);
     }
 
-
-
-
     renderRedirect = () => {
         console.log("redirect works!");
         if (this.state.redirect) {
             return <Redirect to='/sale' />
         }
     }
-
+//add functionality where it send the data to the Database
     handleFormSubmit = event => {
         console.log("submit!");
-        console.log("uername: " + this.state.userName);
+        console.log("city: " + this.state.city);
+        console.log("state: " + this.state.state);
+        console.log("username: " + this.state.userName);
         console.log("firstname: " + this.state.firstName);
         console.log("lastname: " + this.state.lastName);
         console.log("email: " + this.state.email);
         console.log("password: " + this.state.password);
+
+        const user ={
+            userName: this.state.userName,
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            email: this.state.email,
+            password: this.state.password,
+            address: this.state.address,
+            city: this.state.city,
+            state: this.state.state,
+            zip: this.state.zip,
+            creditCardNumber: this.state.creditCardNumber,
+            expDate: this.state.expDate,
+            cvv: this.state.cvv
+            
+
+
+
+        }
         if (!this.state.email) {
             console.log("e-mail empty");
         } else {
             this.setRedirect();
             this.renderRedirect();
         }
+        register(user).then(res => {
+            if (res)
+            { this.props.history.push('\login')}
+    
+        })
+    
     }
+    componentDidMount() {
+        console.log("did mount");
+        // User.post("/", (req, res)=>{
+        //     res.send(req.body);
+        //     });
+      }
+
+  
+
+
     render() {
         return (
             <div>
                 <Nav />
                 <p>Registration page</p>
                 <AvForm>
-                    <Input
+                <AvField
                         name="username"
                         placeholder="username (required)"
                         value={this.state.userName}
                         onChange={this.handleInputChange}
                     />
-                    <Input
+                    <AvField
                         name="First Name"
                         placeholder="First Name (required)"
                         value={this.state.firstName}
                         onChange={this.handleInputChange}
                     />
-                    <Input
+                    <AvField
                         name="Last Name"
                         placeholder="Last Name (required)"
                         value={this.state.lastName}
                         onChange={this.handleInputChange}
                     />
-                    <Input
+                    <AvField
                         name="email"
                         placeholder="e-mail (required)"
                         value={this.state.email}
                         onChange={this.handleInputChange}
                     />
-                    <Input
+                    <AvField
                         name="password"
                         placeholder="password (required)"
                         value={this.state.password}
                         onChange={this.handleInputChange}
                     />
-                    <Input
+                    <AvField
                         name="confirm password"
                         placeholder="confirm password (required)"
 
                     />
-                    <Input
+                    <AvField
                         name="address"
                         placeholder="address (required)"
                         value={this.state.address}
                         onChange={this.handleInputChange}
                     />
-                    <Input
+                    <AvField
                         name="city"
                         placeholder="city (required)"
                         value={this.state.city}
                         onChange={this.handleInputChange}
                     />
-                    <Input
+                   <AvField
                         name="State"
                         placeholder="State (required)"
                         value={this.state.state}
                         onChange={this.handleInputChange}
                     />
-                    <Input
+                    <AvField
                         name="Zip code"
                         placeholder="Zip code (required)"
                         value={this.state.zip}
                         onChange={this.handleInputChange}
                     />
-                    <Input
+                    <AvField
                         name="Credit card number"
                         placeholder="Credit Card Number (required)"
                         value={this.state.creditCardNumber}
                         onChange={this.handleInputChange}
                     />
-                    <Input
+                    <AvField
                         name="Expiration Date"
                         placeholder="Expiration Date (required)"
                         value={this.state.expDate}
                         onChange={this.handleInputChange}
                     />
-                    <Input
+                   <AvField
                         name="cvv"
                         placeholder="cvv (required)"
                         value={this.state.cvv}
