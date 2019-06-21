@@ -94,9 +94,6 @@ class Register extends Component {
         //     });
       }
 
-  
-
-
     render() {
         return (
             <div>
@@ -108,82 +105,128 @@ class Register extends Component {
                         placeholder="username (required)"
                         value={this.state.userName}
                         onChange={this.handleInputChange}
+                        validate={{
+                            required: {value: true, errorMessage: 'Please enter username'}
+                        }}
                     />
                     <AvField
                         name="firstName"
                         placeholder="First Name (required)"
                         value={this.state.firstName}
                         onChange={this.handleInputChange}
+                        validate={{
+                            required: {value: true, errorMessage: 'Please enter first name'}
+                        }}
                     />
                     <AvField
                         name="lastName"
                         placeholder="Last Name (required)"
                         value={this.state.lastName}
                         onChange={this.handleInputChange}
+                        validate={{
+                            required: {value: true, errorMessage: 'Please enter last name'}
+                        }}
                     />
                     <AvField
                         name="email"
                         placeholder="e-mail (required)"
                         value={this.state.email}
                         onChange={this.handleInputChange}
+                        validate={{ 
+                            email: true,
+                            required: {value: true, errorMessage: 'Please enter e-mail'} 
+                        }}
                     />
                     <AvField
                         name="password"
                         placeholder="password (required)"
                         value={this.state.password}
                         onChange={this.handleInputChange}
+                        validate={{
+                            required: {value: true, errorMessage: 'Please enter password'},
+                            pattern: { value: '^[A-Za-z0-9]+$', errorMessage: 'Your name must be composed only with letter and numbers' },
+                            minLength: { value: 6, errorMessage: 'Your name must be between 6 and 16 characters' },
+                            maxLength: { value: 16, errorMessage: 'Your name must be between 6 and 16 characters' }
+                        }}
                     />
                     <AvField
                         name="confirm password"
                         placeholder="confirm password (required)"
-
+                        onChange={this.handleInputChange}
+                        validate={{
+                            required: {value: true, errorMessage: 'Please confirm password'},
+                            pattern: { value: '^[A-Za-z0-9]+$', errorMessage: 'Your name must be composed only with letter and numbers' },
+                            minLength: { value: 6, errorMessage: 'Your name must be between 6 and 16 characters' },
+                            maxLength: { value: 16, errorMessage: 'Your name must be between 6 and 16 characters' }
+                        }}
                     />
                     <AvField
                         name="address"
                         placeholder="address (required)"
                         value={this.state.address}
                         onChange={this.handleInputChange}
+                        validate={{
+                            required: {value: true, errorMessage: 'Please enter address'}
+                        }}
                     />
                     <AvField
                         name="city"
                         placeholder="city (required)"
                         value={this.state.city}
                         onChange={this.handleInputChange}
+                        validate={{
+                            required: {value: true, errorMessage: 'Please enter city'}
+                        }}
                     />
                    <AvField
                         name="state"
                         placeholder="State (required)"
                         value={this.state.state}
                         onChange={this.handleInputChange}
+                        validate={{
+                            required: {value: true, errorMessage: 'Please enter state'}
+                        }}
                     />
                     <AvField
                         name="zip"
                         placeholder="Zip code (required)"
                         value={this.state.zip}
                         onChange={this.handleInputChange}
+                        validate={{
+                            required: {value: true, errorMessage: 'Please enter zip code'}
+                        }}
                     />
                     <AvField
                         name="creditCardNumber"
                         placeholder="Credit Card Number (required)"
                         value={this.state.creditCardNumber}
                         onChange={this.handleInputChange}
+                        validate={{
+                            required: {value: true, errorMessage: 'Please enter credit card number'}
+                        }}
                     />
                     <AvField
                         name="expDate"
                         placeholder="Expiration Date (required)"
                         value={this.state.expDate}
                         onChange={this.handleInputChange}
+                        validate={{
+                            required: {value: true, errorMessage: 'Please enter expiration date'},
+                            date: {format: 'MM/YY', errorMessage: 'Please enter correct date in MM/YY format'}
+                        }}
                     />
                    <AvField
                         name="cvv"
                         placeholder="cvv (required)"
                         value={this.state.cvv}
                         onChange={this.handleInputChange}
+                        validate={{
+                            required: {value: true, errorMessage: 'Please enter cvv'}
+                        }}
                     />
-
                     <Button color="secondary" onClick={this.handleFormSubmit}>Submit</Button>
                 </AvForm>
-                <Link to='/sale'>Sale Page</Link>
+                {/*<Link to='/sale'>Sale Page</Link>*/}
             </div>
         );
     }
