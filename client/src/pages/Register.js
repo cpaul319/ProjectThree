@@ -66,23 +66,7 @@ class Register extends Component {
             cvv: this.state.cvv
         }
         console.log(user);
-        // if (!this.state.email) {
-        //     console.log("e-mail empty");
-        // } else {
-        //     this.setRedirect();
-        //     this.renderRedirect();
-        // }
-        // register(user).then(res => {
-        //     if (res)
-        //     { this.props.history.push('\login')}
-    
-        // })
-        // axios.post("/api/users", function(req, res) {
-        //     db.Users.create(req.body).then(function(dbUsers) {
-        //       res.json(dbUsers);
-        //     });
-        //   });
-
+       
         axios.post('api/users', user)
           .then(function (response) {
             console.log(response);
@@ -95,9 +79,7 @@ class Register extends Component {
     }
     componentDidMount() {
         console.log("did mount");
-        // User.post("/", (req, res)=>{
-        //     res.send(req.body);
-        //     });
+     
       }
 
   
