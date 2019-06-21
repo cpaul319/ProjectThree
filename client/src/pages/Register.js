@@ -1,4 +1,4 @@
-
+import axios from "axios";
 import Nav from "../components/Nav";
 import { isAbsolute } from "path";
 import { Input, TextArea, FormBtn } from "../components/Form";
@@ -22,9 +22,9 @@ class Register extends Component {
         city: "",
         state: "",
         zip: "",
-        creditCardNumber: "",
-        expDate: "",
-        cvv: "",
+        creditCardNumber: 3,
+        expDate: 1,
+        cvv: 4,
         redirect: false
     };
 
@@ -50,14 +50,6 @@ class Register extends Component {
     }
 //add functionality where it send the data to the Database
     handleFormSubmit = event => {
-        console.log("submit!");
-        console.log("city: " + this.state.city);
-        console.log("state: " + this.state.state);
-        console.log("username: " + this.state.userName);
-        console.log("firstname: " + this.state.firstName);
-        console.log("lastname: " + this.state.lastName);
-        console.log("email: " + this.state.email);
-        console.log("password: " + this.state.password);
 
         const user ={
             userName: this.state.userName,
@@ -74,17 +66,31 @@ class Register extends Component {
             cvv: this.state.cvv
         }
         console.log(user);
-        if (!this.state.email) {
-            console.log("e-mail empty");
-        } else {
-            this.setRedirect();
-            this.renderRedirect();
-        }
-        register(user).then(res => {
-            if (res)
-            { this.props.history.push('\login')}
+        // if (!this.state.email) {
+        //     console.log("e-mail empty");
+        // } else {
+        //     this.setRedirect();
+        //     this.renderRedirect();
+        // }
+        // register(user).then(res => {
+        //     if (res)
+        //     { this.props.history.push('\login')}
     
-        })
+        // })
+        // axios.post("/api/users", function(req, res) {
+        //     db.Users.create(req.body).then(function(dbUsers) {
+        //       res.json(dbUsers);
+        //     });
+        //   });
+
+        axios.post('api/users', user)
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        
     
     }
     componentDidMount() {
