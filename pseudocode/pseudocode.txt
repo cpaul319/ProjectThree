@@ -28,7 +28,7 @@ Project Three Pseudocode:
 
 			If purchase button is clicked:
 
-			-	New page is opened with the following elements.
+			-	New orders page is opened with the following elements.
 
 			-	The purchased item (as it appeared on last page) is prepended to the purchased items section.
 

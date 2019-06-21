@@ -8,8 +8,6 @@ import { Redirect } from 'react-router-dom';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import { Button } from 'reactstrap';
 
- 
-
 class Enter extends Component {
     state = {
         email: "",
@@ -42,16 +40,21 @@ class Enter extends Component {
         console.log("submit!");
         console.log("email: " + this.state.email);
         console.log("password: " + this.state.password);
-        if (!this.state.email) {
-            console.log("e-mail empty");
-        } else {
+        if (this.state.email && this.ValidateEmail() && this.state.password) {
             this.setRedirect();
             this.renderRedirect();
+
+        } else {
+            console.log("e-mail empty");
         }
     }
-  
-   
 
+    ValidateEmail() {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        
+        return re.test(String(this.state.email).toLowerCase());
+    }
+  
     render() {
         return (
             <div className="App">
@@ -59,7 +62,10 @@ class Enter extends Component {
                 <p>Login page</p>
                 {this.renderRedirect()}
                 <AvForm>
-                    <AvField name="email" label="Email" type="email" onChange={this.handleInputChange} validate={{ email: true }}/>
+                    <AvField name="email" label="Email" type="email" onChange={this.handleInputChange} validate={{ 
+                        email: true,
+                        required: {value: true, errorMessage: 'Please enter e-mail'} 
+                    }} />
                     <AvField name="password" label="Password" type="text" onChange={this.handleInputChange} validate={{
                         required: { value: true, errorMessage: 'Please enter a name' },
                         pattern: { value: '^[A-Za-z0-9]+$', errorMessage: 'Your name must be composed only with letter and numbers' },
@@ -72,6 +78,5 @@ class Enter extends Component {
         )
     }
 }
-
 
 export default Enter;
