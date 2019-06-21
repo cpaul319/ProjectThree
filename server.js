@@ -35,7 +35,9 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Define Routes
+
 app.use('/', require('./routes/users'));
+
 // app.use('/api/auth', require('./routes/auth'));
 // app.use('/api/contacts', require('./routes/contacts'));
 
