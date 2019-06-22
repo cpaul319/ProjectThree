@@ -71,28 +71,53 @@ class Register extends Component {
             cvv: this.state.cvv
         }
         console.log(user);
+        console.log(user.userName);
 
-        axios.post('api/users', user)
+        if (user.userName && user.firstName && user.lastName && this.ValidateEmail() && this.ValidatePassword() && 
+            user.address && user.city && user.state && this.ValidateZip() && this.ValidateCCNumber() &&
+            this.ValidateDate() && (user.cvv.isInteger && user.cvv > 99))   {
+            axios.post('api/users', user)
             .then(function (response) {
                 console.log(response);
             })
             .catch(function (error) {
                 console.log(error);
             });
-
-
-      
-
-        this.props.history.push('/sale');
-
+            this.props.history.push('/sale');
+        }
+        else (
+            console.log("wrong registration input");
+        )
     }
+
     componentDidMount() {
         console.log("did mount");
 
     }
 
+    ValidateDate()  {
+        return (moment(this.state.expDate, 'MM/YY', true).isValid());
+    }
 
+    ValidateCCNumber()  {
+        return (Number.isInteger(this.state.creditCardNumber) && this.state.creditCardNumber > 999999999999999)
+    }
 
+    ValidateZip()   {
+        return (Number.isInteger(this.state.zip) && zip > 9999);
+    }
+
+    ValidatePassword()  {
+        var letter = /^[a-zA-Z0-9]+$/;
+        var valid = letter.test(this.state.password); //match a letter _and_ a number
+        return valid;
+    }
+
+    ValidateEmail() {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        
+        return re.test(String(this.state.email).toLowerCase());
+    }
 
     render() {
         return (
