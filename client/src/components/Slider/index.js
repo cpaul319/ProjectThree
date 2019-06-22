@@ -17,7 +17,7 @@ const content = [
   },
   {
     title: "Got Swag",
-    description: "Figurines, Gear, Games, Art, and so much more! ",
+    description: "Figurines, Gear, Games, Art, and so much more. ",
     image: "images/dragon.jpg"
   },
   {
