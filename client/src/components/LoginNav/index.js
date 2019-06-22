@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 
-function Nav() {
+function LoginNav() {
   return (
     <header>
    {/* <nav className="navbar navbar-light bg-light">
@@ -25,7 +25,7 @@ function Nav() {
             <li className="nav-item">
               <a className="nav-link" href="/register">Sign Up</a>
             </li>
-            <li className="nav-item dropdown">
+            {/* <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Welcome User
               </a>
@@ -33,7 +33,7 @@ function Nav() {
                 <a className="dropdown-item" href="/orders">Orders</a>
                 <a className="dropdown-item" href="/forgot">Edit Account</a>
               </div>
-            </li>
+            </li> */}
           </ul>
           </div>
       </nav>
@@ -41,4 +41,4 @@ function Nav() {
   );
 }
 
-export default Nav;
+export default LoginNav;
