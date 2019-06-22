@@ -1,4 +1,20 @@
+<<<<<<< HEAD
 nav {
   width: 100%;
 }
  
+=======
+nav.navbar {
+    margin: 0%;
+    width: 100vw;
+    margin-bottom: 5rem;
+    
+  }
+  
+  header {
+    height: auto;
+    margin-bottom: 3rem;
+    
+  }
+  
+>>>>>>> 4403f39931450465d02d52a98ebde7c546ea7511
