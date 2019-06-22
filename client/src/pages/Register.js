@@ -78,7 +78,8 @@ class Register extends Component {
         if (user.userName && user.firstName && user.lastName && this.ValidateEmail() && this.ValidatePassword() &&
             user.address && user.city && user.state && this.ValidateZip() && this.ValidateCCNumber() &&
             this.ValidateDate() && (user.cvv.isInteger && user.cvv > 99) &&
-            this.state.password == this.state.confirm_password) {
+            this.state.password == this.state.confirm_password && /^[a-zA-Z]+$/.test(user.firstName) && 
+            /^[a-zA-Z]+$/.test(user.lastName)) {
             axios.post('api/users', user)
                 .then(function (response) {
                     console.log(response);
@@ -88,6 +89,16 @@ class Register extends Component {
                 });
             this.props.history.push('/sale');
         } else {
+            if (user.userName && user.firstName && user.lastName && this.ValidateEmail() && this.ValidatePassword() &&
+                user.address && user.city)   {
+                console.log("user name exists");
+                console.log("first name exists");
+                console.log("last name exists");
+                console.log("e-mail is valid");
+                console.log("password is valid");
+                console.log("address is valid");
+                console.log("city is valid");
+            }
             console.log("wrong registration input");
         }
     }
@@ -165,7 +176,8 @@ class Register extends Component {
                                 value={this.state.firstName}
                                 onChange={this.handleInputChange}
                                 validate={{
-                                    required: { value: true, errorMessage: 'Please enter first name' }
+                                    required: { value: true, errorMessage: 'Please enter first name' },
+                                    pattern: { value: '^[A-Za-z]+$', errorMessage: 'Your name must be composed only with letters' }
                                 }}
                             />
                             <AvField
@@ -174,7 +186,8 @@ class Register extends Component {
                                 value={this.state.lastName}
                                 onChange={this.handleInputChange}
                                 validate={{
-                                    required: { value: true, errorMessage: 'Please enter last name' }
+                                    required: { value: true, errorMessage: 'Please enter last name' },
+                                    pattern: { value: '^[A-Za-z]+$', errorMessage: 'Your name must be composed only with letters' }
                                 }}
                             />
                             <AvField
@@ -207,7 +220,8 @@ class Register extends Component {
                                     required: { value: true, errorMessage: 'Please enter password' },
                                     pattern: { value: '^[A-Za-z0-9]+$', errorMessage: 'Your name must be composed only with letter and numbers' },
                                     minLength: { value: 6, errorMessage: 'Your name must be between 6 and 16 characters' },
-                                    maxLength: { value: 16, errorMessage: 'Your name must be between 6 and 16 characters' }
+                                    maxLength: { value: 16, errorMessage: 'Your name must be between 6 and 16 characters' },
+                                    match: {value:'password', errorMessage: 'Passwords must match'}
                                 }}
 
                             />
