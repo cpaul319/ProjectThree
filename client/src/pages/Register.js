@@ -100,7 +100,7 @@ class Register extends Component {
                 <LoginNav />
                 <div className="container">
 
-                <p id="reg-title">Registration page</p>
+                <p id="reg-title">Sign Up</p>
                 <AvForm>
                 <div className="reg-box1">
                     <AvField
