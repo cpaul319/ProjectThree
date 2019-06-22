@@ -45,6 +45,7 @@ class Register extends Component {
     renderRedirect = () => {
         console.log("redirect works!");
         if (this.state.redirect) {
+            this.state.redirect = false;
             return <Redirect to='/sale' />
         }
     }
@@ -70,6 +71,8 @@ class Register extends Component {
         axios.post('api/users', user)
           .then(function (response) {
             console.log(response);
+            setRedirect();
+            renderRedirect();
           })
           .catch(function (error) {
             console.log(error);
