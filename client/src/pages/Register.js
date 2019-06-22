@@ -9,6 +9,8 @@ import { Button } from 'reactstrap';
 import {register} from '../components/UserFunction';
 import "../Register.css"
  
+
+
 // const User = require('../models/User');
 // const Users= require( "../routes/users");
 class Register extends Component {
@@ -25,17 +27,18 @@ class Register extends Component {
         zip: "",
         creditCardNumber: 3,
         expDate: 1,
-        cvv: 4,
-        redirect: false
+        cvv: 4
+        // redirect: false
     };
 
-    setRedirect = () => {
-        this.setState({
-            redirect: true
-        })
-    }
-    handleInputChange = event => {
+    // setRedirect = () => {
+    //     this.setState({
+    //         redirect: true
+    //     }, () =>  this.renderRedirect())
         
+    // }
+    handleInputChange = event => {
+
         const { name, value } = event.target;
         this.setState({
             [name]: value
@@ -43,17 +46,17 @@ class Register extends Component {
         console.log("value is " + value);
     }
 
-    renderRedirect = () => {
-        console.log("redirect works!");
-        if (this.state.redirect) {
-            this.state.redirect = false;
-            return <Redirect to='/sale' />
-        }
-    }
-//add functionality where it send the data to the Database
+    // renderRedirect = () => {
+    //     console.log("redirect works!");
+
+       
+    //         return <Redirect to='/sale' />
+        
+    // }
+    //add functionality where it send the data to the Database
     handleFormSubmit = event => {
 
-        const user ={
+        const user = {
             userName: this.state.userName,
             firstName: this.state.firstName,
             lastName: this.state.lastName,
@@ -68,23 +71,28 @@ class Register extends Component {
             cvv: this.state.cvv
         }
         console.log(user);
-       
+
         axios.post('api/users', user)
-          .then(function (response) {
-            console.log(response);
-            this.setRedirect();
-            this.renderRedirect();
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-        
-    
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+
+      
+
+        this.props.history.push('/sale');
+
     }
     componentDidMount() {
         console.log("did mount");
-     
-      }
+
+    }
+
+
+
 
     render() {
         return (
