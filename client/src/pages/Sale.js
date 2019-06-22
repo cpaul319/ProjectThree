@@ -19,19 +19,20 @@ state = {
     zip: "",
     creditCardNumber: 3,
     expDate: 1,
-    cvv: 4,
-    redirect: false
+    cvv: 4
+    
 };
 componentDidMount() {
   console.log("did mount");
   axios.get('api/users')
-.then(function (response) {
-  console.log(response);
+.then(function (res) {
+  const userName = res.data;
+        this.setState({ userName });
 })
 .catch(function (error) {
   console.log(error);
 });
-
+console.log(this.state.userName);
 }
 
 
@@ -41,12 +42,13 @@ componentDidMount() {
     return (
         <div className="App">
             <SaleNav />
+            <p>Welcome {this.state.userName}</p>
             <p>Sale page</p>
             <SaleCard />
         </div>
     );
     console.log("after Log In function is called.");
-console.log(this.state.userName);
+
     }
 
 }
