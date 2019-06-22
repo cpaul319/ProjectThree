@@ -1,3 +1,17 @@
+#reg-body {
+
+}
+.container {
+    border: 1px solid black;
+    border-radius: .25rem;
+    background: #fff;
+    padding: 1rem;
+}
+
+#reg-title {
+    text-align: center;
+}
+
 .reg-box1 {
     display: block;
     float: left;
@@ -18,5 +32,4 @@
     clear: both;
     display: table;
     margin: 0 auto;
-
 }

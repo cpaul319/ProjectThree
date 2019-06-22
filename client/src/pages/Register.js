@@ -1,5 +1,5 @@
 import axios from "axios";
-import Nav from "../components/Nav";
+import LoginNav from "../components/LoginNav";
 import { isAbsolute } from "path";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import { Link, Redirect } from "react-router-dom";
@@ -88,9 +88,11 @@ class Register extends Component {
 
     render() {
         return (
-            <div>
-                <Nav />
-                <p>Registration page</p>
+            <div id="reg-body"> 
+                <LoginNav />
+                <div className="container">
+
+                <p id="reg-title">Registration page</p>
                 <AvForm>
                 <div className="reg-box1">
                     <AvField
@@ -233,6 +235,7 @@ class Register extends Component {
                     </div>
                         <Button className="submit-btn" color="secondary" onClick={this.handleFormSubmit}>Submit</Button>
                 </AvForm>
+                </div>
                 {/* <Link to='/sale'>Sale Page</Link> */}
             </div>
         );
