@@ -6,8 +6,9 @@ import { Link, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import { Button } from 'reactstrap';
-import {register} from '../components/UserFunction';
  
+
+
 // const User = require('../models/User');
 // const Users= require( "../routes/users");
 class Register extends Component {
@@ -24,17 +25,18 @@ class Register extends Component {
         zip: "",
         creditCardNumber: 3,
         expDate: 1,
-        cvv: 4,
-        redirect: false
+        cvv: 4
+        // redirect: false
     };
 
-    setRedirect = () => {
-        this.setState({
-            redirect: true
-        })
-    }
-    handleInputChange = event => {
+    // setRedirect = () => {
+    //     this.setState({
+    //         redirect: true
+    //     }, () =>  this.renderRedirect())
         
+    // }
+    handleInputChange = event => {
+
         const { name, value } = event.target;
         this.setState({
             [name]: value
@@ -42,16 +44,17 @@ class Register extends Component {
         console.log("value is " + value);
     }
 
-    renderRedirect = () => {
-        console.log("redirect works!");
-        if (this.state.redirect) {
-            return <Redirect to='/sale' />
-        }
-    }
-//add functionality where it send the data to the Database
+    // renderRedirect = () => {
+    //     console.log("redirect works!");
+
+       
+    //         return <Redirect to='/sale' />
+        
+    // }
+    //add functionality where it send the data to the Database
     handleFormSubmit = event => {
 
-        const user ={
+        const user = {
             userName: this.state.userName,
             firstName: this.state.firstName,
             lastName: this.state.lastName,
@@ -66,23 +69,27 @@ class Register extends Component {
             cvv: this.state.cvv
         }
         console.log(user);
-       
+
         axios.post('api/users', user)
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-        
-    
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+
+      
+
+        this.props.history.push('/sale');
+
     }
     componentDidMount() {
         console.log("did mount");
-     
-      }
 
-  
+    }
+
+
 
 
     render() {
@@ -91,7 +98,7 @@ class Register extends Component {
                 <Nav />
                 <p>Registration page</p>
                 <AvForm>
-                <AvField
+                    <AvField
                         name="userName"
                         placeholder="username (required)"
                         value={this.state.userName}
@@ -138,7 +145,7 @@ class Register extends Component {
                         value={this.state.city}
                         onChange={this.handleInputChange}
                     />
-                   <AvField
+                    <AvField
                         name="state"
                         placeholder="State (required)"
                         value={this.state.state}
@@ -162,7 +169,7 @@ class Register extends Component {
                         value={this.state.expDate}
                         onChange={this.handleInputChange}
                     />
-                   <AvField
+                    <AvField
                         name="cvv"
                         placeholder="cvv (required)"
                         value={this.state.cvv}
