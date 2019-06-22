@@ -25,9 +25,9 @@ class Register extends Component {
         city: "",
         state: "",
         zip: "",
-        creditCardNumber: 3,
-        expDate: 1,
-        cvv: 4
+        creditCardNumber: "",
+        expDate: "",
+        cvv: ""
         // redirect: false
     };
 
@@ -194,7 +194,10 @@ class Register extends Component {
                         type="select" 
                         name="state"
                         value={this.state.state} 
-                        onChange={this.handleInputChange} 
+                        onChange={this.handleInputChange}
+                        validate={{ 
+                            required: {value: true, errorMessage: 'Please enter state'} 
+                        }} 
                         >
                             <option value="">State</option>
                             <option value="Alaska">AK</option>
@@ -247,9 +250,6 @@ class Register extends Component {
                             <option value="Wisconsin">WI</option>
                             <option value="West Virginia">WV</option>
                             <option value="Wyoming">WY</option>
-                            validate={{ 
-                                required: {value: true, errorMessage: 'Please enter state'} 
-                            }}
                         </AvField>
                         <AvField
                             name="zip"
@@ -266,7 +266,10 @@ class Register extends Component {
                             value={this.state.creditCardNumber}
                             onChange={this.handleInputChange}
                             validate={{ 
-                                required: {value: true, errorMessage: 'Please enter credit card number'} 
+                                required: {value: true, errorMessage: 'Please enter credit card number'},
+                                pattern: { value: '^[0-9]+$', errorMessage: 'Please enter only numbers' },
+                                minLength: { value: 16, errorMessage: 'Please enter 16 digit credit card number' },
+                                maxLength: { value: 16, errorMessage: 'Please enter 16 digit credit card number' }
                             }}
                         />
                         <AvField
@@ -275,7 +278,8 @@ class Register extends Component {
                             value={this.state.expDate}
                             onChange={this.handleInputChange}
                             validate={{ 
-                                required: {value: true, errorMessage: 'Please enter date in MM/YY format'} 
+                                required: {value: true, errorMessage: 'Please enter date'},
+                                date: {format: 'MM/YY', errorMessage: 'Please enter date in MM/YY format'}
                             }}
                         />
                         <AvField
@@ -284,7 +288,10 @@ class Register extends Component {
                             value={this.state.cvv}
                             onChange={this.handleInputChange}
                             validate={{ 
-                                required: {value: true, errorMessage: 'Please enter cvv'} 
+                                required: {value: true, errorMessage: 'Please enter cvv'},
+                                pattern: {value: '^[0-9]+$', errorMessage: 'Please enter only numbers' },
+                                minLength: { value: 3, errorMessage: 'Please enter 3 digit cvv' },
+                                maxLength: { value: 3, errorMessage: 'Please enter 3 digit cvv' }
                             }}
                         />
                     </div>
