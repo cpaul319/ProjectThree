@@ -25,9 +25,9 @@ class Register extends Component {
         city: "",
         state: "",
         zip: "",
-        creditCardNumber: 3,
-        expDate: 1,
-        cvv: 4
+        creditCardNumber: "",
+        expDate: "",
+        cvv: ""
         // redirect: false
     };
 
@@ -108,34 +108,60 @@ class Register extends Component {
                             placeholder="username"
                             value={this.state.userName}
                             onChange={this.handleInputChange}
+                            validate={{ 
+                                required: {value: true, errorMessage: 'Please enter user name'} 
+                            }}
                         />
                         <AvField
                             name="firstName"
                             placeholder="First Name"
                             value={this.state.firstName}
                             onChange={this.handleInputChange}
+                            validate={{ 
+                                required: {value: true, errorMessage: 'Please enter first name'} 
+                            }}
                         />
                         <AvField
                             name="lastName"
                             placeholder="Last Name"
                             value={this.state.lastName}
                             onChange={this.handleInputChange}
+                            validate={{ 
+                                required: {value: true, errorMessage: 'Please enter last name'} 
+                            }}
                         />
                         <AvField
                             name="email"
                             placeholder="e-mail"
                             value={this.state.email}
                             onChange={this.handleInputChange}
+                            validate={{ 
+                                email: {value: true, errorMessage: 'Please enter valid e-mail'},
+                                required: {value: true, errorMessage: 'Please enter e-mail'} 
+                            }}
                         />
                         <AvField
                             name="password"
                             placeholder="password"
                             value={this.state.password}
                             onChange={this.handleInputChange}
+                            validate={{
+                                required: { value: true, errorMessage: 'Please enter password' },
+                                pattern: { value: '^[A-Za-z0-9]+$', errorMessage: 'Your name must be composed only with letter and numbers' },
+                                minLength: { value: 6, errorMessage: 'Your name must be between 6 and 16 characters' },
+                                maxLength: { value: 16, errorMessage: 'Your name must be between 6 and 16 characters' }
+                            }}
                         />
                         <AvField
                             name="confirm password"
                             placeholder="confirm password"
+                            onChange={this.handleInputChange}
+                            validate={{
+                                required: { value: true, errorMessage: 'Please enter password' },
+                                pattern: { value: '^[A-Za-z0-9]+$', errorMessage: 'Your name must be composed only with letter and numbers' },
+                                minLength: { value: 6, errorMessage: 'Your name must be between 6 and 16 characters' },
+                                maxLength: { value: 16, errorMessage: 'Your name must be between 6 and 16 characters' }
+                            }}
 
                         />
                     </div> 
@@ -145,12 +171,18 @@ class Register extends Component {
                             placeholder="address"
                             value={this.state.address}
                             onChange={this.handleInputChange}
+                            validate={{ 
+                                required: {value: true, errorMessage: 'Please enter address'} 
+                            }}
                         />
                         <AvField
                             name="city"
                             placeholder="city"
                             value={this.state.city}
                             onChange={this.handleInputChange}
+                            validate={{ 
+                                required: {value: true, errorMessage: 'Please enter city'} 
+                            }}
                         />
                     {/* <AvField
                             name="state"
@@ -162,7 +194,10 @@ class Register extends Component {
                         type="select" 
                         name="state"
                         value={this.state.state} 
-                        onChange={this.handleInputChange} 
+                        onChange={this.handleInputChange}
+                        validate={{ 
+                            required: {value: true, errorMessage: 'Please enter state'} 
+                        }} 
                         >
                             <option value="">State</option>
                             <option value="Alaska">AK</option>
@@ -221,24 +256,43 @@ class Register extends Component {
                             placeholder="Zip code"
                             value={this.state.zip}
                             onChange={this.handleInputChange}
+                            validate={{ 
+                                required: {value: true, errorMessage: 'Please enter zip code'} 
+                            }}
                         />
                         <AvField
                             name="creditCardNumber"
                             placeholder="Credit Card Number"
                             value={this.state.creditCardNumber}
                             onChange={this.handleInputChange}
+                            validate={{ 
+                                required: {value: true, errorMessage: 'Please enter credit card number'},
+                                pattern: { value: '^[0-9]+$', errorMessage: 'Please enter only numbers' },
+                                minLength: { value: 16, errorMessage: 'Please enter 16 digit credit card number' },
+                                maxLength: { value: 16, errorMessage: 'Please enter 16 digit credit card number' }
+                            }}
                         />
                         <AvField
                             name="expDate"
                             placeholder="Expiration Date"
                             value={this.state.expDate}
                             onChange={this.handleInputChange}
+                            validate={{ 
+                                required: {value: true, errorMessage: 'Please enter date'},
+                                date: {format: 'MM/YY', errorMessage: 'Please enter date in MM/YY format'}
+                            }}
                         />
                         <AvField
                             name="cvv"
                             placeholder="cvv"
                             value={this.state.cvv}
                             onChange={this.handleInputChange}
+                            validate={{ 
+                                required: {value: true, errorMessage: 'Please enter cvv'},
+                                pattern: {value: '^[0-9]+$', errorMessage: 'Please enter only numbers' },
+                                minLength: { value: 3, errorMessage: 'Please enter 3 digit cvv' },
+                                maxLength: { value: 3, errorMessage: 'Please enter 3 digit cvv' }
+                            }}
                         />
                     </div>
                         <Button className="submit-btn" color="secondary" onClick={this.handleFormSubmit}>Submit</Button>
