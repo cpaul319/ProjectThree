@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from 'react-dom';
 import { isAbsolute } from "path";
-import Nav from "../components/Nav";
+import LoginNav from "../components/LoginNav";
 import Slide from "../components/Slider";
 import "../Login.css"
 
@@ -10,7 +10,7 @@ function LogIn() {
     return (
         <div className="App login"> 
             
-            <Nav />
+            <LoginNav />
             <Slide />
               
         </div>
