@@ -90,7 +90,7 @@ class Register extends Component {
             this.props.history.push('/sale');
         } else {
             if (user.userName && user.firstName && user.lastName && this.ValidateEmail() && this.ValidatePassword() &&
-                user.address && user.city)   {
+                user.address && user.city && user.state /*&& this.ValidateZip()*/)   {
                 console.log("user name exists");
                 console.log("first name exists");
                 console.log("last name exists");
@@ -98,6 +98,8 @@ class Register extends Component {
                 console.log("password is valid");
                 console.log("address is valid");
                 console.log("city is valid");
+                console.log("state is valid");
+                //console.log("zip is valid");
             }
             console.log("wrong registration input");
         }
@@ -318,7 +320,9 @@ class Register extends Component {
                                 value={this.state.zip}
                                 onChange={this.handleInputChange}
                                 validate={{
-                                    required: { value: true, errorMessage: 'Please enter zip code' }
+                                    required: { value: true, errorMessage: 'Please enter zip code' },
+                                    minLength: { value: 5, errorMessage: 'Please enter 5 digit zip code' },
+                                    maxLength: { value: 5, errorMessage: 'Please enter 5 digit zip code' }
                                 }}
                             />
                             <AvField
