@@ -72,8 +72,8 @@ class Register extends Component {
         axios.post('api/users', user)
           .then(function (response) {
             console.log(response);
-            setRedirect();
-            renderRedirect();
+            this.setRedirect();
+            this.renderRedirect();
           })
           .catch(function (error) {
             console.log(error);
