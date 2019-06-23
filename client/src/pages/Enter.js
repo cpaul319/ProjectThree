@@ -38,6 +38,21 @@ class Enter extends Component {
     }
 
     handleFormSubmit = event => {
+
+        const user = {
+            userName: this.state.userName,
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            email: this.state.email,
+            password: this.state.password,
+            address: this.state.address,
+            city: this.state.city,
+            state: this.state.state,
+            zip: this.state.zip,
+            creditCardNumber: this.state.creditCardNumber,
+            expDate: this.state.expDate,
+            cvv: this.state.cvv
+        }
         console.log("submit!");
         console.log("email: " + this.state.email);
         console.log("password: " + this.state.password);
@@ -54,13 +69,22 @@ class Enter extends Component {
                   console.log("those are the contents of the table");
                   console.log(data);
                 });*/
-            Axios.get('/api/allusers').then(res);
-            console.log("this is db results");
-            console.log(res);
+                Axios.post('api/allusers', user)
+                .then(function (response) {
+                    console.log("this is db results");
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            }
+        //     Axios.get('/api/allusers').then(req,res);
+        //     console.log("this is db results");
+        //     console.log(res);
 
-        } else {
-            console.log("e-mail empty");
-        }
+        // } else {
+        //     console.log("e-mail empty");
+        // }
     }
 
     ValidateEmail() {
