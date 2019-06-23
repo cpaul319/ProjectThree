@@ -45,7 +45,7 @@ class Register extends Component {
         });
         console.log("value is " + value);
     }
-
+ 
     // renderRedirect = () => {
     //     console.log("redirect works!");
 
