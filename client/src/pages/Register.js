@@ -75,7 +75,7 @@ class Register extends Component {
 
         if (user.userName && user.firstName && user.lastName && this.ValidateEmail() && this.ValidatePassword() &&
             user.address && user.city && user.state && this.ValidateZip() && this.ValidateCCNumber() &&
-            this.ValidateDate() && (user.cvv.isInteger && user.cvv > 99) &&
+            this.ValidateDate() && (/^[0-9]+$/.test(user.cvv) && user.cvv.length == 3) &&
             this.state.password == this.state.confirm_password && /^[a-zA-Z]+$/.test(user.firstName) && 
             /^[a-zA-Z]+$/.test(user.lastName)) {
             axios.post('api/users', user)
@@ -88,7 +88,8 @@ class Register extends Component {
             this.props.history.push('/sale');
         } else {
             if (user.userName && user.firstName && user.lastName && this.ValidateEmail() && this.ValidatePassword() &&
-                user.address && user.city && user.state && this.ValidateZip() /*&& this.ValidateCCNumber()*/)   {
+                user.address && user.city && user.state && this.ValidateZip() && this.ValidateCCNumber() &&
+                this.ValidateDate())   {
                 console.log("user name exists");
                 console.log("first name exists");
                 console.log("last name exists");
@@ -100,15 +101,16 @@ class Register extends Component {
                 console.log("valid zip: " + this.ValidateZip());
                 console.log("zip is valid");
                 console.log("credit card valid: " + this.ValidateCCNumber());
+                console.log("Expiration date is valid: " + this.ValidateDate());
+                console.log("Is cvv an integer? " + /^[0-9]+$/.test(user.cvv));
                 //console.log("credit card number is valid");
+                console.log("wrong registration input");
             }
-            console.log("wrong registration input");
         }
     }
 
     componentDidMount() {
         console.log("did mount");
-
     }
 
     ValidateDate() {
@@ -136,9 +138,11 @@ class Register extends Component {
     }
 
     ValidateCCNumber() {
-        console.log("Is credit card number integer? " + Number.isInteger(this.state.creditCardNumber));
+        /*console.log("Is credit card number integer? " + Number.isInteger(this.state.creditCardNumber));
         console.log("Is credit card number 16 digits? " + this.state.creditCardNumber > 999999999999999);
-        return (Number.isInteger(this.state.creditCardNumber) && this.state.creditCardNumber > 999999999999999);
+        return (Number.isInteger(this.state.creditCardNumber) && this.state.creditCardNumber > 999999999999999);*/
+        var number = /^[0-9]+$/;
+        return (number.test(this.state.creditCardNumber) && this.state.creditCardNumber.length == 16);
     }
 
     ValidateZip() {
