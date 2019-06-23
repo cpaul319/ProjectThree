@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { isAbsolute } from "path";
 import SaleNav from "../components/SaleNav";
 import SaleCard from "../components/SaleCard";
-
+//minor change for push update
 class Sale extends Component {
 
 state = {
