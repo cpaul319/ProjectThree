@@ -4,7 +4,7 @@
 const bodyParser = require('body-parser');
 const express = require("express");
 const path = require("path");
-const PORT = process.env.PORT || 5100;
+const PORT = process.env.PORT || 5000;
 const app = express();
 var db = require("./models");
 const User = require('./models/user');

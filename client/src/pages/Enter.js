@@ -61,7 +61,7 @@ class Enter extends Component {
                   console.log("those are the contents of the table");
                   console.log(data);
                 });*/
-                Axios.post('api/allusers', user)
+                Axios.get('api/allusers', user)
                 .then(function (response) {
                     console.log("this is db results");
                     console.log(response);
