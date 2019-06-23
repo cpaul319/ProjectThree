@@ -8,7 +8,7 @@
 
    Else, error is caught.
 
-2) Post route for updating user row with an item purchased.
+2) Put route for updating user row with an item purchased.
 
    if queried username exists in user table:
 
@@ -16,8 +16,15 @@
 
    else, error is caught.
 
+UPDATE Users
+SET "swagquantity" = "queried value"
+WHERE username = "queried username";
+
 3) Post route for registration of new user.
 
    When user enters new values for new user,
 
    New row is created with proper values in users table.
+
+"select * from Users where username = "queried value" and password = "queried value";"
+
