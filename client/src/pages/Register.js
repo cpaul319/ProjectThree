@@ -332,6 +332,7 @@ class Register extends Component {
                                 onChange={this.handleInputChange}
                                 validate={{
                                     required: { value: true, errorMessage: 'Please enter zip code' },
+                                    pattern: { value: '^[0-9]+$', errorMessage: 'Please enter only numbers' },
                                     minLength: { value: 5, errorMessage: 'Please enter 5 digit zip code' },
                                     maxLength: { value: 5, errorMessage: 'Please enter 5 digit zip code' }
                                 }}
