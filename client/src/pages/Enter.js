@@ -7,6 +7,7 @@ import { Input, TextArea, FormBtn } from "../components/Form";
 import { Redirect } from 'react-router-dom';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import { Button } from 'reactstrap';
+import Axios from 'axios';
 
 class Enter extends Component {
     state = {
@@ -43,6 +44,19 @@ class Enter extends Component {
         if (this.state.email && this.ValidateEmail() && this.state.password) {
             this.setRedirect();
             this.renderRedirect();
+            /*
+            $.ajax({
+                method: "GET",
+                url: "/api/allusers"
+              })
+                // With that done, add the note information to the page
+                .then(function (data) {
+                  console.log("those are the contents of the table");
+                  console.log(data);
+                });*/
+            Axios.get('/api/allusers').then(res);
+            console.log("this is db results");
+            console.log(res);
 
         } else {
             console.log("e-mail empty");
