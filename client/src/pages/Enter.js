@@ -40,18 +40,10 @@ class Enter extends Component {
     handleFormSubmit = event => {
 
         const user = {
-            userName: this.state.userName,
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
+            
             email: this.state.email,
-            password: this.state.password,
-            address: this.state.address,
-            city: this.state.city,
-            state: this.state.state,
-            zip: this.state.zip,
-            creditCardNumber: this.state.creditCardNumber,
-            expDate: this.state.expDate,
-            cvv: this.state.cvv
+            password: this.state.password
+           
         }
         console.log("submit!");
         console.log("email: " + this.state.email);
