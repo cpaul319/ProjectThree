@@ -6,7 +6,7 @@ import { Link, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import { Button } from 'reactstrap';
-import {register} from '../components/UserFunction';
+
 import "../Register.css"
  
 

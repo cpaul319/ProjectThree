@@ -1,5 +1,5 @@
 const userRouter = require("express").Router();
-const axios = require("axios");
+
 // const { check, validationResult } = require('express-validator/check');
 const db = require('../models');
 
@@ -10,18 +10,13 @@ userRouter.post("/api/users", (req, res)=>{
     })  
 // res.send(req.body);
 });
- 
-userRouter.get("/api/users", (req, res)=>{
-    id = 9;
-    db.User.findOne({
-      
-        where: {
-            id: req.params.id
-        },
-    }).then(function (dbUser) {
-        res.json(dbUser);
+
+    userRouter.get("/api/allusers", function(req, res)    {
+        db.Users.findAll({}).then(function (dbUsers) {
+            res.json(dbUsers);
+          });
     });
-});
+
 // res.send(req.body);
 
 
