@@ -28,8 +28,8 @@ componentDidMount() {
   console.log("did mount");
   axios.get('api/users')
 .then(function (res) {
-  const userName = res.data;
-        this.setState({ userName });
+  const firstName = firstName.res.data;
+        this.setState({ firstName });
 })
 .catch(function (error) {
   console.log(error);

@@ -7,7 +7,7 @@ function SaleNav() {
     <header>
     <nav className="navbar navbar-dark bg-dark">
       <Link to="*">Hello</Link> &nbsp; | &nbsp;
-      <Link to="/register">Account</Link> &nbsp; | &nbsp;
+      <Link to="/account">Account</Link> &nbsp; | &nbsp;
       <Link to="/orders">Orders</Link> &nbsp; | &nbsp;
       <Link to="/">Log Out</Link> &nbsp; | &nbsp;
     </nav>

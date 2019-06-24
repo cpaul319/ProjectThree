@@ -65,6 +65,7 @@ class Enter extends Component {
                 .then(function (response) {
                     console.log("this is db results");
                     console.log(response);
+                     
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -89,6 +90,7 @@ class Enter extends Component {
         return (
             <div className="App">
                 <Nav />
+                 
                 <p>Login page</p>
                 {this.renderRedirect()}
                 <AvForm>
