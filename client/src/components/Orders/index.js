@@ -1,13 +1,13 @@
 import React from 'react';
-import Nav from '../Nav';
 import './orders.css';
+import OrderNav from '../OrderNav'
 
 
 
 const Orders = (props) => {
   return (
     <div>
-      <Nav />
+      <OrderNav />
       <div className='container'>
         <table className="table table-striped">
           <thead>
