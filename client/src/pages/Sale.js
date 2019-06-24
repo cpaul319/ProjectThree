@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { isAbsolute } from "path";
 import SaleNav from "../components/SaleNav";
 import SaleCard from "../components/SaleCard";
-
+//minor change for push update
 class Sale extends Component {
 
 state = {
@@ -22,12 +22,14 @@ state = {
     cvv: 4
     
 };
+
+
 componentDidMount() {
   console.log("did mount");
   axios.get('api/users')
 .then(function (res) {
-  const userName = res.data;
-        this.setState({ userName });
+  const firstName = firstName.res.data;
+        this.setState({ firstName });
 })
 .catch(function (error) {
   console.log(error);

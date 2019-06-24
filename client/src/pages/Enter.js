@@ -7,8 +7,7 @@ import { Input, TextArea, FormBtn } from "../components/Form";
 import { Redirect } from 'react-router-dom';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import { Button } from 'reactstrap';
-import '../css/enter.css';
-import LoginNav from '../components/LoginNav';
+import Axios from 'axios';
 
 class Enter extends Component {
   state = { 
@@ -50,13 +49,62 @@ class Enter extends Component {
     }
   }
 
-  render() {
-    return (
-      <div className="App">
-        <LoginNav />
+    handleFormSubmit = event => {
 
-       {/*{this.renderRedirect()} */}
-        {/*}
+        const user = {
+            
+            email: this.state.email,
+            password: this.state.password
+           
+        }
+        console.log("submit!");
+        console.log("email: " + this.state.email);
+        console.log("password: " + this.state.password);
+        if (this.state.email && this.ValidateEmail() && this.state.password) {
+            this.setRedirect();
+            this.renderRedirect();
+            /*
+            $.ajax({
+                method: "GET",
+                url: "/api/allusers"
+              })
+                // With that done, add the note information to the page
+                .then(function (data) {
+                  console.log("those are the contents of the table");
+                  console.log(data);
+                });*/
+                Axios.get('api/allusers', user)
+                .then(function (response) {
+                    console.log("this is db results");
+                    console.log(response);
+                     
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            }
+        //     Axios.get('/api/allusers').then(req,res);
+        //     console.log("this is db results");
+        //     console.log(res);
+
+        // } else {
+        //     console.log("e-mail empty");
+        // }
+    }
+
+    ValidateEmail() {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        
+        return re.test(String(this.state.email).toLowerCase());
+    }
+  
+    render() {
+        return (
+            <div className="App">
+                <Nav />
+                 
+                <p>Login page</p>
+                {this.renderRedirect()}
                 <AvForm>
                     <AvField name="email" label="Email" type="email" onChange={this.handleInputChange} validate={{ 
                         email: {value: true, errorMessage: 'Please enter valid e-mail'},

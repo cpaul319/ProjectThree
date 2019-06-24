@@ -7,7 +7,7 @@ function OrderNav() {
     <header>
     <nav className="navbar navbar-dark bg-dark">
       <Link to="#">Hello</Link> &nbsp; | &nbsp;
-      <Link to="/register">Account</Link> &nbsp; | &nbsp;
+      <Link to="/Account">Account</Link> &nbsp; | &nbsp;
       <Link to="/Sale">Buy Items</Link> &nbsp; | &nbsp;
       <Link to="/">Log Out</Link> &nbsp; | &nbsp;
     </nav>

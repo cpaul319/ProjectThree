@@ -8,6 +8,8 @@ import Enter from "./pages/Enter";
 import Forgot from "./pages/Forgot";
 import Sale from "./pages/Sale";
 import Order from "./pages/Orders";
+import Account from "./pages/Account";
+
 
 function App() {
   console.log("in the app.js");
@@ -17,6 +19,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={LogIn} />
           <Route exact path="/register" component={Register} />
+          <Route exact path="/account" component={Account} />
           <Route exact path="/login" component={Enter} />
           <Route exect path="/forgot" component={Forgot} />
           <Route exact path = "/sale" component = {Sale} />
