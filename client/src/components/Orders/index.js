@@ -1,5 +1,5 @@
 import React from 'react';
-import OrderNav from '../OrderNav';
+import Nav from '../Nav';
 import './orders.css';
 
 
@@ -7,7 +7,7 @@ import './orders.css';
 const Orders = (props) => {
   return (
     <div>
-      <OrderNav />
+      <Nav />
       <div className='container'>
         <table class="table table-striped">
           <thead>
