@@ -62,7 +62,7 @@ class Account extends Component {
         console.log(user);
         console.log(user.userName);
 
-        if (this.ValidateEmail() && this.ValidatePassword() &&
+        if (
             user.address && user.city && user.state && this.ValidateZip() && this.ValidateCCNumber() &&
             this.ValidateDate() && (/^[0-9]+$/.test(user.cvv) && user.cvv.length == 3) &&
             this.state.password == this.state.confirm_password && /^[a-zA-Z]+$/.test(user.firstName) && 
@@ -92,6 +92,7 @@ class Account extends Component {
                 console.log("wrong registration input");
             }
         }
+        // this.props.history.push('/sale');
     }
 
     componentDidMount() {
