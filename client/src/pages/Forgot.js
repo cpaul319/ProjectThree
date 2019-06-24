@@ -21,7 +21,7 @@ class Forgot extends Component  {
         console.log("email is " + this.email);
     }
 
-    render()    {
+    render() {
         return(
             <div className="App">
                 <Nav />

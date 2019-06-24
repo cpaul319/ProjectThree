@@ -2,8 +2,10 @@ nav.navbar {
     margin: 0%;
     width: 100vw;
     margin-bottom: 5rem;
-    
-  }
+    }
   
-
+  header {
+    height: auto;
+    margin-bottom: 3rem;
+  }
   
