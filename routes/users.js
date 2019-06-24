@@ -17,6 +17,12 @@ userRouter.post("/api/users", (req, res)=>{
           });
     });
 
+    userRouter.get("/api/users:id", function(req, res)    {
+        db.Users.findOne({}).then(function (dbUsers) {
+            res.json(dbUsers);
+          });
+    });
+
 // res.send(req.body);
 
 
