@@ -45,7 +45,7 @@ class Register extends Component {
         });
         console.log("value is " + value);
     }
- 
+
     // renderRedirect = () => {
     //     console.log("redirect works!");
 
@@ -72,11 +72,30 @@ class Register extends Component {
         }
         console.log(user);
         console.log(user.userName);
+        //need to create an array with all of the users data and check password and email
+        axios.get('api/allusers', user)
+            .then(function (response) {
+                for(var i = 0; i < response.length; i ++){
+                    if (response.data[i].email === this.state.email) {
+                        alert('That e-mail is already in use, please pick a different one')
+                    } if (response.data[i].password === this.state.password ) {
+                        alert('That password is already in use, please pick a different one')
+                    }
+                }
+               
+                console.log("this grabs all users");
+                console.log(response);
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
 
         if (user.userName && user.firstName && user.lastName && this.ValidateEmail() && this.ValidatePassword() &&
             user.address && user.city && user.state && this.ValidateZip() && this.ValidateCCNumber() &&
             this.ValidateDate() && (/^[0-9]+$/.test(user.cvv) && user.cvv.length == 3) &&
-            this.state.password == this.state.confirm_password && /^[a-zA-Z]+$/.test(user.firstName) && 
+            this.state.password == this.state.confirm_password && /^[a-zA-Z]+$/.test(user.firstName) &&
             /^[a-zA-Z]+$/.test(user.lastName)) {
             axios.post('api/users', user)
                 .then(function (response) {
@@ -86,10 +105,13 @@ class Register extends Component {
                     console.log(error);
                 });
             this.props.history.push('/sale');
-        } else {
+        }
+
+
+        else {
             if (user.userName && user.firstName && user.lastName && this.ValidateEmail() && this.ValidatePassword() &&
                 user.address && user.city && user.state && this.ValidateZip() && this.ValidateCCNumber() &&
-                this.ValidateDate())   {
+                this.ValidateDate()) {
                 console.log("user name exists");
                 console.log("first name exists");
                 console.log("last name exists");
@@ -123,7 +145,7 @@ class Register extends Component {
         var year = currentTime.getFullYear();
         var expired = false;
 
-        if (this.state.expDate.length > 4)  {
+        if (this.state.expDate.length > 4) {
             var enteredyear = this.state.expDate[3] + this.state.expDate[4];
             var intyear = parseInt(enteredyear, 10) + 2000;
             var enteredmonth = this.state.expDate[0] + this.state.expDate[1];
@@ -131,7 +153,7 @@ class Register extends Component {
             if ((year > intyear) || (year == intyear && month > intmonth)) {
                 expired = true;
             }
-        } else  {
+        } else {
             expired = true;
         }
         return (moment(this.state.expDate, 'MM/YY', true).isValid() && !expired);
@@ -234,7 +256,7 @@ class Register extends Component {
                                     pattern: { value: '^[A-Za-z0-9]+$', errorMessage: 'Your name must be composed only with letter and numbers' },
                                     minLength: { value: 6, errorMessage: 'Your name must be between 6 and 16 characters' },
                                     maxLength: { value: 16, errorMessage: 'Your name must be between 6 and 16 characters' },
-                                    match: {value:'password', errorMessage: 'Passwords must match'}
+                                    match: { value: 'password', errorMessage: 'Passwords must match' }
                                 }}
 
                             />
