@@ -10,7 +10,7 @@
 
 "select * from Users where username = "queried value" and password = "queried value";"
 
-2) Put route for updating user row with an item purchased.
+2) Put route for updating user row with all values at once.
 
    if queried username exists in user table:
 
