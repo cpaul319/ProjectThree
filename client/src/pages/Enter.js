@@ -52,27 +52,13 @@ class Enter extends Component {
         console.log("submit!");
         console.log("email: " + this.state.email);
         console.log("password: " + this.state.password);
+        //     Axios.get('/api/allusers').then(req,res);
+        //     console.log("this is db results");
+        //     console.log(res);
 
-        Axios.get('api/allusers', user)
-            .then(function (response) {
-                console.log("this is db results");
-                console.log(response);
-
-                for (var c = 0; c < response.data.length; c++) {
-                    if (user.email == response.data[c].email && user.password == response.data[c].password) {
-                        console.log("user exists in db!");
-                        LogIn();
-                    }
-                }
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-    }
-
-    LogIn() {
-        this.setRedirect();
-        this.renderRedirect();
+        // } else {
+        //     console.log("e-mail empty");
+        // }
     }
 
     ValidateEmail() {
@@ -85,6 +71,7 @@ class Enter extends Component {
         return (
             <div className="App">
                 <Nav />
+                 
                 <p>Login page</p>
                 {this.renderRedirect()}
                 <AvForm>
@@ -95,7 +82,6 @@ class Enter extends Component {
                     <AvField name="password" label="Password" type="text" onChange={this.handleInputChange} validate={{
                         required: { value: true, errorMessage: 'Please enter password' },
                         pattern: { value: '^[A-Za-z0-9]+$', errorMessage: 'Your name must be composed only with letter and numbers' },
-                        minLength: { value: 6, errorMessage: 'Your name must be between 6 and 16 characters' },
                         maxLength: { value: 16, errorMessage: 'Your name must be between 6 and 16 characters' }
                     }} />
                     <Button color="primary" onClick={this.handleFormSubmit}>Submit</Button>
