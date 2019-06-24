@@ -5,6 +5,8 @@ import {
   Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle, Button
 } from 'reactstrap';
+
+import hand from './hand.PNG';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 // update a quantity of purchased item
 //= (props) =>
@@ -25,19 +27,19 @@ class SaleCard extends Component {
     swag5quantity: 0
     // redirect: false
   };
-//   handleInputChange = event => {
+  //   handleInputChange = event => {
 
-//     const { name, value } = event.target;
-//     this.setState({
-//         [name]: value
-//     });
-//     console.log("value is " + value);
-// }
+  //     const { name, value } = event.target;
+  //     this.setState({
+  //         [name]: value
+  //     });
+  //     console.log("value is " + value);
+  // }
 
   handleFormSubmit = event => {
 
     const user = {
-  
+
       swag1name: this.state.swag1name,
       swag1quantity: this.state.swag1quantity,
       swag2name: this.state.swag2name,
@@ -72,18 +74,16 @@ class SaleCard extends Component {
 
   render() {
     return (
-      <div>
         <Card>
-          <CardImg top width="100%" src="hand.JPG" alt="Card image cap" />
+          <CardImg top width="100%" src='hand' alt="Card image cap" />
           <CardBody>
             <CardTitle>Name</CardTitle>
             <CardSubtitle>Price</CardSubtitle>
             <CardText>Description.</CardText>
-          
+
             <Button className="submit-btn" color="secondary" onClick={this.handleFormSubmit}>Buy</Button>
           </CardBody>
         </Card>
-      </div>
     );
   }
 };
