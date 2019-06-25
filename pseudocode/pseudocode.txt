@@ -2,7 +2,7 @@ Project Three Pseudocode:
 
 1. One dynamic react page:
 
-   a.	When user opens the web-site, he/she is navigated to log in page, with "Got Swag?" title
+   a.	When user opens the web-site, he/she is navigated to log in page, with "Got Swag?" title DONE
 
    b.   It has two buttons:
 
@@ -88,21 +88,21 @@ Project Three Pseudocode:
 
 		- register button
 
-	   - If the user clicks on register button without filling all of the following text boxes, "Please fill out all text boxes" message appears
+	   - If the user clicks on register button without filling all of the following text boxes, "Please fill out all text boxes" message appears DONE
 
-	   - If the user clicks on register button and passwords are not the same, "Please enter the same passwords" message appears
+	   - If the user clicks on register button and passwords are not the same, "Please enter the same passwords" message appears DONE
 
-	   - If the user clicks on register button without entering valid e-mail format, "Please enter valid e-mail" message appears
+	   - If the user clicks on register button without entering valid e-mail format, "Please enter valid e-mail" message appears DONE
 
-	   - If the user clicks on register button without entering 16 digit credit card number, "Please enter valid credit card number" message appears
+	   - If the user clicks on register button without entering 16 digit credit card number, "Please enter valid credit card number" message appears DONE
 
-	   - If the user clicks on register button without entering valid date format or date in the past, "Please enter valid date" message appears
+	   - If the user clicks on register button without entering valid date format or date in the past, "Please enter valid date" message appears DONE
 
-	   - If the user clicks on register button without entering valid 3 digit credit card security code, "Please enter valid cvv" message appears
+	   - If the user clicks on register button without entering valid 3 digit credit card security code, "Please enter valid cvv" message appears DONE
 
 	   - If the user enters username that is already in user table, a message stating "this user already exists" message is displayed.
 
-	   - If the user enters otherwise correct data, new user is added to users table with all the information above, user is navigated to sale page.
+	   - If the user enters otherwise correct data, new user is added to users table with all the information above, user is navigated to sale page. DONE
 
 	   - User can update the information by entering new values and clicking "Register" button
 
