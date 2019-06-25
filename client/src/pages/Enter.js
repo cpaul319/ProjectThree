@@ -36,7 +36,7 @@ class Enter extends Component {
             return <Redirect to='/sale' />
         }
     }
-
+/*
     handleFormSubmit = event => {
         console.log("submit!");
         console.log("email: " + this.state.email);
@@ -47,7 +47,7 @@ class Enter extends Component {
             this.setRedirect();
             this.renderRedirect();
         }
-    }
+    } */
 
     handleFormSubmit = event => {
 
@@ -63,6 +63,13 @@ class Enter extends Component {
         console.log("submit!");
         console.log("email: " + this.state.email);
         console.log("password: " + this.state.password);
+        if (this.ValidateEmail() && this.state.password)    {
+            console.log("password is in correct format and password field is not empty.");
+            this.setRedirect();
+            this.renderRedirect();
+        } else {
+            console.log("incorrect login");
+        }
         //     Axios.get('/api/allusers').then(req,res);
         //     console.log("this is db results");
         //     console.log(res);
@@ -70,7 +77,7 @@ class Enter extends Component {
         // } else {
         //     console.log("e-mail empty");
         // }
-    }
+    } 
 
     ValidateEmail() {
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
