@@ -261,6 +261,7 @@ class Register extends Component {
 
                             />
                         </div>
+                        {/*
                         <div className="reg-box2">
                             <AvField
                                 name="address"
@@ -285,7 +286,7 @@ class Register extends Component {
                             placeholder="State"
                             value={this.state.state}
                             onChange={this.handleInputChange}
-                        /> */}
+                        /> */}{/*
                             <AvField
                                 type="select"
                                 name="state"
@@ -393,7 +394,7 @@ class Register extends Component {
                                     maxLength: { value: 3, errorMessage: 'Please enter 3 digit cvv' }
                                 }}
                             />
-                        </div>
+                            </div>*/}
                         <Button className="submit-btn" color="secondary" onClick={this.handleFormSubmit}>Submit</Button>
                     </AvForm>
                 </div>
