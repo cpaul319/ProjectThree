@@ -1,5 +1,5 @@
 import axios from "axios";
-import LoginNav from "../components/LoginNav";
+import EditNav from "../components/EditNav";
 import { isAbsolute } from "path";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import { Link, Redirect } from "react-router-dom";
@@ -154,7 +154,7 @@ class Account extends Component {
     render() {
         return (
             <div id="reg-body">
-                <LoginNav />
+                <EditNav />
                 <div className="container">
 
                     <p id="reg-title">Edit Account Info</p>
