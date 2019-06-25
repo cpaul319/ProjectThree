@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from 'react-dom';
 import { isAbsolute } from "path";
-import Nav from "../components/Nav";
+import EnterNav from "../components/EnterNav";
 import { Link } from "react-router-dom";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import { Redirect } from 'react-router-dom';
@@ -81,7 +81,7 @@ class Enter extends Component {
     render() {
         return (
             <div className="App">
-                <Nav />
+                <EnterNav />
 
                 {this.renderRedirect()}
                 <div className='container'>
