@@ -6,21 +6,14 @@ import { Link, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import { Button } from 'reactstrap';
-import { register } from '../components/UserFunction';
-import "../Register.css"
+ 
+import "../Account.css"
 import moment from 'moment';
+//update user data
 
-// const User = require('../models/User');
-// const Users= require( "../routes/users");
-class Register extends Component {
+class Account extends Component {
 
     state = {
-        userName: "",
-        firstName: "",
-        lastName: "",
-        email: "",
-        password: "",
-        confirm_password: "",
         address: "",
         city: "",
         state: "",
@@ -45,7 +38,7 @@ class Register extends Component {
         });
         console.log("value is " + value);
     }
-
+ 
     // renderRedirect = () => {
     //     console.log("redirect works!");
 
@@ -57,11 +50,7 @@ class Register extends Component {
     handleFormSubmit = event => {
 
         const user = {
-            userName: this.state.userName,
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
-            email: this.state.email,
-            password: this.state.password,
+         
             address: this.state.address,
             city: this.state.city,
             state: this.state.state,
@@ -72,32 +61,13 @@ class Register extends Component {
         }
         console.log(user);
         console.log(user.userName);
-        //need to create an array with all of the users data and check password and email
-        axios.get('api/allusers', user)
-            .then(function (response) {
-                for(var i = 0; i < response.length; i ++){
-                    if (response.data[i].email === this.state.email) {
-                        alert('That e-mail is already in use, please pick a different one')
-                    } if (response.data[i].password === this.state.password ) {
-                        alert('That password is already in use, please pick a different one')
-                    }
-                }
-               
-                console.log("this grabs all users");
-                console.log(response);
 
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-
-
-        if (user.userName && user.firstName && user.lastName && this.ValidateEmail() && this.ValidatePassword() &&
+        if (
             user.address && user.city && user.state && this.ValidateZip() && this.ValidateCCNumber() &&
             this.ValidateDate() && (/^[0-9]+$/.test(user.cvv) && user.cvv.length == 3) &&
-            this.state.password == this.state.confirm_password && /^[a-zA-Z]+$/.test(user.firstName) &&
+            this.state.password == this.state.confirm_password && /^[a-zA-Z]+$/.test(user.firstName) && 
             /^[a-zA-Z]+$/.test(user.lastName)) {
-            axios.post('api/users', user)
+            axios.put('api/users', user)
                 .then(function (response) {
                     console.log(response);
                 })
@@ -105,18 +75,11 @@ class Register extends Component {
                     console.log(error);
                 });
             this.props.history.push('/sale');
-        }
-
-
-        else {
+        } else {
             if (user.userName && user.firstName && user.lastName && this.ValidateEmail() && this.ValidatePassword() &&
                 user.address && user.city && user.state && this.ValidateZip() && this.ValidateCCNumber() &&
-                this.ValidateDate()) {
-                console.log("user name exists");
-                console.log("first name exists");
-                console.log("last name exists");
-                console.log("e-mail is valid");
-                console.log("password is valid");
+                this.ValidateDate())   {
+              
                 console.log("address is valid");
                 console.log("city is valid");
                 console.log("state is valid");
@@ -129,6 +92,7 @@ class Register extends Component {
                 console.log("wrong registration input");
             }
         }
+        // this.props.history.push('/sale');
     }
 
     componentDidMount() {
@@ -145,7 +109,7 @@ class Register extends Component {
         var year = currentTime.getFullYear();
         var expired = false;
 
-        if (this.state.expDate.length > 4) {
+        if (this.state.expDate.length > 4)  {
             var enteredyear = this.state.expDate[3] + this.state.expDate[4];
             var intyear = parseInt(enteredyear, 10) + 2000;
             var enteredmonth = this.state.expDate[0] + this.state.expDate[1];
@@ -153,7 +117,7 @@ class Register extends Component {
             if ((year > intyear) || (year == intyear && month > intmonth)) {
                 expired = true;
             }
-        } else {
+        } else  {
             expired = true;
         }
         return (moment(this.state.expDate, 'MM/YY', true).isValid() && !expired);
@@ -193,75 +157,13 @@ class Register extends Component {
                 <LoginNav />
                 <div className="container">
 
-                    <p id="reg-title">Sign Up</p>
+                    <p id="reg-title">Edit Account Info</p>
                     <AvForm>
-                        <div className="reg-box1">
-                            <AvField
-                                name="userName"
-                                placeholder="username"
-                                value={this.state.userName}
-                                onChange={this.handleInputChange}
-                                validate={{
-                                    required: { value: true, errorMessage: 'Please enter user name' }
-                                }}
-                            />
-                            <AvField
-                                name="firstName"
-                                placeholder="First Name"
-                                value={this.state.firstName}
-                                onChange={this.handleInputChange}
-                                validate={{
-                                    required: { value: true, errorMessage: 'Please enter first name' },
-                                    pattern: { value: '^[A-Za-z]+$', errorMessage: 'Your name must be composed only with letters' }
-                                }}
-                            />
-                            <AvField
-                                name="lastName"
-                                placeholder="Last Name"
-                                value={this.state.lastName}
-                                onChange={this.handleInputChange}
-                                validate={{
-                                    required: { value: true, errorMessage: 'Please enter last name' },
-                                    pattern: { value: '^[A-Za-z]+$', errorMessage: 'Your name must be composed only with letters' }
-                                }}
-                            />
-                            <AvField
-                                name="email"
-                                placeholder="e-mail"
-                                value={this.state.email}
-                                onChange={this.handleInputChange}
-                                validate={{
-                                    email: { value: true, errorMessage: 'Please enter valid e-mail' },
-                                    required: { value: true, errorMessage: 'Please enter e-mail' }
-                                }}
-                            />
-                            <AvField
-                                name="password"
-                                placeholder="password"
-                                value={this.state.password}
-                                onChange={this.handleInputChange}
-                                validate={{
-                                    required: { value: true, errorMessage: 'Please enter password' },
-                                    pattern: { value: '^[A-Za-z0-9]+$', errorMessage: 'Your name must be composed only with letter and numbers' },
-                                    minLength: { value: 6, errorMessage: 'Your name must be between 6 and 16 characters' },
-                                    maxLength: { value: 16, errorMessage: 'Your name must be between 6 and 16 characters' }
-                                }}
-                            />
-                            <AvField
-                                name="confirm_password"
-                                placeholder="confirm_password"
-                                onChange={this.handleInputChange}
-                                validate={{
-                                    required: { value: true, errorMessage: 'Please enter password' },
-                                    pattern: { value: '^[A-Za-z0-9]+$', errorMessage: 'Your name must be composed only with letter and numbers' },
-                                    minLength: { value: 6, errorMessage: 'Your name must be between 6 and 16 characters' },
-                                    maxLength: { value: 16, errorMessage: 'Your name must be between 6 and 16 characters' },
-                                    match: { value: 'password', errorMessage: 'Passwords must match' }
-                                }}
+                        
 
-                            />
-                        </div>
-                        <div className="reg-box2">
+                         
+                      
+                        <div className="reg-box1">
                             <AvField
                                 name="address"
                                 placeholder="address"
@@ -403,4 +305,4 @@ class Register extends Component {
     }
 }
 
-export default Register;
+export default Account;
