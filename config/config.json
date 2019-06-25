@@ -1,7 +1,7 @@
 {
     "development": {
-    "username": "user",
-    "password": "password231",
+    "username": "trilogy",
+    "password": "password123",
     "database": "UserDb",
     "host": "localhost",
     "dialect": "mysql"
