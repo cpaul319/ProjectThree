@@ -1,5 +1,5 @@
 import axios from "axios";
-import LoginNav from "../components/LoginNav";
+import LogNav from "../components/LogNav";
 import { isAbsolute } from "path";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import { Link, Redirect } from "react-router-dom";
@@ -190,7 +190,7 @@ class Register extends Component {
     render() {
         return (
             <div id="reg-body">
-                <LoginNav />
+                <LogNav />
                 <div className="container">
 
                     <p id="reg-title">Sign Up</p>
@@ -261,6 +261,7 @@ class Register extends Component {
 
                             />
                         </div>
+                        {/*
                         <div className="reg-box2">
                             <AvField
                                 name="address"
@@ -285,7 +286,7 @@ class Register extends Component {
                             placeholder="State"
                             value={this.state.state}
                             onChange={this.handleInputChange}
-                        /> */}
+                        /> */}{/*
                             <AvField
                                 type="select"
                                 name="state"
@@ -393,7 +394,7 @@ class Register extends Component {
                                     maxLength: { value: 3, errorMessage: 'Please enter 3 digit cvv' }
                                 }}
                             />
-                        </div>
+                            </div>*/}
                         <Button className="submit-btn" color="secondary" onClick={this.handleFormSubmit}>Submit</Button>
                     </AvForm>
                 </div>
