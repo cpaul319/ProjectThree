@@ -1,4 +1,8 @@
 import React from 'react';
+<<<<<<< HEAD
+=======
+import OrderNav from '../OrdrNav';
+>>>>>>> d16bcc6e373530c21cef77a8188abb19e96b6900
 import './orders.css';
 import OrderNav from '../OrderNav'
 
@@ -9,6 +13,7 @@ const Orders = (props) => {
     <div>
       <OrderNav />
       <div className='container'>
+<<<<<<< HEAD
         <h2 className='text-center'>Order History</h2>
         <br></br>
         <div className="card mb-3">
@@ -27,6 +32,34 @@ const Orders = (props) => {
             <span className='align-middle'><p className='text-center'>lasjdf</p></span>
           </div>
         </div>
+=======
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Order Number</th>
+              <th scope="col">Item</th>
+              <th scope='col'>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Item 1</td>
+              <td>$45</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Item 2</td>
+              <td>$30</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Item 3</td>
+              <td>$50</td>
+            </tr>
+          </tbody>
+        </table>
+>>>>>>> d16bcc6e373530c21cef77a8188abb19e96b6900
       </div>
     </div>
   </div>

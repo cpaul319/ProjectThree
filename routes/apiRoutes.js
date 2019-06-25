@@ -1,5 +1,5 @@
 //  Those are API CRUD routes to post user inputs to db.
-
+/*
 var db = require("../models");
 
 module.exports = function (app) {
@@ -8,4 +8,4 @@ module.exports = function (app) {
             res.json(dbUsers);
           });
     });
-}
+}*/
