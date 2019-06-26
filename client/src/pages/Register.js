@@ -108,15 +108,12 @@ class Register extends Component {
                         .catch(function (error) {
                             console.log(error);
                         });
-                       
-                       
                     }
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
-                
-                this.props.history.push('/sale');
+            this.props.history.push('/sale');
         }
        
 
