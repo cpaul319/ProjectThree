@@ -26,6 +26,10 @@ function OrderNav() {
             <li className="nav-item">
               <a className="nav-link" href="/sale">Buy Items</a>
             </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/">Log out</a>
+            </li>
+            {/*
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Welcome User
@@ -34,7 +38,7 @@ function OrderNav() {
                 <a className="dropdown-item" href="/orders">Orders</a>
                 <a className="dropdown-item" href="/forgot">Edit Account</a>
               </div>
-            </li>
+            </li>*/}
           </ul>
         </div>
       </nav>
