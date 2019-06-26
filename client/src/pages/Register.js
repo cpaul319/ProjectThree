@@ -36,7 +36,8 @@ class Register extends Component {
     pushRedirect() {
         this.props.history.push('/sale')
     };
-    sendUser= event => {
+    sendUser = event => {
+     
         const user = {
             userName: this.state.userName,
             firstName: this.state.firstName,
@@ -58,7 +59,7 @@ class Register extends Component {
         this.props.history.push('/sale');
     }
     handleFormSubmit = event => {
-        
+
         const user = {
             userName: this.state.userName,
             firstName: this.state.firstName,
@@ -108,26 +109,27 @@ class Register extends Component {
 
         // user.address && user.city && user.state && ValidateZip && ValidateCCNumber &&
         // ValidateDate && (/^[0-9]+$/.test(user.cvv) && user.cvv.length == 3
+       
         if (user.userName && user.firstName && user.lastName && ValidateEmail && ValidatePassword &&
             user.password == user.confirm_password && /^[a-zA-Z]+$/.test(user.firstName) &&
             /^[a-zA-Z]+$/.test(user.lastName)) {
+                var _this = this;
             axios.get('api/allusers', user)
-                .then(function (response) {
+                .then((response)=> {
                     const users = response.data;
                     if (users.filter((currentUser) => currentUser.email === user.email).length > 0) {
                         alert('That e-mail is already in use, please pick a different one');
                     } else {
                         alert('Sign up complete');
-                        this.sendUser();
+                        _this.sendUser();
                     }
+
                 })
                 .catch(function (error) {
-                    console.log(error); 
+                    console.log(error);
                 });
-
-
+         
         }
-
 
 
         // i need this to fire after axios post is called, but props is not seen in the axios call
