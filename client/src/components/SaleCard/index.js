@@ -8,6 +8,7 @@ import {
 
 import hand from './hand.PNG';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
+import "./style.css";
 // update a quantity of purchased item
 //= (props) =>
 class SaleCard extends Component {
@@ -74,16 +75,20 @@ class SaleCard extends Component {
 
   render() {
     return (
-        <Card>
-          <CardImg top width="100%" src='hand' alt="Card image cap" />
+      <div className="outer-sale-wrap">
+      <div className="sale-card-wrap">
+        <Card className="sale-card">
+          <CardImg top width="100%" src={this.props.image} alt="Card image cap" className="card-image"/>
           <CardBody>
-            <CardTitle>Name</CardTitle>
-            <CardSubtitle>Price</CardSubtitle>
-            <CardText>Description.</CardText>
+            <CardTitle className="card-title">{this.props.name}</CardTitle>
+            <CardSubtitle className="card-price">{this.props.price}</CardSubtitle>
+            <CardText className="card-desc">{this.props.description}</CardText>
 
             <Button className="submit-btn" color="secondary" onClick={this.handleFormSubmit}>Buy</Button>
           </CardBody>
         </Card>
+      </div>  
+      </div>
     );
   }
 };
