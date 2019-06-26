@@ -76,10 +76,17 @@ class Enter extends Component {
     }
 
 
-    toggleNested() {
+    toggleFalse() {
         this.setState({
-            nestedModal: !this.state.nestedModal,
+            nestedModal: false,
             closeAll: false
+        });
+    }
+
+    toggleTrue() {
+        this.setState({
+            nestedModal: true,
+            closeAll: true
         });
     }
     /*
@@ -125,7 +132,10 @@ class Enter extends Component {
                 }
             }
             console.log("b4 toggle");
-            this.toggleNested();
+            if (!this.state.redirect)   {
+                this.toggleTrue();
+            }
+            //this.toggleTrue();
             console.log("after toggle");
             /*
             for (var c = 0; c < this.state.credentials.length; c++) {
@@ -201,7 +211,7 @@ class Enter extends Component {
                     <Modal isOpen={this.state.nestedModal} toggle={this.toggleNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                         <ModalBody>This user is not registered</ModalBody>
                         <ModalFooter>
-                            <Button color="primary" onClick={this.toggleNested}>Close</Button>{' '}
+                            <Button color="primary" onClick={this.toggleFalse}>Close</Button>{' '}
                         </ModalFooter>
                     </Modal>
                 </div>
