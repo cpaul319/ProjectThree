@@ -2,10 +2,11 @@ nav.navbar {
     margin: 0%;
     width: 100vw;
     margin-bottom: 5rem;
-    
+    }
+  
+  header {
+    height: 6rem;
+    /* margin-bottom: 3rem; */
   }
   
-header {
-  height: 6rem;
-}
-  
+
