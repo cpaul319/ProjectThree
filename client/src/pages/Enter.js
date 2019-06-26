@@ -6,8 +6,9 @@ import { Link } from "react-router-dom";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import { Redirect } from 'react-router-dom';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
-import { Button } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
 import Axios from 'axios';
+//import UserExists from "../components/UserExists";
 
 class Enter extends Component {
     state = {
@@ -54,6 +55,7 @@ class Enter extends Component {
                     console.log("user match is " + user.match);
                 }*/
             }
+
 
         })
         .catch(function(error)  {
@@ -112,6 +114,7 @@ class Enter extends Component {
                     this.renderRedirect();
                 }
             }
+
             /*
             for (var c = 0; c < this.state.credentials.length; c++) {
                 if (this.state.email == this.state.credentials[c].cred[0] && 
