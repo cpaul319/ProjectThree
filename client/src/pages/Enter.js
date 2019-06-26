@@ -200,7 +200,9 @@ class Enter extends Component {
                 <div>
                     <Modal isOpen={this.state.nestedModal} toggle={this.toggleNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
                         <ModalBody>This user is not registered</ModalBody>
-                        <ModalFooter><Button color="primary" onClick={this.toggleNested}>Close</Button>{' '}</ModalFooter>
+                        <ModalFooter>
+                            <Button color="primary" onClick={this.toggleNested}>Close</Button>{' '}
+                        </ModalFooter>
                     </Modal>
                 </div>
                 {/*}
