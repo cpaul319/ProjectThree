@@ -1,17 +1,18 @@
 #reg-body {
-    height: 100vh;
-    width:100vw;
+    height: 100%;
+    width:100%;
     background: url("https://wallpaperaccess.com/full/25517.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 
 }
 
-.container {
+.reg-container {
     border: 1px solid black;
     border-radius: .25rem;
     background: rgb(255,255,255,.8);
     padding: 1rem;
+    text-align: center;
     margin: 0 auto;
 }
 
@@ -20,24 +21,68 @@
     font-size: 2rem;
 }
 
+.input-box{
+    width: 185%;
+}
+
 .reg-box1 {
-    display: block;
-    float: left;
-    width: 40%;
-    margin: 2rem;
+    /* margin: -5rem auto; */
+    width: 100vw;
+    height: auto;
 
 }
 
 .reg-box2 {
-    display: block;
-    float: left;
-    width: 40%;
-    margin: 2rem;
+    /* margin: -5rem auto; */
+    width: 100vw;
+    height: auto;
 }
 
 .submit-btn {
-    content: "";
-    clear: both;
-    display: table;
     margin: 0 auto;
+}
+
+@media (min-width:768px){
+
+    #reg-body {
+        height: 100%;
+        width:100%;
+        background: url("https://wallpaperaccess.com/full/25517.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+    
+    }
+
+    .reg-container {
+      width: 90%;
+    }
+
+    .reg-box1 {
+        display: block;
+        float: left;
+        width: 40%;
+        margin: 2rem;
+    
+    }
+    
+    .reg-box2 {
+        display: block;
+        float: right;
+        width: 40%;
+        margin: 2rem;
+    }
+
+    .input-box {
+        width: 100%;
+    }
+    
+    .submit-btn {
+        content: "";
+        clear: both;
+        display: table;
+        margin: 0 auto;
+    }
+
+
+
 }
