@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { Component } from "react";
 import ReactDOM from 'react-dom';
 import { isAbsolute } from "path";
+//import Enter from "Enter.js";
 import SaleNav from "../components/SaleNav";
 import SaleCard from "../components/SaleCard";
 //minor change for push update
@@ -26,6 +27,7 @@ state = {
 
 componentDidMount() {
   console.log("did mount");
+  //console.log("imported email: " + Enter.state.email);
   axios.get('api/users')
 .then(function (res) {
   const firstName = firstName.res.data;
