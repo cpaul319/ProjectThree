@@ -1,0 +1,43 @@
+.outer-sale-wrap {
+    width: 95%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.sale-card-wrap {
+    width: 75%;
+    margin: 0 auto;
+}
+
+.sale-card {
+    width: 25%;
+    height: 300px;
+    margin: .5rem;
+    float: left;
+    overflow: auto;
+
+}
+.sale-card::-webkit-scrollbar { 
+    width: 0 !important; 
+}
+
+.card-image{
+    margin: 0 auto;
+    height: 150px;
+    width: 150px;
+}
+
+.card-title {
+    font-size: 1rem;
+    text-align: center;
+}
+
+.card-price {
+    font-size: 1.25rem;
+    text-align: center;
+}
+
+.card-desc {
+    font-size: .75rem;
+    text-align: center;
+}

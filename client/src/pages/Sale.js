@@ -5,6 +5,7 @@ import { isAbsolute } from "path";
 //import Enter from "Enter.js";
 import SaleNav from "../components/SaleNav";
 import SaleCard from "../components/SaleCard";
+import item from "../items.json"
 //minor change for push update
 class Sale extends Component {
 
@@ -20,7 +21,8 @@ state = {
     zip: "",
     creditCardNumber: 3,
     expDate: 1,
-    cvv: 4
+    cvv: 4,
+    item
     
 };
 
@@ -48,7 +50,16 @@ console.log(this.state.userName);
             <SaleNav />
             <p>Welcome {this.state.userName}</p>
             <p>Sale page</p>
-            <SaleCard />
+            {this.state.item.map(item =>(
+              <SaleCard 
+              image={item.image}
+              name={item.name}
+              price={item.price}
+              description={item.description}
+
+              />
+            ))}
+            
         </div>
     );
     console.log("after Log In function is called.");

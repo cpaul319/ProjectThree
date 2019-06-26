@@ -4,7 +4,9 @@ nav.navbar {
     margin-bottom: 5rem;
     }
   
-header {
-  height: 6rem;
-}
+  header {
+    height: 6rem;
+    /* margin-bottom: 3rem; */
+  }
   
+
