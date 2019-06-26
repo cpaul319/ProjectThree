@@ -4,9 +4,16 @@ nav.navbar {
     margin-bottom: 5rem;
     }
   
+<<<<<<< HEAD
   header {
     height: 6rem;
     /* margin-bottom: 3rem; */
   }
   
 
+=======
+header {
+  height: 6rem;
+}
+  
+>>>>>>> 62d509e9b978289866478af9e815b9cb91720359

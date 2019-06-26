@@ -1,12 +1,12 @@
 import axios from "axios";
-import LoginNav from "../components/LoginNav";
+import EditNav from "../components/EditNav";
 import { isAbsolute } from "path";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import { Link, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import { Button } from 'reactstrap';
- 
+
 import "../Account.css"
 import moment from 'moment';
 //update user data
@@ -38,7 +38,7 @@ class Account extends Component {
         });
         console.log("value is " + value);
     }
- 
+
     // renderRedirect = () => {
     //     console.log("redirect works!");
 
@@ -50,7 +50,7 @@ class Account extends Component {
     handleFormSubmit = event => {
 
         const user = {
-         
+
             address: this.state.address,
             city: this.state.city,
             state: this.state.state,
@@ -65,7 +65,7 @@ class Account extends Component {
         if (
             user.address && user.city && user.state && this.ValidateZip() && this.ValidateCCNumber() &&
             this.ValidateDate() && (/^[0-9]+$/.test(user.cvv) && user.cvv.length == 3) &&
-            this.state.password == this.state.confirm_password && /^[a-zA-Z]+$/.test(user.firstName) && 
+            this.state.password == this.state.confirm_password && /^[a-zA-Z]+$/.test(user.firstName) &&
             /^[a-zA-Z]+$/.test(user.lastName)) {
             axios.put('api/users', user)
                 .then(function (response) {
@@ -78,8 +78,8 @@ class Account extends Component {
         } else {
             if (user.userName && user.firstName && user.lastName && this.ValidateEmail() && this.ValidatePassword() &&
                 user.address && user.city && user.state && this.ValidateZip() && this.ValidateCCNumber() &&
-                this.ValidateDate())   {
-              
+                this.ValidateDate()) {
+
                 console.log("address is valid");
                 console.log("city is valid");
                 console.log("state is valid");
@@ -109,7 +109,7 @@ class Account extends Component {
         var year = currentTime.getFullYear();
         var expired = false;
 
-        if (this.state.expDate.length > 4)  {
+        if (this.state.expDate.length > 4) {
             var enteredyear = this.state.expDate[3] + this.state.expDate[4];
             var intyear = parseInt(enteredyear, 10) + 2000;
             var enteredmonth = this.state.expDate[0] + this.state.expDate[1];
@@ -117,7 +117,7 @@ class Account extends Component {
             if ((year > intyear) || (year == intyear && month > intmonth)) {
                 expired = true;
             }
-        } else  {
+        } else {
             expired = true;
         }
         return (moment(this.state.expDate, 'MM/YY', true).isValid() && !expired);
@@ -154,16 +154,78 @@ class Account extends Component {
     render() {
         return (
             <div id="reg-body">
-                <LoginNav />
+                <EditNav />
                 <div className="container">
 
                     <p id="reg-title">Edit Account Info</p>
                     <AvForm>
-                        
-
-                         
-                      
                         <div className="reg-box1">
+                            <AvField
+                                name="userName"
+                                placeholder="username"
+                                value={this.state.userName}
+                                onChange={this.handleInputChange}
+                                validate={{
+                                    required: { value: true, errorMessage: 'Please enter user name' }
+                                }}
+                            />
+                            <AvField
+                                name="firstName"
+                                placeholder="First Name"
+                                value={this.state.firstName}
+                                onChange={this.handleInputChange}
+                                validate={{
+                                    required: { value: true, errorMessage: 'Please enter first name' },
+                                    pattern: { value: '^[A-Za-z]+$', errorMessage: 'Your name must be composed only with letters' }
+                                }}
+                            />
+                            <AvField
+                                name="lastName"
+                                placeholder="Last Name"
+                                value={this.state.lastName}
+                                onChange={this.handleInputChange}
+                                validate={{
+                                    required: { value: true, errorMessage: 'Please enter last name' },
+                                    pattern: { value: '^[A-Za-z]+$', errorMessage: 'Your name must be composed only with letters' }
+                                }}
+                            />
+                            <AvField
+                                name="email"
+                                placeholder="e-mail"
+                                value={this.state.email}
+                                onChange={this.handleInputChange}
+                                validate={{
+                                    email: { value: true, errorMessage: 'Please enter valid e-mail' },
+                                    required: { value: true, errorMessage: 'Please enter e-mail' }
+                                }}
+                            />
+                            <AvField
+                                name="password"
+                                placeholder="password"
+                                value={this.state.password}
+                                onChange={this.handleInputChange}
+                                validate={{
+                                    required: { value: true, errorMessage: 'Please enter password' },
+                                    pattern: { value: '^[A-Za-z0-9]+$', errorMessage: 'Your name must be composed only with letter and numbers' },
+                                    minLength: { value: 6, errorMessage: 'Your name must be between 6 and 16 characters' },
+                                    maxLength: { value: 16, errorMessage: 'Your name must be between 6 and 16 characters' }
+                                }}
+                            />
+                            <AvField
+                                name="confirm_password"
+                                placeholder="confirm_password"
+                                onChange={this.handleInputChange}
+                                validate={{
+                                    required: { value: true, errorMessage: 'Please enter password' },
+                                    pattern: { value: '^[A-Za-z0-9]+$', errorMessage: 'Your name must be composed only with letter and numbers' },
+                                    minLength: { value: 6, errorMessage: 'Your name must be between 6 and 16 characters' },
+                                    maxLength: { value: 16, errorMessage: 'Your name must be between 6 and 16 characters' },
+                                    match: { value: 'password', errorMessage: 'Passwords must match' }
+                                }}
+
+                            />
+                        </div>
+                        <div className="reg-box2">
                             <AvField
                                 name="address"
                                 placeholder="address"
@@ -299,8 +361,10 @@ class Account extends Component {
                         <Button className="submit-btn" color="secondary" onClick={this.handleFormSubmit}>Submit</Button>
                     </AvForm>
                 </div>
-                {/* <Link to='/sale'>Sale Page</Link> */}
             </div>
+
+
+
         );
     }
 }

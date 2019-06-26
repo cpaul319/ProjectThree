@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from 'react-dom';
 import { isAbsolute } from "path";
-import Nav from "../components/Nav";
+import EnterNav from "../components/EnterNav";
 import { Link } from "react-router-dom";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import { Redirect } from 'react-router-dom';
@@ -13,12 +13,19 @@ class Enter extends Component {
     state = {
         email: "",
         password: "",
-        redirect: false
+        redirect: false,
+        credentials: []
     };
 
     setRedirect = () => {
         this.setState({
             redirect: true
+        })
+    }
+
+    setCredentials = (cred) =>  {
+        this.setState({
+            credentials: cred
         })
     }
 
@@ -28,6 +35,33 @@ class Enter extends Component {
             [name]: value
         });
         console.log("value is " + value);
+        var credentials = [];
+        Axios.get('/api/allusers')
+        .then(function(response)    {
+            console.log("inside axios");
+            console.log(response);
+            for (var c = 0; c < response.data.length; c++)  {
+                //var cred = [];
+                credentials.push(response.data[c].email);
+                credentials.push(response.data[c].password);
+                //credentials.push(cred);
+                /*
+                if (response.data[c].email == this.state.email && response.data[c].password == user.password) {
+                    console.log("user is in user table!");
+                    console.log("e-mail: " + response.data[c].email);
+                    console.log("password: " + response.data[c].password);
+                    user.match = true;
+                    console.log("user match is " + user.match);
+                }*/
+            }
+
+        })
+        .catch(function(error)  {
+            console.log(error);
+        });
+        this.setCredentials(credentials);
+        console.log("Credentials: ");
+        console.log(this.state.credentials);
     }
 
     renderRedirect = () => {
@@ -36,7 +70,7 @@ class Enter extends Component {
             return <Redirect to='/sale' />
         }
     }
-
+/*
     handleFormSubmit = event => {
         console.log("submit!");
         console.log("email: " + this.state.email);
@@ -47,7 +81,7 @@ class Enter extends Component {
             this.setRedirect();
             this.renderRedirect();
         }
-    }
+    } */
 
     handleFormSubmit = event => {
 
@@ -56,13 +90,62 @@ class Enter extends Component {
         const user = {
 
             email: this.state.email,
-            password: this.state.password
+            password: this.state.password,
+            match: false
 
         }
 
+        console.log("credentials on hitting submit button");
+        console.log(this.state.credentials);
+        console.log("the first e-mail of credentials");
+        console.log(this.state.credentials[0]);
         console.log("submit!");
         console.log("email: " + this.state.email);
         console.log("password: " + this.state.password);
+        if (!this.ValidateEmail() || !this.state.password)    {
+            console.log("incorrect login");
+        } else {
+            for (var c = 0; c < this.state.credentials.length; c = c + 2)   {
+                if (this.state.email == this.state.credentials[c] && this.state.password == this.state.credentials[c + 1])  {
+                    console.log("should redirect to next page!");
+                    this.setRedirect();
+                    this.renderRedirect();
+                }
+            }
+            /*
+            for (var c = 0; c < this.state.credentials.length; c++) {
+                if (this.state.email == this.state.credentials[c].cred[0] && 
+            }*/
+/*
+            Axios.get('/api/allusers')
+            .then(function(response)    {
+                console.log(response);
+                for (var c = 0; c < response.data.length; c++)  {
+                    if (response.data[c].email == user.email && response.data[c].password == user.password) {
+                        console.log("user is in user table!");
+                        console.log("e-mail: " + response.data[c].email);
+                        console.log("password: " + response.data[c].password);
+                        user.match = true;
+                        console.log("user match is " + user.match);
+                    }
+                }
+            })
+            .catch(function(error)  {
+                console.log(error);
+            });
+            console.log("outside redirect if statement");
+            console.log("user match is " + user.match);
+            if (user.match) {
+                console.log("inside redirect if statement");
+                console.log("user match is " + user.match);
+                user.match = false;
+                this.setRedirect();
+                this.renderRedirect();
+            }
+            console.log("password is in correct format and password field is not empty.");*/
+            //this.setRedirect();
+            //this.renderRedirect();
+        }
         //     Axios.get('/api/allusers').then(req,res);
         //     console.log("this is db results");
         //     console.log(res);
@@ -70,7 +153,7 @@ class Enter extends Component {
         // } else {
         //     console.log("e-mail empty");
         // }
-    }
+    } 
 
     ValidateEmail() {
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -81,7 +164,7 @@ class Enter extends Component {
     render() {
         return (
             <div className="App">
-                <Nav />
+                <EnterNav />
 
                 {this.renderRedirect()}
                 <div className='container'>
@@ -96,7 +179,6 @@ class Enter extends Component {
 
                             maxLength: { value: 16, errorMessage: 'Your name must be between 6 and 16 characters' }
                         }} />
-
                         <Button color="primary" onClick={this.handleFormSubmit}>Submit</Button>
                     </AvForm>
                 </div>

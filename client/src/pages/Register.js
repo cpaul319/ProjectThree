@@ -1,5 +1,5 @@
 import axios from "axios";
-// import LogNav from "../components/";
+import LogNav from "../components/LogNav";
 import { isAbsolute } from "path";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import { Link, Redirect } from "react-router-dom";
@@ -186,7 +186,7 @@ class Register extends Component {
     render() {
         return (
             <div id="reg-body">
-                {/* <LogNav /> */}
+                <LogNav />
                 <div className="container">
 
                     <p id="reg-title">Sign Up</p>
