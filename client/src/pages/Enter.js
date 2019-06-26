@@ -11,14 +11,42 @@ import Axios from 'axios';
 //import UserExists from "../components/UserExists";
 
 class Enter extends Component {
-    state = {
-        email: "",
-        password: "",
-        redirect: false,
-        credentials: [],
-        nestedModal: false,
-        closeAll: false
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: "",
+            password: "",
+            redirect: false,
+            credentials: [],
+            modal: false,
+            nestedModal: false,
+            closeAll: false
+        };
+
+        this.toggle = this.toggle.bind(this);
+        this.toggleNested = this.toggleNested.bind(this);
+        this.toggleAll = this.toggleAll.bind(this);
+    }
+
+    toggle() {
+        this.setState(prevState => ({
+            modal: !prevState.modal
+        }));
+    }
+
+    toggleNested() {
+        this.setState({
+            nestedModal: !this.state.nestedModal,
+            closeAll: false
+        });
+    }
+
+    toggleAll() {
+        this.setState({
+            nestedModal: !this.state.nestedModal,
+            closeAll: true
+        });
+    }
 
     setRedirect = () => {
         this.setState({
@@ -76,19 +104,6 @@ class Enter extends Component {
     }
 
 
-    toggleFalse() {
-        this.setState({
-            nestedModal: false,
-            closeAll: false
-        });
-    }
-
-    toggleTrue() {
-        this.setState({
-            nestedModal: true,
-            closeAll: true
-        });
-    }
     /*
         handleFormSubmit = event => {
             console.log("submit!");
@@ -132,8 +147,8 @@ class Enter extends Component {
                 }
             }
             console.log("b4 toggle");
-            if (!this.state.redirect)   {
-                this.toggleTrue();
+            if (!this.state.redirect) {
+                this.toggleNested();
             }
             //this.toggleTrue();
             console.log("after toggle");
@@ -209,9 +224,9 @@ class Enter extends Component {
                 </div>
                 <div>
                     <Modal isOpen={this.state.nestedModal} toggle={this.toggleNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
-                        <ModalBody>This user is not registered</ModalBody>
+                        <ModalHeader>User not registered</ModalHeader>
                         <ModalFooter>
-                            <Button color="primary" onClick={this.toggleFalse}>Close</Button>{' '}
+                            <Button color="secondary" onClick={this.toggleAll}>Close</Button>
                         </ModalFooter>
                     </Modal>
                 </div>
