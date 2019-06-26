@@ -197,12 +197,14 @@ class Register extends Component {
         return (
             <div id="reg-body">
                 <LogNav />
-                <div className="container">
+                <div className="reg-container">
 
                     <p id="reg-title">Sign Up</p>
+                    {/* <div className="reg-box1"> */}
                     <AvForm>
                         <div className="reg-box1">
                             <AvField
+                                className="input-box"
                                 name="userName"
                                 placeholder="username"
                                 value={this.state.userName}
@@ -212,6 +214,7 @@ class Register extends Component {
                                 }}
                             />
                             <AvField
+                                className="input-box"
                                 name="firstName"
                                 placeholder="First Name"
                                 value={this.state.firstName}
@@ -222,6 +225,7 @@ class Register extends Component {
                                 }}
                             />
                             <AvField
+                                className="input-box"
                                 name="lastName"
                                 placeholder="Last Name"
                                 value={this.state.lastName}
@@ -232,6 +236,7 @@ class Register extends Component {
                                 }}
                             />
                             <AvField
+                                className="input-box"
                                 name="email"
                                 placeholder="e-mail"
                                 value={this.state.email}
@@ -242,6 +247,7 @@ class Register extends Component {
                                 }}
                             />
                             <AvField
+                                className="input-box"
                                 type="password"
                                 name="password"
                                 placeholder="password"
@@ -255,6 +261,7 @@ class Register extends Component {
                                 }}
                             />
                             <AvField
+                                className="input-box"
                                 type="password"
                                 name="confirm_password"
                                 placeholder="confirm_password"
@@ -270,8 +277,8 @@ class Register extends Component {
 
                             />
                         </div>
-                        {/*
-                        <div className="reg-box2">
+                       
+                        {/* <div className="reg-box2">
                             <AvField
                                 name="address"
                                 placeholder="address"
@@ -289,13 +296,13 @@ class Register extends Component {
                                 validate={{
                                     required: { value: true, errorMessage: 'Please enter city' }
                                 }}
-                            />
-                            {/* <AvField
+                            /> 
+                            <AvField
                             name="state"
                             placeholder="State"
                             value={this.state.state}
                             onChange={this.handleInputChange}
-                        /> */}{/*
+                                />
                             <AvField
                                 type="select"
                                 name="state"
@@ -402,12 +409,12 @@ class Register extends Component {
                                     minLength: { value: 3, errorMessage: 'Please enter 3 digit cvv' },
                                     maxLength: { value: 3, errorMessage: 'Please enter 3 digit cvv' }
                                 }}
-                            />
-                            </div>*/}
+                            /> */}
                         <Button className="submit-btn" color="secondary" onClick={this.handleFormSubmit}>Submit</Button>
+
                     </AvForm>
                 </div>
-                {/* <Link to='/sale'>Sale Page</Link> */}
+               
             </div>
         );
     }
