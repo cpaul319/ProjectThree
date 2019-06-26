@@ -13,7 +13,7 @@ import moment from 'moment';
 // const User = require('../models/User');
 // const Users= require( "../routes/users");
 class Register extends Component {
-   
+
     state = {
         userName: "",
         firstName: "",
@@ -23,7 +23,7 @@ class Register extends Component {
         confirm_password: "",
         redirect: false
     };
-    
+
     handleInputChange = event => {
 
         const { name, value } = event.target;
@@ -31,14 +31,34 @@ class Register extends Component {
             [name]: value
         });
         console.log("value is " + value);
-        
-    }
 
+    }
     pushRedirect() {
         this.props.history.push('/sale')
     };
+    sendUser= event => {
+        const user = {
+            userName: this.state.userName,
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            email: this.state.email,
+            password: this.state.password,
+            confirm_password: this.state.confirm_password
 
+        }
+        axios.post('api/users', user)
+            .then(function (response) {
+                console.log("inside db registration post call");
+                console.log(response);
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        this.props.history.push('/sale');
+    }
     handleFormSubmit = event => {
+        
         const user = {
             userName: this.state.userName,
             firstName: this.state.firstName,
@@ -94,32 +114,24 @@ class Register extends Component {
             axios.get('api/allusers', user)
                 .then(function (response) {
                     const users = response.data;
-                    if(users.filter((currentUser) => currentUser.email === user.email).length > 0) {
+                    if (users.filter((currentUser) => currentUser.email === user.email).length > 0) {
                         alert('That e-mail is already in use, please pick a different one');
                     } else {
-                        axios.post('api/users', user)
-                        .then(function (response) {
-                            console.log("inside db registration post call");
-                            console.log(response); 
-                             // this.props.history.push('/sale');
-                             this.pushRedirect();
-                            // setRedirect(); 
-                        })
-                        .catch(function (error) {
-                            console.log(error);
-                        });
+                        alert('Sign up complete');
+                        this.sendUser();
                     }
                 })
                 .catch(function (error) {
-                    console.log(error);
+                    console.log(error); 
                 });
-            this.props.history.push('/sale');
+
+
         }
-       
+
 
 
         // i need this to fire after axios post is called, but props is not seen in the axios call
-         // this.props.history.push('/sale');
+        // this.props.history.push('/sale');
 
     }
 
