@@ -20,22 +20,10 @@ class Register extends Component {
         lastName: "",
         email: "",
         password: "",
-        confirm_password: "",
-        address: "",
-        city: "",
-        state: "",
-        zip: "",
-        creditCardNumber: "",
-        expDate: "",
-        cvv: ""
-        // redirect: false
+        confirm_password: ""
+       
     };
 
-    // setRedirect = () => {
-    //     this.setState({
-    //         redirect: true
-    //     }, () =>  this.renderRedirect())
-    // }
     handleInputChange = event => {
 
         const { name, value } = event.target;
@@ -45,11 +33,6 @@ class Register extends Component {
         console.log("value is " + value);
     }
 
-    // renderRedirect = () => {
-    //     console.log("redirect works!");
-    //         return <Redirect to='/sale' />
-    // }
-
     handleFormSubmit = event => {
         const user = {
             userName: this.state.userName,
@@ -57,43 +40,37 @@ class Register extends Component {
             lastName: this.state.lastName,
             email: this.state.email,
             password: this.state.password,
-            confirm_password: this.state.confirm_password,
-            address: this.state.address,
-            city: this.state.city,
-            state: this.state.state,
-            zip: this.state.zip,
-            creditCardNumber: this.state.creditCardNumber,
-            expDate: this.state.expDate,
-            cvv: this.state.cvv
+            confirm_password: this.state.confirm_password
+         
         }
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
         var ValidateEmail = re.test(String(user.email).toLowerCase());
         console.log("checking for user email " + user.email);
         // Return today's date and time
-        var currentTime = new Date();
+        // var currentTime = new Date();
         // returns the month (from 0 to 11)
-        var month = currentTime.getMonth() + 1;
+        // var month = currentTime.getMonth() + 1;
         // returns the year (four digits)
-        var year = currentTime.getFullYear();
-        var expired = false;
+        // var year = currentTime.getFullYear();
+        // var expired = false;
 
-        if (user.expDate.length > 4) {
-            var enteredyear = user.expDate[3] + user.expDate[4];
-            var intyear = parseInt(enteredyear, 10) + 2000;
-            var enteredmonth = user.expDate[0] + user.expDate[1];
-            var intmonth = parseInt(enteredmonth, 10);
-            if ((year > intyear) || (year == intyear && month > intmonth)) {
-                expired = true;
-            }
-        } else {
-            expired = true;
-        }
+        // if (user.expDate.length > 4) {
+        //     var enteredyear = user.expDate[3] + user.expDate[4];
+        //     var intyear = parseInt(enteredyear, 10) + 2000;
+        //     var enteredmonth = user.expDate[0] + user.expDate[1];
+        //     var intmonth = parseInt(enteredmonth, 10);
+        //     if ((year > intyear) || (year == intyear && month > intmonth)) {
+        //         expired = true;
+        //     }
+        // } else {
+        //     expired = true;
+        // }
         //homemade validation, like gramma used to make
-        var ValidateDate = (moment(user.expDate, 'MM/YY', true).isValid() && !expired);
-        var number = /^[0-9]+$/;
-        var ValidateCCNumber = (number.test(user.creditCardNumber) && user.creditCardNumber.length == 16);
-        var ValidateZip = (number.test(user.zip) && user.zip > 9999);
+        // var ValidateDate = (moment(user.expDate, 'MM/YY', true).isValid() && !expired);
+        // var number = /^[0-9]+$/;
+        // var ValidateCCNumber = (number.test(user.creditCardNumber) && user.creditCardNumber.length == 16);
+        // var ValidateZip = (number.test(user.zip) && user.zip > 9999);
         var letter = /^[a-zA-Z0-9]+$/;
         var ValidatePassword = letter.test(user.password); //match a letter _and_ a number
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -103,9 +80,12 @@ class Register extends Component {
         //     ValidateDate && (/^[0-9]+$/.test(user.cvv) && user.cvv.length == 3) &&
         //     user.password == user.confirm_password && /^[a-zA-Z]+$/.test(user.firstName) &&
         //     /^[a-zA-Z]+$/.test(user.lastName)));
+        
+            // user.address && user.city && user.state && ValidateZip && ValidateCCNumber &&
+            // ValidateDate && (/^[0-9]+$/.test(user.cvv) && user.cvv.length == 3
+
+
         if (user.userName && user.firstName && user.lastName && ValidateEmail && ValidatePassword &&
-            user.address && user.city && user.state && ValidateZip && ValidateCCNumber &&
-            ValidateDate && (/^[0-9]+$/.test(user.cvv) && user.cvv.length == 3) &&
             user.password == user.confirm_password && /^[a-zA-Z]+$/.test(user.firstName) &&
             /^[a-zA-Z]+$/.test(user.lastName)) {
             axios.get('api/allusers', user)
@@ -118,10 +98,7 @@ class Register extends Component {
                         if (response.data[i].email === user.email) {
                             alert('That e-mail is already in use, please pick a different one');
                             this.props.history.push('/register');
-                        } else if (response.data[i].password === user.password) {
-                            alert('That password is already in use, please pick a different one');
-                            this.props.history.push('/register');
-                        }
+                        }  
                         console.log("hi");
                     }
 
@@ -146,7 +123,7 @@ class Register extends Component {
 
 
         // i need this to fire after axios post is called
-        // this.props.history.push('/sale');
+        this.props.history.push('/sale');
 
     }
 
@@ -255,6 +232,7 @@ class Register extends Component {
                                 }}
                             />
                             <AvField
+                                type="password"
                                 name="password"
                                 placeholder="password"
                                 value={this.state.password}
@@ -267,6 +245,7 @@ class Register extends Component {
                                 }}
                             />
                             <AvField
+                                type="password"
                                 name="confirm_password"
                                 placeholder="confirm_password"
                                 value={this.state.confirm_password}
