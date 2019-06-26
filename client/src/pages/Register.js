@@ -13,17 +13,17 @@ import moment from 'moment';
 // const User = require('../models/User');
 // const Users= require( "../routes/users");
 class Register extends Component {
-
+   
     state = {
         userName: "",
         firstName: "",
         lastName: "",
         email: "",
         password: "",
-        confirm_password: ""
-       
+        confirm_password: "",
+        redirect: false
     };
-
+    
     handleInputChange = event => {
 
         const { name, value } = event.target;
@@ -31,7 +31,12 @@ class Register extends Component {
             [name]: value
         });
         console.log("value is " + value);
+        
     }
+
+    pushRedirect() {
+        this.props.history.push('/sale')
+    };
 
     handleFormSubmit = event => {
         const user = {
@@ -41,7 +46,7 @@ class Register extends Component {
             email: this.state.email,
             password: this.state.password,
             confirm_password: this.state.confirm_password
-         
+
         }
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -80,50 +85,44 @@ class Register extends Component {
         //     ValidateDate && (/^[0-9]+$/.test(user.cvv) && user.cvv.length == 3) &&
         //     user.password == user.confirm_password && /^[a-zA-Z]+$/.test(user.firstName) &&
         //     /^[a-zA-Z]+$/.test(user.lastName)));
-        
-            // user.address && user.city && user.state && ValidateZip && ValidateCCNumber &&
-            // ValidateDate && (/^[0-9]+$/.test(user.cvv) && user.cvv.length == 3
 
-
+        // user.address && user.city && user.state && ValidateZip && ValidateCCNumber &&
+        // ValidateDate && (/^[0-9]+$/.test(user.cvv) && user.cvv.length == 3
         if (user.userName && user.firstName && user.lastName && ValidateEmail && ValidatePassword &&
             user.password == user.confirm_password && /^[a-zA-Z]+$/.test(user.firstName) &&
             /^[a-zA-Z]+$/.test(user.lastName)) {
             axios.get('api/allusers', user)
                 .then(function (response) {
-                    console.log("here");
-                    for (var i = 0; i < response.data.length; i++) {
-                        console.log("inside the for loop");
-                        console.log("reponse for data.email " + response.data[i].email);
-                        console.log("reponse for user.email " + user.email);
-                        if (response.data[i].email === user.email) {
-                            alert('That e-mail is already in use, please pick a different one');
-                            this.props.history.push('/register');
-                        }  
-                        console.log("hi");
+                    const users = response.data;
+                    if(users.filter((currentUser) => currentUser.email === user.email).length > 0) {
+                        alert('That e-mail is already in use, please pick a different one');
+                    } else {
+                        axios.post('api/users', user)
+                        .then(function (response) {
+                            console.log("inside db registration post call");
+                            console.log(response); 
+                             // this.props.history.push('/sale');
+                             this.pushRedirect();
+                            // setRedirect(); 
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+                       
+                       
                     }
-
-                    console.log("this grabs all users");
-                    console.log(response);
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
-            axios.post('api/users', user)
-                .then(function (response) {
-                    console.log("inside db registration post call");
-                    console.log(response);
-
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-
+                
+                this.props.history.push('/sale');
         }
+       
 
 
-
-        // i need this to fire after axios post is called
-        this.props.history.push('/sale');
+        // i need this to fire after axios post is called, but props is not seen in the axios call
+         // this.props.history.push('/sale');
 
     }
 
