@@ -9,20 +9,51 @@ import { Button } from 'reactstrap';
 import { register } from '../components/UserFunction';
 import "../Register.css"
 import moment from 'moment';
+import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 // const User = require('../models/User');
 // const Users= require( "../routes/users");
 class Register extends Component {
 
-    state = {
-        userName: "",
-        firstName: "",
-        lastName: "",
-        email: "",
-        password: "",
-        confirm_password: "",
-        redirect: false
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            userName: "",
+            firstName: "",
+            lastName: "",
+            email: "",
+            password: "",
+            confirm_password: "",
+            redirect: false,
+            modal: false,
+            nestedModal: false,
+            closeAll: false
+        };
+
+        this.toggle = this.toggle.bind(this);
+        this.toggleNested = this.toggleNested.bind(this);
+        this.toggleAll = this.toggleAll.bind(this);
+    }
+
+    toggle() {
+        this.setState(prevState => ({
+            modal: !prevState.modal
+        }));
+    }
+
+    toggleNested() {
+        this.setState({
+            nestedModal: !this.state.nestedModal,
+            closeAll: false
+        });
+    }
+
+    toggleAll() {
+        this.setState({
+            nestedModal: !this.state.nestedModal,
+            closeAll: true
+        });
+    }
 
     handleInputChange = event => {
 
@@ -37,7 +68,7 @@ class Register extends Component {
         this.props.history.push('/sale')
     };
     sendUser = event => {
-     
+
         const user = {
             userName: this.state.userName,
             firstName: this.state.firstName,
@@ -109,18 +140,20 @@ class Register extends Component {
 
         // user.address && user.city && user.state && ValidateZip && ValidateCCNumber &&
         // ValidateDate && (/^[0-9]+$/.test(user.cvv) && user.cvv.length == 3
-       
+
         if (user.userName && user.firstName && user.lastName && ValidateEmail && ValidatePassword &&
             user.password == user.confirm_password && /^[a-zA-Z]+$/.test(user.firstName) &&
             /^[a-zA-Z]+$/.test(user.lastName)) {
-                var _this = this;
+            var _this = this;
             axios.get('api/allusers', user)
-                .then((response)=> {
+                .then((response) => {
                     const users = response.data;
                     if (users.filter((currentUser) => currentUser.email === user.email).length > 0) {
-                        alert('That e-mail is already in use, please pick a different one');
+                        this.toggleNested();
+                        //alert('That e-mail is already in use, please pick a different one');
                     } else {
-                        alert('Sign up complete');
+                        //alert('Sign up complete');
+                        this.toggleNested();
                         _this.sendUser();
                     }
 
@@ -128,7 +161,7 @@ class Register extends Component {
                 .catch(function (error) {
                     console.log(error);
                 });
-         
+
         }
 
 
@@ -277,7 +310,7 @@ class Register extends Component {
 
                             />
                         </div>
-                       
+
                         {/* <div className="reg-box2">
                             <AvField
                                 name="address"
@@ -414,7 +447,15 @@ class Register extends Component {
 
                     </AvForm>
                 </div>
-               
+                <div>
+                    <Modal isOpen={this.state.nestedModal} toggle={this.toggleNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
+                        <ModalHeader>E-mail already in use</ModalHeader>
+                        <ModalFooter>
+                            <Button color="secondary" onClick={this.toggleAll}>Close</Button>
+                        </ModalFooter>
+                    </Modal>
+                </div>
+
             </div>
         );
     }
