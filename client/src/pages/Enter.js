@@ -226,7 +226,7 @@ class Enter extends Component {
 
         }
 
-        const passwordTracker = () => { 
+        const passwordTracker = () => {
             let letter = this.state.password.split("");
             letter = letter[letter.length - 1];
             console.log("password tracker, letter: ", letter);
@@ -247,7 +247,7 @@ class Enter extends Component {
             hiddenPassword: passwordTracker()
         })
 
-        
+
     }
 
     componentDidUpdate() {
@@ -266,11 +266,11 @@ class Enter extends Component {
                             email: { value: true, errorMessage: 'Please enter valid e-mail' },
                             required: { value: true, errorMessage: 'Please enter e-mail' }
                         }} />
-                        <AvField name="password" label="Password" value={this.state.maskPassword} type="text" onChange={this.handleMaskedPassword} validate={{
+                        <AvField name="password" type = "password" label="Password" value={this.state.handleInputChange} onChange={this.handleInputChange} validate={{
                             required: { value: true, errorMessage: 'Please enter password' },
-                            pattern: { value: '^[A-Za-z0-9]+$', errorMessage: 'Your name must be composed only with letter and numbers' },
-
-                            maxLength: { value: 16, errorMessage: 'Your name must be between 6 and 16 characters' }
+                            pattern: { value: '^[A-Za-z0-9]+$', errorMessage: 'Your password must be composed only with letter and numbers' },
+                            minLength: { value: 6, errorMessage: 'Your password must be between 6 and 16 characters' },
+                            maxLength: { value: 16, errorMessage: 'Your password must be between 6 and 16 characters' }
                         }} />
                         <Button color="primary" onClick={this.handleFormSubmit}>Submit</Button>
                     </AvForm>
