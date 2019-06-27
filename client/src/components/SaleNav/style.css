@@ -4,6 +4,7 @@ nav.navbar {
 }
 
 .sale-nav-link {
+  font-size: 18px;
   color: #d8dfe6;
   padding: 1em 1.5em;
   text-transform: uppercase;
@@ -16,6 +17,5 @@ nav.navbar {
 }
 
 .sale-nav-img {
-  /* width: 30px; */
   height: 70px;
 }
