@@ -16,11 +16,13 @@ class Enter extends Component {
         this.state = {
             email: "",
             password: "",
+            hiddenPassword: [],
             redirect: false,
             credentials: [],
             modal: false,
             nestedModal: false,
-            closeAll: false
+            closeAll: false,
+            maskPassword: ""
         };
 
         this.toggle = this.toggle.bind(this);
@@ -140,12 +142,19 @@ class Enter extends Component {
             console.log("incorrect login");
         } else {
             for (var c = 0; c < this.state.credentials.length; c = c + 2) {
+                console.log("e-mail #" + c + ": " + this.state.credentials[c]);
+                console.log("password #" + c + ": " + this.state.credentials[c + 1]);
                 if (this.state.email == this.state.credentials[c] && this.state.password == this.state.credentials[c + 1]) {
+                    console.log("entered e-mail: " + this.state.email);
+                    console.log("entered password: " + this.state.password);
                     console.log("should redirect to next page!");
                     this.setRedirect();
                     this.renderRedirect();
                 }
             }
+            console.log("this is credentials array")
+            console.log("woof e-mail: " + this.state.credentials[10]);
+            console.log("woof password: " + this.state.credentials[11]);
             console.log("b4 toggle");
             if (!this.state.redirect) {
                 this.toggleNested();
@@ -201,6 +210,50 @@ class Enter extends Component {
         return re.test(String(this.state.email).toLowerCase());
     }
 
+    handleMaskedPassword = event => {
+        const generateMask = () => {
+            if (this.state.password) {
+                const lengthOfMask = this.state.password.length;
+                let mask = "";
+                for (let i = 0; i < lengthOfMask; i++) {
+                    mask += "*";
+                }
+
+                return mask;
+            }
+
+            return "";
+
+        }
+
+        const passwordTracker = () => {
+            let letter = this.state.password.split("");
+            letter = letter[letter.length - 1];
+            console.log("password tracker, letter: ", letter);
+            let hidden = this.state.hiddenPassword.slice();
+
+            hidden.push(letter);
+            return hidden;
+        }
+
+        const { name, value } = event.target;
+
+        console.log("inside handle password, name: ", name);
+        console.log("inside handle password, value: ", value);
+
+        this.setState({
+            [name]: value,
+            maskPassword: generateMask(),
+            hiddenPassword: passwordTracker()
+        })
+
+
+    }
+
+    componentDidUpdate() {
+        console.log("updated: ", this.state);
+    }
+
     render() {
         return (
             <div className="App">
@@ -213,11 +266,11 @@ class Enter extends Component {
                             email: { value: true, errorMessage: 'Please enter valid e-mail' },
                             required: { value: true, errorMessage: 'Please enter e-mail' }
                         }} />
-                        <AvField name="password" label="Password" type="text" onChange={this.handleInputChange} validate={{
+                        <AvField name="password" type = "password" label="Password" value={this.state.handleInputChange} onChange={this.handleInputChange} validate={{
                             required: { value: true, errorMessage: 'Please enter password' },
-                            pattern: { value: '^[A-Za-z0-9]+$', errorMessage: 'Your name must be composed only with letter and numbers' },
-
-                            maxLength: { value: 16, errorMessage: 'Your name must be between 6 and 16 characters' }
+                            pattern: { value: '^[A-Za-z0-9]+$', errorMessage: 'Your password must be composed only with letter and numbers' },
+                            minLength: { value: 6, errorMessage: 'Your password must be between 6 and 16 characters' },
+                            maxLength: { value: 16, errorMessage: 'Your password must be between 6 and 16 characters' }
                         }} />
                         <Button color="primary" onClick={this.handleFormSubmit}>Submit</Button>
                     </AvForm>
