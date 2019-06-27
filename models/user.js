@@ -27,10 +27,41 @@ module.exports = function(sequelize, DataTypes) {
     swag5name: { type: DataTypes.STRING, defaultValue: "Swag 5"},
     swag5quantity: { type: DataTypes.INTEGER, defaultValue: 0 }
   });
-  User.beforeCreate((user, options) => {
-    const salt = bcrypt.genSaltSync();
-    user.password = bcrypt.hashSync(user.password, salt);
-    user.confirm_password = bcrypt.hashSync(user.confirm_password, salt);
-  });
+
+
+  // User.beforeCreate((user, options) => {
+  //   const salt = bcrypt.genSaltSync();
+  //   user.password = bcrypt.hashSync(user.password, salt);
+   
+  // });
+// Define schema methods
+
+// User.methods = {
+//   checkPassword: function (inputPassword) {
+//   return bcrypt.compareSync(inputPassword, this.password)
+// },
+//   hashPassword: plainTextPassword => {
+//   return bcrypt.hashSync(plainTextPassword, 10)
+//   }
+// }
+ //i beleive the above does both 
+// User.prototype.validPassword = function (password) {
+//   return bcrypt.compareSync(password, this.password);
+// };
+
+// User.pre('save', function (next) {
+//   if (!this.password) {
+//     console.log('models/user.js =======NO PASSWORD PROVIDED=======')
+//     next()
+//   } else {
+//     console.log('models/user.js hashPassword in pre save');
+//     this.password = this.hashPassword(this.password)
+//     next()
+//   }
+// })
+ 
+
+
+
   return User;
 };
