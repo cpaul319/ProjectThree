@@ -4,12 +4,13 @@ nav.navbar {
 }
 
 .sale-nav-link {
-  /* color: white; */
   padding: 1em 1.5em;
   text-transform: uppercase;
 }
 
 .sale-nav-link:hover {
-  background-color: #555;
+  /* background-color: #555; */
   text-decoration: none;
+  /* box-shadow: 10px 6px -6px #777; */
+  box-shadow: 0 4px 8px 0 rgb(196, 194, 194), 0 6px 20px 0 rgb(196, 194, 194);
 }
