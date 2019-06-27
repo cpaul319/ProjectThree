@@ -1,10 +1,11 @@
 import axios from "axios";
-
+import Sale from '../../pages/Sale'
 import React, { Component } from "react";
 import {
   Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle, Button
 } from 'reactstrap';
+import SaleNav from '../SaleNav'
 
 import hand from './hand.PNG';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
@@ -68,29 +69,38 @@ class SaleCard extends Component {
 
     // this.props.history.push('/orders');
 
-  }
+  
+}
 
+}
+// Render page
 
-
-
-  render() {
-    return (
-      <div className="outer-sale-wrap">
-      <div className="sale-card-wrap">
-        <Card className="sale-card">
-          <CardImg top width="100%" src={this.props.image} alt="Card image cap" className="card-image"/>
-          <CardBody>
-            <CardTitle className="card-title">{this.props.name}</CardTitle>
-            <CardSubtitle className="card-price">{this.props.price}</CardSubtitle>
-            <CardText className="card-desc">{this.props.description}</CardText>
-
-            <Button className="submit-btn" color="secondary" onClick={this.handleFormSubmit}>Buy</Button>
-          </CardBody>
-        </Card>
-      </div>  
+const SalesCard = (props) => {
+  
+  return (
+  <div>
+    <div className='container'>
+    <div className="card mb-3">
+          <div className="row no-gutters">
+            <div className="col-md-4">
+              <img src='/images/dragon.jpg' className="card-img" alt="..." />
+            </div>
+            <div className="col-md-6">
+              <div className="card-body">
+                <h5 className="card-title">Random Item</h5>
+                <p className="card-text">This is an example of a description for a purchased item. This is only a test.</p>
+              </div>
+            </div>
+            <div className="col-md-2 row align-items-center justify-content-center">
+            <p>$50</p>
+            <button className='btn btn-primary'>Buy this item</button>
+          </div>
+        </div>
       </div>
-    );
-  }
+    </div>
+  </div>
+  );
+
 };
 
-export default SaleCard;
+export default SalesCard;
