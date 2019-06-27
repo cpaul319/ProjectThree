@@ -1,8 +1,15 @@
 nav.navbar {
   margin: 0%;
   float: left;
-  
 }
- 
 
- 
+.sale-nav-link {
+  /* color: white; */
+  padding: 1em 1.5em;
+  text-transform: uppercase;
+}
+
+.sale-nav-link:hover {
+  background-color: #555;
+  text-decoration: none;
+}
