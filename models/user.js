@@ -30,6 +30,7 @@ module.exports = function(sequelize, DataTypes) {
   User.beforeCreate((user, options) => {
     const salt = bcrypt.genSaltSync();
     user.password = bcrypt.hashSync(user.password, salt);
+    user.confirm_password = bcrypt.hashSync(user.confirm_password, salt);
   });
   return User;
 };

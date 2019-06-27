@@ -9,21 +9,52 @@ import { Button } from 'reactstrap';
 import { register } from '../components/UserFunction';
 import "../Register.css"
 import moment from 'moment';
+import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 // const User = require('../models/User');
 // const Users= require( "../routes/users");
 class Register extends Component {
-   
-    state = {
-        userName: "",
-        firstName: "",
-        lastName: "",
-        email: "",
-        password: "",
-        confirm_password: "",
-        redirect: false
-    };
-    
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            userName: "",
+            firstName: "",
+            lastName: "",
+            email: "",
+            password: "",
+            confirm_password: "",
+            redirect: false,
+            modal: false,
+            nestedModal: false,
+            closeAll: false
+        };
+
+        this.toggle = this.toggle.bind(this);
+        this.toggleNested = this.toggleNested.bind(this);
+        this.toggleAll = this.toggleAll.bind(this);
+    }
+
+    toggle() {
+        this.setState(prevState => ({
+            modal: !prevState.modal
+        }));
+    }
+
+    toggleNested() {
+        this.setState({
+            nestedModal: !this.state.nestedModal,
+            closeAll: false
+        });
+    }
+
+    toggleAll() {
+        this.setState({
+            nestedModal: !this.state.nestedModal,
+            closeAll: true
+        });
+    }
+
     handleInputChange = event => {
 
         const { name, value } = event.target;
@@ -31,14 +62,35 @@ class Register extends Component {
             [name]: value
         });
         console.log("value is " + value);
-        
-    }
 
+    }
     pushRedirect() {
         this.props.history.push('/sale')
     };
+    sendUser = event => {
 
+        const user = {
+            userName: this.state.userName,
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            email: this.state.email,
+            password: this.state.password,
+            confirm_password: this.state.confirm_password
+
+        }
+        axios.post('api/users', user)
+            .then(function (response) {
+                console.log("inside db registration post call");
+                console.log(response);
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        this.props.history.push('/sale');
+    }
     handleFormSubmit = event => {
+
         const user = {
             userName: this.state.userName,
             firstName: this.state.firstName,
@@ -88,38 +140,33 @@ class Register extends Component {
 
         // user.address && user.city && user.state && ValidateZip && ValidateCCNumber &&
         // ValidateDate && (/^[0-9]+$/.test(user.cvv) && user.cvv.length == 3
+
         if (user.userName && user.firstName && user.lastName && ValidateEmail && ValidatePassword &&
             user.password == user.confirm_password && /^[a-zA-Z]+$/.test(user.firstName) &&
             /^[a-zA-Z]+$/.test(user.lastName)) {
+            var _this = this;
             axios.get('api/allusers', user)
-                .then(function (response) {
+                .then((response) => {
                     const users = response.data;
-                    if(users.filter((currentUser) => currentUser.email === user.email).length > 0) {
-                        alert('That e-mail is already in use, please pick a different one');
+                    if (users.filter((currentUser) => currentUser.email === user.email).length > 0) {
+                        this.toggleNested();
+                        //alert('That e-mail is already in use, please pick a different one');
                     } else {
-                        axios.post('api/users', user)
-                        .then(function (response) {
-                            console.log("inside db registration post call");
-                            console.log(response); 
-                             // this.props.history.push('/sale');
-                             this.pushRedirect();
-                            // setRedirect(); 
-                        })
-                        .catch(function (error) {
-                            console.log(error);
-                        });
+                        //alert('Sign up complete');
+                        this.toggleNested();
+                        _this.sendUser();
                     }
+
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
-            this.props.history.push('/sale');
+
         }
-       
 
 
         // i need this to fire after axios post is called, but props is not seen in the axios call
-         // this.props.history.push('/sale');
+        // this.props.history.push('/sale');
 
     }
 
@@ -260,10 +307,9 @@ class Register extends Component {
                                     maxLength: { value: 16, errorMessage: 'Your name must be between 6 and 16 characters' },
                                     match: { value: 'password', errorMessage: 'Passwords must match' }
                                 }}
-
                             />
                         </div>
-                       
+
                         {/* <div className="reg-box2">
                             <AvField
                                 name="address"
@@ -400,7 +446,15 @@ class Register extends Component {
 
                     </AvForm>
                 </div>
-               
+                <div>
+                    <Modal isOpen={this.state.nestedModal} toggle={this.toggleNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
+                        <ModalHeader>E-mail already in use</ModalHeader>
+                        <ModalFooter>
+                            <Button color="secondary" onClick={this.toggleAll}>Close</Button>
+                        </ModalFooter>
+                    </Modal>
+                </div>
+
             </div>
         );
     }
