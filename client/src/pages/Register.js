@@ -307,7 +307,6 @@ class Register extends Component {
                                     maxLength: { value: 16, errorMessage: 'Your name must be between 6 and 16 characters' },
                                     match: { value: 'password', errorMessage: 'Passwords must match' }
                                 }}
-
                             />
                         </div>
 

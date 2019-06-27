@@ -202,6 +202,7 @@ class Account extends Component {
                             <AvField
                                 name="password"
                                 placeholder="password"
+                                type = "password"
                                 value={this.state.password}
                                 onChange={this.handleInputChange}
                                 validate={{
@@ -213,6 +214,7 @@ class Account extends Component {
                             />
                             <AvField
                                 name="confirm_password"
+                                type = "password"
                                 placeholder="confirm_password"
                                 onChange={this.handleInputChange}
                                 validate={{
