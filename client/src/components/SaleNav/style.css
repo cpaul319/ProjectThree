@@ -10,12 +10,21 @@ nav.navbar {
   text-transform: uppercase;
 }
 
-.sale-nav-link:hover {
-  text-decoration: none;
-  color: white;
-  box-shadow: 0 4px 8px 0 rgb(218, 213, 213), 0 6px 20px 0 rgb(218, 213, 213);
-}
-
 .sale-nav-img {
   height: 70px;
+}
+
+.sale-nav-link:hover {
+  color: white;
+}
+
+@media (min-width: 720px) {
+  .sale-nav-link:hover {
+    text-decoration: none;
+    box-shadow: 0 4px 8px 0 rgb(218, 213, 213), 0 6px 20px 0 rgb(218, 213, 213);
+  }
+}
+
+#nav-brand {
+  font-size: 24px;
 }
