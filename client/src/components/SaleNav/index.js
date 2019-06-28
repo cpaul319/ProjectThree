@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./style.css";
 
 function SaleNav() {
-  const navbarImg = <img className="d-none d-md-inline sale-nav-img" src="/images/hand.jpg" alt="sword" />;
+  const navbarImg = <img className="d-none d-lg-inline sale-nav-img" src="/images/hand.jpg" alt="sword" />;
   return (
     <header>
       {/* <nav className="navbar navbar-dark bg-dark py-3">

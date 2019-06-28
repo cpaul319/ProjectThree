@@ -18,7 +18,7 @@ nav.navbar {
   color: white;
 }
 
-@media (min-width: 720px) {
+@media (min-width: 960px) {
   .sale-nav-link:hover {
     text-decoration: none;
     box-shadow: 0 4px 8px 0 rgb(218, 213, 213), 0 6px 20px 0 rgb(218, 213, 213);
