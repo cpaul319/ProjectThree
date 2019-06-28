@@ -9,7 +9,7 @@ import item from "../items.json"
 //minor change for push update
 class Sale extends Component {
 
-state = {
+  state = {
     userName: "",
     firstName: "",
     lastName: "",
@@ -23,29 +23,27 @@ state = {
     expDate: 1,
     cvv: 4,
     item
-    
-};
 
+  };
 
-componentDidMount() {
-  console.log("did mount");
-  //console.log("imported email: " + Enter.state.email);
-  axios.get('api/users')
-.then(function (res) {
-  const firstName = firstName.res.data;
+  componentDidMount() {
+    console.log("did mount");
+    //console.log("imported email: " + Enter.state.email);
+    axios.get('api/users')
+      .then(function (res) {
+        const firstName = firstName.res.data;
         this.setState({ firstName });
-})
-.catch(function (error) {
-  console.log(error);
-});
-console.log(this.state.userName);
-}
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    console.log(this.state.userName);
+  }
 
-
-
- render(){
-  console.log("before Log In function is called.");
+  render() {
+    console.log("before Log In function is called.");
     return (
+<<<<<<< HEAD
         <div className="App">
             <SaleNav />
             {this.state.item.map(item =>(
@@ -54,15 +52,27 @@ console.log(this.state.userName);
               name={item.name}
               price={item.price}
               description={item.description}
+=======
+      <div className="App">
+        <SaleNav />
+        {/* <p>Welcome {this.state.userName}</p>
+        <p>Sale page</p> */}
+        {this.state.item.map(item => (
+          <SaleCard
+            image={item.image}
+            name={item.name}
+            price={item.price}
+            description={item.description}
 
-              />
-            ))}
-            
-        </div>
+          />
+        ))}
+>>>>>>> 4f887e88b9bf2bf85973942e6b498524ee8743d8
+
+      </div>
     );
     console.log("after Log In function is called.");
 
-    }
+  }
 
 }
 
