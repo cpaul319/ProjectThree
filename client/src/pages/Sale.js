@@ -48,8 +48,6 @@ console.log(this.state.userName);
     return (
         <div className="App">
             <SaleNav />
-            <p>Welcome {this.state.userName}</p>
-            <p>Sale page</p>
             {this.state.item.map(item =>(
               <SaleCard 
               image={item.image}

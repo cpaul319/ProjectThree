@@ -10,6 +10,7 @@ import SaleNav from '../SaleNav'
 import hand from './hand.PNG';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import "./style.css";
+import item from '../../items.json';
 // update a quantity of purchased item
 //= (props) =>
 class SaleCard extends Component {
@@ -72,35 +73,36 @@ class SaleCard extends Component {
   
 }
 
-}
-// Render page
-
-const SalesCard = (props) => {
-  
+render() {
   return (
   <div>
     <div className='container'>
     <div className="card mb-3">
           <div className="row no-gutters">
-            <div className="col-md-4">
-              <img src='/images/dragon.jpg' className="card-img" alt="..." />
+            <div className="col-md-4 row align-itmes-center justify-content-center">
+              <img src={this.props.image} className='img-thumbnail' />
             </div>
             <div className="col-md-6">
               <div className="card-body">
-                <h5 className="card-title">Random Item</h5>
-                <p className="card-text">This is an example of a description for a purchased item. This is only a test.</p>
+                <h5 className="card-title">{this.props.name}</h5>
+                <p className="card-text">{this.props.description}</p>
               </div>
             </div>
             <div className="col-md-2 row align-items-center justify-content-center">
-            <p>$50</p>
-            <button className='btn btn-primary'>Buy this item</button>
+            <p>{this.props.price}</p>
+            <button className='btn btn-outline-dark'>Buy this item</button>
           </div>
         </div>
       </div>
     </div>
   </div>
   );
+}
 
 };
+// Render page
 
-export default SalesCard;
+
+
+
+export default SaleCard;
