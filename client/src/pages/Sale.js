@@ -43,16 +43,6 @@ class Sale extends Component {
   render() {
     console.log("before Log In function is called.");
     return (
-<<<<<<< HEAD
-        <div className="App">
-            <SaleNav />
-            {this.state.item.map(item =>(
-              <SaleCard 
-              image={item.image}
-              name={item.name}
-              price={item.price}
-              description={item.description}
-=======
       <div className="App">
         <SaleNav />
         {/* <p>Welcome {this.state.userName}</p>
@@ -66,7 +56,6 @@ class Sale extends Component {
 
           />
         ))}
->>>>>>> 4f887e88b9bf2bf85973942e6b498524ee8743d8
 
       </div>
     );
