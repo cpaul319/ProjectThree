@@ -7,7 +7,6 @@
      background:rgb(255,246,215,.8);
     padding: 1rem;
     margin: 0 auto;
-    font-family: 'Cinzel Decorative', cursive;
 }
 
 .account-box1 {
@@ -40,7 +39,7 @@
         /* background: rgb(255,255,255,.8); */
         padding: 1rem;
         margin: 5rem auto;
-        font-family: 'Cinzel Decorative', cursive;
+        /* font-family: 'Cinzel Decorative', cursive; */
     }
 
     #account-title {
