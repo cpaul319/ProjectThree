@@ -26,7 +26,6 @@ class Sale extends Component {
 
   };
 
-
   componentDidMount() {
     console.log("did mount");
     //console.log("imported email: " + Enter.state.email);
@@ -40,8 +39,6 @@ class Sale extends Component {
       });
     console.log(this.state.userName);
   }
-
-
 
   render() {
     console.log("before Log In function is called.");
