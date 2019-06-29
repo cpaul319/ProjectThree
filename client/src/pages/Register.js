@@ -19,6 +19,7 @@ class Register extends Component {
             lastName: "",
             email: "",
             password: "",
+            isLoggedIn: 0,
             confirm_password: "",
             redirect: false
 
@@ -56,15 +57,15 @@ class Register extends Component {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
             email: this.state.email,
-            password: this.state.password
-             
-
+            password: this.state.password,
+            isLoggedIn: 1
 		})
 			.then(response => {
 				console.log(response)
-				if (!response.data.err) {
+				if (response.data.err) {
+                    console.log(response.data.err) 
                     console.log('successful signup')
-                    this.props.history.push('/login');
+                    this.props.history.push('/sale');
                     alert("You have been signed up");
 					// this.setState({ //redirect to login page
 					// 	redirectTo: '/login'
