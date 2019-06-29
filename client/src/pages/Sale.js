@@ -41,9 +41,13 @@ class Sale extends Component {
   }
 
   render() {
+    const background = {
+      background: 'rgb(52,58,64)'
+    }
+    
     console.log("before Log In function is called.");
     return (
-      <div className="App">
+      <div className="App" style={background}>
         <SaleNav />
         {/* <p>Welcome {this.state.userName}</p>
         <p>Sale page</p> */}

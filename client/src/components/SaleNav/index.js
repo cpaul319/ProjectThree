@@ -6,15 +6,15 @@ function SaleNav() {
   const navbarImg = <img className="d-none d-lg-inline sale-nav-img" src="/images/hand.jpg" alt="sword" />;
   return (
     <header>
-      {/* <nav className="navbar navbar-dark bg-dark py-3">
-        <Link className="sale-nav-link" to="*">Hello</Link> &nbsp; {navbarImg} &nbsp;
-      <Link className="sale-nav-link" to="/account">Account</Link> &nbsp;  {navbarImg} &nbsp;
-      <Link className="sale-nav-link" to="/orders">Orders</Link> &nbsp;  {navbarImg} &nbsp;
-      <Link className="sale-nav-link" to="/">Log Out</Link> &nbsp; &nbsp;
-    </nav> */}
+    {/*}  <nav className="navbar navbar-dark bg-dark">
+        <Link to="#">Hello</Link> &nbsp; | &nbsp;
+      <Link to="/Account">Account</Link> &nbsp; | &nbsp;
+      <Link to="/Sale">Buy Items</Link> &nbsp; | &nbsp;
+      <Link to="/">Log Out</Link> &nbsp; | &nbsp;
+  </nav>*/}
 
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a id="nav-brand" className="navbar-brand sale-nav-link mb-2" href="/">GoT Swag</a>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <a className="navbar-brand" href="/">GoT Swag</a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -34,6 +34,17 @@ function SaleNav() {
               <a className="nav-link sale-nav-link" href="/">Log Out</a>
             </li>
             {/* <li className="nav-item dropdown">
+            <li className="nav-item active">
+              <a className="nav-link" href="/account">Account</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/orders">Orders</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/">Log out</a>
+            </li>
+            {/*
+            <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Welcome User
               </a>
@@ -41,7 +52,7 @@ function SaleNav() {
                 <a className="dropdown-item" href="/orders">Orders</a>
                 <a className="dropdown-item" href="/forgot">Edit Account</a>
               </div>
-            </li> */}
+            </li>*/}
           </ul>
         </div>
       </nav>

@@ -1,14 +1,16 @@
 import axios from "axios";
-
+import Sale from '../../pages/Sale'
 import React, { Component } from "react";
 import {
   Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle, Button
 } from 'reactstrap';
+import SaleNav from '../SaleNav'
 
 import hand from './hand.PNG';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import "./style.css";
+import item from '../../items.json';
 // update a quantity of purchased item
 //= (props) =>
 class SaleCard extends Component {
@@ -68,29 +70,39 @@ class SaleCard extends Component {
 
     // this.props.history.push('/orders');
 
-  }
+  
+}
 
-
-
-
-  render() {
-    return (
-      <div className="outer-sale-wrap">
-      <div className="sale-card-wrap">
-        <Card className="sale-card">
-          <CardImg top width="100%" src={this.props.image} alt="Card image cap" className="card-image"/>
-          <CardBody>
-            <CardTitle className="card-title">{this.props.name}</CardTitle>
-            <CardSubtitle className="card-price">{this.props.price}</CardSubtitle>
-            <CardText className="card-desc">{this.props.description}</CardText>
-
-            <Button className="submit-btn" color="secondary" onClick={this.handleFormSubmit}>Buy</Button>
-          </CardBody>
-        </Card>
-      </div>  
+render() {
+  return (
+  <div>
+    <div className='container'>
+    <div className="card mb-3">
+          <div className="row no-gutters">
+            <div className="col-md-4 row align-itmes-center justify-content-center">
+              <img src={this.props.image} className='img-thumbnail' />
+            </div>
+            <div className="col-md-6">
+              <div className="card-body">
+                <h5 className="card-title">{this.props.name}</h5>
+                <p className="card-text">{this.props.description}</p>
+              </div>
+            </div>
+            <div className="col-md-2 row align-items-center justify-content-center">
+            <p>{this.props.price}</p>
+            <button className='btn btn-outline-dark'>Buy this item</button>
+          </div>
+        </div>
       </div>
-    );
-  }
+    </div>
+  </div>
+  );
+}
+
 };
+// Render page
+
+
+
 
 export default SaleCard;
