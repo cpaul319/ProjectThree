@@ -1,14 +1,18 @@
 #reg-body {
-    height: 100%;
-    width:100%;
+    /* height: 100%; */
+    height:100vh;
+    min-height:100%;
+    max-height:100%;
+    width:100vw;
     background: url("https://wallpaperaccess.com/full/25517.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: relative;
 
-}
-
-#test {
-    color:red;
 }
 
 .reg-container {
@@ -42,7 +46,10 @@
 @media (min-width:768px){
 
     #reg-body {
-        height: 100%;
+        /* height: 100%; */
+        height:100vh;
+        min-height:100%;
+        max-height:100%;
         width:100%;
         background: url("https://wallpaperaccess.com/full/25517.jpg");
         background-repeat: no-repeat;
@@ -69,6 +76,6 @@
         margin: 0 auto;
     }
 
-
+ 
 
 }
