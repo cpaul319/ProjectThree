@@ -1,3 +1,19 @@
+#account-body {
+    height:100vh;
+    min-height:100%;
+    max-height:100%;
+    width:100vw;
+    background: url("https://wallpaperaccess.com/full/25517.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: relative;
+
+}
+
 .account-container {
     /* border: 1px solid black; */
     width: 100%;
@@ -10,12 +26,14 @@
 }
 
 .account-box1 {
+    padding-left: 1rem;
     width: 95%;
     /* margin: 0rem; */
     font-family: 'Cinzel Decorative', cursive;
 }
 
 .account-box2 {
+    padding-left: 1rem;
     width: 95%;
     /* margin: 2rem; */
     font-family: 'Cinzel Decorative', cursive;
@@ -25,8 +43,8 @@
 @media (min-width:768px){
 
     #account-body {
-        height: 100vh;
-        width:100vw;
+        height: 100%;
+        width:100%;
         background: url("https://wallpaperaccess.com/full/25517.jpg");
         background-repeat: no-repeat;
         background-size: cover;
@@ -38,7 +56,7 @@
         width: 70%;
         /* background: rgb(255,255,255,.8); */
         padding: 1rem;
-        margin: 5rem auto;
+        margin: 3rem auto;
         /* font-family: 'Cinzel Decorative', cursive; */
     }
 

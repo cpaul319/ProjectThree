@@ -40,4 +40,17 @@
 .card-desc {
     font-size: .75rem;
     text-align: center;
+    font-family: 'Cinzel Decorative', cursive;
 }
+
+.card-btn {
+    margin: 2rem auto;
+    text-align: center;
+
+}
+
+/* .img-thumbnail {
+    height: 250px;
+    width: 250px;
+} */
+
