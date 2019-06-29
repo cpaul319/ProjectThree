@@ -11,17 +11,39 @@ userRouter.post("/api/users", (req, res) => {
     })
     // res.send(req.body);
 });
-/*
-userRouter.post("/loggeduser", (req, res) => {
+
+userRouter.put("/api/logout/:id", (req, res) => {
+    console.log("log out function is called.");
+    db.Users.update({
+        isLoggedIn: 0
+    },
+    {
+    where: {
+        id: req.params.id
+    }
+}).then(function(dbUsers)   {
+    res.json(dbDish);
+});
+});
+
+userRouter.post("/api/loggeduser", (req, res) => {
     console.log("Looking for logged in users...");
     db.Users.findOne({
         where: {
            isLoggedIn: 1 
         }
     }).then(user => {
-
+        if (user)   {
+            console.log("a user is logged in!");
+            res.json(dbUsers);
+        } else {
+            console.log("there are no logged in users");
+        }
+    }).catch(err => {
+        console.log("weird err="+err);
+        res.status(400).json({ error: err })
     })
-})*/
+})
 
 userRouter.post("/login", (req, res) => {
     console.log("post to login, email = "+req.body.email);
