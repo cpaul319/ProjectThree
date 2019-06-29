@@ -131,14 +131,13 @@ class Enter extends Component {
                     alert("Login information does not match");
 				}
 			}).catch(error => {
-				console.log('Login error: ')
-				console.log(error)
-
+				console.log('Login error: ');
+                console.log(error);
+                console.log("response.data = ");
+                console.log(error.message);
+                this.toggleNested();
             })
-          
         }
-    
-
     }
 
     componentDidUpdate() {
