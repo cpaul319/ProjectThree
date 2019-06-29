@@ -9,6 +9,7 @@ import { Button } from 'reactstrap';
 import { register } from '../components/UserFunction';
 import "../Register.css"
 import moment from 'moment';
+import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 class Register extends Component {
 	constructor() {
@@ -21,13 +22,39 @@ class Register extends Component {
             password: "",
             isLoggedIn: 0,
             confirm_password: "",
-            redirect: false
+            redirect: false,
+            modal: false,
+            nestedModal: false,
+            closeAll: false
 
 		}
-		this.handleFormSubmit = this.handleFormSubmit.bind(this)
-		this.handleInputChange = this.handleInputChange.bind(this)
+		this.handleFormSubmit = this.handleFormSubmit.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.toggle = this.toggle.bind(this);
+        this.toggleNested = this.toggleNested.bind(this);
+        this.toggleAll = this.toggleAll.bind(this);
 	}
-	
+    
+    toggle() {
+        this.setState(prevState => ({
+            modal: !prevState.modal
+        }));
+    }
+
+    toggleNested() {
+        this.setState({
+            nestedModal: !this.state.nestedModal,
+            closeAll: false
+        });
+    }
+
+    toggleAll() {
+        this.setState({
+            nestedModal: !this.state.nestedModal,
+            closeAll: true
+        });
+    }
+
     handleInputChange = event => {
 
         const { name, value } = event.target;
@@ -72,7 +99,8 @@ class Register extends Component {
 					// })
 				} else {
                     console.log('username already taken')
-                    alert("That email already exists");
+                    //alert("That email already exists");
+                    this.toggleNested();
 				}
 			}).catch(error => {
 				console.log('signup error: ')
@@ -170,7 +198,14 @@ class Register extends Component {
 
                     </AvForm>
                 </div>
-               
+                <div>
+                    <Modal isOpen={this.state.nestedModal} toggle={this.toggleNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
+                        <ModalHeader>E-mail already in use</ModalHeader>
+                        <ModalFooter>
+                            <Button color="secondary" onClick={this.toggleAll}>Close</Button>
+                        </ModalFooter>
+                    </Modal>
+                </div>
             </div>
         );
     }
