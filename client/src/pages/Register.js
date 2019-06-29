@@ -88,17 +88,24 @@ class Register extends Component {
             isLoggedIn: 1
 		})
 			.then(response => {
-				console.log(response)
-				if (response.data.err) {
-                    console.log(response.data.err) 
-                    console.log('successful signup')
-                    this.props.history.push('/sale');
-                    alert("You have been signed up");
+				console.log(response);
+				if (!response.data.err) {
+                    console.log(response.data.err); 
+                    console.log('successful signup');
+                    console.log(response.data.error);
+                    if (response.data.error == 'User already exists')   {
+                        this.toggleNested();
+                    }
+                    else {
+                        this.props.history.push('/sale');
+                    }
+                    //alert("You have been signed up");
 					// this.setState({ //redirect to login page
 					// 	redirectTo: '/login'
 					// })
 				} else {
-                    console.log('username already taken')
+                    console.log('username already taken');
+                    //console.log(error);
                     //alert("That email already exists");
                     this.toggleNested();
 				}
