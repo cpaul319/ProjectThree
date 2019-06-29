@@ -20,7 +20,7 @@ userRouter.post("/login", (req, res) => {
         .then(user => {
             if (user) {
                 if (bcrypt.compareSync(req.body.password, user.password)) {
-                    res.send("User is a match")
+                    res.send({message: true, user})
                 }
             } else {
                 res.status(400).json({ error: "User does not exist" })
@@ -51,6 +51,7 @@ userRouter.post("/register", (req, res) => {
         lastName: req.body.lastName,
         email: req.body.email,
         password: req.body.password,
+        isLoggedIn:1,
         created_at: now
     }
     db.Users.findOne({

@@ -4,7 +4,7 @@
     
  
   "development": {
-    "username": "root",
+    "username": "trilogy",
     "password": "password123",
  
     "database": "UserDb",

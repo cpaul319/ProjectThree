@@ -122,6 +122,14 @@ class Enter extends Component {
 
     handleFormSubmit = event => {
 
+//         Axios.post('/login').then((res) => {
+//             if(res.message) {
+// (res.user.email)
+//             } else {
+
+//             }
+//         })
+
         //var users = []; // array of users (including username and password), is populated every time user clicks log in button for input validation
 
         const user = {
