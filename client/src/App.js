@@ -11,7 +11,7 @@ import Sale from "./pages/Sale";
 import Order from "./pages/Orders";
 import Account from "./pages/Account";
 
-class App extends Component {
+/*class App extends Component {
 
   state = {
     email: ""
@@ -25,9 +25,9 @@ class App extends Component {
     return this.state.email;
   }
 
-  render()  { /*
+  render()  { */
 
-  function App()  {*/
+  function App()  {
 
   return (
     <Router>

@@ -11,6 +11,18 @@ userRouter.post("/api/users", (req, res) => {
     })
     // res.send(req.body);
 });
+/*
+userRouter.post("/loggeduser", (req, res) => {
+    console.log("Looking for logged in users...");
+    db.Users.findOne({
+        where: {
+           isLoggedIn: 1 
+        }
+    }).then(user => {
+
+    })
+})*/
+
 userRouter.post("/login", (req, res) => {
     console.log("post to login, email = "+req.body.email);
     db.Users.findOne({
