@@ -59,16 +59,11 @@ class Register extends Component {
             email: this.state.email,
             password: this.state.password,
             isLoggedIn: 1
-
-
-
-            
-             
-
 		})
 			.then(response => {
 				console.log(response)
-				if (!response.data.err) {
+				if (response.data.err) {
+                    console.log(response.data.err) 
                     console.log('successful signup')
                     this.props.history.push('/sale');
                     alert("You have been signed up");
