@@ -62,6 +62,24 @@ class Enter extends Component {
         })
     }
 
+    updateIsLoggenIn = () => {
+    Axios.put('/login', {
+        email: this.state.email,
+        
+    }).then((res) => {
+        console.log("redirect to sale page"); 
+     this.props.history.push('/sale');
+            
+        
+    }).catch(error => {
+        console.log('Login error: ')
+        console.log(error)
+
+    })
+  
+}
+
+
     handleInputChange = event => {
         const { name, value } = event.target;
         this.setState({
@@ -100,10 +118,10 @@ class Enter extends Component {
                     console.log("response message");
                     console.log(res.data.message);
                     console.log(res.data);
-                    
+
                     //console.log(res.data.user.email);
                     console.log('successful login')
-                    this.props.history.push('/sale');
+                    this.updateIsLoggenIn();
                     alert("You have logged in");
 					// this.setState({ //redirect to login page
 					// 	redirectTo: '/login'

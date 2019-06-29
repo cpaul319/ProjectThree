@@ -91,18 +91,18 @@ userRouter.post("/register", (req, res) => {
 })
 userRouter.put("/login", (req, res) => {
 
-    const userData = {
-        isLoggedIn: 1
-    }
     db.Users.findOne({
         where: {
             email: req.body.email
         }
     })
-        .then(user => {
-            db.Users.update(userData)
+        .then(userDb => {
+            console.log(userDb.dataValues.email);
+            let user = userDb.dataValues;
+            //db.Users.update(userData)
+            db.Users.update({isLoggedIn:1},{where:{email:user.email}})
                 .then(user => {
-                    res.json({ status: user.email + " isLoggedIn has changed" })
+                    res.json({ status: "User's isLoggedIn has changed" })
                 })
 
         })
