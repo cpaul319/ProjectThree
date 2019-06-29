@@ -1,12 +1,7 @@
 {
- 
- 
-    
- 
   "development": {
-    "username": "root",
-    "password": "password123",
- 
+    "username": "user",
+    "password": "password231",
     "database": "UserDb",
     "host": "localhost",
     "dialect": "mysql"
