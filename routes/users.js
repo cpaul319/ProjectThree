@@ -32,6 +32,7 @@ userRouter.get("/api/loggedin", function (req, res) {
 });*/
 
 userRouter.put("/api/buy", function(req, res)    {
+    // buy route created!
     console.log("buy route called");
     db.Users.update({
         swag1quantity: req.body.swag1quantity,
