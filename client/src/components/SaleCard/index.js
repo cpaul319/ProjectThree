@@ -128,6 +128,10 @@ class SaleCard extends Component {
       });
   }
 
+  buyItem() {
+    console.log("buy item called!");
+  }
+
   render() {
     return (
       <div>
@@ -143,7 +147,7 @@ class SaleCard extends Component {
                   <p className="card-text card-desc">{this.props.description}</p>
                   <p className="card-price">{this.props.price}</p>
                   <div className="card-btn">
-                    <button className='btn btn-outline-dark'>Buy this item</button>
+                    <button className='btn btn-outline-dark'  onClick={this.buyItem}>Buy this item</button>
                   </div>
                 </div>
               </div>
