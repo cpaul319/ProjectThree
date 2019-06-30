@@ -13,7 +13,7 @@ userRouter.post("/api/users", (req, res) => {
 });
 
 userRouter.put("/api/login/:id", function (req, res) {
-    console.log("log out function is called.");
+    console.log("log in function is called.");
     db.Users.update({
         isLoggedIn: 1
     },
