@@ -11,6 +11,7 @@ class OrderNav extends Component {
   };
 
   Logout() {
+    // Log out function.
     var id;
 
     console.log("log out function called.");
