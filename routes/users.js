@@ -27,6 +27,10 @@ userRouter.get("/api/loggedin", function (req, res) {
     });
 });
 
+/*userRouter.put("/api/usersbuy/:id", function (req, res) {
+    console.log("purchase")
+});*/
+
 userRouter.put("/api/login/:id", function (req, res) {
     console.log("log in function is called.");
     db.Users.update({
