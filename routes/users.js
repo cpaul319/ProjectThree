@@ -31,6 +31,33 @@ userRouter.get("/api/loggedin", function (req, res) {
     console.log("purchase")
 });*/
 
+userRouter.put("api/buy", function(req, res)    {
+    console.log("buy route called");
+    db.Users.update({
+        swag1quantity: req.body.swag1quantity,
+        swag2quantity: req.body.swag2quantity,
+        swag3quantity: req.body.swag3quantity,
+        swag4quantity: req.body.swag4quantity,
+        swag5quantity: req.body.swag5quantity,
+        swag6quantity: req.body.swag6quantity,
+        swag7quantity: req.body.swag7quantity,
+        swag8quantity: req.body.swag8quantity,
+        swag9quantity: req.body.swag9quantity,
+        swag10quantity: req.body.swag10quantity
+    },
+    {
+        where:  {
+            email: req.body.email
+        }
+    }).then(function (dbUsers)  {
+        res.json(dbUsers);
+        console.log("item purchased");
+    }).catch(err => {
+        console.log("weird error");
+        res.status(400).json({error: err});
+    });    
+});
+
 userRouter.put("/api/login/:id", function (req, res) {
     console.log("log in function is called.");
     db.Users.update({
