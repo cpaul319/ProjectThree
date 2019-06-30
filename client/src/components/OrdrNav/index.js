@@ -14,13 +14,14 @@ class OrderNav extends Component {
     // Log out function.
     var id;
 
+    console.log("this is order nav");
     console.log("log out function called.");
     axios.get('api/allusers')
       .then(function (res) {
         //const firstName = firstName.res.data;
         //this.setState({ firstName });
         var id;
-        console.log("this is sale navigation bar.");
+        console.log("this is order navigation bar.");
         for (var c = 0; c < res.data.length; c++) {
           if (res.data[c].isLoggedIn == 1) {
             id = res.data[c].id;

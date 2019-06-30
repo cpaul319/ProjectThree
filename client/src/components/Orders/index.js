@@ -1,6 +1,6 @@
 import React from 'react';
 import './orders.css';
-import OrderNav from '../OrderNav'
+import OrderNav from '../OrdrNav'
 
 
 
