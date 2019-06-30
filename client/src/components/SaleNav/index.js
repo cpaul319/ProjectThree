@@ -30,7 +30,7 @@ Logout()  {
     console.log(error);
   });
   console.log("logging out");
-  axios.put('/api/logout/', 
+  //axios.put('/api/logout/', 
 }
  
 render()  {

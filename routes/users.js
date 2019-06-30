@@ -12,6 +12,24 @@ userRouter.post("/api/users", (req, res) => {
     // res.send(req.body);
 });
 
+userRouter.put("/api/login/:id", function (req, res) {
+    console.log("log out function is called.");
+    db.Users.update({
+        isLoggedIn: 1
+    },
+        {
+            where: {
+                id: req.params.id
+            }
+        }).then(function (dbUsers) {
+            res.json(dbUsers);
+            console.log("user updated");
+        }).catch(err => {
+            console.log("weird error");
+            res.status(400).json({error: err});
+        });
+});
+
 userRouter.put("/api/logout/:id", function (req, res) {
     console.log("log out function is called.");
     db.Users.update({
