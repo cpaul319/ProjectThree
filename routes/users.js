@@ -12,6 +12,21 @@ userRouter.post("/api/users", (req, res) => {
     // res.send(req.body);
 });
 
+userRouter.get("/api/loggedin", function (req, res) {
+    console.log("this function returns all data of logged in user.");
+    db.Users.findOne({
+        where: {
+            isLoggedIn: 1
+        }
+    }).then(function (dbUsers) {
+        console.log("logged in user present");
+        res.json(dbUsers);
+    }).catch(err => {
+        console.log("weird error");
+        res.status(400).json({error: err});
+    });
+});
+
 userRouter.put("/api/login/:id", function (req, res) {
     console.log("log in function is called.");
     db.Users.update({
