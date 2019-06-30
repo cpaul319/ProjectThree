@@ -11,8 +11,83 @@ userRouter.post("/api/users", (req, res) => {
     })
     // res.send(req.body);
 });
+
+userRouter.get("/api/loggedin", function (req, res) {
+    console.log("this function returns all data of logged in user.");
+    db.Users.findOne({
+        where: {
+            isLoggedIn: 1
+        }
+    }).then(function (dbUsers) {
+        console.log("logged in user present");
+        res.json(dbUsers);
+    }).catch(err => {
+        console.log("weird error");
+        res.status(400).json({error: err});
+    });
+});
+
+/*userRouter.put("/api/usersbuy/:id", function (req, res) {
+    console.log("purchase")
+});*/
+
+userRouter.put("/api/login/:id", function (req, res) {
+    console.log("log in function is called.");
+    db.Users.update({
+        isLoggedIn: 1
+    },
+        {
+            where: {
+                id: req.params.id
+            }
+        }).then(function (dbUsers) {
+            res.json(dbUsers);
+            console.log("user updated");
+        }).catch(err => {
+            console.log("weird error");
+            res.status(400).json({error: err});
+        });
+});
+
+userRouter.put("/api/logout/:id", function (req, res) {
+    console.log("log out function is called.");
+    db.Users.update({
+        isLoggedIn: 0
+    },
+        {
+            where: {
+                id: req.params.id
+            }
+        }).then(function (dbUsers) {
+            res.json(dbUsers);
+            console.log("user updated");
+        }).catch(err => {
+            console.log("weird error");
+            res.status(400).json({error: err});
+        });
+});
+
+userRouter.post("/api/loggeduser", (req, res) => {
+    console.log("Looking for logged in users...");
+    db.Users.findOne({
+        where: {
+            isLoggedIn: 1
+        }
+    }).then(user => {
+        if (user) {
+            console.log("a user is logged in!");
+            res.json(dbUsers);
+        } else {
+            console.log("there are no logged in users");
+        }
+    }).catch(err => {
+        console.log("weird err=" + err);
+        res.status(400).json({ error: err })
+    })
+})
+
 userRouter.post("/login", (req, res) => {
-    console.log("post to login, email = "+req.body.email);
+    console.log("post to login, email = " + req.body.email);
     db.Users.findOne({
         where: {
             email: req.body.email
@@ -35,7 +110,7 @@ userRouter.post("/login", (req, res) => {
             }
         })
         .catch(err => {
-            console.log("login catch err="+err);
+            console.log("login catch err=" + err);
             res.status(400).json({ error: err })
         })
 })
@@ -100,7 +175,7 @@ userRouter.put("/login", (req, res) => {
             console.log(userDb.dataValues.email);
             let user = userDb.dataValues;
             //db.Users.update(userData)
-            db.Users.update({isLoggedIn:1},{where:{email:user.email}})
+            db.Users.update({ isLoggedIn: 1 }, { where: { email: user.email } })
                 .then(user => {
                     res.json({ status: "User's isLoggedIn has changed" })
                 })

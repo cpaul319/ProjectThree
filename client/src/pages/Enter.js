@@ -122,7 +122,7 @@ class Enter extends Component {
                     //console.log(res.data.user.email);
                     console.log('successful login')
                     this.updateIsLoggenIn();
-                    alert("You have logged in");
+                    //alert("You have logged in");
 					// this.setState({ //redirect to login page
 					// 	redirectTo: '/login'
 					// })

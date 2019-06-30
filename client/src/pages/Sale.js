@@ -29,10 +29,17 @@ class Sale extends Component {
   componentDidMount() {
     console.log("did mount");
     //console.log("imported email: " + Enter.state.email);
-    axios.get('api/users')
+    axios.get('api/allusers')
       .then(function (res) {
-        const firstName = firstName.res.data;
-        this.setState({ firstName });
+        //const firstName = firstName.res.data;
+        //this.setState({ firstName });
+        console.log("this is sale page");
+        for (var c = 0; c < res.data.length; c++) {
+          if (res.data[c].isLoggedIn == 1)  {
+            console.log(res.data[c].email + " is logged in!");
+            console.log("id: " + res.data[c].id);
+          }
+        }
       })
       .catch(function (error) {
         console.log(error);
