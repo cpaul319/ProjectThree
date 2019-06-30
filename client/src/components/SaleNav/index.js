@@ -1,9 +1,39 @@
-import React from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
+import axios from "axios";
 
-function SaleNav() {
-  const navbarImg = <img className="d-none d-lg-inline sale-nav-img" src="/images/hand.jpg" alt="sword" />;
+class SaleNav extends Component {
+  state = {
+    hi: ""
+    //navbarImg = <img className="d-none d-lg-inline sale-nav-img" src="/images/hand.jpg" alt="sword" />;
+  };
+  //const navbarImg = <img className="d-none d-lg-inline sale-nav-img" src="/images/hand.jpg" alt="sword" />;
+
+Logout()  {
+  var id;
+
+  axios.get('api/allusers')
+  .then(function (res) {
+    //const firstName = firstName.res.data;
+    //this.setState({ firstName });
+    console.log("this is sale navigation bar.");
+    for (var c = 0; c < res.data.length; c++) {
+      if (res.data[c].isLoggedIn == 1)  {
+        console.log(res.data[c].email + " is logged in!");
+        console.log("id: " + res.data[c].id);
+        id = res.data[c].id;
+      }
+    }
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+  console.log("logging out");
+  axios.put('/api/logout/', 
+}
+ 
+render()  {
   return (
     <header>
     {/*}  <nav className="navbar navbar-dark bg-dark">
@@ -23,15 +53,15 @@ function SaleNav() {
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
               <a className="nav-link sale-nav-link" href="*">Hello<span className="sr-only">(current)</span></a>
-            </li>{navbarImg}
+            </li>{/*{navbarImg}*/}
             <li className="nav-item">
               <a className="nav-link sale-nav-link" href="/account">Account</a>
-            </li>{navbarImg}
+            </li>{/*{navbarImg}*/}
             <li className="nav-item">
               <a className="nav-link sale-nav-link" href="/orders">Orders</a>
-            </li>{navbarImg}
+            </li>{/*{navbarImg}*/}
             <li className="nav-item">
-              <a className="nav-link sale-nav-link" href="/">Log Out</a>
+              <a className="nav-link sale-nav-link" href="/" onClick = "">Log Out</a>
             </li>
             {/* <li className="nav-item dropdown">
             <li className="nav-item active">
@@ -58,6 +88,7 @@ function SaleNav() {
       </nav>
     </header>
   );
+}
 }
 
 export default SaleNav;

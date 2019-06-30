@@ -37,6 +37,7 @@ class Sale extends Component {
         for (var c = 0; c < res.data.length; c++) {
           if (res.data[c].isLoggedIn == 1)  {
             console.log(res.data[c].email + " is logged in!");
+            console.log("id: " + res.data[c].id);
           }
         }
       })
