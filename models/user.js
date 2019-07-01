@@ -25,8 +25,18 @@ module.exports = function(sequelize, DataTypes) {
     swag4name: { type: DataTypes.STRING, defaultValue: "Swag 4"},
     swag4quantity: { type: DataTypes.INTEGER, defaultValue: 0 },
     swag5name: { type: DataTypes.STRING, defaultValue: "Swag 5"},
-    swag5quantity: { type: DataTypes.INTEGER, defaultValue: 0 }
-  });
+    swag5quantity: { type: DataTypes.INTEGER, defaultValue: 0 },
+    swag6name: { type: DataTypes.STRING, defaultValue: "Swag 6"},
+    swag6quantity: { type: DataTypes.INTEGER, defaultValue: 0 },
+    swag7name: { type: DataTypes.STRING, defaultValue: "Swag 7"},
+    swag7quantity: { type: DataTypes.INTEGER, defaultValue: 0 },
+    swag8name: { type: DataTypes.STRING, defaultValue: "Swag 8"},
+    swag8quantity: { type: DataTypes.INTEGER, defaultValue: 0 },
+    swag9name: { type: DataTypes.STRING, defaultValue: "Swag 9"},
+    swag9quantity: { type: DataTypes.INTEGER, defaultValue: 0 },
+    swag10name: { type: DataTypes.STRING, defaultValue: "Swag 10"},
+    swag10quantity: { type: DataTypes.INTEGER, defaultValue: 0 }
+  })
   // User.beforeCreate((user, options) => {
   //   const salt = bcrypt.genSaltSync();
   //   user.password = bcrypt.hashSync(user.password, salt);

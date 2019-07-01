@@ -8,9 +8,10 @@ import SaleCard from "../components/SaleCard";
 import item from "../items.json"
 //minor change for push update
 class Sale extends Component {
-
-  state = {
-    userName: "",
+  constructor() {
+    super()
+    this.state = {
+     userName: "",
     firstName: "",
     lastName: "",
     email: "",
@@ -23,16 +24,26 @@ class Sale extends Component {
     expDate: 1,
     cvv: 4,
     item
-
-  };
+    }
+  }
 
   componentDidMount() {
     console.log("did mount");
+  //  this.setState({ userName: this.props.userData.userName});
+    console.log( this.props.userData);
+    // console.log( this.props.LoggedInUserData.user.userName);
     //console.log("imported email: " + Enter.state.email);
-    axios.get('api/users')
+    axios.get('api/allusers')
       .then(function (res) {
-        const firstName = firstName.res.data;
-        this.setState({ firstName });
+        //const firstName = firstName.res.data;
+        //this.setState({ firstName });
+        console.log("this is sale page");
+        for (var c = 0; c < res.data.length; c++) {
+          if (res.data[c].isLoggedIn == 1)  {
+            console.log(res.data[c].email + " is logged in!");
+            console.log("id: " + res.data[c].id);
+          }
+        }
       })
       .catch(function (error) {
         console.log(error);
@@ -57,7 +68,7 @@ class Sale extends Component {
             name={item.name}
             price={item.price}
             description={item.description}
-
+            index={item.index}
           />
         ))}
 
