@@ -58,7 +58,7 @@ class Sale extends Component {
     
     console.log("before Log In function is called.");
     return (
-      <div className="App" style={background}>
+      <div className="App">
         <SaleNav />
         {/* <p>Welcome {this.state.userName}</p>
         <p>Sale page</p> */}
