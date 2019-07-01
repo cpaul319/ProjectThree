@@ -10,6 +10,7 @@ const Orders = (props) => {
       <OrderNav />
       <div className='container'>
         <h2 className='text-center'>Order History</h2>
+        {/*
         <br></br>
         <div className="card mb-3">
           <div className="row no-gutters">
@@ -58,7 +59,7 @@ const Orders = (props) => {
             <p>$15</p>
           </div>
         </div>
-      </div>
+      </div>*/}
 
        {/* <table className="table table-striped">
           <thead>
