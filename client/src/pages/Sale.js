@@ -29,7 +29,7 @@ class Sale extends Component {
   }
   componentWillReceiveProps() {
 
-    console.log(this.props.userData);
+    // console.log(this.props.userData);
   }
   //testing sale page
   componentDidMount() {
@@ -38,7 +38,7 @@ class Sale extends Component {
     console.log(this.props.userData.userData);
     var id = this.props.userData.userData.user.id;
     console.log(id);
-   var userName = this.props.userData.userData.user.userName;
+    var userName = this.props.userData.userData.user.userName;
     console.log(userName);
     var email = this.props.userData.userData.user.email;
     console.log(email);
@@ -67,34 +67,32 @@ class Sale extends Component {
 
     console.log("before Log In function is called.");
 
-    if (this.props.userData.userData) {
-      return <Redirect to={{ pathname: '/login' }} />
-    } else {
-      return (
-        <div className="App" style={background}>
-          <SaleNav
+
+    return (
+      <div className="App" style={background}>
+        <SaleNav
+          userData={this.props.userData}
+
+        />
+        {/* <p>Welcome {this.state.userName}</p>
+        <p>Sale page</p> */}
+        {this.state.item.map(item => (
+          <SaleCard
             userData={this.props.userData}
+            image={item.image}
+            name={item.name}
+            price={item.price}
+            description={item.description}
 
           />
-          {/* <p>Welcome {this.state.userName}</p>
-        <p>Sale page</p> */}
-          {this.state.item.map(item => (
-            <SaleCard
-              userData={this.props.userData}
-              image={item.image}
-              name={item.name}
-              price={item.price}
-              description={item.description}
+        ))}
 
-            />
-          ))}
+      </div>
+    );
+    console.log("after Log In function is called.");
 
-        </div>
-      );
-      console.log("after Log In function is called.");
-
-    }
   }
+
 
 }
 

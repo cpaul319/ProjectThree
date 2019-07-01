@@ -3,21 +3,24 @@ import Register from "./pages/Register";
 import NoMatch from "./pages/NoMatch";
 //import React from "react";
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import LogIn from "./pages/LogIn";
 import Enter from "./pages/Enter";
 import Forgot from "./pages/Forgot";
 import Sale from "./pages/Sale";
 import Order from "./pages/Orders";
 import Account from "./pages/Account";
+ 
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
       username: null,
-      LoggedInUserData: "test",
-      userData: false
+      LoggedInUserData: false
+      // userData: false
+       
+       
     }
 
     this.getLoggedInUser = this.getLoggedInUser.bind(this)
@@ -34,7 +37,10 @@ class App extends Component {
 
 
   componentDidMount() {
+    console.log(this.state.userData);
+     
     // this.props.userData;
+    
 
   }
   //do axios call to get logged in user. and pass that object to other pages
@@ -52,8 +58,8 @@ class App extends Component {
     return (
       <Router>
         <div>
-
-
+{/* 
+        <Route exact path="/" render={() => (loggedIn ? (<Redirect to="/dashboard"/>) : ( <PublicHomePage/>))}/> */}
           <Switch>
             <Route exact path="/" component={LogIn} />
             <Route exact path="/register" component={Register} />
@@ -61,10 +67,13 @@ class App extends Component {
             {/* <Route exact path="/login" component={() => <Enter foo="bar" />} /> */}
             <Route path="/login" render={() => <Enter getLoggedInUser={this.getLoggedInUser} />} />
             <Route exect path="/forgot" component={Forgot} />
-            <Route exact path="/sale" component={() => <Sale userData={this.state.userData} />} /> */}
+            {/* <Route path="/sale" render={() => (this.state.userData.userData.user.isLoggedIn ? (<Sale userData={this.state.userData} />) : ( <Redirect to="/login"/>) )}/> */}
+            <Route exact path="/sale" component={() => <Sale userData={this.state.userData} />} /> 
               {/* <Route exact path="/sale" component={Sale} /> */}
             <Route exact path="/orders" component={Order} />
             <Route component={NoMatch} />
+
+            
           </Switch>
         </div>
       </Router>
