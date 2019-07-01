@@ -7,7 +7,7 @@ const db = require('../models');
 userRouter.post("/api/users", (req, res) => {
 
     db.Users.create(req.body).then(function (DBUsers) {
-        res.json(DBUsers);
+        res.json(dbUsers);
     })
     // res.send(req.body);
 });
