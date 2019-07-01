@@ -68,7 +68,7 @@ class Sale extends Component {
             name={item.name}
             price={item.price}
             description={item.description}
-
+            index={item.index}
           />
         ))}
 

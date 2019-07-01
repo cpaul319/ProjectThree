@@ -39,11 +39,13 @@ class SaleCard extends Component {
       swag9name: "Swag 9",
       swag9quantity: 0,
       swag10name: "Swag 10",
-      swag10quantity: 0
+      swag10quantity: 0,
+      email: ""
       // redirect: false
     }
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
+    this.buyItem = this.buyItem.bind(this);
   };
   //   handleInputChange = event => {
 
@@ -58,36 +60,45 @@ class SaleCard extends Component {
 
     const user = {
 
-      swag1name: this.state.swag1name,
+      //swag1name: this.state.swag1name,
       swag1quantity: this.state.swag1quantity,
-      swag2name: this.state.swag2name,
+      //swag2name: this.state.swag2name,
       swag2quantity: this.state.swag2quantity,
-      swag3name: this.state.swag3name,
+      //swag3name: this.state.swag3name,
       swag3quantity: this.state.swag3quantity,
-      swag4name: this.state.swag4name,
+      //swag4name: this.state.swag4name,
       swag4quantity: this.state.swag4quantity,
-      swag5name: this.state.swag5name,
+      //swag5name: this.state.swag5name,
       swag5quantity: this.state.swag5quantity,
-      swag6name: this.state.swag6name,
+      //swag6name: this.state.swag6name,
       swag6quantity: this.state.swag6quantity,
-      swag7name: this.state.swag7name,
+      //swag7name: this.state.swag7name,
       swag7quantity: this.state.swag7quantity,
-      swag8name: this.state.swag8name,
+      //swag8name: this.state.swag8name,
       swag8quantity: this.state.swag8quantity,
-      swag9name: this.state.swag9name,
+      //swag9name: this.state.swag9name,
       swag9quantity: this.state.swag9quantity,
-      swag10name: this.state.swag10name,
-      swag10quantity: this.state.swag10quantity,
+      //swag10name: this.state.swag10name,
+      swag10quantity: this.state.swag10quantity //,
+      //user
     }
     console.log(user);
 
-    axios.put('api/users', user)
+    axios.put("/api/buy", user)
       .then(function (response) {
         console.log(response);
       })
       .catch(function (error) {
         console.log(error);
       });
+    /*
+    axios.put('/api/users', user)
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });*/
 
 
 
@@ -100,30 +111,157 @@ class SaleCard extends Component {
   componentDidMount() {
     const that = this;
     console.log("this is sale card");
-    axios.get('api/allusers')
+    axios.get('/api/allusers')
       .then(function (res) {
         console.log("inside sale card axios get all cards call");
-        that.state.swag1quantity = res.data[0].swag1quantity;
-        console.log("that.state.swage1quantity: " + that.state.swag1quantity);
-        that.state.swag2quantity = res.data[1].swag2quantity;
-        console.log("that.state.swage2quantity: " + that.state.swag2quantity);
-        that.state.swag3quantity = res.data[2].swag3quantity;
-        console.log("that.state.swage3quantity: " + that.state.swag3quantity);
-        that.state.swag4quantity = res.data[3].swag4quantity;
-        console.log("that.state.swage4quantity: " + that.state.swag4quantity);
-        that.state.swag5quantity = res.data[4].swag5quantity;
-        console.log("that.state.swage5quantity: " + that.state.swag5quantity);
-        that.state.swag6quantity = res.data[5].swag6quantity;
-        console.log("that.state.swage6quantity: " + that.state.swag6quantity);
-        that.state.swag7quantity = res.data[6].swag7quantity;
-        console.log("that.state.swage7quantity: " + that.state.swag7quantity);
-        that.state.swag8quantity = res.data[7].swag8quantity;
-        console.log("that.state.swage8quantity: " + that.state.swag8quantity);
-        that.state.swag9quantity = res.data[8].swag5quantity;
-        console.log("that.state.swage9quantity: " + that.state.swag9quantity);
-        that.state.swag10quantity = res.data[9].swag5quantity;
-        console.log("that.state.swage10quantity: " + that.state.swag10quantity);                       
+        for (var c = 0; c < res.data.length; c++) {
+          console.log("inside loop");
+          if (res.data[c].isLoggedIn == 1) {
+            that.state.email = res.data[c].email;
+            console.log("that.state.email is " + that.state.email);
+            console.log("res.data[" + c + "].email is " + res.data[c].email);
+            that.setState({
+              email: res.data[c].email
+            });
+            that.setState({
+              swag1quantity: res.data[c].swag1quantity
+            });
+            that.setState({
+              swag2quantity: res.data[c].swag2quantity
+            });
+            that.setState({
+              swag3quantity: res.data[c].swag3quantity
+            });
+            that.setState({
+              swag4quantity: res.data[c].swag4quantity
+            });
+            that.setState({
+              swag5quantity: res.data[c].swag5quantity
+            });
+            that.setState({
+              swag6quantity: res.data[c].swag6quantity
+            });
+            that.setState({
+              swag7quantity: res.data[c].swag7quantity
+            });
+            that.setState({
+              swag8quantity: res.data[c].swag8quantity
+            });
+            that.setState({
+              swag9quantity: res.data[c].swag9quantity
+            });
+            that.setState({
+              swag10quantity: res.data[c].swag10quantity
+            });   
+            console.log("this.state.swag1quantity: " + that.state.swag1quantity);
+            console.log("this.state.swag2quantity: " + that.state.swag2quantity);
+            console.log("this.state.swag3quantity: " + that.state.swag3quantity);
+            console.log("this.state.swag4quantity: " + that.state.swag4quantity);
+            console.log("this.state.swag5quantity: " + that.state.swag5quantity);
+            console.log("this.state.swag6quantity: " + that.state.swag6quantity);
+            console.log("this.state.swag7quantity: " + that.state.swag7quantity);
+            console.log("this.state.swag8quantity: " + that.state.swag8quantity);
+            console.log("this.state.swag9quantity: " + that.state.swag9quantity);
+            console.log("this.state.swag10quantity: " + that.state.swag10quantity);
+            /*       
+            that.state.swag1quantity = res.data[c].swag1quantity;
+            console.log("that.state.swage1quantity: " + that.state.swag1quantity);
+            that.state.swag2quantity = res.data[c].swag2quantity;
+            console.log("that.state.swage2quantity: " + that.state.swag2quantity);
+            that.state.swag3quantity = res.data[c].swag3quantity;
+            console.log("that.state.swage3quantity: " + that.state.swag3quantity);
+            that.state.swag4quantity = res.data[c].swag4quantity;
+            console.log("that.state.swage4quantity: " + that.state.swag4quantity);
+            that.state.swag5quantity = res.data[c].swag5quantity;
+            console.log("that.state.swage5quantity: " + that.state.swag5quantity);
+            that.state.swag6quantity = res.data[c].swag6quantity;
+            console.log("that.state.swage6quantity: " + that.state.swag6quantity);
+            that.state.swag7quantity = res.data[c].swag7quantity;
+            console.log("that.state.swage7quantity: " + that.state.swag7quantity);
+            that.state.swag8quantity = res.data[c].swag8quantity;
+            console.log("that.state.swage8quantity: " + that.state.swag8quantity);
+            that.state.swag9quantity = res.data[c].swag5quantity;
+            console.log("that.state.swage9quantity: " + that.state.swag9quantity);
+            that.state.swag10quantity = res.data[c].swag5quantity;
+            console.log("that.state.swage10quantity: " + that.state.swag10quantity);
+            */
+          }
+        }
       }).catch(function (error) {
+        console.log(error);
+      });
+
+  }
+
+  buyItem() {
+    const that = this;
+    console.log("buy item called!");
+    console.log("item index is " + this.props.index);
+    console.log("item name is " + this.props.name);
+    if (this.props.index == 0) {
+      that.state.swag1quantity++;
+      console.log("swag 1 quantity: " + that.state.swag1quantity);
+    } else if (this.props.index == 1) {
+      that.state.swag2quantity++;
+      console.log("swag 2 quantity: " + that.state.swag2quantity);
+    } else if (this.props.index == 2) {
+      that.state.swag3quantity++;
+      console.log("swag 3 quantity: " + that.state.swag3quantity);
+    } else if (this.props.index == 3) {
+      that.state.swag4quantity++;
+      console.log("swag 4 quantity: " + that.state.swag4quantity);
+    } else if (this.props.index == 4) {
+      that.state.swag5quantity++;
+      console.log("swag 5 quantity: " + that.state.swag5quantity);
+    } else if (this.props.index == 5) {
+      that.state.swag6quantity++;
+      console.log("swag 6 quantity: " + that.state.swag6quantity);
+    } else if (this.props.index == 6) {
+      that.state.swag7quantity++;
+      console.log("swag 7 quantity: " + that.state.swag7quantity);
+    } else if (this.props.index == 7) {
+      that.state.swag8quantity++;
+      console.log("swag 8 quantity: " + that.state.swag8quantity);
+    } else if (this.props.index == 8) {
+      that.state.swag9quantity++;
+      console.log("swag 9 quantity: " + that.state.swag9quantity);
+    } else {
+      that.state.swag10quantity++;
+      console.log("swag 10 quantity: " + that.state.swag10quantity);
+    }
+    const user = {
+
+      //swag1name: this.state.swag1name,
+      swag1quantity: that.state.swag1quantity,
+      //swag2name: this.state.swag2name,
+      swag2quantity: that.state.swag2quantity,
+      //swag3name: this.state.swag3name,
+      swag3quantity: that.state.swag3quantity,
+      //swag4name: this.state.swag4name,
+      swag4quantity: that.state.swag4quantity,
+      //swag5name: this.state.swag5name,
+      swag5quantity: that.state.swag5quantity,
+      //swag6name: this.state.swag6name,
+      swag6quantity: that.state.swag6quantity,
+      //swag7name: this.state.swag7name,
+      swag7quantity: that.state.swag7quantity,
+      //swag8name: this.state.swag8name,
+      swag8quantity: that.state.swag8quantity,
+      //swag9name: this.state.swag9name,
+      swag9quantity: that.state.swag9quantity,
+      //swag10name: this.state.swag10name,
+      swag10quantity: that.state.swag10quantity,
+      email: that.state.email
+      //user
+    }
+    console.log(user);
+
+    axios.put("/api/buy", user)
+      .then(function (response) {
+        console.log(response);
+        window.location.reload();
+      })
+      .catch(function (error) {
         console.log(error);
       });
   }
@@ -143,7 +281,7 @@ class SaleCard extends Component {
                   <p className="card-text card-desc">{this.props.description}</p>
                   <p className="card-price">{this.props.price}</p>
                   <div className="card-btn">
-                    <button className='btn btn-outline-dark'>Buy this item</button>
+                    <button className='btn btn-outline-dark' onClick={this.buyItem} itemid={this.props.index}>Buy this item</button>
                   </div>
                 </div>
               </div>
