@@ -98,32 +98,31 @@ class SaleCard extends Component {
   }
 
   componentDidMount() {
+    const that = this;
     console.log("this is sale card");
     axios.get('api/allusers')
       .then(function (res) {
         console.log("inside sale card axios get all cards call");
-        console.log("this.state.swage1quantity: " + this.state.swag1quantity);
-        /*
-        this.state.swag1quantity = res.data[0].swag1quantity;
-        console.log("swag 1 quantity is " + this.state.swag1quantity);
-        this.state.swag2quantity = res.data[1].swag1quantity;
-        console.log("swag 2 quantity is " + this.state.swag2quantity);
-        this.state.swag3quantity = res.data[2].swag1quantity;
-        console.log("swag 3 quantity is " + this.state.swag3quantity);
-        this.state.swag4quantity = res.data[3].swag1quantity;
-        console.log("swag 4 quantity is " + this.state.swag4quantity);
-        this.state.swag5quantity = res.data[4].swag1quantity;
-        console.log("swag 5 quantity is " + this.state.swag5quantity);
-        this.state.swag6quantity = res.data[5].swag1quantity;
-        console.log("swag 6 quantity is " + this.state.swag6quantity);
-        this.state.swag7quantity = res.data[6].swag1quantity;
-        console.log("swag 7 quantity is " + this.state.swag7quantity);
-        this.state.swag8quantity = res.data[7].swag1quantity;
-        console.log("swag 8 quantity is " + this.state.swag8quantity);
-        this.state.swag9quantity = res.data[8].swag1quantity;
-        console.log("swag 9 quantity is " + this.state.swag9quantity);
-        this.state.swag10quantity = res.data[9].swag1quantity;
-        console.log("swag 10 quantity is " + this.state.swag10quantity);*/
+        that.state.swag1quantity = res.data[0].swag1quantity;
+        console.log("that.state.swage1quantity: " + that.state.swag1quantity);
+        that.state.swag2quantity = res.data[1].swag2quantity;
+        console.log("that.state.swage2quantity: " + that.state.swag2quantity);
+        that.state.swag3quantity = res.data[2].swag3quantity;
+        console.log("that.state.swage3quantity: " + that.state.swag3quantity);
+        that.state.swag4quantity = res.data[3].swag4quantity;
+        console.log("that.state.swage4quantity: " + that.state.swag4quantity);
+        that.state.swag5quantity = res.data[4].swag5quantity;
+        console.log("that.state.swage5quantity: " + that.state.swag5quantity);
+        that.state.swag6quantity = res.data[5].swag6quantity;
+        console.log("that.state.swage6quantity: " + that.state.swag6quantity);
+        that.state.swag7quantity = res.data[6].swag7quantity;
+        console.log("that.state.swage7quantity: " + that.state.swag7quantity);
+        that.state.swag8quantity = res.data[7].swag8quantity;
+        console.log("that.state.swage8quantity: " + that.state.swag8quantity);
+        that.state.swag9quantity = res.data[8].swag5quantity;
+        console.log("that.state.swage9quantity: " + that.state.swag9quantity);
+        that.state.swag10quantity = res.data[9].swag5quantity;
+        console.log("that.state.swage10quantity: " + that.state.swag10quantity);                       
       }).catch(function (error) {
         console.log(error);
       });
