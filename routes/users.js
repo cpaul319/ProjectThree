@@ -12,21 +12,30 @@ userRouter.post("/api/users", (req, res) => {
     // res.send(req.body);
 });
 userRouter.post("/login", (req, res) => {
+    console.log("post to login, email = "+req.body.email);
     db.Users.findOne({
         where: {
             email: req.body.email
         }
     })
         .then(user => {
+            console.log("login then");
             if (user) {
+                console.log("then user exists, start bcrypt compareSync");
                 if (bcrypt.compareSync(req.body.password, user.password)) {
-                    res.send("User is a match")
+                    console.log("compareSync success");
+                    res.send({ message: true, user })
+                    console.log(user);
+                } else {
+                    console.log("compareSync failed");
                 }
             } else {
+                console.log("else no user");
                 res.status(400).json({ error: "User does not exist" })
             }
         })
         .catch(err => {
+            console.log("login catch err="+err);
             res.status(400).json({ error: err })
         })
 })
@@ -51,6 +60,7 @@ userRouter.post("/register", (req, res) => {
         lastName: req.body.lastName,
         email: req.body.email,
         password: req.body.password,
+        isLoggedIn: 1,
         created_at: now
     }
     db.Users.findOne({
@@ -79,6 +89,29 @@ userRouter.post("/register", (req, res) => {
         })
 
 })
+userRouter.put("/login", (req, res) => {
+
+    db.Users.findOne({
+        where: {
+            email: req.body.email
+        }
+    })
+        .then(userDb => {
+            console.log(userDb.dataValues.email);
+            let user = userDb.dataValues;
+            //db.Users.update(userData)
+            db.Users.update({isLoggedIn:1},{where:{email:user.email}})
+                .then(user => {
+                    res.json({ status: "User's isLoggedIn has changed" })
+                })
+
+        })
+        .catch(err => {
+            res.send("error: " + err)
+        })
+
+})
+
 
 
 // res.send(req.body);
