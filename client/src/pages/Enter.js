@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import ReactDOM from 'react-dom';
 import { isAbsolute } from "path";
 import EnterNav from "../components/EnterNav";
@@ -28,6 +29,17 @@ class Enter extends Component {
         this.toggle = this.toggle.bind(this);
         this.toggleNested = this.toggleNested.bind(this);
         this.toggleAll = this.toggleAll.bind(this);
+        this.setRedirect = this.setRedirect.bind(this);
+        this.renderRedirect = this.renderRedirect.bind(this);
+        this.updateIsLoggedIn = this.updateIsLoggedIn.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
+        
+    }
+
+    componentDidUpdate() {
+       
+        // console.log("updated: ", this.state);
     }
 
     toggle() {
@@ -51,9 +63,11 @@ class Enter extends Component {
     }
 
     setRedirect = () => {
+        console.log("inside setRedirect");
         this.setState({
             redirect: true
         })
+        console.log(this.state.redirect);
     }
 
     setCredentials = (cred) => {
@@ -62,15 +76,16 @@ class Enter extends Component {
         })
     }
 
-    updateIsLoggenIn = () => {
+    updateIsLoggedIn = () => {
+       
     Axios.put('/login', {
         email: this.state.email,
-        
+        isLoggedIn: 1   
     }).then((res) => {
         console.log("redirect to sale page"); 
-     this.props.history.push('/sale');
-            
-        
+        this.props.history.push('/sale');
+      
+               
     }).catch(error => {
         console.log('Login error: ')
         console.log(error)
@@ -89,7 +104,8 @@ class Enter extends Component {
     }
 
     renderRedirect = () => {
-        console.log("redirect works!");
+        console.log("inside renderRedirect");
+        console.log(this.state.redirect); 
         if (this.state.redirect) {
             return <Redirect to='/sale' />
         }
@@ -118,14 +134,13 @@ class Enter extends Component {
                     console.log("response message");
                     console.log(res.data.message);
                     console.log(res.data);
-
-                    //console.log(res.data.user.email);
                     console.log('successful login')
-                    this.updateIsLoggenIn();
-                    //alert("You have logged in");
-					// this.setState({ //redirect to login page
-					// 	redirectTo: '/login'
-					// })
+                    this.props.getLoggedInUser({
+                        
+                        userData: res.data
+                    })
+                    this.setRedirect();
+                    this.updateIsLoggedIn();
 				} else {
                     console.log('Login information does not match')
                     alert("Login information does not match");
@@ -140,16 +155,14 @@ class Enter extends Component {
         }
     }
 
-    componentDidUpdate() {
-        console.log("updated: ", this.state);
-    }
+  
 
     render() {
         return (
             <div className="App">
                 <EnterNav />
 
-                {this.renderRedirect()}
+                {/* {this.renderRedirect()} */}
                 <div className='container'>
                     <AvForm>
                         <AvField name="email" label="Email" type="email" onChange={this.handleInputChange} validate={{
@@ -178,5 +191,5 @@ class Enter extends Component {
         )
     }
 }
-
-export default Enter;
+export default withRouter(Enter);
+// export default Enter;

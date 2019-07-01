@@ -11,40 +11,64 @@ import Sale from "./pages/Sale";
 import Order from "./pages/Orders";
 import Account from "./pages/Account";
 
-/*class App extends Component {
+class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      username: null,
+      LoggedInUserData: "test"
+    }
 
-  state = {
-    email: ""
+    this.getLoggedInUser = this.getLoggedInUser.bind(this)
   }
 
-  setEmail (loggedin) {
+ 
+  setEmail(loggedin) {
     this.state.email = loggedin;
   }
 
-  getEmail()  {
+  getEmail() {
     return this.state.email;
   }
 
-  render()  { */
 
-  function App()  {
-
-  return (
-    <Router>
-      <div>
-        <Switch>
-          <Route exact path="/" component={LogIn} />
-          <Route exact path="/register" component={Register} />
-          <Route exact path="/account" component={Account} />
-          <Route exact path="/login" component={Enter} />
-          <Route exect path="/forgot" component={Forgot} />
-          <Route exact path = "/sale" component = {Sale} />
-          <Route exact path = "/orders" component = {Order} />
-          <Route component={NoMatch} />
-        </Switch>
-      </div>
-    </Router>
-  );
+  componentDidMount() {
+    // this.props.userData;
+  
 }
+  //do axios call to get logged in user. and pass that object to other pages
+  getLoggedInUser(userData){
+   
+    this.setState({ userData });
+    this.setState({ LoggedInUserData: userData});
+    // this.state.LoggedInUserData = userData;
+    console.log("Hello user data");
+    console.log(userData);
+  }
 
+  render() {
+
+      return (
+        <Router>
+          <div>
+
+
+            <Switch>
+              <Route exact path="/" component={LogIn} />
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/account" component={Account} />
+              {/* <Route exact path="/login" component={() => <Enter foo="bar" />} /> */}
+              <Route path="/login" render={() =><Enter getLoggedInUser={this.getLoggedInUser} />}  />
+              <Route exect path="/forgot" component={Forgot} />
+               <Route exact path="/sale" component={() =><Sale userData={this.state.userData} />}   /> */}
+              {/* <Route exact path="/sale" component={Sale} /> */}
+              <Route exact path="/orders" component={Order} />
+              <Route component={NoMatch} />
+            </Switch>
+          </div>
+        </Router>
+      );
+    }
+  
+}
 export default App;

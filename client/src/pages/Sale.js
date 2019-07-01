@@ -8,9 +8,10 @@ import SaleCard from "../components/SaleCard";
 import item from "../items.json"
 //minor change for push update
 class Sale extends Component {
-
-  state = {
-    userName: "",
+  constructor() {
+    super()
+    this.state = {
+     userName: "",
     firstName: "",
     lastName: "",
     email: "",
@@ -23,11 +24,14 @@ class Sale extends Component {
     expDate: 1,
     cvv: 4,
     item
-
-  };
+    }
+  }
 
   componentDidMount() {
     console.log("did mount");
+  //  this.setState({ userName: this.props.userData.userName});
+    console.log( this.props.userData);
+    // console.log( this.props.LoggedInUserData.user.userName);
     //console.log("imported email: " + Enter.state.email);
     axios.get('api/allusers')
       .then(function (res) {

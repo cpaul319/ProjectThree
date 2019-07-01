@@ -97,7 +97,7 @@ class Register extends Component {
                         this.toggleNested();
                     }
                     else {
-                        this.props.history.push('/sale');
+                        this.props.history.push('/login');
                     }
                     //alert("You have been signed up");
 					// this.setState({ //redirect to login page
