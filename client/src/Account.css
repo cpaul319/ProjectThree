@@ -48,16 +48,16 @@
         background: url("https://wallpaperaccess.com/full/25517.jpg");
         background-repeat: no-repeat;
         background-size: cover;
+        /* margin-top: 0; */
 
     }
 
     .account-container {
-        border-radius: 1rem;
         width: 70%;
-        /* background: rgb(255,255,255,.8); */
+        height: 100vh;
         padding: 1rem;
-        margin: 3rem auto;
-        /* font-family: 'Cinzel Decorative', cursive; */
+        margin: 0rem auto;
+       
     }
 
     #account-title {
@@ -70,7 +70,7 @@
         float: left;
         width: 40%;
         margin: 2rem;
-        /* font-family: 'Cinzel Decorative', cursive; */
+        font-family: 'Cinzel Decorative', cursive;
     }
 
     .account-box2 {
