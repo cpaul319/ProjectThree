@@ -106,7 +106,7 @@ class Orders extends Component {
         <OrderNav />
         <div className='container'>
           <h2 className='text-center' id = "history">Order History</h2>
-          {/*(this.state.swag1quantity > 0) &&*/}
+          {(this.state.swag1quantity > 0) &&
           <br></br>
           <div className="card mb-3">
             <div className="row no-gutters"> 
@@ -122,7 +122,7 @@ class Orders extends Component {
                   <p>Quantity: {this.state.swag1quantity}</p>
                 </div>
               </div>
-            </div>
+            </div>}
         </div>
       </div>
     )
