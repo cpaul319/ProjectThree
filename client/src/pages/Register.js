@@ -83,11 +83,14 @@ class Register extends Component {
 	}
 
     render() {
+        
         return (
+            
             <div id="reg-body">
+                
+                <div className="outer-wrapper">
                 <LogNav />
                 <div className="reg-container">
-
                     <p id="reg-title">Sign Up</p>
                     {/* <div className="reg-box1"> */}
                     <AvForm>
@@ -169,6 +172,8 @@ class Register extends Component {
                         <Button className="submit-btn" color="secondary" onClick={this.handleFormSubmit}>Submit</Button>
 
                     </AvForm>
+                        
+                </div>
                 </div>
                
             </div>

@@ -168,7 +168,7 @@ class Account extends Component {
                                     required: { value: true, errorMessage: 'Please enter user name' }
                                 }}
                             />
-                            {/* <AvField
+                            <AvField
                                 name="firstName"
                                 placeholder="First Name"
                                 value={this.state.firstName}
@@ -187,7 +187,7 @@ class Account extends Component {
                                     required: { value: true, errorMessage: 'Please enter last name' },
                                     pattern: { value: '^[A-Za-z]+$', errorMessage: 'Your name must be composed only with letters' }
                                 }}
-                            /> */}
+                            />
                             <AvField
                                 name="email"
                                 placeholder="e-mail"
@@ -198,7 +198,7 @@ class Account extends Component {
                                     required: { value: true, errorMessage: 'Please enter e-mail' }
                                 }}
                             />
-                            {/* <AvField
+                            <AvField
                                 name="password"
                                 placeholder="password"
                                 type = "password"
@@ -224,7 +224,7 @@ class Account extends Component {
                                     match: { value: 'password', errorMessage: 'Passwords must match' }
                                 }}
 
-                            /> */}
+                            />
                         </div>
                         <div className="account-box2">
                             <AvField
