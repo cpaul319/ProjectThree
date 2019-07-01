@@ -82,7 +82,7 @@ class Orders extends Component {
             console.log("that.state.swag8quantity: " + that.state.swag8quantity);
             console.log("that.state.swag9quantity: " + that.state.swag9quantity);
             console.log("that.state.swag10quantity: " + that.state.swag10quantity);
-            if (that.state.swag1quantity > 0) {
+            /*if (that.state.swag1quantity > 0) {
               $("#history").append("<br></br><div className=\"card mb-3\"><div className=\"row no-gutters\">" + 
                                        "<div className=\"col-md-4\">" +
                                        "<img src={\"https://cdn.shopify.com/s/files/1/0006/6060/2935/products/gottzfigs8js_1_30c0f903-0c3a-462f-893d-cc4d1b2dcd28_360x.jpg?v=1558123631} className='img-thumbnail col-md-4 row align-itmes-center justify-content-center'\"} className=\"card-img\" alt=\"...\" />" +
@@ -90,7 +90,7 @@ class Orders extends Component {
                                        "<h5 className=\"card-title\">John Snow collectible figure</h5></div></div>" + 
                                        "<div className=\"col-md-2 row align-items-center justify-content-center\">" +
                                        "<p>Quantity: {" + this.state.swag1quantity + "}</p></div></div></div>");
-            }
+            }*/
           }
         }
       }).catch(function (error) {
@@ -105,8 +105,24 @@ class Orders extends Component {
       <div>
         <OrderNav />
         <div className='container'>
-          <h2 className='text-center' id="history">Order History</h2>
-
+          <h2 className='text-center' id = "history">Order History</h2>
+          {/*(this.state.swag1quantity > 0) &&*/}
+          <br></br>
+          <div className="card mb-3">
+            <div className="row no-gutters"> 
+                <div className="col-md-4\">
+                    <img src={"https://cdn.shopify.com/s/files/1/0006/6060/2935/products/gottzfigs8js_1_30c0f903-0c3a-462f-893d-cc4d1b2dcd28_360x.jpg?v=1558123631} className='img-thumbnail col-md-4 row align-itmes-center justify-content-center'"} className="card-img" alt="..." />
+                </div>
+                <div className="col-md-6">
+                  <div className="card-body">
+                    <h5 className="card-title">John Snow collectible figure</h5>
+                  </div>
+                </div> 
+                <div className="col-md-2 row align-items-center justify-content-center">
+                  <p>Quantity: {this.state.swag1quantity}</p>
+                </div>
+              </div>
+            </div>
         </div>
       </div>
     )
