@@ -68,7 +68,7 @@ render()  {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <a className="nav-link sale-nav-link" href="*">Hello {this.props.userData}<span className="sr-only">(current)</span></a>
+              <a className="nav-link sale-nav-link" href="*">Hello {this.props.userData.userData.user.userName}<span className="sr-only">(current)</span></a>
             </li>{/*{navbarImg}*/}
             <li className="nav-item">
               <a className="nav-link sale-nav-link" href="/account">Account</a>

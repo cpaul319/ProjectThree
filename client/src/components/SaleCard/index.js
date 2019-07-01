@@ -89,15 +89,13 @@ class SaleCard extends Component {
         console.log(error);
       });
 
-
-
-
     // this.props.history.push('/orders');
-
 
   }
 
   componentDidMount() {
+    console.log("inside sales card index.js line 101");
+    console.log( this.props.userData.userData);
     const that = this;
     console.log("this is sale card");
     axios.get('api/allusers')
