@@ -187,7 +187,7 @@ class Account extends Component {
                                     required: { value: true, errorMessage: 'Please enter last name' },
                                     pattern: { value: '^[A-Za-z]+$', errorMessage: 'Your name must be composed only with letters' }
                                 }}
-                            />
+                            /> 
                             <AvField
                                 name="email"
                                 placeholder="e-mail"
