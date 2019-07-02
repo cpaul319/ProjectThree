@@ -8,7 +8,7 @@ import Orders from '../components/Orders'
 console.log("before Log In function is called.");
 function Order() {
   return (
-    <div className="App">
+    <div className="App orders-body">
     </div>
   );
 }
