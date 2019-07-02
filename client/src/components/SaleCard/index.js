@@ -106,25 +106,44 @@ class SaleCard extends Component {
     // this.props.history.push('/orders');
 
 
-<<<<<<< HEAD
-render() {
-  return (
-  <div className="sale-body">
-    <div className='container'>
-    <div className="card mb-3">
-          <div className="row no-gutters">
-            {/* <div className="col-md-4 row align-itmes-center justify-content-center"> */}
-              <img src={this.props.image} className=' col-md-4 row align-itmes-center justify-content-center mt-5 card-image' />
-            {/* </div> */}
-            <div className="col-md-8">
-              <div className="card-body">
-                <h5 className="card-title">{this.props.name}</h5>
-                <p className="card-desc">{this.props.description}</p>
-                <p className="card-price">{this.props.price}</p>
-                <div className="card-btn">
-                  <button className='btn btn-outline-dark'>Buy this item</button>
-=======
-  }
+    }
+
+   
+// render() {
+//   const imageStyle = {
+//     margin: "0 auto"
+//   }
+
+//   return (
+   
+
+  // <div className="sale-body">
+  //   <div className='card-container'>
+  //   <div className="row no-gutters">
+  //     <div className="card mb-3">
+  //         {/* <div className="row no-gutters"> */}
+  //           {/* <div className="col-md-4 row align-itmes-center justify-content-center"> */}
+  //             <img src={this.props.image} className=' col-md-4 align-itmes-center justify-content-center mt-5 card-image' />
+  //           {/* </div> */}
+  //           <div className="col-md-8">
+  //             <div className="card-body">
+  //               <h5 className="card-title">{this.props.name}</h5>
+  //               <p className="card-desc">{this.props.description}</p>
+  //               <p className="card-price">{this.props.price}</p>
+  //               <div className="card-btn">
+  //                 <button className='btn btn-outline-dark'>Buy this item</button>
+  //               </div>
+  //             </div>
+  //           </div>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   </div> 
+        //  bootstrap card
+ 
+    // )
+
+  // }
 
   componentDidMount() {
     const that = this;
@@ -285,13 +304,17 @@ render() {
   }
 
   render() {
+    const imageStyle = {
+      margin: "0 auto",
+      padding: "1rem"
+    }
     return (
-      <div>
+      <div className="sale-body">
         <div className='container-fluid'>
           <div className="card mb-3">
             <div className="row no-gutters">
               {/* <div className="col-md-4 row align-itmes-center justify-content-center"> */}
-              <img src={this.props.image} className='img-thumbnail col-md-4 row align-itmes-center justify-content-center' />
+              <img src={this.props.image} className='col-md-4 row align-itmes-center justify-content-center' style={imageStyle} />
               {/* </div> */}
               <div className="col-md-8">
                 <div className="card-body">
@@ -301,7 +324,7 @@ render() {
                   <div className="card-btn">
                     <button className='btn btn-outline-dark' onClick={this.buyItem} itemid={this.props.index}>Buy this item</button>
                   </div>
->>>>>>> defc03bd081bde28a963379ae007c6c428ddf0c0
+
                 </div>
               </div>
               {/* <div className="col-md-2 row align-items-center justify-content-center">
@@ -312,8 +335,10 @@ render() {
           </div>
         </div>
       </div>
+
     );
   }
+  
 
 };
 // Render page
