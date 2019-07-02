@@ -102,6 +102,8 @@ class SaleCard extends Component {
 
     // this.props.history.push('/orders');
 
+ 
+
   }
 
   componentDidMount() {
@@ -285,6 +287,7 @@ class SaleCard extends Component {
                   <div className="card-btn">
                     <button className='btn btn-outline-dark' onClick={this.buyItem} itemid={this.props.index}>Buy this item</button>
                   </div>
+>>>>>>> defc03bd081bde28a963379ae007c6c428ddf0c0
                 </div>
               </div>
               {/* <div className="col-md-2 row align-items-center justify-content-center">

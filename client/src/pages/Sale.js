@@ -70,11 +70,8 @@ class Sale extends Component {
 
 
     return (
-      <div className="App" style={background}>
-        <SaleNav
-          userData={this.props.userData}
-
-        />
+      <div className="App">
+        <SaleNav />
         {/* <p>Welcome {this.state.userName}</p>
         <p>Sale page</p> */}
         {this.state.item.map(item => (
