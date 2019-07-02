@@ -160,7 +160,7 @@ class Enter extends Component {
 
     render() {
         return (
-            <div className="App">
+            <div className="enter-body">
                 <EnterNav />
 
                 {/* {this.renderRedirect()} */}
