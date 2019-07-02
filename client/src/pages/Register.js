@@ -9,6 +9,7 @@ import { Button } from 'reactstrap';
 import { register } from '../components/UserFunction';
 import "../Register.css"
 import moment from 'moment';
+import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 class Register extends Component {
 	constructor() {
@@ -19,14 +20,41 @@ class Register extends Component {
             lastName: "",
             email: "",
             password: "",
+            isLoggedIn: 0,
             confirm_password: "",
-            redirect: false
+            redirect: false,
+            modal: false,
+            nestedModal: false,
+            closeAll: false
 
 		}
-		this.handleFormSubmit = this.handleFormSubmit.bind(this)
-		this.handleInputChange = this.handleInputChange.bind(this)
+		this.handleFormSubmit = this.handleFormSubmit.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.toggle = this.toggle.bind(this);
+        this.toggleNested = this.toggleNested.bind(this);
+        this.toggleAll = this.toggleAll.bind(this);
 	}
-	
+    
+    toggle() {
+        this.setState(prevState => ({
+            modal: !prevState.modal
+        }));
+    }
+
+    toggleNested() {
+        this.setState({
+            nestedModal: !this.state.nestedModal,
+            closeAll: false
+        });
+    }
+
+    toggleAll() {
+        this.setState({
+            nestedModal: !this.state.nestedModal,
+            closeAll: true
+        });
+    }
+
     handleInputChange = event => {
 
         const { name, value } = event.target;
@@ -38,7 +66,7 @@ class Register extends Component {
     }
     handleFormSubmit(event) {
 		console.log('sign-up handleSubmit, username: ')
-		console.log(this.state.username)
+		console.log(this.state.userName)
         event.preventDefault()
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         var ValidateEmail = re.test(String(this.state.email).toLowerCase());
@@ -51,25 +79,35 @@ class Register extends Component {
         if (this.state.userName && this.state.firstName && this.state.lastName && ValidateEmail && ValidatePassword &&
             this.state.password == this.state.confirm_password && /^[a-zA-Z]+$/.test(this.state.firstName) &&
             /^[a-zA-Z]+$/.test(this.state.lastName)) {
-		axios.post('/api/users', {
+		axios.post('/register', {
             userName: this.state.userName,
             firstName: this.state.firstName,
             lastName: this.state.lastName,
             email: this.state.email,
             password: this.state.password,
-            confirm_password: this.state.confirm_password
-
+            isLoggedIn: 1
 		})
 			.then(response => {
-				console.log(response)
-				if (!response.data.errmsg) {
-                    console.log('successful signup')
-                    this.props.history.push('/login');
+				console.log(response);
+				if (!response.data.err) {
+                    console.log(response.data.err); 
+                    console.log('successful signup');
+                    console.log(response.data.error);
+                    if (response.data.error == 'User already exists')   {
+                        this.toggleNested();
+                    }
+                    else {
+                        this.props.history.push('/login');
+                    }
+                    //alert("You have been signed up");
 					// this.setState({ //redirect to login page
 					// 	redirectTo: '/login'
 					// })
 				} else {
-					console.log('username already taken')
+                    console.log('username already taken');
+                    //console.log(error);
+                    //alert("That email already exists");
+                    this.toggleNested();
 				}
 			}).catch(error => {
 				console.log('signup error: ')
@@ -80,11 +118,14 @@ class Register extends Component {
 	}
 
     render() {
+        
         return (
+            
             <div id="reg-body">
+                
+                <div className="outer-wrapper">
                 <LogNav />
                 <div className="reg-container">
-
                     <p id="reg-title">Sign Up</p>
                     {/* <div className="reg-box1"> */}
                     <AvForm>
@@ -166,8 +207,17 @@ class Register extends Component {
                         <Button className="submit-btn" color="secondary" onClick={this.handleFormSubmit}>Submit</Button>
 
                     </AvForm>
+                        
                 </div>
-               
+                </div>
+                <div>
+                    <Modal isOpen={this.state.nestedModal} toggle={this.toggleNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
+                        <ModalHeader>E-mail already in use</ModalHeader>
+                        <ModalFooter>
+                            <Button color="secondary" onClick={this.toggleAll}>Close</Button>
+                        </ModalFooter>
+                    </Modal>
+                </div>
             </div>
         );
     }
