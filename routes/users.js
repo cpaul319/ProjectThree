@@ -136,6 +136,7 @@ userRouter.post("/login", (req, res) => {
                     console.log(user);
                 } else {
                     console.log("compareSync failed");
+                    alert("Something went wrong please try again");
                 }
             } else {
                 console.log("else no user");
