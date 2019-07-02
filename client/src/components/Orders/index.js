@@ -107,7 +107,7 @@ class Orders extends Component {
         <div className='container'>
           <h2 className='text-center' id = "history">Order History</h2>
           {(this.state.swag1quantity > 0) &&
-          <br></br>
+          {/*<br></br>*/}
           <div className="card mb-3">
             <div className="row no-gutters"> 
                 <div className="col-md-4\">
@@ -122,10 +122,11 @@ class Orders extends Component {
                   <p>Quantity: {this.state.swag1quantity}</p>
                 </div>
               </div>
-            </div>}
+            </div>
+            }
         </div>
-      </div>
-    )
+        </div>
+        )
   }
 };
 
