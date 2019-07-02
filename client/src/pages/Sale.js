@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { Component } from "react";
-import { Redirect } from 'react-router-dom'
+ 
+import { Redirect,  withRouter  } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import { isAbsolute } from "path";
 //import Enter from "Enter.js";
@@ -95,5 +96,5 @@ class Sale extends Component {
 
 
 }
-
-export default Sale;
+export default withRouter(Sale);
+ 

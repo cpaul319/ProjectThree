@@ -6,7 +6,7 @@ import {
   CardTitle, CardSubtitle, Button
 } from 'reactstrap';
 import SaleNav from '../SaleNav'
-
+import { Redirect,  withRouter  } from 'react-router-dom';
 import hand from './hand.PNG';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import "./style.css";
@@ -107,6 +107,7 @@ class SaleCard extends Component {
   componentDidMount() {
     console.log("inside sales card index.js line 101");
     console.log( this.props.userData.userData);
+
     const that = this;
     console.log("this is sale card");
     axios.get('/api/allusers')
@@ -257,7 +258,10 @@ class SaleCard extends Component {
     axios.put("/api/buy", user)
       .then(function (response) {
         console.log(response);
-        window.location.reload();
+        
+        alert("Item was added to cart");
+        this.props.history.push('/sale');
+        // window.location.reload();
       })
       .catch(function (error) {
         console.log(error);
@@ -299,5 +303,5 @@ class SaleCard extends Component {
 
 
 
-
-export default SaleCard;
+export default withRouter(SaleCard);
+ 
