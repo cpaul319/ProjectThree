@@ -34,6 +34,10 @@ class Sale extends Component {
   }
   //testing sale page
   componentDidMount() {
+    if(!this.props.userData.userData.user.isLoggedIn){
+      this.props.history.push('/login');
+    }
+    
     console.log("did mount");
     //  this.setState({ userName: this.props.userData.userName});
     console.log(this.props.userData.userData);
@@ -71,7 +75,7 @@ class Sale extends Component {
 
     return (
       <div className="App">
-        <SaleNav />
+        <SaleNav userData={this.props.userData}/>
         {/* <p>Welcome {this.state.userName}</p>
         <p>Sale page</p> */}
         {this.state.item.map(item => (

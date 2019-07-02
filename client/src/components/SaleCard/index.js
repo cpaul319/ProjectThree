@@ -107,7 +107,7 @@ class SaleCard extends Component {
   }
 
   componentDidMount() {
-    console.log("inside sales card index.js line 101");
+    console.log("inside sales card index.js");
     console.log( this.props.userData.userData);
 
     const that = this;
@@ -122,7 +122,9 @@ class SaleCard extends Component {
             console.log("that.state.email is " + that.state.email);
             console.log("res.data[" + c + "].email is " + res.data[c].email);
             that.setState({
-              email: res.data[c].email
+  
+              email: this.props.userData.userData.user.email
+              // email: res.data[c].email
             });
             that.setState({
               swag1quantity: res.data[c].swag1quantity
@@ -252,7 +254,9 @@ class SaleCard extends Component {
       swag9quantity: that.state.swag9quantity,
       //swag10name: this.state.swag10name,
       swag10quantity: that.state.swag10quantity,
-      email: that.state.email
+      
+      email:this.props.userData.userData.user.email
+      // email: that.state.email
       //user
     }
     console.log(user);
@@ -287,7 +291,7 @@ class SaleCard extends Component {
                   <div className="card-btn">
                     <button className='btn btn-outline-dark' onClick={this.buyItem} itemid={this.props.index}>Buy this item</button>
                   </div>
->>>>>>> defc03bd081bde28a963379ae007c6c428ddf0c0
+{/* >>>>>>> defc03bd081bde28a963379ae007c6c428ddf0c0 */}
                 </div>
               </div>
               {/* <div className="col-md-2 row align-items-center justify-content-center">

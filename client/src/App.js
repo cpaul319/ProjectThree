@@ -63,14 +63,14 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={LogIn} />
             <Route exact path="/register" component={Register} />
-            <Route exact path="/account" component={Account} />
+            <Route exact path="/account" component= {() => <Account userData={this.state.userData} />} />
             {/* <Route exact path="/login" component={() => <Enter foo="bar" />} /> */}
             <Route path="/login" render={() => <Enter getLoggedInUser={this.getLoggedInUser} />} />
-            <Route exect path="/forgot" component={Forgot} />
-            {/* <Route path="/sale" render={() => (this.state.userData.userData.user.isLoggedIn ? (<Sale userData={this.state.userData} />) : ( <Redirect to="/login"/>) )}/> */}
+            <Route exact path="/forgot" component={Forgot} />
+            {/* <Route exact path="/sale" render={() => (this.state.userData.userData.user.isLoggedIn ? (<Sale userData={this.state.userData} />) : ( <Redirect to="/login"/>) )}/> */}
             <Route exact path="/sale" component={() => <Sale userData={this.state.userData} />} /> 
               {/* <Route exact path="/sale" component={Sale} /> */}
-            <Route exact path="/orders" component={Order} />
+            <Route exact path="/orders" component= {() => <Order userData={this.state.userData} />} />
             <Route component={NoMatch} />
 
             

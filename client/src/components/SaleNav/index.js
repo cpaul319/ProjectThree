@@ -17,6 +17,7 @@ class SaleNav extends Component {
     // this.props.userData;
 
    console.log(this.props.userData.userData);
+  //  var id= this.props.userData.userData.user.id;
 }
 
 Logout()  {
@@ -27,12 +28,13 @@ Logout()  {
   .then(function (res) {
     //const firstName = firstName.res.data;
     //this.setState({ firstName });
-    var id;
+    var id= this.props.userData.userData.user.id;
     console.log("this is sale navigation bar.");
     for (var c = 0; c < res.data.length; c++) {
       if (res.data[c].isLoggedIn == 1)  {
         id = res.data[c].id;
         console.log("logged in id is " + id);
+      
         var url = "/api/logout/" + id;
         axios.put(url)
         .then(function(res) {

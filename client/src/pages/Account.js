@@ -12,17 +12,26 @@ import moment from 'moment';
 //update user data
 
 class Account extends Component {
+    constructor() {
+        super()
+        this.state = {
 
-    state = {
-        address: "",
-        city: "",
-        state: "",
-        zip: "",
-        creditCardNumber: "",
-        expDate: "",
-        cvv: ""
-        // redirect: false
-    };
+            userName: "Not Logged in",
+            address: "",
+            city: "",
+            state: "",
+            zip: "",
+            creditCardNumber: "",
+            expDate: "",
+            cvv: ""
+            // redirect: false
+        }
+
+
+    }
+
+
+
 
     // setRedirect = () => {
     //     this.setState({
@@ -96,6 +105,38 @@ class Account extends Component {
     }
 
     componentDidMount() {
+
+        this.setState({ userName: this.props.userData.userData.user.userName });
+        // console.log(this.props.userData.userData.user.userName);
+
+        axios.post('/login', {
+            email: this.state.email,
+            password: this.state.password
+        }).then((res) => {
+            console.log("axios post in account page");
+
+            console.log(res)
+            if (res.data.message) {
+                console.log("response message");
+                console.log(res.data.message);
+                console.log(res.data);
+
+                this.props.getLoggedInUser({
+
+                    userData: res.data
+                })
+
+            } else {
+                console.log('failed to load user data')
+
+            }
+        }).catch(error => {
+            console.log('Login error: ');
+            console.log(error);
+            console.log("response.data = ");
+            console.log(error.message);
+
+        })
         console.log("did mount");
     }
 
@@ -154,9 +195,10 @@ class Account extends Component {
     render() {
         return (
             <div id="account-body">
-                <EditNav />
+                <EditNav userData={this.state.userData} />
                 <div className="account-container">
                     <p id="account-title">Edit Account Info</p>
+                    <p id="account-user">Welcome {this.state.userName}</p>
                     <AvForm>
                         <div className="account-box1">
                             <AvField
@@ -187,11 +229,7 @@ class Account extends Component {
                                     required: { value: true, errorMessage: 'Please enter last name' },
                                     pattern: { value: '^[A-Za-z]+$', errorMessage: 'Your name must be composed only with letters' }
                                 }}
-<<<<<<< HEAD
                             />
-=======
-                            /> 
->>>>>>> defc03bd081bde28a963379ae007c6c428ddf0c0
                             <AvField
                                 name="email"
                                 placeholder="e-mail"
@@ -205,7 +243,7 @@ class Account extends Component {
                             <AvField
                                 name="password"
                                 placeholder="password"
-                                type = "password"
+                                type="password"
                                 value={this.state.password}
                                 onChange={this.handleInputChange}
                                 validate={{
@@ -217,7 +255,7 @@ class Account extends Component {
                             />
                             <AvField
                                 name="confirm_password"
-                                type = "password"
+                                type="password"
                                 placeholder="confirm_password"
                                 onChange={this.handleInputChange}
                                 validate={{
