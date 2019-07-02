@@ -201,7 +201,6 @@ class Enter extends Component {
                         </ModalFooter>
                     </Modal>
                 </div>
-
             </div>
         )
     }
