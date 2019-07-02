@@ -230,7 +230,7 @@ userRouter.put("/login", (req, res) => {
 //         }
 //     })
 // })
-
+/*
 userRouter.post(
     '/login',
     function (req, res, next) {
@@ -271,15 +271,15 @@ userRouter.post('/logout', (req, res) => {
 
     db.Users.create(req.body).then(function (dbUsers) {
         res.json(dbUsers);
-    })
-    // res.send(req.body);
-});
+    });
+ //res.send(req.body);
+//});
 
 userRouter.get("/api/allusers", function (req, res) {
     db.Users.findAll({}).then(function (dbUsers) {
         res.json(dbUsers);
     });
 });
-
+*/
  
 module.exports = userRouter;
