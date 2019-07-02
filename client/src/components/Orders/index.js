@@ -110,7 +110,7 @@ class Orders extends Component {
 
           <div className="card mb-3">
             <div className="row no-gutters"> 
-                <div className="col-md-4\">
+                <div className="col-md-4">
                     <img src={"https://cdn.shopify.com/s/files/1/0006/6060/2935/products/gottzfigs8js_1_30c0f903-0c3a-462f-893d-cc4d1b2dcd28_360x.jpg?v=1558123631} className='img-thumbnail col-md-4 row align-itmes-center justify-content-center'"} className="card-img" alt="..." />
                 </div>
                 <div className="col-md-6">
