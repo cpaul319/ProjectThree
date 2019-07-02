@@ -128,7 +128,7 @@ class Register extends Component {
                 <div className="reg-container">
                     <p id="reg-title">Sign Up</p>
                     {/* <div className="reg-box1"> */}
-                    <AvForm>
+                    <AvForm className="reg-form">
                         <div className="reg-box1">
                             <AvField
                                 className="input-box"

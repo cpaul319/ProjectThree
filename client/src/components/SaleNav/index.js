@@ -24,7 +24,7 @@ Logout()  {
   var id;
 
   console.log("log out function called.");
-  axios.get('api/allusers')
+  axios.get('/api/allusers')
   .then(function (res) {
     //const firstName = firstName.res.data;
     //this.setState({ firstName });
