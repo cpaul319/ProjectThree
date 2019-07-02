@@ -106,8 +106,8 @@ class Orders extends Component {
         <OrderNav />
         <div className='container'>
           <h2 className='text-center' id = "history">Order History</h2>
-          {/*{(this.state.swag1quantity > 0) && */}
-          {/*<br></br>*/}
+          {this.state.swag1quantity > 0 &&
+
           <div className="card mb-3">
             <div className="row no-gutters"> 
                 <div className="col-md-4\">
@@ -116,14 +116,14 @@ class Orders extends Component {
                 <div className="col-md-6">
                   <div className="card-body">
                     <h5 className="card-title">John Snow collectible figure</h5>
+                    <p>Quantity: {this.state.swag1quantity}</p>
                   </div>
                 </div> 
                 <div className="col-md-2 row align-items-center justify-content-center">
-                  <p>Quantity: {this.state.swag1quantity}</p>
                 </div>
               </div>
             </div>
-           {/*} } */}
+          } 
         </div>
         </div>
         )
