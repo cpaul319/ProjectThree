@@ -6,6 +6,7 @@ import { isAbsolute } from "path";
 import SaleNav from "../components/SaleNav";
 import SaleCard from "../components/SaleCard";
 import item from "../items.json"
+
 //minor change for push update
 class Sale extends Component {
   constructor() {
@@ -43,7 +44,8 @@ class Sale extends Component {
             console.log(res.data[c].email + " is logged in!");
             console.log("id: " + res.data[c].id);
           }
-        }
+  
+       }
       })
       .catch(function (error) {
         console.log(error);
@@ -58,7 +60,7 @@ class Sale extends Component {
     
     console.log("before Log In function is called.");
     return (
-      <div className="App">
+      <div className="App Sale-Page" style={background}>
         <SaleNav />
         {/* <p>Welcome {this.state.userName}</p>
         <p>Sale page</p> */}
