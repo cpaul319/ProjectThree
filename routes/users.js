@@ -38,6 +38,31 @@ userRouter.get("/api/loggedin", function (req, res) {
     console.log("purchase")
 });*/
 
+userRouter.put("/api/account", function(req, res)    {
+    // buy route created!
+    console.log("update route called");
+    db.Users.update({
+        address: req.body.address,
+        city: req.body.city,
+        state: req.body.state,
+        zip: req.body.zip,
+        creditCardNumber: req.body.creditCardNumber,
+        expDate: req.body.expDate,
+        cvv: req.body.cvv
+        
+    },
+    {
+        where:  {
+            email: req.body.email
+        }
+    }).then(function (dbUsers)  {
+        res.json(dbUsers);
+        console.log("account updated");
+    }).catch(err => {
+        console.log("weird error");
+        res.status(400).json({error: err});
+    });    
+});
 userRouter.put("/api/buy", function(req, res)    {
     // buy route created!
     console.log("buy route called");

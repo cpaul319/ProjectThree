@@ -308,14 +308,15 @@ class SaleCard extends Component {
       //user
     }
     console.log(user);
-
+    var _this = this;
     axios.put("/api/buy", user)
       .then(function (response) {
         console.log(response);
         
         alert("Item was added to cart");
         // this.props.history.push('/sale');
-       window.location.reload();
+        _this.props.history.push('/sale');
+      
       })
       .catch(function (error) {
         console.log(error);
