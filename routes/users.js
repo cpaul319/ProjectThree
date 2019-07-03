@@ -136,6 +136,7 @@ userRouter.post("/login", (req, res) => {
                     console.log(user);
                 } else {
                     console.log("compareSync failed");
+                    alert("Something went wrong please try again");
                 }
             } else {
                 console.log("else no user");
@@ -230,7 +231,7 @@ userRouter.put("/login", (req, res) => {
 //         }
 //     })
 // })
-
+/*
 userRouter.post(
     '/login',
     function (req, res, next) {
@@ -269,17 +270,17 @@ userRouter.post('/logout', (req, res) => {
 
 
 
-    // db.Users.create(req.body).then(function (dbUsers) {
-    //     res.json(dbUsers);
-    // })
-    // res.send(req.body);
-// });
+    db.Users.create(req.body).then(function (dbUsers) {
+        res.json(dbUsers);
+    });
+ //res.send(req.body);
+//});
 
 userRouter.get("/api/allusers", function (req, res) {
     db.Users.findAll({}).then(function (dbUsers) {
         res.json(dbUsers);
     });
 });
-
+*/
  
 module.exports = userRouter;

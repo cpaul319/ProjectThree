@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import './orders.css';
 import OrderNav from '../OrdrNav';
 import axios from "axios";
+import "./style.css";
+import $ from 'jquery';
+import item from "../../items.json"
+
 
 //const Orders = (props) => {
 class Orders extends Component {
@@ -19,7 +23,9 @@ class Orders extends Component {
       swag8quantity: 0,
       swag9quantity: 0,
       swag10quantity: 0,
-      email: ""
+      email: "",
+      item
+      
       // redirect: false
     }
     this.componentDidMount = this.componentDidMount.bind(this);
@@ -69,7 +75,7 @@ class Orders extends Component {
             });
             that.setState({
               swag10quantity: res.data[c].swag10quantity
-            });   
+            });
             console.log("that.state.swag1quantity: " + that.state.swag1quantity);
             console.log("that.state.swag2quantity: " + that.state.swag2quantity);
             console.log("that.state.swag3quantity: " + that.state.swag3quantity);
@@ -80,100 +86,261 @@ class Orders extends Component {
             console.log("that.state.swag8quantity: " + that.state.swag8quantity);
             console.log("that.state.swag9quantity: " + that.state.swag9quantity);
             console.log("that.state.swag10quantity: " + that.state.swag10quantity);
+            /*if (that.state.swag1quantity > 0) {
+              $("#history").append("<br></br><div className=\"card mb-3\"><div className=\"row no-gutters\">" + 
+                                       "<div className=\"col-md-4\">" +
+                                       "<img src={\"https://cdn.shopify.com/s/files/1/0006/6060/2935/products/gottzfigs8js_1_30c0f903-0c3a-462f-893d-cc4d1b2dcd28_360x.jpg?v=1558123631} className='img-thumbnail col-md-4 row align-itmes-center justify-content-center'\"} className=="order-img
+                                       \" alt=\"...\" />" +
+                                       "</div><div className=\"col-md-6\"><div className=\"card-body\">" +
+                                       "<h5 className=\"card-title\">John Snow collectible figure</h5></div></div>" + 
+                                       "<div className=\"col-md-2 row align-items-center justify-content-center\">" +
+                                       "<p className="order-quantity">Quantity: {" + this.state.swag1quantity + "}</p></div></div></div>");
+            }*/
           }
         }
       }).catch(function (error) {
         console.log(error);
+        console.log("something goes wrong");
       });
+    //window.location.reload();
   }
 
   render() {
+   
     return (
-      <div>
+      <div className="order-container order-contain">
         <OrderNav />
-        <div className='container'>
-          <h2 className='text-center'>Order History</h2>
-          {/*
-        <br></br>
-        <div className="card mb-3">
-          <div className="row no-gutters">
-            <div className="col-md-4">
-              <img src='/images/dragon.jpg' className="card-img" alt="..." />
-            </div>
-            <div className="col-md-6">
-              <div className="card-body">
-                <h5 className="card-title">Item 1</h5>
-                <p className="card-text">This is an example of a description for a purchased item. This is only a test.</p>
+        {/* item 1*/}
+        <h2 className="order-Headline mb-3">Order History</h2>
+        <div className='container order-contain'>
+          {/* {(this.state.swag1quantity > 0) } */}
+          {/*<br></br>*/}
+          <div className="card mb-3">
+            <div className="row no-gutters"> 
+                <div className="col-md-4\">
+                    <img src={this.state.item[0].image} className='img-thumbnail col-md-4 row align-itmes-center justify-content-center' className="order-img" alt="..." />
+                </div>
+                <div className="col-md-6">
+                  <div className="card-body">
+                    <h5 className="order-title">{this.state.item[0].name}</h5>
+                    <p className="order-desc">{this.state.item[0].description}</p>
+                  </div>
+                </div> 
+                <div className="col-md-2 row align-items-center justify-content-center">
+                  <p className="order-quantity">Quantity: {this.state.swag1quantity}</p>
+                </div>
               </div>
             </div>
-            <div className="col-md-2 row align-items-center justify-content-center">
-            <p>$50</p>
-          </div>
         </div>
-      </div>
-      <div className="card mb-3">
-          <div className="row no-gutters">
-            <div className="col-md-4">
-              <img src='/images/gotmap.jpg' className="card-img" alt="..." />
-            </div>
-            <div className="col-md-6">
-              <div className="card-body">
-                <h5 className="card-title">Item 2</h5>
-                <p className="card-text">This is an example of a description for a purchased item. This is only a test.</p>
+        {/* end 1 */}
+        {/* item 2*/}
+        <div className='container order-contain'>
+          {/* {(this.state.swag1quantity > 0) } */}
+          {/*<br></br>*/}
+          <div className="card mb-3">
+            <div className="row no-gutters"> 
+                <div className="col-md-4\">
+                    <img src={this.state.item[1].image} className='img-thumbnail col-md-4 row align-itmes-center justify-content-center' className="order-img" alt="..." />
+                </div>
+                <div className="col-md-6">
+                  <div className="card-body">
+                    <h5 className="order-title">{this.state.item[1].name}</h5>
+                    <p className="order-desc">{this.state.item[1].description}</p>
+                  </div>
+                </div> 
+                <div className="col-md-2 row align-items-center justify-content-center">
+                  <p className="order-quantity">Quantity: {this.state.swag2quantity}</p>
+                </div>
               </div>
             </div>
-            <div className="col-md-2 row align-items-center justify-content-center">
-            <p>$30</p>
-          </div>
         </div>
-      </div>
-      <div className="card mb-3">
-          <div className="row no-gutters">
-            <div className="col-md-4">
-              <img src='/images/thrones1.jpg' className="card-img" alt="..." />
-            </div>
-            <div className="col-md-6">
-              <div className="card-body">
-                <h5 className="card-title">Item 3</h5>
-                <p className="card-text">This is an example of a description for a purchased item. This is only a test.</p>
+        {/* end 2 */}
+        {/* item 3 */}
+        <div className='container order-contain'>
+          {/* {(this.state.swag1quantity > 0) } */}
+          {/*<br></br>*/}
+          <div className="card mb-3">
+            <div className="row no-gutters"> 
+                <div className="col-md-4\">
+                    <img src={this.state.item[2].image} className='img-thumbnail col-md-4 row align-itmes-center justify-content-center' className="order-img" alt="..." />
+                </div>
+                <div className="col-md-6">
+                  <div className="card-body">
+                    <h5 className="order-title">{this.state.item[2].name}</h5>
+                    <p className="order-desc">{this.state.item[2].description}</p>
+                  </div>
+                </div> 
+                <div className="col-md-2 row align-items-center justify-content-center">
+                  <p className="order-quantity">Quantity: {this.state.swag3quantity}</p>
+                </div>
               </div>
             </div>
-            <div className="col-md-2 row align-items-center justify-content-center">
-            <p>$15</p>
-          </div>
         </div>
-      </div>*/}
-
-          {/* <table className="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">Order Number</th>
-              <th scope="col">Item</th>
-              <th scope='col'>Price</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Item 1</td>
-              <td>$45</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Item 2</td>
-              <td>$30</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Item 3</td>
-              <td>$50</td>
-            </tr>
-          </tbody>
-  </table>*/}
+        {/*end 3 */}
+        {/* item  4*/}
+        <div className='container order-contain'>
+          {/* {(this.state.swag1quantity > 0) } */}
+          {/*<br></br>*/}
+          <div className="card mb-3">
+            <div className="row no-gutters"> 
+                <div className="col-md-4\">
+                    <img src={this.state.item[3].image} className='img-thumbnail col-md-4 row align-itmes-center justify-content-center' className="order-img
+                    " alt="..." />
+                </div>
+                <div className="col-md-6">
+                  <div className="card-body">
+                    <h5 className="order-title">{this.state.item[3].name}</h5>
+                    <p className="order-desc">{this.state.item[3].description}</p>
+                  </div>
+                </div> 
+                <div className="col-md-2 row align-items-center justify-content-center">
+                  <p className="order-quantity">Quantity: {this.state.swag4quantity}</p>
+                </div>
+              </div>
+            </div>
         </div>
+        {/* 4 */}
+        {/* item  5*/}
+        <div className='container order-contain'>
+          {/* {(this.state.swag1quantity > 0) } */}
+          {/*<br></br>*/}
+          <div className="card mb-3">
+            <div className="row no-gutters"> 
+                <div className="col-md-4\">
+                    <img src={this.state.item[4].image} className='img-thumbnail col-md-4 row align-itmes-center justify-content-center' className="order-img
+                    " alt="..." />
+                </div>
+                <div className="col-md-6">
+                  <div className="card-body">
+                    <h5 className="order-title">{this.state.item[4].name}</h5>
+                    <p className="order-desc">{this.state.item[4].description}</p>
+                  </div>
+                </div> 
+                <div className="col-md-2 row align-items-center justify-content-center">
+                  <p className="order-quantity">Quantity: {this.state.swag5quantity}</p>
+                </div>
+              </div>
+            </div>
+        </div>
+        {/* 5 */}
+        {/* item  6*/}
+        <div className='container order-contain'>
+          {/* {(this.state.swag1quantity > 0) } */}
+          {/*<br></br>*/}
+          <div className="card mb-3">
+            <div className="row no-gutters"> 
+                <div className="col-md-4\">
+                    <img src={this.state.item[5].image} className='img-thumbnail col-md-4 row align-itmes-center justify-content-center' className="order-img
+                    " alt="..." />
+                </div>
+                <div className="col-md-6">
+                  <div className="card-body">
+                    <h5 className="order-title">{this.state.item[5].name}</h5>
+                    <p className="order-desc">{this.state.item[5].description}</p>
+                  </div>
+                </div> 
+                <div className="col-md-2 row align-items-center justify-content-center">
+                  <p className="order-quantity">Quantity: {this.state.swag6quantity}</p>
+                </div>
+              </div>
+            </div>
+        </div>
+        {/* 6 */}
+        {/* item  7*/}
+        <div className='container order-contain'>
+          {/* {(this.state.swag1quantity > 0) } */}
+          {/*<br></br>*/}
+          <div className="card mb-3">
+            <div className="row no-gutters"> 
+                <div className="col-md-4\">
+                    <img src={this.state.item[6].image} className='img-thumbnail col-md-4 row align-itmes-center justify-content-center' className="order-img
+                    " alt="..." />
+                </div>
+                <div className="col-md-6">
+                  <div className="card-body">
+                    <h5 className="order-title">{this.state.item[6].name}</h5>
+                    <p className="order-desc">{this.state.item[6].description}</p>
+                  </div>
+                </div> 
+                <div className="col-md-2 row align-items-center justify-content-center">
+                  <p className="order-quantity">Quantity: {this.state.swag7quantity}</p>
+                </div>
+              </div>
+            </div>
+        </div>
+        {/* 7 */}
+        {/* item  8*/}
+        <div className='container order-contain'>
+          {/* {(this.state.swag1quantity > 0) } */}
+          {/*<br></br>*/}
+          <div className="card mb-3">
+            <div className="row no-gutters"> 
+                <div className="col-md-4\">
+                    <img src={this.state.item[7].image} className='img-thumbnail col-md-4 row align-itmes-center justify-content-center' className="order-img
+                    " alt="..." />
+                </div>
+                <div className="col-md-6">
+                  <div className="card-body">
+                    <h5 className="order-title">{this.state.item[7].name}</h5>
+                    <p className="order-desc">{this.state.item[7].description}</p>
+                  </div>
+                </div> 
+                <div className="col-md-2 row align-items-center justify-content-center">
+                  <p className="order-quantity">Quantity: {this.state.swag8quantity}</p>
+                </div>
+              </div>
+            </div>
+        </div>
+        {/* 8 */}
+        {/* item  9*/}
+        <div className='container order-contain'>
+          {/* {(this.state.swag1quantity > 0) } */}
+          {/*<br></br>*/}
+          <div className="card mb-3">
+            <div className="row no-gutters"> 
+                <div className="col-md-4\">
+                    <img src={this.state.item[8].image} className='img-thumbnail col-md-4 row align-itmes-center justify-content-center' className="order-img
+                    " alt="..." />
+                </div>
+                <div className="col-md-6">
+                  <div className="card-body">
+                    <h5 className="order-title">{this.state.item[8].name}</h5>
+                    <p className="order-desc">{this.state.item[8].description}</p>
+                  </div>
+                </div> 
+                <div className="col-md-2 row align-items-center justify-content-center">
+                  <p className="order-quantity">Quantity: {this.state.swag9quantity}</p>
+                </div>
+              </div>
+            </div>
+        </div>
+        {/* 9 */}
+        {/* item  10 */}
+        <div className='container order-contain'>
+          {/* {(this.state.swag1quantity > 0) } */}
+          {/*<br></br>*/}
+          <div className="card mb-3">
+            <div className="row no-gutters"> 
+                <div className="col-md-4\">
+                    <img src={this.state.item[9].image} className='img-thumbnail col-md-4 row align-itmes-center justify-content-center' className="order-img
+                    " alt="..." />
+                </div>
+                <div className="col-md-6">
+                  <div className="card-body">
+                    <h5 className="order-title">{this.state.item[9].name}</h5>
+                    <p className="order-desc">{this.state.item[9].description}</p>
+                  </div>
+                </div> 
+                <div className="col-md-2 row align-items-center justify-content-center">
+                  <p className="order-quantity">Quantity: {this.state.swag10quantity}</p>
+                </div>
+              </div>
+            </div>
+        </div>
+        {/* 10 */}
       </div>
-    );
-  };
-}
+        )
+  }
+};
 
 export default Orders;
