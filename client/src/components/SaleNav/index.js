@@ -36,44 +36,16 @@ componentDidMount() {
   }
 
 Logout()  {
-<<<<<<< HEAD
    
-=======
-
-  var id;
-  
-  //const that = this;
-
-  //var url = "/api/logout/" + that.state.loggedInUserEmail;
->>>>>>> 49bfd916992638a8e60a3222ece26d19facd81d2
 
   var email = localStorage.getItem('loggedInUserEmail');
   var url = "/api/logout/" + email;
 
   console.log("logged in e-mail is " + email);
   console.log("log out function called.");
-<<<<<<< HEAD
 
    
       var  id = this.state.loggedInUserId;
-=======
-  axios.put(url)
-  .then(function (res)  {
-    console.log("user is logged out");
-  }).catch(function (error) {
-    console.log("user is not logged out.");
-  });
-  /*
-  axios.get('/api/allusers')
-  .then(function (res) {
-    //const firstName = firstName.res.data;
-    //this.setState({ firstName });
-    var id= this.props.userData.user.id;
-    console.log("this is sale navigation bar.");
-    for (var c = 0; c < res.data.length; c++) {
-      if (res.data[c].isLoggedIn == 1)  {
-        id = res.data[c].id;
->>>>>>> 49bfd916992638a8e60a3222ece26d19facd81d2
         console.log("logged in id is " + id);
         var url = "/api/logout/" + id;
         axios.put(url)
@@ -94,18 +66,9 @@ Logout()  {
         }).catch(function (error) {
           console.log("user is not logged out");
         });
-<<<<<<< HEAD
       
     
  
-=======
-      }
-    }
-  })
-  .catch(function (error) {
-    console.log(error);
-  });*/
->>>>>>> 49bfd916992638a8e60a3222ece26d19facd81d2
   //console.log("logging out");
   //axios.put('/api/logout/', 
 }
