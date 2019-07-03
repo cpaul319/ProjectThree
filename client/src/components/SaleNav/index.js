@@ -37,23 +37,16 @@ componentDidMount() {
 
 Logout()  {
    
-
   var email = localStorage.getItem('loggedInUserEmail');
   var url = "/api/logout/" + email;
-
   console.log("logged in e-mail is " + email);
   console.log("log out function called.");
-
-   
-      //var  id = this.state.loggedInUserId;
-      //  console.log("logged in id is " + id);
-      //  var url = "/api/logout/" + id;
         axios.put(url)
         .then(function(res) {
          
-          localStorage.removeItem('loggedInUserName');
-          localStorage.removeItem('loggedInUserEmail');
-          localStorage.removeItem('loggedInUserId');
+          // localStorage.removeItem('loggedInUserName');
+          // localStorage.removeItem('loggedInUserEmail');
+          // localStorage.removeItem('loggedInUserId');
           localStorage.clear();
           // var loggedInUserName = localStorage.getItem('loggedInUserName');
           // var loggedInUserEmail = localStorage.getItem('loggedInUserEmail');
