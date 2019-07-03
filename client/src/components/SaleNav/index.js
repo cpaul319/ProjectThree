@@ -26,12 +26,7 @@ componentDidMount() {
   var loggedInUserName = localStorage.getItem('loggedInUserName');
   var loggedInUserEmail = localStorage.getItem('loggedInUserEmail');
   var loggedInUserId = localStorage.getItem('loggedInUserId');
-  console.log("loggedInUserName");
-  console.log(loggedInUserName);
-  console.log("loggedInUserEmail");
-  console.log(loggedInUserEmail);
-  console.log("loggedInUserid");
-  console.log(loggedInUserId);
+  
   this.setState({ loggedInUserName });
   this.setState({ loggedInUserEmail });
   this.setState({ loggedInUserId });

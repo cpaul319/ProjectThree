@@ -23,7 +23,10 @@ class Account extends Component {
             zip: "",
             creditCardNumber: "",
             expDate: "",
-            cvv: ""
+            cvv: "",
+            loggedInUserName:"",
+            loggedInUserEmail:"",
+            loggedInUserId:""
             // redirect: false
         }
 
@@ -105,6 +108,13 @@ class Account extends Component {
     }
 
     componentDidMount() {
+        var loggedInUserName = localStorage.getItem('loggedInUserName');
+        var loggedInUserEmail = localStorage.getItem('loggedInUserEmail');
+        var loggedInUserId = localStorage.getItem('loggedInUserId');
+        
+        this.setState({ loggedInUserName });
+        this.setState({ loggedInUserEmail });
+        this.setState({ loggedInUserId });
 
         // this.setState({ userName: this.props.userData.userData.user.userName });
         // console.log(this.props.userData.userData.user.userName);
@@ -197,11 +207,12 @@ class Account extends Component {
             <div id="account-body">
                 <EditNav userData={this.state.userData} />
                 <div className="account-container">
-                    <p id="account-title">Edit Account Info</p>
+                    <p id="account-title">Edit Account Info For</p>
+                    <p id="account-title">{this.state.loggedInUserName}</p>
                    
 
-                    <AvForm>
-                        <div className="account-box1">
+                 
+                        {/* <div className="account-box1">
                             <AvField
                                 name="userName"
                                 placeholder="username"
@@ -210,8 +221,8 @@ class Account extends Component {
                                 validate={{
                                     required: { value: true, errorMessage: 'Please enter user name' }
                                 }}
-                            />
-                            <AvField
+                            /> */}
+                            {/* <AvField
                                 name="firstName"
                                 placeholder="First Name"
                                 value={this.state.firstName}
@@ -267,8 +278,9 @@ class Account extends Component {
                                     match: { value: 'password', errorMessage: 'Passwords must match' }
                                 }}
 
-                            />
-                        </div>
+                            /> */}
+                        {/* </div> */}
+                        <AvForm>
                         <div className="account-box2">
                             <AvField
                                 name="address"

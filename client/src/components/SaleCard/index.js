@@ -40,7 +40,10 @@ class SaleCard extends Component {
       swag9quantity: 0,
       swag10name: "Swag 10",
       swag10quantity: 0,
-      email: ""
+      email: "",
+      loggedInUserName:"",
+      loggedInUserEmail:"",
+      loggedInUserId:""
       // redirect: false
     }
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -144,8 +147,15 @@ class SaleCard extends Component {
   // }
 
   componentDidMount() {
+    var loggedInUserName = localStorage.getItem('loggedInUserName');
+    var loggedInUserEmail = localStorage.getItem('loggedInUserEmail');
+    var loggedInUserId = localStorage.getItem('loggedInUserId');
+    
+    this.setState({ loggedInUserName });
+    this.setState({ loggedInUserEmail });
+    this.setState({ loggedInUserId });
     console.log("inside sales card index.js");
-    console.log( this.props.userData);
+ 
 
     const that = this;
     console.log("this is sale card");
@@ -156,11 +166,12 @@ class SaleCard extends Component {
           console.log("inside loop");
           if (res.data[c].isLoggedIn == 1) {
             that.state.email = res.data[c].email;
-            console.log("that.state.email is " + that.state.email);
-            console.log("res.data[" + c + "].email is " + res.data[c].email);
+            // console.log("that.state.email is " + that.state.email);
+            // console.log("res.data[" + c + "].email is " + res.data[c].email);
             that.setState({
   
-              email: this.props.userData.user.email
+              email: this.state.loggedInUserEmail,
+            
               // email: res.data[c].email
             });
             that.setState({
@@ -292,7 +303,7 @@ class SaleCard extends Component {
       //swag10name: this.state.swag10name,
       swag10quantity: that.state.swag10quantity,
       
-      email:this.props.userData.user.email
+      email:this.state.loggedInUserEmail
       // email: that.state.email
       //user
     }
@@ -303,8 +314,8 @@ class SaleCard extends Component {
         console.log(response);
         
         alert("Item was added to cart");
-        this.props.history.push('/sale');
-        // window.location.reload();
+        // this.props.history.push('/sale');
+       window.location.reload();
       })
       .catch(function (error) {
         console.log(error);
@@ -332,7 +343,7 @@ class SaleCard extends Component {
                   <div className="card-btn">
                     <button className='btn btn-outline-dark' onClick={this.buyItem} itemid={this.props.index}>Buy this item</button>
                   </div>
-{/* >>>>>>> defc03bd081bde28a963379ae007c6c428ddf0c0 */}
+ 
                 </div>
               </div>
               {/* <div className="col-md-2 row align-items-center justify-content-center">
