@@ -45,9 +45,9 @@ Logout()  {
   console.log("log out function called.");
 
    
-      var  id = this.state.loggedInUserId;
-        console.log("logged in id is " + id);
-        var url = "/api/logout/" + id;
+      //var  id = this.state.loggedInUserId;
+      //  console.log("logged in id is " + id);
+      //  var url = "/api/logout/" + id;
         axios.put(url)
         .then(function(res) {
          
