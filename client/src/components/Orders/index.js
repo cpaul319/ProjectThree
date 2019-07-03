@@ -21,13 +21,23 @@ class Orders extends Component {
       swag8quantity: 0,
       swag9quantity: 0,
       swag10quantity: 0,
-      email: ""
+      email: "",
+      loggedInUserName:"",
+      loggedInUserEmail:"",
+      loggedInUserId:""
       // redirect: false
     }
     this.componentDidMount = this.componentDidMount.bind(this);
   };
 
   componentDidMount() {
+    var loggedInUserName = localStorage.getItem('loggedInUserName');
+    var loggedInUserEmail = localStorage.getItem('loggedInUserEmail');
+    var loggedInUserId = localStorage.getItem('loggedInUserId');
+    
+    this.setState({ loggedInUserName });
+    this.setState({ loggedInUserEmail });
+    this.setState({ loggedInUserId });
     const that = this;
     console.log("this is sale card");
     axios.get('/api/allusers')
@@ -40,7 +50,7 @@ class Orders extends Component {
             console.log("that.state.email is " + that.state.email);
             console.log("res.data[" + c + "].email is " + res.data[c].email);
             that.setState({
-              email: res.data[c].email
+              email: loggedInUserEmail
             });
             that.setState({
               swag1quantity: res.data[c].swag1quantity
@@ -105,7 +115,7 @@ class Orders extends Component {
       <div>
         <OrderNav />
         <div className='container'>
-          <h2 className='text-center' id="history">Order History</h2>
+          <h2 className='text-center' id="history">Order History For {this.state.loggedInUserName}</h2>
           {this.state.swag1quantity > 0 &&
 
             <div className="card mb-3">
