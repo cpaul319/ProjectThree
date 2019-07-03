@@ -46,8 +46,8 @@ class Orders extends Component {
         for (var c = 0; c < res.data.length; c++) {
           console.log("inside loop");
           if (res.data[c].isLoggedIn == 1) {
-            that.state.email = res.data[c].email;
-            console.log("that.state.email is " + that.state.email);
+            // that.state.email = res.data[c].email;
+            // console.log("that.state.email is " + that.state.email);
             console.log("res.data[" + c + "].email is " + res.data[c].email);
             that.setState({
               email: loggedInUserEmail
