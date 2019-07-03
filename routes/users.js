@@ -109,7 +109,7 @@ userRouter.put("/api/login/:id", function (req, res) {
         });
 });
 
-userRouter.put("/api/logout/:id", function (req, res) {
+/*userRouter.put("/api/logout/:id", function (req, res) {
     console.log("log out function is called.");
     db.Users.update({
         isLoggedIn: 0
@@ -125,6 +125,24 @@ userRouter.put("/api/logout/:id", function (req, res) {
             console.log("weird error");
             res.status(400).json({error: err});
         });
+});*/
+
+userRouter.put("/api/logout/:email", function (req, res)    {
+    console.log("logout by e-mail function is called.");
+    db.Users.update({
+        isLoggedIn: 0
+    },
+    {
+        where:  {
+            email: req.params.email
+        }
+    }).then(function (dbUsers) {
+        res.json(dbUsers);
+        console.log("user updated");
+    }).catch(err => {
+        console.log("weird error");
+        res.statusMessage(400).json({error: err});
+    });
 });
 
 userRouter.post("/api/loggeduser", (req, res) => {

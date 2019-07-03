@@ -36,9 +36,25 @@ componentDidMount() {
   }
 
 Logout()  {
-  var id;
 
+  var id;
+  
+  //const that = this;
+
+  //var url = "/api/logout/" + that.state.loggedInUserEmail;
+
+  var email = localStorage.getItem('loggedInUserEmail');
+  var url = "/api/logout/" + email;
+
+  console.log("logged in e-mail is " + email);
   console.log("log out function called.");
+  axios.put(url)
+  .then(function (res)  {
+    console.log("user is logged out");
+  }).catch(function (error) {
+    console.log("user is not logged out.");
+  });
+  /*
   axios.get('/api/allusers')
   .then(function (res) {
     //const firstName = firstName.res.data;
@@ -62,7 +78,7 @@ Logout()  {
   })
   .catch(function (error) {
     console.log(error);
-  });
+  });*/
   //console.log("logging out");
   //axios.put('/api/logout/', 
 }
