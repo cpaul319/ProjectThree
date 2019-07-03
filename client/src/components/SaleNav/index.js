@@ -36,49 +36,39 @@ componentDidMount() {
   }
 
 Logout()  {
-
-  var id;
-  
-  //const that = this;
-
-  //var url = "/api/logout/" + that.state.loggedInUserEmail;
+   
 
   var email = localStorage.getItem('loggedInUserEmail');
   var url = "/api/logout/" + email;
 
   console.log("logged in e-mail is " + email);
   console.log("log out function called.");
-  axios.put(url)
-  .then(function (res)  {
-    console.log("user is logged out");
-  }).catch(function (error) {
-    console.log("user is not logged out.");
-  });
-  /*
-  axios.get('/api/allusers')
-  .then(function (res) {
-    //const firstName = firstName.res.data;
-    //this.setState({ firstName });
-    var id= this.props.userData.user.id;
-    console.log("this is sale navigation bar.");
-    for (var c = 0; c < res.data.length; c++) {
-      if (res.data[c].isLoggedIn == 1)  {
-        id = res.data[c].id;
+
+   
+      var  id = this.state.loggedInUserId;
         console.log("logged in id is " + id);
-      
         var url = "/api/logout/" + id;
         axios.put(url)
         .then(function(res) {
+         
+          localStorage.removeItem('loggedInUserName');
+          localStorage.removeItem('loggedInUserEmail');
+          localStorage.removeItem('loggedInUserId');
+          localStorage.clear();
+          // var loggedInUserName = localStorage.getItem('loggedInUserName');
+          // var loggedInUserEmail = localStorage.getItem('loggedInUserEmail');
+          // var loggedInUserId = localStorage.getItem('loggedInUserId');
+          // this.setState({ " " :loggedInUserName  });
+          // this.setState({ "":loggedInUserEmail });
+          // this.setState({ "":loggedInUserId });
+          console.log("clear local storage")
           console.log("user is logged out.")
         }).catch(function (error) {
           console.log("user is not logged out");
         });
-      }
-    }
-  })
-  .catch(function (error) {
-    console.log(error);
-  });*/
+      
+    
+ 
   //console.log("logging out");
   //axios.put('/api/logout/', 
 }
