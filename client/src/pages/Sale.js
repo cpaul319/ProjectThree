@@ -46,6 +46,7 @@ class Sale extends Component {
     console.log(loggedInUserName);
     console.log(loggedInUserEmail);
     console.log(loggedInUserId);
+     
     // this.setState({ userData: this.props.userData.userData.user.isLoggedIn });
     // if(!this.props.userData.userData.user.isLoggedIn){
     //   this.props.history.push('/login');

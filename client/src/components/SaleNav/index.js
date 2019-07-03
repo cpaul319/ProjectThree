@@ -17,10 +17,6 @@ class SaleNav extends Component {
 
   }
 
- 
- 
- 
-  //  var id= this.props.userData.userData.user.id;
 
 componentDidMount() {
   var loggedInUserName = localStorage.getItem('loggedInUserName');
@@ -30,6 +26,7 @@ componentDidMount() {
   this.setState({ loggedInUserName });
   this.setState({ loggedInUserEmail });
   this.setState({ loggedInUserId });
+ 
   // this.props.userData;
   // this.setState({ userName: this.props.userData.user.userName });
   // console.log(this.props.userData);
@@ -38,6 +35,7 @@ componentDidMount() {
 Logout()  {
    
   var email = localStorage.getItem('loggedInUserEmail');
+  localStorage.clear();
   var url = "/api/logout/" + email;
   console.log("logged in e-mail is " + email);
   console.log("log out function called.");
@@ -47,13 +45,14 @@ Logout()  {
           // localStorage.removeItem('loggedInUserName');
           // localStorage.removeItem('loggedInUserEmail');
           // localStorage.removeItem('loggedInUserId');
-          localStorage.clear();
+         
           // var loggedInUserName = localStorage.getItem('loggedInUserName');
           // var loggedInUserEmail = localStorage.getItem('loggedInUserEmail');
           // var loggedInUserId = localStorage.getItem('loggedInUserId');
           // this.setState({ " " :loggedInUserName  });
           // this.setState({ "":loggedInUserEmail });
           // this.setState({ "":loggedInUserId });
+          window.location.reload();
           console.log("clear local storage")
           console.log("user is logged out.")
         }).catch(function (error) {
