@@ -106,7 +106,7 @@ class Account extends Component {
 
     componentDidMount() {
 
-        this.setState({ userName: this.props.userData.userData.user.userName });
+        // this.setState({ userName: this.props.userData.userData.user.userName });
         // console.log(this.props.userData.userData.user.userName);
 
         axios.post('/login', {
@@ -198,7 +198,8 @@ class Account extends Component {
                 <EditNav userData={this.state.userData} />
                 <div className="account-container">
                     <p id="account-title">Edit Account Info</p>
-                    <p id="account-user">Welcome {this.state.userName}</p>
+                   
+
                     <AvForm>
                         <div className="account-box1">
                             <AvField

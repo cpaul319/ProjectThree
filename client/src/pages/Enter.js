@@ -136,10 +136,7 @@ class Enter extends Component {
                     console.log(res.data.message);
                     console.log(res.data);
                     console.log('successful login')
-                    this.props.getLoggedInUser({
-                        
-                        userData: res.data
-                    })
+                    this.props.getLoggedInUser(res.data)
                     this.setRedirect();
                     this.updateIsLoggedIn();
 				} else {

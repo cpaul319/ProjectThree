@@ -145,7 +145,7 @@ class SaleCard extends Component {
 
   componentDidMount() {
     console.log("inside sales card index.js");
-    console.log( this.props.userData.userData);
+    console.log( this.props.userData);
 
     const that = this;
     console.log("this is sale card");
@@ -160,7 +160,7 @@ class SaleCard extends Component {
             console.log("res.data[" + c + "].email is " + res.data[c].email);
             that.setState({
   
-              email: this.props.userData.userData.user.email
+              email: this.props.userData.user.email
               // email: res.data[c].email
             });
             that.setState({
@@ -292,7 +292,7 @@ class SaleCard extends Component {
       //swag10name: this.state.swag10name,
       swag10quantity: that.state.swag10quantity,
       
-      email:this.props.userData.userData.user.email
+      email:this.props.userData.user.email
       // email: that.state.email
       //user
     }
