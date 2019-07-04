@@ -1,8 +1,8 @@
  
 {
   "development": {
-    "username": "trilogy-2",
-    "password": "david123",
+    "username": "trilogy",
+    "password": "password123",
  
     "database": "UserDb",
     "host": "localhost",
