@@ -43,7 +43,10 @@ class SaleCard extends Component {
       email: "",
       loggedInUserName: "",
       loggedInUserEmail: "",
-      loggedInUserId: ""
+      loggedInUserId: "",
+      ccnumber: "",
+      cvv: "",
+      expdate: ""
       // redirect: false
     }
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -168,11 +171,31 @@ class SaleCard extends Component {
           //if (res.data[c].isLoggedIn == 1) {
           if (res.data[c].email == loggedInUserEmail) {
             that.state.email = res.data[c].email;
+            console.log("db credit card number: " + res.data[c].creditCardNumber);
+            console.log("db cc exp date: " + res.data[c].expDate);
+
+            var ccnum = String(res.data[c].creditCardNumber);
+            var expd = String(res.data[c].expDate);
+            console.log("ccnum: " + ccnum);
+            console.log("expd: " + expd);
+
+            that.setState({
+              ccnumber: ccnum
+            });
+
+            that.setState({
+              cvv: res.data[c].cvv
+            });
+
+            that.setState({
+              expdate: expd
+            });
+
             // console.log("that.state.email is " + that.state.email);
             // console.log("res.data[" + c + "].email is " + res.data[c].email);
             that.setState({
 
-              email: that.state.loggedInUserEmail,
+              email: that.state.loggedInUserEmail
 
               // email: res.data[c].email
             });
@@ -216,6 +239,9 @@ class SaleCard extends Component {
             console.log("this.state.swag8quantity: " + that.state.swag8quantity);
             console.log("this.state.swag9quantity: " + that.state.swag9quantity);
             console.log("this.state.swag10quantity: " + that.state.swag10quantity);
+            console.log("this.state.creditCardNumber: " + that.state.ccnumber);
+            console.log("this.state.cvv: " + that.state.cvv);
+            console.log("this.state.expdate: " + that.state.expdate);
             /*       
             that.state.swag1quantity = res.data[c].swag1quantity;
             console.log("that.state.swage1quantity: " + that.state.swag1quantity);
@@ -311,19 +337,30 @@ class SaleCard extends Component {
     }
     console.log(user);
     var _this = this;
-    axios.put("/api/buy", user)
-      .then(function (response) {
-        console.log(response);
-        window.location.reload();
-        /*
-        alert("Item was added to cart");
-        // this.props.history.push('/sale');
-        _this.props.history.push('/sale');*/
+    
+    console.log("right b4 purchase");
+    console.log("this.state.creditCardNumber: " + that.state.ccnumber);
+    console.log("this.state.cvv: " + that.state.cvv);
+    console.log("this.state.expdate: " + that.state.expdate);
 
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    if (that.state.expdate && that.state.cvv && that.state.ccnumber) {
+      axios.put("/api/buy", user)
+        .then(function (response) {
+          console.log(response);
+          window.location.reload();
+          /*
+          alert("Item was added to cart");
+          // this.props.history.push('/sale');
+          _this.props.history.push('/sale');*/
+
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    } else {
+      alert("please enter credit card information on edit account page.");
+      console.log("credit card information is missing.");
+    }
   }
 
   render() {

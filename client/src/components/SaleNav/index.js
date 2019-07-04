@@ -73,10 +73,10 @@ render()  {
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
               <a className="nav-link sale-nav-link" href="#">Welcome {this.state.loggedInUserName}<span className="sr-only">(current)</span></a>
-            </li>{/*{navbarImg}*/}{/*}
+            </li>{/*{navbarImg}*/}
             <li className="nav-item">
-<a className="nav-link sale-nav-link" href="/account">Account</a>
-            </li>*/}{/*{navbarImg}*/}
+              <a className="nav-link sale-nav-link" href="/account">Account</a>
+            </li>{/*{navbarImg}*/}
             <li className="nav-item">
               <a className="nav-link sale-nav-link" href="/orders">Orders</a>
             </li>{/*{navbarImg}*/}
