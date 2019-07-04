@@ -2,8 +2,7 @@ import axios from "axios";
 import Sale from '../../pages/Sale'
 import React, { Component } from "react";
 import {
-  Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle, Button
+  Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Modal, ModalHeader, ModalBody, ModalFooter, Button
 } from 'reactstrap';
 import SaleNav from '../SaleNav'
 import { Redirect, withRouter } from 'react-router-dom';
@@ -46,12 +45,18 @@ class SaleCard extends Component {
       loggedInUserId: "",
       ccnumber: "",
       cvv: "",
-      expdate: ""
+      expdate: "",
+      modal: false,
+      nestedModal: false,
+      closeAll: false
       // redirect: false
     }
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
     this.buyItem = this.buyItem.bind(this);
+    this.toggle = this.toggle.bind(this);
+    this.toggleNested = this.toggleNested.bind(this);
+    this.toggleAll = this.toggleAll.bind(this);
   };
   //   handleInputChange = event => {
 
@@ -61,6 +66,26 @@ class SaleCard extends Component {
   //     });
   //     console.log("value is " + value);
   // }
+
+  toggle() {
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
+  }
+
+  toggleNested() {
+    this.setState({
+      nestedModal: !this.state.nestedModal,
+      closeAll: false
+    });
+  }
+
+  toggleAll() {
+    this.setState({
+      nestedModal: !this.state.nestedModal,
+      closeAll: true
+    });
+  }
 
   handleFormSubmit = event => {
 
@@ -337,7 +362,7 @@ class SaleCard extends Component {
     }
     console.log(user);
     var _this = this;
-    
+
     console.log("right b4 purchase");
     console.log("this.state.creditCardNumber: " + that.state.ccnumber);
     console.log("this.state.cvv: " + that.state.cvv);
@@ -358,7 +383,8 @@ class SaleCard extends Component {
           console.log(error);
         });
     } else {
-      alert("please enter credit card information on edit account page.");
+      //alert("please enter credit card information on edit account page.");
+      this.toggleNested();
       console.log("credit card information is missing.");
     }
   }
@@ -384,7 +410,6 @@ class SaleCard extends Component {
                   <div className="card-btn">
                     <button className='btn btn-outline-dark' onClick={this.buyItem} itemid={this.props.index}>Buy this item</button>
                   </div>
-
                 </div>
               </div>
               {/* <div className="col-md-2 row align-items-center justify-content-center">
@@ -393,6 +418,14 @@ class SaleCard extends Component {
           </div> */}
             </div>
           </div>
+        </div>
+        <div>
+          <Modal isOpen={this.state.nestedModal} toggle={this.toggleNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
+            <ModalHeader>Please enter credit card information!</ModalHeader>
+            <ModalFooter>
+              <Button className="enter-btn" onClick={this.toggleAll}>Close</Button>
+            </ModalFooter>
+          </Modal>
         </div>
       </div>
 

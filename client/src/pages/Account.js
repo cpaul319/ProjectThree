@@ -83,7 +83,7 @@ class Account extends Component {
                 .then(function (response) {
                     console.log(response);
 
-                    alert("Account was updated");
+                    //alert("Account was updated");
                     _this.props.history.push('/sale');
                     //  window.location.reload();
                 })
