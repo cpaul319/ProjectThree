@@ -34,6 +34,41 @@ userRouter.get("/api/loggedin", function (req, res) {
     });
 });
 
+userRouter.post("/orders", (req, res) => {
+    console.log("post to login, email = " + req.body.email);
+    db.Users.findOne({
+        where: {
+            email: req.body.email
+        }
+    })
+        .then(user => {
+            console.log("orders then");
+            res.send(user);
+        })
+        .catch(err => {
+            console.log("orders catch err=" + err);
+            res.status(400).json({ error: err })
+        })
+})
+
+userRouter.get("/api/orders", function (req, res) {
+    
+    console.log("this function returns all orders of logged in.");
+    console.log(req.body.user);
+    db.Users.findOne({
+        where: {
+            // email:"snow@snow7.com"
+            email: req.body.email
+        }
+    }).then(function (dbUsers) {
+        console.log("logged in user present");
+        res.json(dbUsers);
+    }).catch(err => {
+        console.log("weird error");
+        res.status(400).json({error: err});
+    });
+});
+
 /*userRouter.put("/api/usersbuy/:id", function (req, res) {
     console.log("purchase")
 });*/
@@ -144,6 +179,8 @@ userRouter.put("/api/logout/:email", function (req, res)    {
         res.statusMessage(400).json({error: err});
     });
 });
+ 
+ 
 
 userRouter.post("/api/loggeduser", (req, res) => {
     console.log("Looking for logged in users...");
@@ -203,7 +240,7 @@ userRouter.get("/api/allusers", function (req, res) {
     });
 });
 
-userRouter.get("/api/users:id", function (req, res) {
+userRouter.get("/api/user:email", function (req, res) {
     db.Users.findOne({}).then(function (dbUsers) {
         res.json(dbUsers);
     });

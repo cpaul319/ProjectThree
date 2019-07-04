@@ -41,17 +41,6 @@ Logout()  {
   console.log("log out function called.");
         axios.put(url)
         .then(function(res) {
-         
-          // localStorage.removeItem('loggedInUserName');
-          // localStorage.removeItem('loggedInUserEmail');
-          // localStorage.removeItem('loggedInUserId');
-         
-          // var loggedInUserName = localStorage.getItem('loggedInUserName');
-          // var loggedInUserEmail = localStorage.getItem('loggedInUserEmail');
-          // var loggedInUserId = localStorage.getItem('loggedInUserId');
-          // this.setState({ " " :loggedInUserName  });
-          // this.setState({ "":loggedInUserEmail });
-          // this.setState({ "":loggedInUserId });
           window.location.reload();
           console.log("clear local storage")
           console.log("user is logged out.")
@@ -59,10 +48,6 @@ Logout()  {
           console.log("user is not logged out");
         });
       
-    
- 
-  //console.log("logging out");
-  //axios.put('/api/logout/', 
 }
  
 render()  {
