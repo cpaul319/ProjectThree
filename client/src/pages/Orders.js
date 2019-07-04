@@ -9,6 +9,9 @@ import "../Orders.css"
 
 
 console.log("before Log In function is called.");
+const styles = {
+  background: "/images/gotmap.jpg"
+}
 class Sale extends Component {
   constructor() {
     super()
@@ -26,13 +29,12 @@ class Sale extends Component {
       expDate: 1,
       cvv: 4
     }
-
   }
   
 render () {
 
   return (
-    <div className="App orders-body">
+    <div style={styles.background} className="App orders-body">
           <Orders/>          
     </div>
   )};
