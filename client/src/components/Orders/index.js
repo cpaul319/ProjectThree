@@ -42,7 +42,7 @@ class Orders extends Component {
     // console.log(this.state.loggedInUserEmail);
     const that = this;
     // this.setState({
-    //   email: loggedInUserEmail
+    //   testing email: loggedInUserEmail
     // });
     console.log("orders card");
     console.log(loggedInUserEmail);
