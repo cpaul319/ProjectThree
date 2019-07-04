@@ -6,7 +6,7 @@ import {
   CardTitle, CardSubtitle, Button
 } from 'reactstrap';
 import SaleNav from '../SaleNav'
-import { Redirect,  withRouter  } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
 import hand from './hand.PNG';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import "./style.css";
@@ -40,7 +40,10 @@ class SaleCard extends Component {
       swag9quantity: 0,
       swag10name: "Swag 10",
       swag10quantity: 0,
-      email: ""
+      email: "",
+      loggedInUserName: "",
+      loggedInUserEmail: "",
+      loggedInUserId: ""
       // redirect: false
     }
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -102,18 +105,18 @@ class SaleCard extends Component {
 
     // this.props.history.push('/orders');
 
- 
 
-    }
 
-   
-// render() {
-//   const imageStyle = {
-//     margin: "0 auto"
-//   }
+  }
 
-//   return (
-   
+
+  // render() {
+  //   const imageStyle = {
+  //     margin: "0 auto"
+  //   }
+
+  //   return (
+
 
   // <div className="sale-body">
   //   <div className='card-container'>
@@ -137,30 +140,40 @@ class SaleCard extends Component {
   //       </div>
   //     </div>
   //   </div> 
-        //  bootstrap card
- 
-    // )
+  //  bootstrap card
+
+  // )
 
   // }
 
   componentDidMount() {
+    var loggedInUserName = localStorage.getItem('loggedInUserName');
+    var loggedInUserEmail = localStorage.getItem('loggedInUserEmail');
+    var loggedInUserId = localStorage.getItem('loggedInUserId');
+
+    this.setState({ loggedInUserName });
+    this.setState({ loggedInUserEmail });
+    this.setState({ loggedInUserId });
     console.log("inside sales card index.js");
-    console.log( this.props.userData.userData);
+
 
     const that = this;
     console.log("this is sale card");
+    console.log("logged e-mail passed thru local storage is " + loggedInUserEmail);
     axios.get('/api/allusers')
       .then(function (res) {
         console.log("inside sale card axios get all cards call");
         for (var c = 0; c < res.data.length; c++) {
           console.log("inside loop");
-          if (res.data[c].isLoggedIn == 1) {
+          //if (res.data[c].isLoggedIn == 1) {
+          if (res.data[c].email == loggedInUserEmail) {
             that.state.email = res.data[c].email;
-            console.log("that.state.email is " + that.state.email);
-            console.log("res.data[" + c + "].email is " + res.data[c].email);
+            // console.log("that.state.email is " + that.state.email);
+            // console.log("res.data[" + c + "].email is " + res.data[c].email);
             that.setState({
-  
-              email: this.props.userData.userData.user.email
+
+              email: that.state.loggedInUserEmail,
+
               // email: res.data[c].email
             });
             that.setState({
@@ -192,7 +205,7 @@ class SaleCard extends Component {
             });
             that.setState({
               swag10quantity: res.data[c].swag10quantity
-            });   
+            });
             console.log("this.state.swag1quantity: " + that.state.swag1quantity);
             console.log("this.state.swag2quantity: " + that.state.swag2quantity);
             console.log("this.state.swag3quantity: " + that.state.swag3quantity);
@@ -291,20 +304,22 @@ class SaleCard extends Component {
       swag9quantity: that.state.swag9quantity,
       //swag10name: this.state.swag10name,
       swag10quantity: that.state.swag10quantity,
-      
-      email:this.props.userData.userData.user.email
+
+      email: that.state.loggedInUserEmail
       // email: that.state.email
       //user
     }
     console.log(user);
-
+    var _this = this;
     axios.put("/api/buy", user)
       .then(function (response) {
         console.log(response);
-        
+        window.location.reload();
+        /*
         alert("Item was added to cart");
-        this.props.history.push('/sale');
-        // window.location.reload();
+        // this.props.history.push('/sale');
+        _this.props.history.push('/sale');*/
+
       })
       .catch(function (error) {
         console.log(error);
@@ -332,7 +347,7 @@ class SaleCard extends Component {
                   <div className="card-btn">
                     <button className='btn btn-outline-dark' onClick={this.buyItem} itemid={this.props.index}>Buy this item</button>
                   </div>
-{/* >>>>>>> defc03bd081bde28a963379ae007c6c428ddf0c0 */}
+
                 </div>
               </div>
               {/* <div className="col-md-2 row align-items-center justify-content-center">
@@ -352,4 +367,4 @@ class SaleCard extends Component {
 
 
 export default withRouter(SaleCard);
- 
+
