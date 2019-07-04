@@ -332,7 +332,7 @@ class SaleCard extends Component {
       padding: "1rem"
     }
     return (
-      <div className="sale-body">
+      <div>
         <div className='container-fluid'>
           <div className="card mb-3">
             <div className="row no-gutters">
