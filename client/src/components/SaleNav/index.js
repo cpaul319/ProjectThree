@@ -41,7 +41,10 @@ Logout()  {
   console.log("log out function called.");
         axios.put(url)
         .then(function(res) {
+          localStorage.clear();
           window.location.reload();
+         
+         
           console.log("clear local storage")
           console.log("user is logged out.")
         }).catch(function (error) {
