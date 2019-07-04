@@ -6,7 +6,8 @@ import axios from "axios";
 class OrderNav extends Component {
 
   state = {
-    hi: ""
+    hi: "",
+    email: ""
     //navbarImg = <img className="d-none d-lg-inline sale-nav-img" src="/images/hand.jpg" alt="sword" />;
   };
 
@@ -53,7 +54,7 @@ class OrderNav extends Component {
     </nav> */}
 
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <a className="navbar-brand" href="/">GoT Swag</a>
+          <a className="navbar-brand" href="#">GoT Swag</a>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -63,9 +64,10 @@ class OrderNav extends Component {
               <li className="nav-item active">
                 <a className="nav-link" href="/sale">Buy Items<span className="sr-only">(current)</span></a>
               </li>
+              {/*
               <li className="nav-item">
                 <a className="nav-link" href="/account">Account</a>
-              </li>
+              </li>*/}
               <li className="nav-item">
                 <a className="nav-link" href="/" onClick = {this.Logout}>Log Out</a>
               </li>
