@@ -1,8 +1,8 @@
  
 {
   "development": {
-    "username": "trilogy-2",
-    "password": "david123",
+    "username": "root",
+    "password": "Bootcamp1!?",
  
     "database": "UserDb",
     "host": "localhost",

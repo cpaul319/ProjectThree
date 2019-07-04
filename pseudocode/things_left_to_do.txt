@@ -1,7 +1,5 @@
 Things to do:
 
-1. Heroku deployment.
-
 2. Orders background.
 
 3. Order card styling.
