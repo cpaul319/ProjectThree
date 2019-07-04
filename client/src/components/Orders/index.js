@@ -4,6 +4,11 @@ import OrderNav from '../OrdrNav';
 import axios from "axios";
 import "./style.css";
  
+const imgUrl = '/images/gotmap.jpg';
+
+const divStyle = {
+    backgroundImage: 'url(' + imgUrl + ')',
+};
 
 //const Orders = (props) => {
 class Orders extends Component {
@@ -133,10 +138,10 @@ class Orders extends Component {
 
   render() {
     return (
-      <div>
+      <div style={divStyle}>
         <OrderNav />
         <div className='container'>
-          <h2 className='text-center' id="history">Order History For {this.state.loggedInUserName}</h2>
+          <h2 className='text-center' id="history">{/*Order History For {this.state.loggedInUserName}*/}</h2>
           {this.state.swag1quantity > 0 &&
 
             <div className="card mb-3">
