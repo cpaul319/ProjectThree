@@ -43,7 +43,7 @@ Logout()  {
         .then(function(res) {
           localStorage.clear();
           window.location.reload();
-         
+         //merge
          
           console.log("clear local storage")
           console.log("user is logged out.")
