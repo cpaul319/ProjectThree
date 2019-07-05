@@ -9,7 +9,7 @@ import { Button } from 'reactstrap';
 
 import "../Account.css"
 import moment from 'moment';
-//update user data
+ 
 
 class Account extends Component {
     constructor(props) {
@@ -33,15 +33,6 @@ class Account extends Component {
 
     }
 
-
-
-
-    // setRedirect = () => {
-    //     this.setState({
-    //         redirect: true
-    //     }, () =>  this.renderRedirect())
-
-    // }
     handleInputChange = event => {
 
         const { name, value } = event.target;
@@ -51,14 +42,7 @@ class Account extends Component {
         console.log("value is " + value);
     }
 
-    // renderRedirect = () => {
-    //     console.log("redirect works!");
-
-
-    //         return <Redirect to='/sale' />
-
-    // }
-    //add functionality where it send the data to the Database
+  
     handleFormSubmit = event => {
 
         const user = {
@@ -129,17 +113,13 @@ class Account extends Component {
     }
 
     ValidateCCNumber() {
-        /*console.log("Is credit card number integer? " + Number.isInteger(this.state.creditCardNumber));
-        console.log("Is credit card number 16 digits? " + this.state.creditCardNumber > 999999999999999);
-        return (Number.isInteger(this.state.creditCardNumber) && this.state.creditCardNumber > 999999999999999);*/
+         
         var number = /^[0-9]+$/;
         return (number.test(this.state.creditCardNumber) && this.state.creditCardNumber.length == 16);
     }
 
     ValidateZip() {
-        //console.log(Number.isInteger(this.state.zip));
-        //console.log(this.state.zip);
-        //return (Number.isInteger(this.state.zip) && this.state.zip > 9999);
+      
         var number = /^[0-9]+$/;
         return (number.test(this.state.zip) && this.state.zip > 9999);
     }
@@ -163,74 +143,7 @@ class Account extends Component {
                 <div className="account-container">
                     <p id="account-title">Edit Account Info For</p>
                     <p className="account-user">{this.state.loggedInUserName}</p>
-                   {/* <div className="account-box1">
-                        <AvField
-                            name="userName"
-                            placeholder="username"
-                            value={this.state.userName}
-                            onChange={this.handleInputChange}
-                            validate={{
-                                required: { value: true, errorMessage: 'Please enter user name' }
-                            }}
-                        />
-                        <AvField
-                            name="firstName"
-                            placeholder="First Name"
-                            value={this.state.firstName}
-                            onChange={this.handleInputChange}
-                            validate={{
-                                required: { value: true, errorMessage: 'Please enter first name' },
-                                pattern: { value: '^[A-Za-z]+$', errorMessage: 'Your name must be composed only with letters' }
-                            }}
-                        />
-                        <AvField
-                            name="lastName"
-                            placeholder="Last Name"
-                            value={this.state.lastName}
-                            onChange={this.handleInputChange}
-                            validate={{
-                                required: { value: true, errorMessage: 'Please enter last name' },
-                                pattern: { value: '^[A-Za-z]+$', errorMessage: 'Your name must be composed only with letters' }
-                            }}
-                        />
-                        <AvField
-                            name="email"
-                            placeholder="e-mail"
-                            value={this.state.email}
-                            onChange={this.handleInputChange}
-                            validate={{
-                                email: { value: true, errorMessage: 'Please enter valid e-mail' },
-                                required: { value: true, errorMessage: 'Please enter e-mail' }
-                            }}
-                        />
-                        <AvField
-                            name="password"
-                            placeholder="password"
-                            type="password"
-                            value={this.state.password}
-                            onChange={this.handleInputChange}
-                            validate={{
-                                required: { value: true, errorMessage: 'Please enter password' },
-                                pattern: { value: '^[A-Za-z0-9]+$', errorMessage: 'Your name must be composed only with letter and numbers' },
-                                minLength: { value: 6, errorMessage: 'Your name must be between 6 and 16 characters' },
-                                maxLength: { value: 16, errorMessage: 'Your name must be between 6 and 16 characters' }
-                            }}
-                        />
-                        <AvField
-                            name="confirm_password"
-                            type="password"
-                            placeholder="confirm_password"
-                            onChange={this.handleInputChange}
-                            validate={{
-                                required: { value: true, errorMessage: 'Please enter password' },
-                                pattern: { value: '^[A-Za-z0-9]+$', errorMessage: 'Your name must be composed only with letter and numbers' },
-                                minLength: { value: 6, errorMessage: 'Your name must be between 6 and 16 characters' },
-                                maxLength: { value: 16, errorMessage: 'Your name must be between 6 and 16 characters' },
-                                match: { value: 'password', errorMessage: 'Passwords must match' }
-                            }}
-                        />
-                        </div>*/}
-
+            
                     <AvForm>
                         <div className="account-box1">
                             <AvField
@@ -251,12 +164,7 @@ class Account extends Component {
                                     required: { value: true, errorMessage: 'Please enter city' }
                                 }}
                             />
-                            {/* <AvField
-                            name="state"
-                            placeholder="State"
-                            value={this.state.state}
-                            onChange={this.handleInputChange}
-                        /> */}
+                     
                             <AvField
                                 type="select"
                                 name="state"
