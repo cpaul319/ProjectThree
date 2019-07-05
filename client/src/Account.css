@@ -60,7 +60,11 @@
 
     #account-title {
         text-align: center;
-        font-size: 3rem;
+        font-size: 2.5rem;
+    }
+
+    .account-user {
+        font-size: 1.75rem;
     }
 
     .account-box1 {

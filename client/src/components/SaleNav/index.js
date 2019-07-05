@@ -17,10 +17,6 @@ class SaleNav extends Component {
 
   }
 
- 
- 
- 
-  //  var id= this.props.userData.userData.user.id;
 
 componentDidMount() {
   var loggedInUserName = localStorage.getItem('loggedInUserName');
@@ -30,6 +26,7 @@ componentDidMount() {
   this.setState({ loggedInUserName });
   this.setState({ loggedInUserEmail });
   this.setState({ loggedInUserId });
+ 
   // this.props.userData;
   // this.setState({ userName: this.props.userData.user.userName });
   // console.log(this.props.userData);
@@ -38,32 +35,22 @@ componentDidMount() {
 Logout()  {
    
   var email = localStorage.getItem('loggedInUserEmail');
+  localStorage.clear();
   var url = "/api/logout/" + email;
   console.log("logged in e-mail is " + email);
   console.log("log out function called.");
         axios.put(url)
         .then(function(res) {
-         
-          // localStorage.removeItem('loggedInUserName');
-          // localStorage.removeItem('loggedInUserEmail');
-          // localStorage.removeItem('loggedInUserId');
           localStorage.clear();
-          // var loggedInUserName = localStorage.getItem('loggedInUserName');
-          // var loggedInUserEmail = localStorage.getItem('loggedInUserEmail');
-          // var loggedInUserId = localStorage.getItem('loggedInUserId');
-          // this.setState({ " " :loggedInUserName  });
-          // this.setState({ "":loggedInUserEmail });
-          // this.setState({ "":loggedInUserId });
+          window.location.reload();
+         //merge
+         
           console.log("clear local storage")
           console.log("user is logged out.")
         }).catch(function (error) {
           console.log("user is not logged out");
         });
       
-    
- 
-  //console.log("logging out");
-  //axios.put('/api/logout/', 
 }
  
 render()  {
@@ -77,7 +64,7 @@ render()  {
   </nav>*/}
 
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <a className="navbar-brand" href="/">GoT Swag</a>
+        <a className="navbar-brand" href="#">GoT Swag</a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -85,7 +72,7 @@ render()  {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <a className="nav-link sale-nav-link" href="*">Welcome {this.state.loggedInUserName}<span className="sr-only">(current)</span></a>
+              <a className="nav-link sale-nav-link" href="#">Welcome {this.state.loggedInUserName}<span className="sr-only">(current)</span></a>
             </li>{/*{navbarImg}*/}
             <li className="nav-item">
               <a className="nav-link sale-nav-link" href="/account">Account</a>

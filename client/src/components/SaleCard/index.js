@@ -2,8 +2,7 @@ import axios from "axios";
 import Sale from '../../pages/Sale'
 import React, { Component } from "react";
 import {
-  Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle, Button
+  Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Modal, ModalHeader, ModalBody, ModalFooter, Button
 } from 'reactstrap';
 import SaleNav from '../SaleNav'
 import { Redirect, withRouter } from 'react-router-dom';
@@ -43,12 +42,21 @@ class SaleCard extends Component {
       email: "",
       loggedInUserName: "",
       loggedInUserEmail: "",
-      loggedInUserId: ""
+      loggedInUserId: "",
+      ccnumber: "",
+      cvv: "",
+      expdate: "",
+      modal: false,
+      nestedModal: false,
+      closeAll: false
       // redirect: false
     }
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
     this.buyItem = this.buyItem.bind(this);
+    this.toggle = this.toggle.bind(this);
+    this.toggleNested = this.toggleNested.bind(this);
+    this.toggleAll = this.toggleAll.bind(this);
   };
   //   handleInputChange = event => {
 
@@ -58,6 +66,28 @@ class SaleCard extends Component {
   //     });
   //     console.log("value is " + value);
   // }
+
+  toggle() {
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
+  }
+
+  toggleNested() {
+    this.setState({
+      nestedModal: !this.state.nestedModal,
+      closeAll: false
+    });
+    setTimeout(() => {this.props.history.push('/account')}, 3000)
+    
+  }
+
+  toggleAll() {
+    this.setState({
+      nestedModal: !this.state.nestedModal,
+      closeAll: true
+    });
+  }
 
   handleFormSubmit = event => {
 
@@ -168,11 +198,31 @@ class SaleCard extends Component {
           //if (res.data[c].isLoggedIn == 1) {
           if (res.data[c].email == loggedInUserEmail) {
             that.state.email = res.data[c].email;
+            console.log("db credit card number: " + res.data[c].creditCardNumber);
+            console.log("db cc exp date: " + res.data[c].expDate);
+
+            var ccnum = String(res.data[c].creditCardNumber);
+            var expd = String(res.data[c].expDate);
+            console.log("ccnum: " + ccnum);
+            console.log("expd: " + expd);
+
+            that.setState({
+              ccnumber: ccnum
+            });
+
+            that.setState({
+              cvv: res.data[c].cvv
+            });
+
+            that.setState({
+              expdate: expd
+            });
+
             // console.log("that.state.email is " + that.state.email);
             // console.log("res.data[" + c + "].email is " + res.data[c].email);
             that.setState({
 
-              email: that.state.loggedInUserEmail,
+              email: that.state.loggedInUserEmail
 
               // email: res.data[c].email
             });
@@ -216,6 +266,9 @@ class SaleCard extends Component {
             console.log("this.state.swag8quantity: " + that.state.swag8quantity);
             console.log("this.state.swag9quantity: " + that.state.swag9quantity);
             console.log("this.state.swag10quantity: " + that.state.swag10quantity);
+            console.log("this.state.creditCardNumber: " + that.state.ccnumber);
+            console.log("this.state.cvv: " + that.state.cvv);
+            console.log("this.state.expdate: " + that.state.expdate);
             /*       
             that.state.swag1quantity = res.data[c].swag1quantity;
             console.log("that.state.swage1quantity: " + that.state.swag1quantity);
@@ -311,19 +364,32 @@ class SaleCard extends Component {
     }
     console.log(user);
     var _this = this;
-    axios.put("/api/buy", user)
-      .then(function (response) {
-        console.log(response);
-        window.location.reload();
-        /*
-        alert("Item was added to cart");
-        // this.props.history.push('/sale');
-        _this.props.history.push('/sale');*/
 
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    console.log("right b4 purchase");
+    console.log("this.state.creditCardNumber: " + that.state.ccnumber);
+    console.log("this.state.cvv: " + that.state.cvv);
+    console.log("this.state.expdate: " + that.state.expdate);
+
+    if (that.state.expdate && that.state.cvv && that.state.ccnumber) {
+      axios.put("/api/buy", user)
+        .then(function (response) {
+          console.log(response);
+          window.location.reload();
+          /*
+          alert("Item was added to cart");
+          // this.props.history.push('/sale');
+         */
+        
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    } else {
+      //alert("please enter credit card information on edit account page.");
+      this.toggleNested();
+    
+      console.log("credit card information is missing.");
+    }
   }
 
   render() {
@@ -347,7 +413,6 @@ class SaleCard extends Component {
                   <div className="card-btn">
                     <button className='btn btn-outline-dark' onClick={this.buyItem} itemid={this.props.index}>Buy this item</button>
                   </div>
-
                 </div>
               </div>
               {/* <div className="col-md-2 row align-items-center justify-content-center">
@@ -356,6 +421,14 @@ class SaleCard extends Component {
           </div> */}
             </div>
           </div>
+        </div>
+        <div>
+          <Modal isOpen={this.state.nestedModal} toggle={this.toggleNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
+            <ModalHeader>Please enter credit card information!</ModalHeader>
+            <ModalFooter>
+              <Button className="enter-btn" onClick={this.toggleAll}>Close</Button>
+            </ModalFooter>
+          </Modal>
         </div>
       </div>
 
