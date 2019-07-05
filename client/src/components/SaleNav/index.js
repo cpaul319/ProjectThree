@@ -64,7 +64,7 @@ render()  {
   </nav>*/}
 
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <a className="navbar-brand" href="/">GoT Swag</a>
+        <a className="navbar-brand" href="#">GoT Swag</a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -72,7 +72,7 @@ render()  {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <a className="nav-link sale-nav-link" href="*">Welcome {this.state.loggedInUserName}<span className="sr-only">(current)</span></a>
+              <a className="nav-link sale-nav-link" href="#">Welcome {this.state.loggedInUserName}<span className="sr-only">(current)</span></a>
             </li>{/*{navbarImg}*/}
             <li className="nav-item">
               <a className="nav-link sale-nav-link" href="/account">Account</a>
