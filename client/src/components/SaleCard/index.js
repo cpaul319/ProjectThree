@@ -78,6 +78,8 @@ class SaleCard extends Component {
       nestedModal: !this.state.nestedModal,
       closeAll: false
     });
+    setTimeout(() => {this.props.history.push('/account')}, 3000)
+    
   }
 
   toggleAll() {
@@ -376,8 +378,8 @@ class SaleCard extends Component {
           /*
           alert("Item was added to cart");
           // this.props.history.push('/sale');
-          _this.props.history.push('/sale');*/
-
+         */
+        
         })
         .catch(function (error) {
           console.log(error);
@@ -385,6 +387,7 @@ class SaleCard extends Component {
     } else {
       //alert("please enter credit card information on edit account page.");
       this.toggleNested();
+    
       console.log("credit card information is missing.");
     }
   }
