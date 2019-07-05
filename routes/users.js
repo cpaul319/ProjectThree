@@ -1,13 +1,15 @@
 // const express = require('express')
 // // const router = express.Router()
 // const User = require('../database/models/user')
-const passport = require('../passport')
+const passport = require('../passport');
 
 const userRouter = require("express").Router();
 const { check, validationResult } = require('express-validator');
 var bcrypt = require('bcrypt');
 // const { check, validationResult } = require('express-validator/check');
 const db = require('../models');
+// users.use(cors())
+process.env.SECRET_KEY = "secret";
 
 userRouter.post("/api/users", (req, res) => {
 
@@ -36,6 +38,31 @@ userRouter.get("/api/loggedin", function (req, res) {
     console.log("purchase")
 });*/
 
+userRouter.put("/api/account", function(req, res)    {
+    // buy route created!
+    console.log("update route called");
+    db.Users.update({
+        address: req.body.address,
+        city: req.body.city,
+        state: req.body.state,
+        zip: req.body.zip,
+        creditCardNumber: req.body.creditCardNumber,
+        expDate: req.body.expDate,
+        cvv: req.body.cvv
+        
+    },
+    {
+        where:  {
+            email: req.body.email
+        }
+    }).then(function (dbUsers)  {
+        res.json(dbUsers);
+        console.log("account updated");
+    }).catch(err => {
+        console.log("weird error");
+        res.status(400).json({error: err});
+    });    
+});
 userRouter.put("/api/buy", function(req, res)    {
     // buy route created!
     console.log("buy route called");
@@ -82,7 +109,7 @@ userRouter.put("/api/login/:id", function (req, res) {
         });
 });
 
-userRouter.put("/api/logout/:id", function (req, res) {
+/*userRouter.put("/api/logout/:id", function (req, res) {
     console.log("log out function is called.");
     db.Users.update({
         isLoggedIn: 0
@@ -98,6 +125,24 @@ userRouter.put("/api/logout/:id", function (req, res) {
             console.log("weird error");
             res.status(400).json({error: err});
         });
+});*/
+
+userRouter.put("/api/logout/:email", function (req, res)    {
+    console.log("logout by e-mail function is called.");
+    db.Users.update({
+        isLoggedIn: 0
+    },
+    {
+        where:  {
+            email: req.params.email
+        }
+    }).then(function (dbUsers) {
+        res.json(dbUsers);
+        console.log("user updated");
+    }).catch(err => {
+        console.log("weird error");
+        res.statusMessage(400).json({error: err});
+    });
 });
 
 userRouter.post("/api/loggeduser", (req, res) => {
@@ -131,6 +176,9 @@ userRouter.post("/login", (req, res) => {
             if (user) {
                 console.log("then user exists, start bcrypt compareSync");
                 if (bcrypt.compareSync(req.body.password, user.password)) {
+                    // let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
+                    //     expiresIn: 1440 
+                    //  })
                     console.log("compareSync success");
                     res.send({ message: true, user })
                     console.log(user);
