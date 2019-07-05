@@ -162,8 +162,8 @@ class Account extends Component {
                 <EditNav userData={this.state.userData} />
                 <div className="account-container">
                     <p id="account-title">Edit Account Info For</p>
-                    <p>{this.state.loggedInUserName}</p>
-                    <div className="account-box1">{/*
+                    <p className="account-user">{this.state.loggedInUserName}</p>
+                   {/* <div className="account-box1">
                         <AvField
                             name="userName"
                             placeholder="username"
@@ -228,12 +228,11 @@ class Account extends Component {
                                 maxLength: { value: 16, errorMessage: 'Your name must be between 6 and 16 characters' },
                                 match: { value: 'password', errorMessage: 'Passwords must match' }
                             }}
-
                         />
                         </div>*/}
 
                     <AvForm>
-                        <div className="account-box2">
+                        <div className="account-box1">
                             <AvField
                                 name="address"
                                 placeholder="address"
@@ -331,6 +330,8 @@ class Account extends Component {
                                     maxLength: { value: 5, errorMessage: 'Please enter 5 digit zip code' }
                                 }}
                             />
+                            </div>
+                            <div className="account-box2">
                             <AvField
                                 name="creditCardNumber"
                                 placeholder="Credit Card Number"
@@ -370,7 +371,7 @@ class Account extends Component {
                     </AvForm>
                     </div>
                 </div>
-            </div>
+            // </div>
         );
     }
 }
