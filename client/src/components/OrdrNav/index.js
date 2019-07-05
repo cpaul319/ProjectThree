@@ -65,7 +65,7 @@ class OrderNav extends Component {
                 <a className="nav-link" href="/sale">Buy Items<span className="sr-only">(current)</span></a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/account">Edit Account</a>
+                <a className="nav-link" href="/account">Account</a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="/" onClick = {this.Logout}>Log Out</a>
