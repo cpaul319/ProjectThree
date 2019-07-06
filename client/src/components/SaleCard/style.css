@@ -48,3 +48,9 @@
 
 
 }
+
+@media screen and (orientation:landscape) {
+    .card-desc {
+        font-size: .75rem
+    }
+}

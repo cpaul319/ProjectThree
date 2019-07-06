@@ -1,26 +1,3 @@
-/* .outer-sale-wrap {
-    width: 95%;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.sale-card-wrap {
-    width: 75%;
-    margin: 0 auto;
-}
-
-.sale-card {
-    width: 25%;
-    height: 300px;
-    margin: .5rem;
-    float: left;
-    overflow: auto;
-
-}
-.sale-card::-webkit-scrollbar { 
-    width: 0 !important; 
-} */
-
 .card-image{
     margin: 0 auto;
     height: 150px;
@@ -54,6 +31,7 @@
 }
 
 .container  {
+    padding-top: 75px;
     padding-bottom: 1000px;
 }
 

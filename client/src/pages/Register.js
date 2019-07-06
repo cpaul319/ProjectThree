@@ -1,14 +1,9 @@
 import axios from "axios";
 import LogNav from "../components/LogNav";
-import { isAbsolute } from "path";
-import { Input, TextArea, FormBtn } from "../components/Form";
-import { Link, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import { AvForm, AvField } from 'availity-reactstrap-validation';
-import { Button } from 'reactstrap';
-import { register } from '../components/UserFunction';
+import { Button } from 'reactstrap'; 
 import "../Register.css"
-import moment from 'moment';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 class Register extends Component {
@@ -92,21 +87,17 @@ class Register extends Component {
 				if (!response.data.err) {
                     console.log(response.data.err); 
                     console.log('successful signup');
-                    console.log(response.data.error);
+                   
                     if (response.data.error == 'User already exists')   {
                         this.toggleNested();
                     }
                     else {
                         this.props.history.push('/login');
                     }
-                    //alert("You have been signed up");
-					// this.setState({ //redirect to login page
-					// 	redirectTo: '/login'
-					// })
+                   
 				} else {
                     console.log('username already taken');
-                    //console.log(error);
-                    //alert("That email already exists");
+                  
                     this.toggleNested();
 				}
 			}).catch(error => {

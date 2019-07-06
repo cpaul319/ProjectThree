@@ -43,12 +43,7 @@ const Slide = () => (
           <div className="inner">
             <h1 className="slider-title">{item.title}</h1>
             <p className="slider-p">{item.description}</p>
-            {/* <Link to="/login">
-                <button>Sign In</button>
-            </Link>
-            <Link to="/register">
-                <button>Sign Up</button>
-            </Link> */}
+    
           </div>
          
         </div>
@@ -75,7 +70,7 @@ class DynamicSlider extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="slider-div">
         {this.state.items.join(", ")}
         <Slider className="slider-wrapper">
           {this.state.items.map(item => (

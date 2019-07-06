@@ -1,8 +1,5 @@
 
 import React, { Component } from "react";
-import ReactDOM from 'react-dom';
-import { isAbsolute } from "path";
-// import OrderNav from "../components/OrdrNav";
 import Orders from '../components/Orders';
 import { Redirect,  withRouter  } from 'react-router-dom';
 import "../Orders.css"
@@ -35,7 +32,10 @@ render () {
 
   return (
     <div style={styles.background} className="App orders-body">
-          <Orders/>          
+          <Orders/>    
+          <div className="order-banner">
+            <p className="order-banner-title">your swag</p>
+          </div>        
     </div>
   )};
   
