@@ -1,4 +1,14 @@
-.orders-body {
-    /* background: url("/images/rocky-shore.jpg")*/
-    background: black;
-  }
+@font-face{
+  font-family: "gotFont";
+  src: url("./font/thrones.ttf")format("truetype");
+}
+
+
+.order-banner-title {
+  font-family: "gotFont";
+  font-size: 4rem;
+  color: rgb(137,40,51);
+  padding: 1rem;
+  font-weight: 900;
+
+}

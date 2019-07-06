@@ -17,7 +17,7 @@ h1 {
 
 .slider-wrapper {
   position: relative;
-  height: 75vh;
+  height: 100vh;
   width: 100vw;
   overflow: hidden;
   margin: 0 auto;
@@ -25,7 +25,8 @@ h1 {
 }
 
 .slide {
-  height: 75vh;
+  height: 100vh;
+  max-width: 100vw;
   background-size: cover !important;
 }
 
@@ -162,3 +163,29 @@ h1 {
     font-size: 32px;
   }
 } */
+
+@media screen and (orientation:landscape) {
+  .slider-wrapper,
+  .slide {
+    /* height: calc(80vh - 75px); */
+    height: 100vh;
+  }
+  
+  .slider-content .inner h1 {
+    font-weight: 800;
+    margin: 0 auto;
+    color: #ffffff;
+    font-size: 2rem;
+  }
+
+  .slider-content .inner p {
+    color: #ffffff;
+    font-size: 1rem;
+    margin: 20px auto 30px;
+  }
+
+  .slider-wrapper{
+    margin-top:0;
+  }
+
+}

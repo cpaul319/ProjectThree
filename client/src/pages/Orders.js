@@ -35,7 +35,10 @@ render () {
 
   return (
     <div style={styles.background} className="App orders-body">
-          <Orders/>          
+          <Orders/>    
+          <div className="order-banner">
+            <p className="order-banner-title">your swag</p>
+          </div>        
     </div>
   )};
   

@@ -7,6 +7,7 @@ import { isAbsolute } from "path";
 //import Enter from "Enter.js";
 import SaleNav from "../components/SaleNav";
 import SaleCard from "../components/SaleCard";
+import "../Sale.css"
 import item from "../items.json"
 
 //minor change for push update
@@ -93,6 +94,9 @@ class Sale extends Component {
         <SaleNav userData={this.props.userData}/>
         {/* <p>Welcome {this.state.userName}</p>
         <p>Sale page</p> */}
+        <div className="sale-banner">
+          <p className="sale-banner-title">our swag</p>
+        </div>
         {this.state.item.map(item => (
           <SaleCard
             userData={this.props.userData}
