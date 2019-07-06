@@ -37,6 +37,8 @@ class Orders extends Component {
   };
 
   componentDidMount() {
+    //  This function loads all purchase history for a user.
+
     var loggedInUserName = localStorage.getItem('loggedInUserName');
     var loggedInUserEmail = localStorage.getItem('loggedInUserEmail');
     var loggedInUserId = localStorage.getItem('loggedInUserId');
@@ -92,6 +94,8 @@ class Orders extends Component {
         console.log("something goes wrong");
       });
   }
+
+  //  Code below displays all purchase history for user.
 
   render() {
     return (

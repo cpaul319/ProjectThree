@@ -15,7 +15,6 @@
 }
 
 .card-desc {
-    /* font-size: .75rem; */
     text-align: center;
     font-family: 'Cinzel Decorative', cursive;
 }
@@ -34,9 +33,4 @@
     padding-top: 75px;
     padding-bottom: 1000px;
 }
-
-/* .img-thumbnail {
-    height: 250px;
-    width: 250px;
-} */
 
