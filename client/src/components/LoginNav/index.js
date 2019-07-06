@@ -1,3 +1,5 @@
+/* This is navigation bar for log in page. */
+
 import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
@@ -5,12 +7,6 @@ import "./style.css";
 function LoginNav() {
   return (
     <header>
-   {/* <nav className="navbar navbar-light bg-light">
-       <Link to="/login">Log In</Link> &nbsp; | &nbsp;
-            <Link to="/register">Register</Link>
-   
-    </nav> */}
-
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <a className="navbar-brand" href="/">GoT Swag</a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,15 +21,6 @@ function LoginNav() {
             <li className="nav-item">
               <a className="nav-link" href="/register">Sign Up</a>
             </li>
-            {/* <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Welcome User
-              </a>
-              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a className="dropdown-item" href="/orders">Orders</a>
-                <a className="dropdown-item" href="/forgot">Edit Account</a>
-              </div>
-            </li> */}
           </ul>
           </div>
       </nav>
