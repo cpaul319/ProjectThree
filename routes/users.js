@@ -144,23 +144,7 @@ userRouter.put("/api/login/:id", function (req, res) {
         });
 });
 
-/*userRouter.put("/api/logout/:id", function (req, res) {
-    console.log("log out function is called.");
-    db.Users.update({
-        isLoggedIn: 0
-    },
-        {
-            where: {
-                id: req.params.id
-            }
-        }).then(function (dbUsers) {
-            res.json(dbUsers);
-            console.log("user updated");
-        }).catch(err => {
-            console.log("weird error");
-            res.status(400).json({error: err});
-        });
-});*/
+ 
 
 userRouter.put("/api/logout/:email", function (req, res)    {
     console.log("logout by e-mail function is called.");
@@ -213,9 +197,7 @@ userRouter.post("/login", (req, res) => {
             if (user) {
                 console.log("then user exists, start bcrypt compareSync");
                 if (bcrypt.compareSync(req.body.password, user.password)) {
-                    // let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
-                    //     expiresIn: 1440 
-                    //  })
+                   
                     console.log("compareSync success");
                     res.send({ message: true, user })
                     console.log(user);
@@ -306,66 +288,4 @@ userRouter.put("/login", (req, res) => {
 
 })
 
-
-
-//             })
-//             newUser.save((err, savedUser) => {
-//                 if (err) return res.json(err)
-//                 res.json(savedUser)
-//             })
-//         }
-//     })
-// })
-/*
-userRouter.post(
-    '/login',
-    function (req, res, next) {
-        console.log('routes/user.js, login, req.body: ');
-        console.log(req.body)
-        next()
-    },
-    passport.authenticate('local'),
-    (req, res) => {
-        console.log('logged in', req.user);
-        var userInfo = {
-            username: req.user.username
-        };
-        res.send(userInfo);
-    }
-)
-
-userRouter.get('/', (req, res, next) => {
-    console.log('===== user!!======')
-    console.log(req.user)
-    if (req.user) {
-        res.json({ user: req.user })
-    } else {
-        res.json({ user: null })
-    }
-})
-
-userRouter.post('/logout', (req, res) => {
-    if (req.user) {
-        req.logout()
-        res.send({ msg: 'logging out' })
-    } else {
-        res.send({ msg: 'no user to log out' })
-    }
-})
-
-
-
-    db.Users.create(req.body).then(function (dbUsers) {
-        res.json(dbUsers);
-    });
- //res.send(req.body);
-//});
-
-userRouter.get("/api/allusers", function (req, res) {
-    db.Users.findAll({}).then(function (dbUsers) {
-        res.json(dbUsers);
-    });
-});
-*/
- 
 module.exports = userRouter;
