@@ -36,5 +36,5 @@ Front end files were written using react, reactstrap, and slider (reactstrap and
 
 # Back End
 
-Back end files were written using javascript and axios.
+Back end files were written using javascript, axios, node, and express.
 
