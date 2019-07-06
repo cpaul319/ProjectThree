@@ -26,9 +26,6 @@ class OrderNav extends Component {
     this.setState({ loggedInUserEmail });
     this.setState({ loggedInUserId });
    
-    // this.props.userData;
-    // this.setState({ userName: this.props.userData.user.userName });
-    // console.log(this.props.userData);
     }
 
   Logout()  {
