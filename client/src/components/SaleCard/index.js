@@ -399,7 +399,7 @@ class SaleCard extends Component {
     }
     return (
       <div>
-        <div className='container-fluid'>
+        <div className='container-fluid sale-container'>
           <div className="card mb-3">
             <div className="row no-gutters">
               {/* <div className="col-md-4 row align-itmes-center justify-content-center"> */}
@@ -408,7 +408,7 @@ class SaleCard extends Component {
               <div className="col-md-8">
                 <div className="card-body">
                   <h5 className="card-title">{this.props.name}</h5>
-                  <p className="card-text card-desc">{this.props.description}</p>
+                  <p className="card-desc">{this.props.description}</p>
                   <p className="card-price">{this.props.price}</p>
                   <div className="card-btn">
                     <button className='btn btn-outline-dark' onClick={this.buyItem} itemid={this.props.index}>Buy this item</button>
