@@ -1,20 +1,18 @@
+//  This file is for adding additional account information like credit card number.
+
 import axios from "axios";
 import EditNav from "../components/EditNav";
-import { isAbsolute } from "path";
 import { Link, Redirect, withRouter } from "react-router-dom";
 import React, { Component } from "react";
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import { Button } from 'reactstrap';
-
 import "../Account.css"
 import moment from 'moment';
- 
 
 class Account extends Component {
     constructor(props) {
         super(props)
         this.state = {
-
             userName: "Not Logged in",
             address: "",
             city: "",
@@ -26,13 +24,14 @@ class Account extends Component {
             loggedInUserName: "",
             loggedInUserEmail: "",
             loggedInUserId: ""
-            // redirect: false
         }
-
-
     }
 
+    //------------------------------------------------------------------------
+
     handleInputChange = event => {
+
+        //  This function accepts user input.
 
         const { name, value } = event.target;
         this.setState({
@@ -41,8 +40,11 @@ class Account extends Component {
         console.log("value is " + value);
     }
 
-  
+    //------------------------------------------------------------------------
+
     handleFormSubmit = event => {
+
+        //  This function updates user account when submit button is clicked.
 
         const user = {
             email: this.state.loggedInUserEmail,
@@ -54,9 +56,6 @@ class Account extends Component {
             expDate: this.state.expDate,
             cvv: this.state.cvv
         }
-        console.log(user);
-
-
         if (
             user.address && user.city && user.state && this.ValidateZip() && this.ValidateCCNumber() &&
             this.ValidateDate() && (/^[0-9]+$/.test(user.cvv) && user.cvv.length == 3)
@@ -64,30 +63,35 @@ class Account extends Component {
             var _this = this;
             axios.put("/api/account", user)
                 .then(function (response) {
-                    console.log(response);
-
-                    //alert("Account was updated");
                     _this.props.history.push('/sale');
-                    //  window.location.reload();
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
 
         }
-        // this.props.history.push('/sale');
     }
 
+    //------------------------------------------------------------------------
+
     componentDidMount() {
+
+        //  This function loads user information from local storage when account page is opened.
+
         var loggedInUserName = localStorage.getItem('loggedInUserName');
         var loggedInUserEmail = localStorage.getItem('loggedInUserEmail');
         var loggedInUserId = localStorage.getItem('loggedInUserId');
+
         this.setState({ loggedInUserName });
         this.setState({ loggedInUserEmail });
         this.setState({ loggedInUserId });
     }
 
+    //------------------------------------------------------------------------
+
     ValidateDate() {
+
+        // This function validates if date is in correct format and its not in the past.
 
         // Return today's date and time
         var currentTime = new Date();
@@ -111,25 +115,46 @@ class Account extends Component {
         return (moment(this.state.expDate, 'MM/YY', true).isValid() && !expired);
     }
 
+    //------------------------------------------------------------------------
+
     ValidateCCNumber() {
-         
+
+        //  This function validates if credit card number is in correct format.
+
         var number = /^[0-9]+$/;
+
         return (number.test(this.state.creditCardNumber) && this.state.creditCardNumber.length == 16);
     }
 
+    //------------------------------------------------------------------------
+
     ValidateZip() {
-      
+
+        //  This function validates if zip code is in correct format.
+
         var number = /^[0-9]+$/;
+
         return (number.test(this.state.zip) && this.state.zip > 9999);
     }
 
+    //------------------------------------------------------------------------
+
     ValidatePassword() {
+
+        //  This function validates if password is in correct format.
+
         var letter = /^[a-zA-Z0-9]+$/;
         var valid = letter.test(this.state.password); //match a letter _and_ a number
+
         return valid;
     }
 
+    //------------------------------------------------------------------------
+
     ValidateEmail() {
+
+        //  This function validates if e-mail is in correct format.
+
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
         return re.test(String(this.state.email).toLowerCase());
@@ -142,7 +167,6 @@ class Account extends Component {
                 <div className="account-container">
                     <p id="account-title">Edit Account Info</p>
                     <p className="account-user">{this.state.loggedInUserName}</p>
-            
                     <AvForm>
                         <div className="account-box1">
                             <AvField
@@ -163,7 +187,6 @@ class Account extends Component {
                                     required: { value: true, errorMessage: 'Please enter city' }
                                 }}
                             />
-                     
                             <AvField
                                 type="select"
                                 name="state"
@@ -237,8 +260,8 @@ class Account extends Component {
                                     maxLength: { value: 5, errorMessage: 'Please enter 5 digit zip code' }
                                 }}
                             />
-                            </div>
-                            <div className="account-box2">
+                        </div>
+                        <div className="account-box2">
                             <AvField
                                 name="creditCardNumber"
                                 placeholder="Credit Card Number"
@@ -276,9 +299,8 @@ class Account extends Component {
                         </div>
                         <Button className="submit-btn" color="secondary" onClick={this.handleFormSubmit}>Submit</Button>
                     </AvForm>
-                    </div>
                 </div>
-            // </div>
+            </div>
         );
     }
 }
