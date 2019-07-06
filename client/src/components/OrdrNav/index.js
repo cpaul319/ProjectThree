@@ -26,9 +26,6 @@ class OrderNav extends Component {
     this.setState({ loggedInUserEmail });
     this.setState({ loggedInUserId });
    
-    // this.props.userData;
-    // this.setState({ userName: this.props.userData.user.userName });
-    // console.log(this.props.userData);
     }
 
   Logout()  {
@@ -62,7 +59,7 @@ class OrderNav extends Component {
     </nav> */}
 
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <a className="navbar-brand" href="#">GoT Swag</a>
+          <a className="navbar-brand" href="/">GoT Swag</a>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>

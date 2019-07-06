@@ -40,8 +40,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-// Sessions might be needed but not sure of the rest
-
+// Sessions wasnt needed but will keep for future
 app.use(session({
   key: "user_sid",
   secret: "puffanstuff",
@@ -52,22 +51,7 @@ app.use(session({
   }
 }));
 
-//not sure if this code is needed, chris pick a direction and go there
-// app.use( (req, res, next) => {
-//   console.log('req.session', req.session);
-//   return next();
-// });
-
-// app.post('/user', (req, res) => {
-//   console.log('user signup');
-//   req.session.username = req.body.username;
-//   res.end()
-// })
  
-
-// Define Routes
-
-// app.use('/user', user) are these the same, sure looks like they are
 
 app.use('/', require('./routes/users'));
 
