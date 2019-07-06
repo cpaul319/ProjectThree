@@ -16,7 +16,7 @@ If the user clicks on sign in button on log in page, a log in page is displayed 
 
 ![signin](client/public/images/signin.PNG)
 
-After the user is logged in, sale page is opened. It has Game of Thrones souvenir inventory for sale with descriptions, pictures and prices. It also has options to buy (screenshot is shown below). There is also navigation bar with options to log out, change account information, and go to orders page.
+After the user is logged in, sale page is opened. It has Game of Thrones souvenir inventory for sale with descriptions, pictures, and prices. It also has options to buy (screenshot is shown below). There is also navigation bar with options to log out, change account information, and go to orders page.
 
 ![sale](client/public/images/sale.PNG)
 
