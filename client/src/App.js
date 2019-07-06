@@ -36,10 +36,6 @@ class App extends Component {
 
 
   componentDidMount() {
-    console.log(this.state.userData);
-     
-    // this.props.userData;
-    
 
   }
 
@@ -53,13 +49,7 @@ class App extends Component {
     localStorage.setItem('loggedInUserId', userData.user.id );
     localStorage.setItem('loggedInUserEmail', userData.user.email );
     localStorage.setItem('loggedInUserName', userData.user.userName );
-    // populateStorage(userData);
     this.setState({ userData });
-    // this.setState({ LoggedInUserData: userData });
-    // this.state.LoggedInUserData = userData;
-    console.log("Hello user data");
-    console.log(userData);
-
   }
 
   render() {

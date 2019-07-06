@@ -26,10 +26,6 @@ componentDidMount() {
   this.setState({ loggedInUserName });
   this.setState({ loggedInUserEmail });
   this.setState({ loggedInUserId });
- 
-  // this.props.userData;
-  // this.setState({ userName: this.props.userData.user.userName });
-  // console.log(this.props.userData);
   }
 
 Logout()  {
@@ -37,14 +33,13 @@ Logout()  {
   var email = localStorage.getItem('loggedInUserEmail');
   localStorage.clear();
   var url = "/api/logout/" + email;
-  console.log("logged in e-mail is " + email);
+  
   console.log("log out function called.");
         axios.put(url)
         .then(function(res) {
           localStorage.clear();
           window.location.reload();
-         //merge
-         
+       
           console.log("clear local storage")
           console.log("user is logged out.")
         }).catch(function (error) {
