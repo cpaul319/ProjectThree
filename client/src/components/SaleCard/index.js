@@ -2,11 +2,8 @@
 
 import axios from "axios";
 import React, { Component } from "react";
-import {
-  Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Modal, ModalHeader, ModalBody, ModalFooter, Button
-} from 'reactstrap';
+import { Modal, ModalHeader, ModalFooter, Button } from 'reactstrap';
 import { Redirect, withRouter } from 'react-router-dom';
-import hand from './hand.PNG';
 import "./style.css";
 class SaleCard extends Component {
 

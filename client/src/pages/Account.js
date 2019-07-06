@@ -2,7 +2,7 @@
 
 import axios from "axios";
 import EditNav from "../components/EditNav";
-import { Link, Redirect, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import React, { Component } from "react";
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import { Button } from 'reactstrap';
