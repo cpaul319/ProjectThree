@@ -1,8 +1,5 @@
 
 import React, { Component } from "react";
-import ReactDOM from 'react-dom';
-import { isAbsolute } from "path";
-// import OrderNav from "../components/OrdrNav";
 import Orders from '../components/Orders';
 import { Redirect,  withRouter  } from 'react-router-dom';
 import "../Orders.css"

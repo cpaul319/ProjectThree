@@ -1,10 +1,6 @@
 import axios from "axios";
-import React, { Component } from "react";
- 
+import React, { Component } from "react"; 
 import { Redirect,  withRouter  } from 'react-router-dom';
-import ReactDOM from 'react-dom';
-import { isAbsolute } from "path";
-//import Enter from "Enter.js";
 import SaleNav from "../components/SaleNav";
 import SaleCard from "../components/SaleCard";
 import "../Sale.css"
@@ -43,25 +39,7 @@ class Sale extends Component {
     var loggedInUserName = localStorage.getItem('loggedInUserName');
     var loggedInUserEmail = localStorage.getItem('loggedInUserEmail');
     var loggedInUserId = localStorage.getItem('loggedInUserId');
-    
-    console.log(loggedInUserName);
-    console.log(loggedInUserEmail);
-    console.log(loggedInUserId);
-     
-    // this.setState({ userData: this.props.userData.userData.user.isLoggedIn });
-    // if(!this.props.userData.userData.user.isLoggedIn){
-    //   this.props.history.push('/login');
-    // }
-    
     console.log("did mount");
-    //  this.setState({ userName: this.props.userData.userName});
-    // console.log(this.props.userData);
-    // var id = this.props.userData.user.id;
-    // console.log(id);
-    // var userName = this.props.userData.user.userName;
-    // console.log(userName);
-    // var email = this.props.userData.user.email;
-    // console.log(email);
 
     axios.get('api/allusers')
       .then(function (res) {
@@ -82,13 +60,8 @@ class Sale extends Component {
   }
 
   render() {
-    // const background = {
-    //   background: 'rgb(52,58,64)'
-    // }
-
+  
     console.log("before Log In function is called.");
-
-
     return (
       <div className="App sale-body">
         <SaleNav userData={this.props.userData}/>
@@ -110,7 +83,7 @@ class Sale extends Component {
 
       </div>
     );
-    console.log("after Log In function is called.");
+ 
 
   }
 
