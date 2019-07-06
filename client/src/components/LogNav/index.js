@@ -1,4 +1,6 @@
-/*import React from "react";
+/*  This is registration page navigation bar. */
+
+import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 
@@ -23,4 +25,4 @@ function LogNav() {
   );
 }
 
-export default LogNav;*/
+export default LogNav;

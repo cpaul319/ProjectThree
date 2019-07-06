@@ -1,11 +1,11 @@
-import Nav from "./components/Nav";
+//import Nav from "./components/Nav";
 import Register from "./pages/Register";
 import NoMatch from "./pages/NoMatch";
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import LogIn from "./pages/LogIn";
 import Enter from "./pages/Enter";
-import Forgot from "./pages/Forgot";
+//import Forgot from "./pages/Forgot";
 import Sale from "./pages/Sale";
 import Order from "./pages/Orders";
 import Account from "./pages/Account";
@@ -65,7 +65,7 @@ class App extends Component {
             <Route exact path="/account" component= {() => <Account userData={this.state.userData} />} />
             {/* <Route exact path="/login" component={() => <Enter foo="bar" />} /> */}
             <Route path="/login" render={() => <Enter getLoggedInUser={this.getLoggedInUser} />} />
-            <Route exact path="/forgot" component={Forgot} />
+            {/*<Route exact path="/forgot" component={Forgot} />*/}
             {/* <Route exact path="/sale" render={() => (this.state.userData.user.isLoggedIn ? (<Sale userData={this.state.userData} />) : ( <Redirect to="/login"/>) )}/> */}
             <Route exact path="/sale" component={() => <Sale userData={this.state.userData} />} /> 
               {/* <Route exact path="/sale" component={Sale} /> */}

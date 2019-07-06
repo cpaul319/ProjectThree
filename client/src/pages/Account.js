@@ -1,7 +1,6 @@
 import axios from "axios";
 import EditNav from "../components/EditNav";
 import { isAbsolute } from "path";
-import { Input, TextArea, FormBtn } from "../components/Form";
 import { Link, Redirect, withRouter } from "react-router-dom";
 import React, { Component } from "react";
 import { AvForm, AvField } from 'availity-reactstrap-validation';

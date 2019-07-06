@@ -4,13 +4,10 @@ import ReactDOM from 'react-dom';
 import { isAbsolute } from "path";
 import EnterNav from "../components/EnterNav";
 import { Link } from "react-router-dom";
-import { Input, TextArea, FormBtn } from "../components/Form";
-
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
 import Axios from 'axios';
 import "../enter.css"
-//import UserExists from "../components/UserExists";
 
 class Enter extends Component {
     constructor(props) {
