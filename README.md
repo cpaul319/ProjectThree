@@ -8,7 +8,7 @@ When user navigates to log in page, website description is displayed through car
 
 ![home](client/public/images/home.PNG)
 
-If the user clicks on sign up button, a new account registration page is opened with the fields shown in the screenshot below. If the user does not enter information in all the fields, enters a piece of information in wrong data format, or enters already previously registered user, proper validation error message is shown and user is not allowed to create an account. Otherwise, if user enters all correct information, new account is created. Afterwards, the user is navigated to sing in page, which is described next.
+If the user clicks on sign up button, a new account registration page is opened with the fields shown in the screenshot below. If the user does not enter information in all the fields, enters a piece of information in wrong data format, or enters already previously registered user, proper validation error message is shown and user is not allowed to create an account. Otherwise, if user enters all correct information, new account is created. Afterwards, the user is navigated to sign in page, which is described next.
 
 ![signup](client/public/images/signup.PNG)
 
