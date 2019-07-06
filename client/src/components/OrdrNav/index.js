@@ -19,6 +19,9 @@ class OrderNav extends Component {
     }
 
   }
+
+  //-------------------------------------------------------------------------------
+
   componentDidMount() {
 
     //  This function loads user information from local storage (where it is stored during log in).
@@ -31,6 +34,8 @@ class OrderNav extends Component {
     this.setState({ loggedInUserEmail });
     this.setState({ loggedInUserId });
   }
+
+  //-------------------------------------------------------------------------------
 
   Logout() {
     

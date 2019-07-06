@@ -50,6 +50,8 @@ class SaleCard extends Component {
     this.toggleNested = this.toggleNested.bind(this);
   };
 
+  //-------------------------------------------------------------------------------
+
   toggleNested() {
 
     //  This function turns on pop up window when user attempts to buy an item without entering credit card number. 
@@ -60,6 +62,8 @@ class SaleCard extends Component {
     });
     setTimeout(() => {this.props.history.push('/account')}, 3000)
   }
+
+  //-------------------------------------------------------------------------------
 
   componentDidMount() {
 
@@ -128,6 +132,8 @@ class SaleCard extends Component {
         console.log(error);
       });
   }
+
+  //-------------------------------------------------------------------------------
 
   buyItem() {
 

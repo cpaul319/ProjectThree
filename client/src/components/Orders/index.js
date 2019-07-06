@@ -36,8 +36,11 @@ class Orders extends Component {
     this.componentDidMount = this.componentDidMount.bind(this);
   };
 
+  //-------------------------------------------------------------------------------
+
   componentDidMount() {
-    //  This function loads all purchase history for a user.
+
+  //  This function loads all purchase history for a user.
 
     var loggedInUserName = localStorage.getItem('loggedInUserName');
     var loggedInUserEmail = localStorage.getItem('loggedInUserEmail');

@@ -17,6 +17,8 @@ class SaleNav extends Component {
     }
   }
 
+  //-------------------------------------------------------------------------------
+
   componentDidMount() {
 
     //  This function loads user information from local storage when sale page is opened.
@@ -29,6 +31,8 @@ class SaleNav extends Component {
     this.setState({ loggedInUserEmail });
     this.setState({ loggedInUserId });
   }
+
+  //-------------------------------------------------------------------------------
 
   Logout() {
 
