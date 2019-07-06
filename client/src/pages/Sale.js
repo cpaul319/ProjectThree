@@ -1,10 +1,6 @@
 import axios from "axios";
-import React, { Component } from "react";
- 
+import React, { Component } from "react"; 
 import { Redirect,  withRouter  } from 'react-router-dom';
-import ReactDOM from 'react-dom';
-import { isAbsolute } from "path";
-//import Enter from "Enter.js";
 import SaleNav from "../components/SaleNav";
 import SaleCard from "../components/SaleCard";
 import item from "../items.json"

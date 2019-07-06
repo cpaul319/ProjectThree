@@ -1,14 +1,9 @@
 import axios from "axios";
 import LogNav from "../components/LogNav";
-import { isAbsolute } from "path";
-import { Input, TextArea, FormBtn } from "../components/Form";
-import { Link, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import { AvForm, AvField } from 'availity-reactstrap-validation';
-import { Button } from 'reactstrap';
-import { register } from '../components/UserFunction';
+import { Button } from 'reactstrap'; 
 import "../Register.css"
-import moment from 'moment';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 class Register extends Component {
