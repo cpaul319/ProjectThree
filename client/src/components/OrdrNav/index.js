@@ -5,43 +5,51 @@ import axios from "axios";
 
 class OrderNav extends Component {
 
-  state = {
-    hi: "",
-    email: ""
-    //navbarImg = <img className="d-none d-lg-inline sale-nav-img" src="/images/hand.jpg" alt="sword" />;
-  };
+  constructor() {
+    super()
+    this.state = {
+      hi: "",
+      userName: "Please log in",
+      user: "",
+      loggedInUserName:"",
+      loggedInUserEmail:"",
+      loggedInUserId:""
+    }
 
-  Logout() {
-    // Log out function.
-    var id;
+  }
+  componentDidMount() {
+    var loggedInUserName = localStorage.getItem('loggedInUserName');
+    var loggedInUserEmail = localStorage.getItem('loggedInUserEmail');
+    var loggedInUserId = localStorage.getItem('loggedInUserId');
+    
+    this.setState({ loggedInUserName });
+    this.setState({ loggedInUserEmail });
+    this.setState({ loggedInUserId });
+   
+    // this.props.userData;
+    // this.setState({ userName: this.props.userData.user.userName });
+    // console.log(this.props.userData);
+    }
 
-    console.log("this is order nav");
+  Logout()  {
+   
+    var email = localStorage.getItem('loggedInUserEmail');
+    localStorage.clear();
+    var url = "/api/logout/" + email;
+    console.log("logged in e-mail is " + email);
     console.log("log out function called.");
-    axios.get('api/allusers')
-      .then(function (res) {
-        //const firstName = firstName.res.data;
-        //this.setState({ firstName });
-        var id;
-        console.log("this is order navigation bar.");
-        for (var c = 0; c < res.data.length; c++) {
-          if (res.data[c].isLoggedIn == 1) {
-            id = res.data[c].id;
-            console.log("logged in id is " + id);
-            var url = "/api/logout/" + id;
-            axios.put(url)
-              .then(function (res) {
-                console.log("user is logged out.")
-              }).catch(function (error) {
-                console.log("user is not logged out");
-              });
-          }
-        }
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-    //console.log("logging out");
-    //axios.put('/api/logout/', 
+          axios.put(url)
+          .then(function(res) {
+            localStorage.clear();
+            // window.location.reload();
+           //merge
+           
+            console.log("clear local storage")
+            console.log("user is logged out.")
+          }).catch(function (error) {
+            console.log("user is not logged out");
+          });
+        
   }
 
   render() {
