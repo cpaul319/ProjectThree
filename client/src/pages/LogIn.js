@@ -1,23 +1,17 @@
-import React, { Component } from "react";
-import ReactDOM from 'react-dom';
-import { isAbsolute } from "path";
+//  This function displays log in page.
+
+import React from "react";
 import LoginNav from "../components/LoginNav";
 import Slide from "../components/Slider";
 import "../Login.css"
 
-console.log("before Log In function is called.");
 function LogIn() {
     return (
-        <div className="App login"> 
-            
+        <div className="App login">           
             <LoginNav />
             <Slide />
-              
         </div>
     );
 }
-console.log("after Log In function is called.");
 
 export default LogIn;
-
-//  landing page to our site 
