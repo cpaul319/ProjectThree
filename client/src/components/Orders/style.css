@@ -1,4 +1,4 @@
-.outer-sale-wrap {
+/* .outer-sale-wrap {
     width: 95%;
     margin: 0 auto;
     text-align: center;
@@ -19,7 +19,7 @@
 }
 .sale-card::-webkit-scrollbar { 
     width: 0 !important; 
-}
+} */
 
 .card-image{
     margin: 0 auto;
@@ -38,7 +38,7 @@
 }
 
 .card-desc {
-    font-size: .75rem;
+    /* font-size: .75rem; */
     text-align: center;
     font-family: 'Cinzel Decorative', cursive;
 }
