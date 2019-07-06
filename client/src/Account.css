@@ -4,7 +4,6 @@
     max-height:100%;
     width:100vw;
     background: url("https://wallpaperaccess.com/full/25517.jpg");
-    /* background-repeat: no-repeat; */
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -26,14 +25,12 @@
 .account-box1 {
     padding-left: 1rem;
     width: 95%;
-    /* margin: 0rem; */
     font-family: 'Cinzel Decorative', cursive;
 }
 
 .account-box2 {
     padding-left: 1rem;
     width: 95%;
-    /* margin: 2rem; */
     font-family: 'Cinzel Decorative', cursive;
 }
 
@@ -46,7 +43,6 @@
         background: url("https://wallpaperaccess.com/full/25517.jpg");
         background-repeat: no-repeat;
         background-size: cover;
-        /* margin-top: 0; */
 
     }
 
@@ -89,4 +85,59 @@
         display: table;
         margin: 0 auto;
     }
-}        
+}  
+
+@media screen and (orientation:landscape) {
+    #account-body {
+        height: 100%;
+        width:100%;
+        background: url("https://wallpaperaccess.com/full/25517.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .account-container {
+        width: 90%;
+        height: 100%;
+        padding: 1rem;
+        margin: 0rem auto;
+       
+    }
+
+    .form-group {
+        margin-bottom: .25rem;
+    }
+
+    #account-title {
+        text-align: center;
+        font-size: 1.5rem;
+    }
+
+    .account-user {
+        font-size: 1rem;
+    }
+
+    .account-box1 {
+        display: block;
+        float: left;
+        width: 40%;
+        
+        margin: 1rem;
+        font-family: 'Cinzel Decorative', cursive;
+    }
+
+    .account-box2 {
+        display: block;
+        float: left;
+        width: 40%;
+        margin: 2rem;
+        font-family: 'Cinzel Decorative', cursive;
+    }
+
+    .submit-btn {
+        content: "";
+        clear: both;
+        display: table;
+        margin: 0 auto;
+    }
+ }

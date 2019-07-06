@@ -141,7 +141,7 @@ class Account extends Component {
             <div id="account-body">
                 <EditNav userData={this.state.userData} />
                 <div className="account-container">
-                    <p id="account-title">Edit Account Info For</p>
+                    <p id="account-title">Edit Account Info</p>
                     <p className="account-user">{this.state.loggedInUserName}</p>
             
                     <AvForm>
