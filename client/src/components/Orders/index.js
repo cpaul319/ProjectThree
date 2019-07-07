@@ -1,3 +1,5 @@
+/*  This component displays all purchase history. */
+
 import React, { Component } from "react";
 import './orders.css';
 import OrderNav from '../OrdrNav';
@@ -10,7 +12,6 @@ const divStyle = {
     backgroundImage: 'url(' + imgUrl + ')',
 };
 
-//const Orders = (props) => {
 class Orders extends Component {
 
   constructor() {
@@ -31,50 +32,33 @@ class Orders extends Component {
       loggedInUserName: "",
       loggedInUserEmail: "",
       loggedInUserId: ""
-      // redirect: false
     }
     this.componentDidMount = this.componentDidMount.bind(this);
   };
 
+  //-------------------------------------------------------------------------------
+
   componentDidMount() {
+
+  //  This function loads all purchase history for a user.
+
     var loggedInUserName = localStorage.getItem('loggedInUserName');
     var loggedInUserEmail = localStorage.getItem('loggedInUserEmail');
     var loggedInUserId = localStorage.getItem('loggedInUserId');
+
     console.log(loggedInUserEmail);
     this.setState({ loggedInUserName });
     this.setState({ loggedInUserEmail });
     this.setState({ loggedInUserId });
-    // console.log(this.state.loggedInUserEmail);
     const that = this;
-    // this.setState({
-    //   email: loggedInUserEmail
-    // });
-    console.log("orders card");
-    console.log(loggedInUserEmail);
     const user = {
       email: loggedInUserEmail
-
-    }
-    console.log(user.email);
-    console.log(user);
-    console.log(loggedInUserEmail);
-    
-    //find user by email, return user/ what they purchased
+    }  
     axios.post("/orders", {
       email: loggedInUserEmail,
      
   })
      .then(function (res) {
-        console.log("inside sale card axios get all cards call");
-        console.log(res);
-        console.log(res.data.length);
-        // for (var c = 0; c < res.data.length; c++) {
-          console.log("inside loop");
-          // if (res.data[c].isLoggedIn == 1) {
-          // that.state.email = res.data[c].email;
-          // console.log("that.state.email is " + that.state.email);
-          // console.log("res.data[" + c + "].email is " + res.data[c].email);
-
           that.setState({
             email: loggedInUserEmail
           });
@@ -108,40 +92,20 @@ class Orders extends Component {
           that.setState({
             swag10quantity: res.data.swag10quantity
           });
-          console.log("that.state.swag1quantity: " + that.state.swag1quantity);
-          console.log("that.state.swag2quantity: " + that.state.swag2quantity);
-          console.log("that.state.swag3quantity: " + that.state.swag3quantity);
-          console.log("that.state.swag4quantity: " + that.state.swag4quantity);
-          console.log("that.state.swag5quantity: " + that.state.swag5quantity);
-          console.log("that.state.swag6quantity: " + that.state.swag6quantity);
-          console.log("that.state.swag7quantity: " + that.state.swag7quantity);
-          console.log("that.state.swag8quantity: " + that.state.swag8quantity);
-          console.log("that.state.swag9quantity: " + that.state.swag9quantity);
-          console.log("that.state.swag10quantity: " + that.state.swag10quantity);
-          /*if (that.state.swag1quantity > 0) {
-            $("#history").append("<br></br><div className=\"card mb-3\"><div className=\"row no-gutters\">" + 
-                                     "<div className=\"col-md-4\">" +
-                                     "<img src={\"https://cdn.shopify.com/s/files/1/0006/6060/2935/products/gottzfigs8js_1_30c0f903-0c3a-462f-893d-cc4d1b2dcd28_360x.jpg?v=1558123631} className='img-thumbnail col-md-4 row align-itmes-center justify-content-center'\"} className=\"card-img\" alt=\"...\" />" +
-                                     "</div><div className=\"col-md-6\"><div className=\"card-body\">" +
-                                     "<h5 className=\"card-title\">John Snow collectible figure</h5></div></div>" + 
-                                     "<div className=\"col-md-2 row align-items-center justify-content-center\">" +
-                                     "<p>Quantity: {" + this.state.swag1quantity + "}</p></div></div></div>");
-          }*/
-          // }
-        // }
       }).catch(function (error) {
         console.log(error);
         console.log("something goes wrong");
       });
-    //window.location.reload();
   }
+
+  //  Code below displays all purchase history for user.
 
   render() {
     return (
       <div style={divStyle}>
         <OrderNav />
         <div className='container'>
-          <h2 className='text-center' id="history">{/*Order History For {this.state.loggedInUserName}*/}</h2>
+          <h2 className='text-center' id="history"></h2>
           {this.state.swag1quantity > 0 &&
             <div className="card mb-3">
               <div className="row no-gutters">

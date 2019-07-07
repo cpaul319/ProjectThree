@@ -1,3 +1,5 @@
+//  This file puts carousel of sliding images on log in page.
+
 import React from "react";
 import { render } from "react-dom";
 import { Link } from "react-router-dom";
@@ -6,7 +8,6 @@ import "react-animated-slider/build/horizontal.css";
 import "normalize.css/normalize.css";
 import "./slider-animations.css";
 import "./style.css";
-
 
 const content = [
   {
@@ -28,24 +29,18 @@ const content = [
   }
 ];
 
-
-
 const Slide = () => (
   <div>
-    
     <Slider className="slider-wrapper" autoplay={3500}>
       {content.map((item, index) => (
         <div
-        //   key={index}
           className="slider-content"
           style={{ background: `url('${item.image}') no-repeat center center` }}
         >
           <div className="inner">
             <h1 className="slider-title">{item.title}</h1>
             <p className="slider-p">{item.description}</p>
-    
           </div>
-         
         </div>
       ))}
     </Slider>
@@ -79,7 +74,6 @@ class DynamicSlider extends React.Component {
             </div>
           ))}
         </Slider>
-  
       </div>
     );
   }

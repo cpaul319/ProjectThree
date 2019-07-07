@@ -1,11 +1,10 @@
+//  This function is called 
 
 import React, { Component } from "react";
 import Orders from '../components/Orders';
-import { Redirect,  withRouter  } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import "../Orders.css"
 
-
-console.log("before Log In function is called.");
 const styles = {
   background: "/images/gotmap.jpg"
 }
@@ -29,7 +28,6 @@ class Sale extends Component {
   }
   
 render () {
-
   return (
     <div style={styles.background} className="App orders-body">
           <Orders/>    
@@ -38,8 +36,6 @@ render () {
           </div>        
     </div>
   )};
-  
 }
-// console.log("after Log In function is called.");
 
 export default withRouter(Orders);

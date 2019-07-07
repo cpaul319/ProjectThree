@@ -20,7 +20,7 @@ After the user is logged in, sale page is opened. It has Game of Thrones souveni
 
 ![sale](client/public/images/sale.PNG)
 
-If the user clicks on buy button next to any item and the user did not add more account information, edit account page is opened with additional information to add like credit card information (shown below). If the user does not enter correct and/or complete information, proper validation messages are displayed.
+If the user clicks on buy button next to any item and the user did not add more account information, edit account page is opened with additional information to add like credit card information (shown below). If the user does not enter correct and/or complete information, proper validation messages are displayed. If user enters correct information and clicks submit button, user account is updated with correct information and is able to make purchases.
 
 ![account](client/public/images/account.PNG)
 
