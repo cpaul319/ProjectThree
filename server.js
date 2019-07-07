@@ -11,7 +11,7 @@ const User = require('./models/user');
 const morgan = require('morgan');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
-const passport = require('./passport');
+//const passport = require('./passport');
  
 require("dotenv").config();
 // var app = express();
@@ -28,8 +28,8 @@ app.use(cookieParser());
 console.log("beginning of server");
 
 // Passport
-app.use(passport.initialize())
-app.use(passport.session()) // calls the deserializeUser
+//app.use(passport.initialize())
+//app.use(passport.session()) // calls the deserializeUser
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
