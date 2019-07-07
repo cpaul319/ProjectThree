@@ -1,10 +1,12 @@
+/*  This page is for registering a new user. */
+
 import axios from "axios";
 import LogNav from "../components/LogNav";
 import React, { Component } from "react";
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import { Button } from 'reactstrap'; 
 import "../Register.css"
-import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Modal, ModalHeader, ModalFooter } from 'reactstrap';
 
 class Register extends Component {
 	constructor() {
@@ -21,7 +23,6 @@ class Register extends Component {
             modal: false,
             nestedModal: false,
             closeAll: false
-
 		}
 		this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -31,37 +32,59 @@ class Register extends Component {
 	}
     
     toggle() {
+
+        //  This function is necessary for pop-up window functionality.
+
         this.setState(prevState => ({
             modal: !prevState.modal
         }));
-    }
+    } 
+
+    //-------------------------------------------------------------------------
 
     toggleNested() {
+
+        //  This function opens pop-up window with validation if already registered e-mail is attempted to be entered.
+
         this.setState({
             nestedModal: !this.state.nestedModal,
             closeAll: false
         });
     }
 
+    //------------------------------------------------------------------------
+
     toggleAll() {
+
+        //  This function is necessary for pop-up window functionality.
+
         this.setState({
             nestedModal: !this.state.nestedModal,
             closeAll: true
         });
     }
 
+    //-------------------------------------------------------------------------
+
     handleInputChange = event => {
 
+        //  This function stores user input into state variables.
+
         const { name, value } = event.target;
+
         this.setState({
             [name]: value
         });
         console.log("value is " + value);
 
     }
+
+    //----------------------------------------------------------------------
+
     handleFormSubmit(event) {
-		console.log('sign-up handleSubmit, username: ')
-		console.log(this.state.userName)
+
+        //  This function registeres new user if user input information is correct.
+
         event.preventDefault()
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         var ValidateEmail = re.test(String(this.state.email).toLowerCase());
@@ -83,42 +106,29 @@ class Register extends Component {
             isLoggedIn: 1
 		})
 			.then(response => {
-				console.log(response);
 				if (!response.data.err) {
-                    console.log(response.data.err); 
-                    console.log('successful signup');
-                   
                     if (response.data.error == 'User already exists')   {
                         this.toggleNested();
                     }
                     else {
                         this.props.history.push('/login');
                     }
-                   
 				} else {
-                    console.log('username already taken');
-                  
                     this.toggleNested();
 				}
 			}).catch(error => {
-				console.log('signup error: ')
-				console.log(error)
-
+				console.log(error);
             })
         }
 	}
 
     render() {
-        
         return (
-            
             <div id="reg-body">
-                
                 <div className="outer-wrapper">
                 <LogNav />
                 <div className="reg-container">
                     <p id="reg-title">Sign Up</p>
-                    {/* <div className="reg-box1"> */}
                     <AvForm className="reg-form">
                         <div className="reg-box1">
                             <AvField
@@ -192,13 +202,10 @@ class Register extends Component {
                                     maxLength: { value: 16, errorMessage: 'Your name must be between 6 and 16 characters' },
                                     match: { value: 'password', errorMessage: 'Passwords must match' }
                                 }}
-
                             />
                         </div>
                         <Button className="submit-btn" color="secondary" onClick={this.handleFormSubmit}>Submit</Button>
-
                     </AvForm>
-                        
                 </div>
                 </div>
                 <div>
