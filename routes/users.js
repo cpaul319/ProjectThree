@@ -1,81 +1,37 @@
 // const express = require('express')
 // // const router = express.Router()
 // const User = require('../database/models/user')
-const passport = require('../passport');
+//const passport = require('../passport');
 
 const userRouter = require("express").Router();
-const { check, validationResult } = require('express-validator');
 var bcrypt = require('bcrypt');
-// const { check, validationResult } = require('express-validator/check');
 const db = require('../models');
-// users.use(cors())
 process.env.SECRET_KEY = "secret";
 
-userRouter.post("/api/users", (req, res) => {
-
-    db.Users.create(req.body).then(function (DBUsers) {
-        res.json(dbUsers);
-    })
-    // res.send(req.body);
-});
-
-userRouter.get("/api/loggedin", function (req, res) {
-    console.log("this function returns all data of logged in user.");
-    db.Users.findOne({
-        where: {
-            isLoggedIn: 1
-        }
-    }).then(function (dbUsers) {
-        console.log("logged in user present");
-        res.json(dbUsers);
-    }).catch(err => {
-        console.log("weird error");
-        res.status(400).json({error: err});
-    });
-});
-
 userRouter.post("/orders", (req, res) => {
-    console.log("post to login, email = " + req.body.email);
+
+    //  This route returns appropriate user if his e-mail is registered in database.
+
     db.Users.findOne({
         where: {
             email: req.body.email
         }
     })
         .then(user => {
-            console.log("orders then");
             res.send(user);
         })
         .catch(err => {
             console.log("orders catch err=" + err);
             res.status(400).json({ error: err })
         })
-})
-
-userRouter.get("/api/orders", function (req, res) {
-    
-    console.log("this function returns all orders of logged in.");
-    console.log(req.body.user);
-    db.Users.findOne({
-        where: {
-            // email:"snow@snow7.com"
-            email: req.body.email
-        }
-    }).then(function (dbUsers) {
-        console.log("logged in user present");
-        res.json(dbUsers);
-    }).catch(err => {
-        console.log("weird error");
-        res.status(400).json({error: err});
-    });
 });
 
-/*userRouter.put("/api/usersbuy/:id", function (req, res) {
-    console.log("purchase")
-});*/
+//---------------------------------------------------------------------------------
 
 userRouter.put("/api/account", function(req, res)    {
-    // buy route created!
-    console.log("update route called");
+
+    // This routes updates user account.
+
     db.Users.update({
         address: req.body.address,
         city: req.body.city,
@@ -84,7 +40,6 @@ userRouter.put("/api/account", function(req, res)    {
         creditCardNumber: req.body.creditCardNumber,
         expDate: req.body.expDate,
         cvv: req.body.cvv
-        
     },
     {
         where:  {
@@ -92,12 +47,14 @@ userRouter.put("/api/account", function(req, res)    {
         }
     }).then(function (dbUsers)  {
         res.json(dbUsers);
-        console.log("account updated");
     }).catch(err => {
         console.log("weird error");
         res.status(400).json({error: err});
     });    
 });
+
+//---------------------------------------------------------------------------------
+
 userRouter.put("/api/buy", function(req, res)    {
     // buy route created!
     console.log("buy route called");
@@ -119,35 +76,18 @@ userRouter.put("/api/buy", function(req, res)    {
         }
     }).then(function (dbUsers)  {
         res.json(dbUsers);
-        console.log("item purchased");
     }).catch(err => {
         console.log("weird error");
         res.status(400).json({error: err});
     });    
 });
 
-userRouter.put("/api/login/:id", function (req, res) {
-    console.log("log in function is called.");
-    db.Users.update({
-        isLoggedIn: 1
-    },
-        {
-            where: {
-                id: req.params.id
-            }
-        }).then(function (dbUsers) {
-            res.json(dbUsers);
-            console.log("user updated");
-        }).catch(err => {
-            console.log("weird error");
-            res.status(400).json({error: err});
-        });
-});
-
- 
+//---------------------------------------------------------------------------------
 
 userRouter.put("/api/logout/:email", function (req, res)    {
-    console.log("logout by e-mail function is called.");
+    
+    //  This route logs user out.
+    
     db.Users.update({
         isLoggedIn: 0
     },
@@ -157,47 +97,27 @@ userRouter.put("/api/logout/:email", function (req, res)    {
         }
     }).then(function (dbUsers) {
         res.json(dbUsers);
-        console.log("user updated");
     }).catch(err => {
         console.log("weird error");
         res.statusMessage(400).json({error: err});
     });
 });
- 
- 
 
-userRouter.post("/api/loggeduser", (req, res) => {
-    console.log("Looking for logged in users...");
-    db.Users.findOne({
-        where: {
-            isLoggedIn: 1
-        }
-    }).then(user => {
-        if (user) {
-            console.log("a user is logged in!");
-            res.json(dbUsers);
-        } else {
-            console.log("there are no logged in users");
-        }
-    }).catch(err => {
-        console.log("weird err=" + err);
-        res.status(400).json({ error: err })
-    })
-})
+//---------------------------------------------------------------------------------
 
 userRouter.post("/login", (req, res) => {
-    console.log("post to login, email = " + req.body.email);
+
+    //  This route logs user in.
+
     db.Users.findOne({
         where: {
             email: req.body.email
         }
     })
         .then(user => {
-            console.log("login then");
             if (user) {
                 console.log("then user exists, start bcrypt compareSync");
                 if (bcrypt.compareSync(req.body.password, user.password)) {
-                   
                     console.log("compareSync success");
                     res.send({ message: true, user })
                     console.log(user);
@@ -216,19 +136,34 @@ userRouter.post("/login", (req, res) => {
         })
 })
 
+//---------------------------------------------------------------------------------
+
 userRouter.get("/api/allusers", function (req, res) {
+
+    //  This route returns all users.
+
     db.Users.findAll({}).then(function (dbUsers) {
         res.json(dbUsers);
     });
 });
 
+//---------------------------------------------------------------------------------
+
 userRouter.get("/api/user:email", function (req, res) {
+
+//  This route finds a user by e-mail.
+
     db.Users.findOne({}).then(function (dbUsers) {
         res.json(dbUsers);
     });
 });
 
+//---------------------------------------------------------------------------------
+
 userRouter.post("/register", (req, res) => {
+
+    //  This router registers user.
+
     const now = new Date()
     const userData = {
         userName: req.body.userName,
@@ -263,9 +198,13 @@ userRouter.post("/register", (req, res) => {
         .catch(err => {
             res.send("error: " + err)
         })
-
 })
+
+//---------------------------------------------------------------------------------
+
 userRouter.put("/login", (req, res) => {
+
+    //  This route logs user in.
 
     db.Users.findOne({
         where: {
@@ -275,17 +214,14 @@ userRouter.put("/login", (req, res) => {
         .then(userDb => {
             console.log(userDb.dataValues.email);
             let user = userDb.dataValues;
-            //db.Users.update(userData)
             db.Users.update({ isLoggedIn: 1 }, { where: { email: user.email } })
                 .then(user => {
                     res.json({ status: "User's isLoggedIn has changed" })
                 })
-
         })
         .catch(err => {
             res.send("error: " + err)
         })
-
 })
 
 module.exports = userRouter;

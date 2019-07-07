@@ -42,11 +42,9 @@ class SaleNav extends Component {
     localStorage.clear();
     var url = "/api/logout/" + email;
 
-    console.log("log out function called.");
     axios.put(url)
       .then(function (res) {
         localStorage.clear();
-        window.location.reload();
       }).catch(function (error) {
         console.log("user is not logged out");
       });
