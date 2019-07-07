@@ -1,3 +1,5 @@
+//  This is sale page.
+
 import axios from "axios";
 import React, { Component } from "react"; 
 import { Redirect,  withRouter  } from 'react-router-dom';
@@ -25,48 +27,34 @@ class Sale extends Component {
       expDate: 1,
       cvv: 4,
       item
-      
     }
   }
-  componentWillReceiveProps() {
 
-    // console.log(this.props.userData);
-  }
-  //testing sale page
   componentDidMount() {
 
-   
+    //  This function loads user information from local storage when page is opened.
+
     var loggedInUserName = localStorage.getItem('loggedInUserName');
     var loggedInUserEmail = localStorage.getItem('loggedInUserEmail');
     var loggedInUserId = localStorage.getItem('loggedInUserId');
-    console.log("did mount");
 
     axios.get('api/allusers')
       .then(function (res) {
-
-        console.log("this is sale page");
         for (var c = 0; c < res.data.length; c++) {
           if (res.data[c].isLoggedIn == 1) {
             console.log(res.data[c].email + " is logged in!");
-            console.log("id: " + res.data[c].id);
           }
-  
        }
       })
       .catch(function (error) {
         console.log(error);
       });
-    console.log(this.state.userName);
   }
 
   render() {
-  
-    console.log("before Log In function is called.");
     return (
       <div className="App sale-body">
         <SaleNav userData={this.props.userData}/>
-        {/* <p>Welcome {this.state.userName}</p>
-        <p>Sale page</p> */}
         <div className="sale-banner">
           <p className="sale-banner-title">our swag</p>
         </div>
@@ -80,14 +68,9 @@ class Sale extends Component {
             index={item.index}
           />
         ))}
-
       </div>
     );
- 
-
   }
-
-
 }
 export default withRouter(Sale);
  
