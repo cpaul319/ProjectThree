@@ -1,21 +1,19 @@
 //  In this project, a website is created where user can create an account, log in, and purchase Game of Thrones souvenirs.
 //
 //  Written by Alex Chalyy, Igor Guba, Chris Lee Paul, David Lawrence, and Keith Hemsoth.
+
 const bodyParser = require('body-parser');
 const express = require("express");
 const path = require("path");
 const PORT = process.env.PORT || 5000;
 const app = express();
 var db = require("./models");
-const User = require('./models/user');
+//const User = require('./models/user');
 const morgan = require('morgan');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
-const passport = require('./passport');
  
- 
- 
-// var app = express();
+require("dotenv").config();
 // set morgan to log info about our requests for development use.
 app.use(morgan('dev'));
 
@@ -25,12 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // initialize cookie-parser to allow us access the cookies stored in the browser. 
 app.use(cookieParser());
 
-
 console.log("beginning of server");
-
-// Passport
-app.use(passport.initialize())
-app.use(passport.session()) // calls the deserializeUser
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -51,12 +44,7 @@ app.use(session({
   }
 }));
 
- 
-
 app.use('/', require('./routes/users'));
-
-// app.use('/api/auth', require('./routes/auth'));
-// app.use('/api/contacts', require('./routes/contacts'));
 
 var syncOptions = { force: false };
 
