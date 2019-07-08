@@ -32,7 +32,7 @@ If the user navigates to orders page, all previously bought items, including qua
 
 # Front End
 
-Front end files were written using react, reactstrap, availity-reactstrap-validation, and slider (availity, reactstrap, and slider are new technologies used). All pages are mobile responsive.
+Front end files were written using react, reactstrap, availity-reactstrap-validation, and slider (availity, reactstrap, and slider are new technologies that are used). All pages are mobile responsive.
 
 # Back End
 
