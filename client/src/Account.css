@@ -10,6 +10,7 @@
     -o-background-size: cover;
     background-size: cover;
     position: relative;
+    padding-bottom: 19%;
 
 }
 
@@ -88,7 +89,8 @@
 @media (min-width:768px){
 
     #account-body {
-        height: 100vh;
+        /*height: 100vh;*/
+        height: 200%;
         width:100%;
         background: url("https://wallpaperaccess.com/full/25517.jpg");
         background-repeat: no-repeat;
@@ -98,13 +100,14 @@
 
     .account-container {
         width: 70%;
-        height: 100%;
+        height: 200%;
         padding: 1rem;
         margin: 0rem auto;
        
     }
 
     #account-title {
+        padding-top: 10%;
         text-align: center;
         font-size: 2.5rem;
     }
