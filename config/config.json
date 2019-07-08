@@ -1,5 +1,15 @@
 {
-  "test": {
+  
+  "development": {
+    "username": "root",
+    "password": "Bootcamp1!?",
+ 
+    "database": "UserDb",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+"test": {
+
   "username": "root",
   "password": null,
   "database": "database_test",
@@ -10,4 +20,6 @@
   "use_env_variable": "JAWSDB_URL",
   "dialect": "mysql"
 }
+
 }
+
