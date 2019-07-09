@@ -29,11 +29,9 @@ class Sale extends Component {
   
 render () {
   return (
-    <div style={styles.background} className="App orders-body">
+    <div style={styles.background} className="App" id="orders-body">
           <Orders/>    
-          <div className="order-banner">
-            <p className="order-banner-title">your swag</p>
-          </div>        
+                 
     </div>
   )};
 }

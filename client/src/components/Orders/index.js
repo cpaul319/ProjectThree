@@ -104,7 +104,7 @@ class Orders extends Component {
     return (
       <div style={divStyle}>
         <OrderNav />
-        <div className='container'>
+        <div className='container order-wrap'>
           <h2 className='text-center' id="history"></h2>
           {this.state.swag1quantity > 0 &&
             <div className="card mb-3">
