@@ -55,9 +55,7 @@ class Sale extends Component {
     return (
       <div className="App sale-body">
         <SaleNav userData={this.props.userData}/>
-        <div className="sale-banner">
-          <p className="sale-banner-title">our swag</p>
-        </div>
+    
         {this.state.item.map(item => (
           <SaleCard
             userData={this.props.userData}

@@ -2,6 +2,9 @@ nav.navbar {
   margin: 0%;
   float: left;
 }
+nav#sale-nav {
+  margin-bottom: 2rem;
+}
 
 .sale-nav-link {
   font-size: 18px;
