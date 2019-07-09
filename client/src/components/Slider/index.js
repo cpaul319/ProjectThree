@@ -29,6 +29,7 @@ const content = [
   }
 ];
 
+//  maps through content object for each slider
 const Slide = () => (
   <div>
     <Slider className="slider-wrapper" autoplay={3500}>
@@ -50,17 +51,7 @@ const Slide = () => (
 class DynamicSlider extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { items: [1, 2, 3, 4, 5], lastItem: 5 };
-  }
-
-  add() {
-    const lastItem = this.state.lastItem + 1;
-    this.setState({ lastItem, items: [...this.state.items, lastItem] });
-  }
-
-  pop(len) {
-    const lastItem = this.state.lastItem - len;
-    this.setState({ lastItem, items: this.state.items.slice(0, -len) });
+    this.state = { items: [1, 2, 3], lastItem: 3 };
   }
 
   render() {
