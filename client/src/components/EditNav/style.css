@@ -3,5 +3,7 @@ nav.navbar {
     width: 100vw;
     }
   
-
+nav#edit-nav {
+    margin-bottom: 2rem;
+}
   

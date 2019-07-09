@@ -2,7 +2,7 @@
 // // const router = express.Router()
 // const User = require('../database/models/user')
 //const passport = require('../passport');
-
+//heroku push
 const userRouter = require("express").Router();
 var bcrypt = require('bcrypt');
 const db = require('../models');
