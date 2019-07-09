@@ -25,12 +25,21 @@
 
 }
 
+.order-wrap {
+    text-align: center;
+}
+
 .q  {
     text-align: center;
+    font-family: 'Cinzel Decorative', cursive;
 }
 
 .container  {
     padding-top: 75px;
     padding-bottom: 1000px;
+}
+
+.card {
+    margin: 0 auto;
 }
 
