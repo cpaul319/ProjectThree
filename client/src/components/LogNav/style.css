@@ -3,4 +3,7 @@ nav.navbar {
     width: 100vw;
     }
   
+nav#log-nav {
+    margin-bottom: 2rem;
+}    
 
