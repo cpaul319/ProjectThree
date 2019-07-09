@@ -1,8 +1,9 @@
 nav.navbar {
-    margin: 0%;
-    width: 100vw;
-    margin-bottom: 5rem;
+    width: 100%;
     }
   
+#order-nav {
+    margin-bottom: 2rem;
+}
 
   
