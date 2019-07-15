@@ -13,6 +13,7 @@ class PayPalButton extends React.Component {
     window.React = React;
     window.ReactDOM = ReactDOM;
   }
+  
 
   componentDidMount() {
     const {
@@ -56,6 +57,8 @@ class PayPalButton extends React.Component {
     } = this.props;
     const paypal = window.PAYPAL;
 
+    
+
     const {
       showButton,
     } = this.state;
@@ -86,6 +89,7 @@ class PayPalButton extends React.Component {
 
         onSuccess(payment);
       });
+      console.log(payment);
 
     return (
       <div>

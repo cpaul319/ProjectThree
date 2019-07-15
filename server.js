@@ -1,7 +1,7 @@
 //  In this project, a website is created where user can create an account, log in, and purchase Game of Thrones souvenirs.
 //
 //  Written by Alex Chalyy, Igor Guba, Chris Lee Paul, David Lawrence, and Keith Hemsoth.
-
+var fs = require('fs');
 const bodyParser = require('body-parser');
 const express = require("express");
 const path = require("path");
@@ -12,6 +12,7 @@ var db = require("./models");
 const morgan = require('morgan');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+ 
  
 require("dotenv").config();
 // set morgan to log info about our requests for development use.
@@ -45,6 +46,36 @@ app.use(session({
 }));
 
 app.use('/', require('./routes/users'));
+app.use('/', require('./routes/items'));
+// const Item = db.items;
+  
+// // force: true will drop the table if it already exists
+// db.sequelize.sync({force: true}).then(() => {
+//     //Give any image name here.
+//   var imageData = fs.readFileSync(__dirname + '/client/public/images/home.png');
+//   Item.create({
+//     type: 'png',
+//     name: 'JSA Banner',
+//     description: 'Got Swag',
+//     price: "99",
+//     image: imageData
+//   }).then(image => {
+//     try{
+//       fs.writeFileSync(__dirname + '/client/public/images/account.png', image.data);    
+//       app.listen(PORT, function() {
+//         console.log(
+//           "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
+//           PORT,
+//           PORT
+//         );
+//       });
+//       // exit node.js app
+//       process.exit(0);
+//     }catch(e){
+//       console.log(e);
+//     }
+//   })
+// });
 
 var syncOptions = { force: false };
 

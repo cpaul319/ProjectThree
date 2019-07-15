@@ -63,11 +63,11 @@ class SaleNav extends Component {
               <li className="nav-item">
                 <a className="nav-link sale-nav-link">Welcome {this.state.loggedInUserName}<span className="sr-only">(current)</span></a>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <a className="nav-link sale-nav-link" href="/account">Account</a>
-              </li>
+              </li> */}
               <li className="nav-item">
-                <a className="nav-link sale-nav-link" href="/orders">Orders</a>
+                <a className="nav-link sale-nav-link" href="/orders">Check Out</a>
               </li>
               <li className="nav-item">
                 <a className="nav-link sale-nav-link" href="/" onClick={this.Logout}>Log Out</a>

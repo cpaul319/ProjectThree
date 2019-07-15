@@ -61,16 +61,17 @@ class OrderNav extends Component {
     const paypal = window.PAYPAL;
     const CLIENT = {
       sandbox: 'AU0BLd7TKS__lqt3EpOFlHa-6DOX5uRSBgefZAYYk0mB0JJl6EN_gKZh1W7DilS4xj_WMNF9K0FR_O8U',
-      production: 'xxxXXX',
+      // production: 'xxxXXX',
       // sandbox: process.env.PAYPAL_CLIENT_ID_SANDBOX,
       // production: process.env.PAYPAL_CLIENT_ID_PRODUCTION,
     };
     const ENV = process.env.NODE_ENV === 'production'
       ? 'production'
       : 'sandbox';
-    const onSuccess = (payment) =>
+    const onSuccess = (payment) => {
       console.log('Successful payment!', payment);
-
+      alert("Payment successful! You will receive an e-mail confirming when your item(s) will arrive.");
+    }
     const onError = (error) =>
       console.log('Erroneous payment OR failed to load script!', error);
 
@@ -88,9 +89,9 @@ class OrderNav extends Component {
               <li className="nav-item active">
                 <a className="nav-link" href="/sale">Buy Items<span className="sr-only">(current)</span></a>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <a className="nav-link" href="/account">Account</a>
-              </li>
+              </li> */}
               <li className="nav-item">
                 <a className="nav-link" href="/" onClick={this.Logout}>Log Out</a>
               </li>
