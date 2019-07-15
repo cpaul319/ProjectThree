@@ -59,14 +59,16 @@ class OrderNav extends Component {
 
   render() {
     const paypal = window.PAYPAL;
-    const CLIENT = {
-      sandbox: 'AU0BLd7TKS__lqt3EpOFlHa-6DOX5uRSBgefZAYYk0mB0JJl6EN_gKZh1W7DilS4xj_WMNF9K0FR_O8U',
-       production: 'AU0BLd7TKS__lqt3EpOFlHa-6DOX5uRSBgefZAYYk0mB0JJl6EN_gKZh1W7DilS4xj_WMNF9K0FR_O8U',
-      // sandbox: process.env.PAYPAL_CLIENT_ID_SANDBOX,
-      // production: process.env.PAYPAL_CLIENT_ID_PRODUCTION,
-    };
+    // const CLIENT = {
+    //   sandbox: 'AU0BLd7TKS__lqt3EpOFlHa-6DOX5uRSBgefZAYYk0mB0JJl6EN_gKZh1W7DilS4xj_WMNF9K0FR_O8U',
+    //    production: 'AU0BLd7TKS__lqt3EpOFlHa-6DOX5uRSBgefZAYYk0mB0JJl6EN_gKZh1W7DilS4xj_WMNF9K0FR_O8U',
+    //   // sandbox: process.env.PAYPAL_CLIENT_ID_SANDBOX,
+    //   // production: process.env.PAYPAL_CLIENT_ID_PRODUCTION,
+    // };
+
+    const CLIENT = 'AU0BLd7TKS__lqt3EpOFlHa-6DOX5uRSBgefZAYYk0mB0JJl6EN_gKZh1W7DilS4xj_WMNF9K0FR_O8U';
     // process.env.NODE_ENV = 'sandbox';
-    // const ENV = process.env.NODE_ENV;
+    const ENV = 'sandbox';
     // const ENV = process.env.NODE_ENV === 'production'
     //   ? 'production'
     //   : 'sandbox';
@@ -100,7 +102,7 @@ class OrderNav extends Component {
               <li className="nav-item" id="PayPalButton">
               <PayPalButton
                 client={CLIENT}
-                env={'sandbox'}
+                env={ENV}
                 commit={true}
                 currency={'USD'}
                 total={399.99}
