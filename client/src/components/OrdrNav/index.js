@@ -60,7 +60,7 @@ class OrderNav extends Component {
   render() {
     const paypal = window.PAYPAL;
     const CLIENT = {
-      sandbox: 'AU0BLd7TKS__lqt3EpOFlHa-6DOX5uRSBgefZAYYk0mB0JJl6EN_gKZh1W7DilS4xj_WMNF9K0FR_O8U',
+      // sandbox: 'AU0BLd7TKS__lqt3EpOFlHa-6DOX5uRSBgefZAYYk0mB0JJl6EN_gKZh1W7DilS4xj_WMNF9K0FR_O8U',
        production: 'AU0BLd7TKS__lqt3EpOFlHa-6DOX5uRSBgefZAYYk0mB0JJl6EN_gKZh1W7DilS4xj_WMNF9K0FR_O8U',
       // sandbox: process.env.PAYPAL_CLIENT_ID_SANDBOX,
       // production: process.env.PAYPAL_CLIENT_ID_PRODUCTION,
