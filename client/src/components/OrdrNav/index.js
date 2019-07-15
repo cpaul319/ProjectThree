@@ -60,7 +60,7 @@ class OrderNav extends Component {
   render() {
     const paypal = window.PAYPAL;
     const CLIENT = {
-      sandbox: 'xxxXXX',
+      sandbox: 'AVjAH1R-PU-L4qzI3yt4wBfx-XFVqRv9_a1XmakxaFoFU0SVO-y8Cn4vpE4rq6x_B4j89ywmVzBwdsqx',
       production: 'xxxXXX',
       // sandbox: process.env.PAYPAL_CLIENT_ID_SANDBOX,
       // production: process.env.PAYPAL_CLIENT_ID_PRODUCTION,
