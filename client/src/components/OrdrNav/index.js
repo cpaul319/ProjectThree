@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 import axios from "axios";
+import PayPalButton from '../PayPalButton';
 
 class OrderNav extends Component {
 
@@ -17,8 +18,11 @@ class OrderNav extends Component {
       loggedInUserEmail: "",
       loggedInUserId: ""
     }
+ 
 
   }
+
+  
 
   //-------------------------------------------------------------------------------
 
@@ -38,7 +42,7 @@ class OrderNav extends Component {
   //-------------------------------------------------------------------------------
 
   Logout() {
-    
+
     //  This function logs the user out to another page, changes database and local storage properly.
 
     var email = localStorage.getItem('loggedInUserEmail');
@@ -54,6 +58,24 @@ class OrderNav extends Component {
   }
 
   render() {
+    const paypal = window.PAYPAL;
+    const CLIENT = {
+      sandbox: 'xxxXXX',
+      production: 'xxxXXX',
+      // sandbox: process.env.PAYPAL_CLIENT_ID_SANDBOX,
+      // production: process.env.PAYPAL_CLIENT_ID_PRODUCTION,
+    };
+    const ENV = process.env.NODE_ENV === 'production'
+      ? 'production'
+      : 'sandbox';
+    const onSuccess = (payment) =>
+      console.log('Successful payment!', payment);
+
+    const onError = (error) =>
+      console.log('Erroneous payment OR failed to load script!', error);
+
+    const onCancel = (data) =>
+      console.log('Cancelled payment!', data);
     return (
       <header>
         <nav className="navbar navbar-expand-lg navbar-light bg-light" id="order-nav">
@@ -72,6 +94,19 @@ class OrderNav extends Component {
               <li className="nav-item">
                 <a className="nav-link" href="/" onClick={this.Logout}>Log Out</a>
               </li>
+              <li className="nav-item" id="PayPalButton">
+              <PayPalButton
+                client={CLIENT}
+                env={ENV}
+                commit={true}
+                currency={'USD'}
+                total={100}
+                onSuccess={onSuccess}
+                onError={onError}
+                onCancel={onCancel}
+              />
+              </li>
+         
             </ul>
           </div>
         </nav>
