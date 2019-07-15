@@ -18,9 +18,6 @@ class Account extends Component {
             city: "",
             state: "",
             zip: "",
-            creditCardNumber: "",
-            expDate: "",
-            cvv: "",
             loggedInUserName: "",
             loggedInUserEmail: "",
             loggedInUserId: ""
@@ -51,14 +48,11 @@ class Account extends Component {
             address: this.state.address,
             city: this.state.city,
             state: this.state.state,
-            zip: this.state.zip,
-            creditCardNumber: this.state.creditCardNumber,
-            expDate: this.state.expDate,
-            cvv: this.state.cvv
+            zip: this.state.zip
+          
         }
         if (
-            user.address && user.city && user.state && this.ValidateZip() && this.ValidateCCNumber() &&
-            this.ValidateDate() && (/^[0-9]+$/.test(user.cvv) && user.cvv.length == 3)
+            user.address && user.city && user.state && this.ValidateZip() 
         ) {
             var _this = this;
             axios.put("/api/account", user)
@@ -89,43 +83,35 @@ class Account extends Component {
 
     //------------------------------------------------------------------------
 
-    ValidateDate() {
+    // ValidateDate() {
 
-        // This function validates if date is in correct format and its not in the past.
+    //     // This function validates if date is in correct format and its not in the past.
 
-        // Return today's date and time
-        var currentTime = new Date();
-        // returns the month (from 0 to 11)
-        var month = currentTime.getMonth() + 1;
-        // returns the year (four digits)
-        var year = currentTime.getFullYear();
-        var expired = false;
+    //     // Return today's date and time
+    //     var currentTime = new Date();
+    //     // returns the month (from 0 to 11)
+    //     var month = currentTime.getMonth() + 1;
+    //     // returns the year (four digits)
+    //     var year = currentTime.getFullYear();
+    //     var expired = false;
 
-        if (this.state.expDate.length > 4) {
-            var enteredyear = this.state.expDate[3] + this.state.expDate[4];
-            var intyear = parseInt(enteredyear, 10) + 2000;
-            var enteredmonth = this.state.expDate[0] + this.state.expDate[1];
-            var intmonth = parseInt(enteredmonth, 10);
-            if ((year > intyear) || (year == intyear && month > intmonth)) {
-                expired = true;
-            }
-        } else {
-            expired = true;
-        }
-        return (moment(this.state.expDate, 'MM/YY', true).isValid() && !expired);
-    }
+    //     if (this.state.expDate.length > 4) {
+    //         var enteredyear = this.state.expDate[3] + this.state.expDate[4];
+    //         var intyear = parseInt(enteredyear, 10) + 2000;
+    //         var enteredmonth = this.state.expDate[0] + this.state.expDate[1];
+    //         var intmonth = parseInt(enteredmonth, 10);
+    //         if ((year > intyear) || (year == intyear && month > intmonth)) {
+    //             expired = true;
+    //         }
+    //     } else {
+    //         expired = true;
+    //     }
+    //     return (moment(this.state.expDate, 'MM/YY', true).isValid() && !expired);
+    // }
 
     //------------------------------------------------------------------------
 
-    ValidateCCNumber() {
-
-        //  This function validates if credit card number is in correct format.
-
-        var number = /^[0-9]+$/;
-
-        return (number.test(this.state.creditCardNumber) && this.state.creditCardNumber.length == 16);
-    }
-
+ 
     //------------------------------------------------------------------------
 
     ValidateZip() {
@@ -165,7 +151,7 @@ class Account extends Component {
             <div id="account-body">
                 <EditNav userData={this.state.userData} />
                 <div className="account-container">
-                    <p id="account-title">Edit Account Info</p>
+                    <p id="account-title">Edit Address Info</p>
                     <p className="account-user">{this.state.loggedInUserName}</p>
                     <AvForm>
                         <div className="account-box1">
@@ -261,42 +247,7 @@ class Account extends Component {
                                 }}
                             />
                         </div>
-                        <div className="account-box2">
-                            <AvField
-                                name="creditCardNumber"
-                                placeholder="Credit Card Number"
-                                value={this.state.creditCardNumber}
-                                onChange={this.handleInputChange}
-                                validate={{
-                                    required: { value: true, errorMessage: 'Please enter credit card number' },
-                                    pattern: { value: '^[0-9]+$', errorMessage: 'Please enter only numbers' },
-                                    minLength: { value: 16, errorMessage: 'Please enter 16 digit credit card number' },
-                                    maxLength: { value: 16, errorMessage: 'Please enter 16 digit credit card number' }
-                                }}
-                            />
-                            <AvField
-                                name="expDate"
-                                placeholder="Expiration Date"
-                                value={this.state.expDate}
-                                onChange={this.handleInputChange}
-                                validate={{
-                                    required: { value: true, errorMessage: 'Please enter date' },
-                                    date: { format: 'MM/YY', errorMessage: 'Please enter date in MM/YY format' }
-                                }}
-                            />
-                            <AvField
-                                name="cvv"
-                                placeholder="cvv"
-                                value={this.state.cvv}
-                                onChange={this.handleInputChange}
-                                validate={{
-                                    required: { value: true, errorMessage: 'Please enter cvv' },
-                                    pattern: { value: '^[0-9]+$', errorMessage: 'Please enter only numbers' },
-                                    minLength: { value: 3, errorMessage: 'Please enter 3 digit cvv' },
-                                    maxLength: { value: 3, errorMessage: 'Please enter 3 digit cvv' }
-                                }}
-                            />
-                        </div>
+                     
                         <Button className="submit-btn" color="secondary" onClick={this.handleFormSubmit}>Submit</Button>
                     </AvForm>
                 </div>

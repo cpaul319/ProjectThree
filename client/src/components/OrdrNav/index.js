@@ -60,7 +60,7 @@ class OrderNav extends Component {
   render() {
     const paypal = window.PAYPAL;
     const CLIENT = {
-      sandbox: 'AVjAH1R-PU-L4qzI3yt4wBfx-XFVqRv9_a1XmakxaFoFU0SVO-y8Cn4vpE4rq6x_B4j89ywmVzBwdsqx',
+      sandbox: 'AU0BLd7TKS__lqt3EpOFlHa-6DOX5uRSBgefZAYYk0mB0JJl6EN_gKZh1W7DilS4xj_WMNF9K0FR_O8U',
       production: 'xxxXXX',
       // sandbox: process.env.PAYPAL_CLIENT_ID_SANDBOX,
       // production: process.env.PAYPAL_CLIENT_ID_PRODUCTION,
@@ -100,7 +100,7 @@ class OrderNav extends Component {
                 env={ENV}
                 commit={true}
                 currency={'USD'}
-                total={100}
+                total={399.99}
                 onSuccess={onSuccess}
                 onError={onError}
                 onCancel={onCancel}

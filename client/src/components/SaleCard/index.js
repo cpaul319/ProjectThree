@@ -36,9 +36,6 @@ class SaleCard extends Component {
       loggedInUserName: "",
       loggedInUserEmail: "",
       loggedInUserId: "",
-      ccnumber: "",
-      cvv: "",
-      expdate: "",
       nestedModal: false,
       closeAll: false
     }
@@ -173,7 +170,9 @@ class SaleCard extends Component {
       email: that.state.loggedInUserEmail
     }
     var _this = this;
-    if (that.state.expdate && that.state.cvv && that.state.ccnumber) {
+    // if (that.state.expdate && that.state.cvv && that.state.ccnumber) {
+
+
       axios.put("/api/buy", user)
         .then(function (response) {
           window.location.reload();
@@ -181,9 +180,9 @@ class SaleCard extends Component {
         .catch(function (error) {
           console.log(error);
         });
-    } else {
-        this.toggleNested();
-    }
+    // } else {
+    //     this.toggleNested();
+    // }
   }
 
   render() {
