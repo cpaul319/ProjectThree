@@ -65,8 +65,8 @@ class OrderNav extends Component {
     //   // sandbox: process.env.PAYPAL_CLIENT_ID_SANDBOX,
     //   // production: process.env.PAYPAL_CLIENT_ID_PRODUCTION,
     // };
-
-    const CLIENT = 'AU0BLd7TKS__lqt3EpOFlHa-6DOX5uRSBgefZAYYk0mB0JJl6EN_gKZh1W7DilS4xj_WMNF9K0FR_O8U';
+    
+    const CLIENT = 'AaTPJyOuPDApRSBdlsiuD7Lc6xuMYDL_Q8nmn6iLcKYzUmw-RGSTngApyrvyzBbC6n9VTirNhxyc7jKS';
     // process.env.NODE_ENV = 'sandbox';
     const ENV = 'sandbox';
     // const ENV = process.env.NODE_ENV === 'production'
