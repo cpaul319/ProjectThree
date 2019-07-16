@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import "./style.css";
 import axios from "axios";
 import PayPalButton from '../PayPalButton';
+ 
 
 class OrderNav extends Component {
 
@@ -67,8 +68,8 @@ class OrderNav extends Component {
     // };
     
     const CLIENT = 'AaTPJyOuPDApRSBdlsiuD7Lc6xuMYDL_Q8nmn6iLcKYzUmw-RGSTngApyrvyzBbC6n9VTirNhxyc7jKS';
-    // process.env.NODE_ENV = 'sandbox';
-    const ENV = 'sandbox';
+    process.env.NODE_ENV = 'sandbox';
+    const ENV = process.env.NODE_ENV;
     // const ENV = process.env.NODE_ENV === 'production'
     //   ? 'production'
     //   : 'sandbox';

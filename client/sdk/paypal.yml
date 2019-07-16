@@ -1,0 +1,29 @@
+test: &default
+
+  # Credentials for REST APIs
+  client_id: AU0BLd7TKS__lqt3EpOFlHa-6DOX5uRSBgefZAYYk0mB0JJl6EN_gKZh1W7DilS4xj_WMNF9K0FR_O8U
+  client_secret: ECvjspVrZv97xGpS1Np8-WW1PsNaUypyZcZQuQN3If_zkNvtAljNJZV-Qu_r6PX1TqpeYCKYw9hOf92u
+
+  # Mode can be 'live' or 'sandbox'
+  mode: sandbox
+
+  # Credentials for Classic APIs
+  app_id: APP-80W284485P519543T
+  username: cpaul319-facilitator_api1.gmail.com
+  password: ZJHJY2NS7HP769H3
+  signature: AM6TdcajuVculc0sjgodMYhadpMJAy0qqZLFxjzqnoF-gjjzMl6xPem6
+  # # With Certificate
+  # cert_path: "config/cert_key.pem"
+  # sandbox_email_address: Platform.sdk.seller@gmail.com
+
+  # # IP Address
+  # ip_address: 127.0.0.1
+  # # HTTP Proxy
+  # http_proxy: http://proxy-ipaddress:3129/
+
+development:
+  <<: *default
+
+production:
+  <<: *default
+  mode: sandbox
