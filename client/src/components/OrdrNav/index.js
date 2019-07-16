@@ -68,11 +68,11 @@ class OrderNav extends Component {
     };
     
     // const CLIENT = 'AaTPJyOuPDApRSBdlsiuD7Lc6xuMYDL_Q8nmn6iLcKYzUmw-RGSTngApyrvyzBbC6n9VTirNhxyc7jKS';
-    process.env.NODE_ENV = 'sandbox';
-    const ENV = process.env.NODE_ENV;
-    // const ENV = process.env.NODE_ENV === 'production'
-    //   ? 'production'
-    //   : 'sandbox';
+    // process.env.NODE_ENV = 'sandbox';
+    // const ENV = process.env.NODE_ENV;
+    const ENV = process.env.NODE_ENV === 'production'
+      ? 'production'
+      : 'sandbox';
     const onSuccess = (payment) => {
       console.log('Successful payment!', payment);
       alert("Payment successful! You will receive an e-mail confirming when your item(s) will arrive.");
