@@ -75,6 +75,7 @@ class OrderNav extends Component {
     const ENV = process.env.NODE_ENV === 'production'
       ? 'production'
       : 'sandbox';
+      console.log(ENV);
     const onSuccess = (payment) => {
       console.log('Successful payment!', payment);
       alert("Payment successful! You will receive an e-mail confirming when your item(s) will arrive.");
