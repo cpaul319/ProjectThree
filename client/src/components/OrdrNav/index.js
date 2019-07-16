@@ -66,7 +66,7 @@ class OrderNav extends Component {
       production: process.env.REACT_APP_PAYPAL_CLIENT_ID_PRODUCTION,
     };
     console.log(process.env.REACT_APP_PAYPAL_CLIENT_ID_PRODUCTION)
-    console.log(process.env.REACT_APP_MY_VAR_2)
+    console.log(REACT_APP_MY_VAR_2)
     
 
     const ENV = process.env.NODE_ENV === 'production'
