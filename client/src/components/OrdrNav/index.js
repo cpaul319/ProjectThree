@@ -60,18 +60,19 @@ class OrderNav extends Component {
 
   render() {
     const paypal = window.PAYPAL;
+    const ENV = process.env.NODE_ENV === 'production'
+    ? 'production'
+    : 'sandbox';
     const CLIENT = {
        
       sandbox: process.env.REACT_APP_PAYPAL_CLIENT_ID_SANDBOX,
       production: process.env.REACT_APP_PAYPAL_CLIENT_ID_PRODUCTION,
     };
     console.log(process.env.REACT_APP_PAYPAL_CLIENT_ID_PRODUCTION)
-    console.log(REACT_APP_MY_VAR_2)
+    console.log(process.env.REACT_APP_MY_VAR_2)
     
 
-    const ENV = process.env.NODE_ENV === 'production'
-      ? 'production'
-      : 'sandbox';
+ 
       // console.log(ENV);
     const onSuccess = (payment) => {
       console.log('Successful payment!', payment);
