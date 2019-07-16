@@ -61,18 +61,18 @@ class OrderNav extends Component {
   render() {
     const paypal = window.PAYPAL;
     const CLIENT = {
-      sandbox: 'AU0BLd7TKS__lqt3EpOFlHa-6DOX5uRSBgefZAYYk0mB0JJl6EN_gKZh1W7DilS4xj_WMNF9K0FR_O8U',
-       production: 'AU0BLd7TKS__lqt3EpOFlHa-6DOX5uRSBgefZAYYk0mB0JJl6EN_gKZh1W7DilS4xj_WMNF9K0FR_O8U',
-      // sandbox: process.env.PAYPAL_CLIENT_ID_SANDBOX,
-      // production: process.env.PAYPAL_CLIENT_ID_PRODUCTION,
+      // sandbox: 'AU0BLd7TKS__lqt3EpOFlHa-6DOX5uRSBgefZAYYk0mB0JJl6EN_gKZh1W7DilS4xj_WMNF9K0FR_O8U',
+      //  production: 'AU0BLd7TKS__lqt3EpOFlHa-6DOX5uRSBgefZAYYk0mB0JJl6EN_gKZh1W7DilS4xj_WMNF9K0FR_O8U',
+      sandbox: process.env.PAYPAL_CLIENT_ID_SANDBOX,
+      production: process.env.PAYPAL_CLIENT_ID_PRODUCTION,
     };
     
     // const CLIENT = 'AaTPJyOuPDApRSBdlsiuD7Lc6xuMYDL_Q8nmn6iLcKYzUmw-RGSTngApyrvyzBbC6n9VTirNhxyc7jKS';
-    process.env.NODE_ENV = 'sandbox';
-    const ENV = process.env.NODE_ENV;
-    // const ENV = process.env.NODE_ENV === 'production'
-    //   ? 'production'
-    //   : 'sandbox';
+    // process.env.NODE_ENV = 'sandbox';
+    // const ENV = process.env.NODE_ENV;
+    const ENV = process.env.NODE_ENV === 'production'
+      ? 'production'
+      : 'sandbox';
     const onSuccess = (payment) => {
       console.log('Successful payment!', payment);
       alert("Payment successful! You will receive an e-mail confirming when your item(s) will arrive.");
