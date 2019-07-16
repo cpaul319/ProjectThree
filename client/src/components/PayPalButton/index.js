@@ -94,7 +94,7 @@ class PayPalButton extends React.Component {
     return (
       <div>
         {showButton && <paypal.Button.react
-          env={'sandbox'}
+          env={env}
           client={client}
           commit={commit}
           payment={payment}
