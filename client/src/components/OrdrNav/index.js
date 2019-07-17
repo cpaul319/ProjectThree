@@ -1,7 +1,7 @@
 /*  This file is order page navigation bar.fixing paypal */
 
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link,  withRouter  } from "react-router-dom";
 import "./style.css";
 import axios from "axios";
 import PayPalButton from '../PayPalButton';
@@ -85,6 +85,7 @@ class OrderNav extends Component {
     const onSuccess = (payment) => {
       console.log('Successful payment!', payment);
       alert("Payment successful! You will receive an e-mail confirming when your item(s) will arrive.");
+      setTimeout(() => {this.props.history.push('/')}, 6000)
     }
     const onError = (error) =>
       console.log('Erroneous payment OR failed to load script!', error);
@@ -129,5 +130,5 @@ class OrderNav extends Component {
     );
   }
 }
-
-export default OrderNav;
+export default withRouter(OrderNav);
+ 
