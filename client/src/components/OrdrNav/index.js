@@ -74,7 +74,7 @@ class OrderNav extends Component {
     };
     console.log(process.env.REACT_APP_PAYPAL_CLIENT_ID_PRODUCTION);
     console.log(process.env.REACT_APP_MY_VAR_2);
-    
+    //trick paypal into thinking deployed is still development
     // const ENV = process.env.NODE_ENV === 'production'
     // ? 'production'
     // : 'sandbox';
