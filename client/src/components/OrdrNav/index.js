@@ -68,8 +68,8 @@ class OrderNav extends Component {
       sandbox: process.env.REACT_APP_PAYPAL_CLIENT_ID_SANDBOX,
       production: process.env.REACT_APP_PAYPAL_CLIENT_ID_PRODUCTION,
     };
-    console.log(process.env.REACT_APP_PAYPAL_CLIENT_ID_PRODUCTION)
-    console.log(process.env.REACT_APP_MY_VAR_2)
+    console.log(process.env.REACT_APP_PAYPAL_CLIENT_ID_PRODUCTION);
+    console.log(process.env.REACT_APP_MY_VAR_2);
     
 
  
