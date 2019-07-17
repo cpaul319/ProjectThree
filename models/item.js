@@ -1,4 +1,4 @@
-// user table sequalize schema.
+// items table sequalize schema.
 
 module.exports = function(sequelize, DataTypes) {
   const Item = sequelize.define('Items', {
@@ -7,15 +7,17 @@ module.exports = function(sequelize, DataTypes) {
     type: DataTypes.STRING
     },
     description: {
-      type: DataTypes.STRING
+      type: DataTypes.TEXT
       },
     image: {
-    type: DataTypes.BLOB('long')
+    type: DataTypes.STRING
     },
     price: {
       type: DataTypes.DECIMAL(10, 2)  
       }
   });
+ 
+
    
     return Item;
   }; 
