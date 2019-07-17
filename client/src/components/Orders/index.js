@@ -27,11 +27,23 @@ class Orders extends Component {
       swag8quantity: 0,
       swag9quantity: 0,
       swag10quantity: 0,
+      swag1price: 199.99,
+      swag2price: 229.99,
+      swag3price: 208.00,
+      swag4price: 46.95,
+      swag5price: 14.95,
+      swag6price: 74.95,
+      swag7price: 20.95,
+      swag8price: 199.99,
+      swag9price: 349.95,
+      swag10price: 34.95,
       user:"",
       email: "",
       loggedInUserName: "",
       loggedInUserEmail: "",
-      loggedInUserId: ""
+      loggedInUserId: "",
+      totalPrice: 0,
+      totalQuanity:0
     }
     this.componentDidMount = this.componentDidMount.bind(this);
   };
@@ -60,11 +72,13 @@ class Orders extends Component {
   })
      .then(function (res) {
           that.setState({
-            email: loggedInUserEmail
+            email: loggedInUserEmail,
+            
           });
           that.setState({
             swag1quantity: res.data.swag1quantity
           });
+          
           that.setState({
             swag2quantity: res.data.swag2quantity
           });
@@ -96,11 +110,34 @@ class Orders extends Component {
         console.log(error);
         console.log("something goes wrong");
       });
+      
   }
+
 
   //  Code below displays all purchase history for user.
 
   render() {
+    // for (var k = 1; k <= 10; k++){
+    //   this.state.total +=(this.state.swag[k]price)*(this.state.swag[k]quantity)
+    //   } 
+   
+      this.state.total =(
+      ((this.state.swag1price)*(this.state.swag1quantity))+
+      ((this.state.swag2price)*(this.state.swag2quantity))+
+      ((this.state.swag3price)*(this.state.swag3quantity))+
+      ((this.state.swag4price)*(this.state.swag4quantity))+
+      ((this.state.swag5price)*(this.state.swag5quantity))+
+      ((this.state.swag6price)*(this.state.swag6quantity))+
+      ((this.state.swag7price)*(this.state.swag7quantity))+
+      ((this.state.swag8price)*(this.state.swag8quantity))+
+      ((this.state.swag9price)*(this.state.swag9quantity))+
+      ((this.state.swag10price)*(this.state.swag10quantity)));
+      this.state.total= this.state.total.toFixed(2);
+
+      localStorage.setItem('total', this.state.total);
+    console.log(this.state.total);
+    console.log(this.state.swag1price);
+    console.log(this.state.swag1quantity);
     return (
       <div style={divStyle}>
         <OrderNav />

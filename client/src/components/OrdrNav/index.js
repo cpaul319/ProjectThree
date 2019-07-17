@@ -17,7 +17,8 @@ class OrderNav extends Component {
       user: "",
       loggedInUserName: "",
       loggedInUserEmail: "",
-      loggedInUserId: ""
+      loggedInUserId: "",
+      total:0
     }
  
 
@@ -34,10 +35,14 @@ class OrderNav extends Component {
     var loggedInUserName = localStorage.getItem('loggedInUserName');
     var loggedInUserEmail = localStorage.getItem('loggedInUserEmail');
     var loggedInUserId = localStorage.getItem('loggedInUserId');
+    var total = localStorage.getItem('total');
 
     this.setState({ loggedInUserName });
     this.setState({ loggedInUserEmail });
     this.setState({ loggedInUserId });
+    this.setState({ total });
+    console.log("total on orders nav");
+    console.log(total);
   }
 
   //-------------------------------------------------------------------------------
@@ -59,6 +64,7 @@ class OrderNav extends Component {
   }
 
   render() {
+    var total = localStorage.getItem('total');
     const paypal = window.PAYPAL;
     const ENV = process.env.NODE_ENV === 'production'
     ? 'production'
@@ -107,7 +113,7 @@ class OrderNav extends Component {
                 env={ENV}
                 commit={true}
                 currency={'USD'}
-                total={399.99}
+                total={total}
                 onSuccess={onSuccess}
                 onError={onError}
                 onCancel={onCancel}
