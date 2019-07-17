@@ -66,9 +66,7 @@ class OrderNav extends Component {
   render() {
     var total = localStorage.getItem('total');
     const paypal = window.PAYPAL;
-    const ENV = process.env.NODE_ENV === 'production'
-    ? 'production'
-    : 'sandbox';
+
     const CLIENT = {
        
       sandbox: process.env.REACT_APP_PAYPAL_CLIENT_ID_SANDBOX,
@@ -77,6 +75,9 @@ class OrderNav extends Component {
     console.log(process.env.REACT_APP_PAYPAL_CLIENT_ID_PRODUCTION);
     console.log(process.env.REACT_APP_MY_VAR_2);
     
+    const ENV = process.env.NODE_ENV === 'production'
+    ? 'production'
+    : 'sandbox';
 
  
       // console.log(ENV);

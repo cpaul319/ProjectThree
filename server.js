@@ -47,6 +47,7 @@ app.use(session({
 
 app.use('/', require('./routes/users'));
 app.use('/', require('./routes/items'));
+// app.use('/', require('./routes/purchases'));
 // const Item = db.items;
   
 // // force: true will drop the table if it already exists

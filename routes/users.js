@@ -27,7 +27,7 @@ userRouter.post("/orders", (req, res) => {
 });
 
 //---------------------------------------------------------------------------------
-
+//use this coding for update routes
 userRouter.put("/api/account", function(req, res)    {
 
     // This routes updates user account.
