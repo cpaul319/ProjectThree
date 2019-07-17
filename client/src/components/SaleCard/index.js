@@ -54,7 +54,7 @@ class SaleCard extends Component {
       nestedModal: !this.state.nestedModal,
       closeAll: false
     });
-    setTimeout(() => {this.props.history.push('/account')}, 3000)
+    // setTimeout(() => {this.props.history.push('/account')}, 3000)
   }
 
   //-------------------------------------------------------------------------------
@@ -76,17 +76,7 @@ class SaleCard extends Component {
         for (var c = 0; c < res.data.length; c++) {
           if (res.data[c].email == loggedInUserEmail) {
             that.state.email = res.data[c].email;
-            var ccnum = String(res.data[c].creditCardNumber);
-            var expd = String(res.data[c].expDate);
-            that.setState({
-              ccnumber: ccnum
-            });
-            that.setState({
-              cvv: res.data[c].cvv
-            });
-            that.setState({
-              expdate: expd
-            });
+        
             that.setState({
               email: that.state.loggedInUserEmail
             });
@@ -169,7 +159,7 @@ class SaleCard extends Component {
       swag10quantity: that.state.swag10quantity,
       email: that.state.loggedInUserEmail
     }
-    var _this = this;
+    // var _this = this;
     // if (that.state.expdate && that.state.cvv && that.state.ccnumber) {
 
 
