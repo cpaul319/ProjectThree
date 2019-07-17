@@ -1,4 +1,4 @@
-/*  This file is order page navigation bar. */
+/*  This file is order page navigation bar.fixing paypal */
 
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
