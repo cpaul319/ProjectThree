@@ -60,6 +60,7 @@ class SaleCard extends Component {
   //-------------------------------------------------------------------------------
 
   componentDidMount() {
+    console.log(this.props.index);
 
     //  This function loads correct user information when the sale page is opened.
 

@@ -37,6 +37,17 @@ class Orders extends Component {
       swag8price: 199.99,
       swag9price: 349.95,
       swag10price: 34.95,
+      index0:0,
+      index1:1,
+      index2:2,
+      index3:3,
+      index4:4,
+      index5:5,
+      index6:6,
+      index7:7,
+      index8:8,
+      index9:9,
+      itemId:11,
       user:"",
       email: "",
       loggedInUserName: "",
@@ -51,7 +62,7 @@ class Orders extends Component {
   //-------------------------------------------------------------------------------
 
   componentDidMount() {
-
+    console.log(this.state.itemId);
   //  This function loads all purchase history for a user.
 
     var loggedInUserName = localStorage.getItem('loggedInUserName');
@@ -112,9 +123,67 @@ class Orders extends Component {
       });
       
   }
+  
+  deleteItem() {
+
+    //  This function changes user database information appropriately when user deletes an item.
+
+    const that = this;
+    console.log("This, orders page");
+    console.log(this.state.itemId);
+    console.log("That, orders page");
+    console.log(that.state.itemId);
+    
+// console.log(this.props.swag0index);
+//
+    if (that.state.itemId===0) {
+      that.state.swag1quantity--;
+    } else if (that.state.itemId===1) {
+      that.state.swag2quantity--;
+    } else if (that.state.itemId===2) {
+      that.state.swag3quantity--;
+    } else if (that.state.itemId===3) {
+      that.state.swag4quantity--;
+    } else if (that.state.itemId===4) {
+      that.state.swag5quantity--;
+    } else if (that.state.itemId===5) {
+      that.state.swag6quantity--;
+    } else if (that.state.itemId===6) {
+      that.state.swag7quantity--;
+    } else if (that.state.itemId===7) {
+      that.state.swag8quantity--;
+    } else if (that.state.itemId===8) {
+      that.state.swag9quantity--;
+    } else if (that.state.itemId===9){
+      that.state.swag10quantity--;
+    }
+    const user = {
+      swag1quantity: that.state.swag1quantity,
+      swag2quantity: that.state.swag2quantity,
+      swag3quantity: that.state.swag3quantity,
+      swag4quantity: that.state.swag4quantity,
+      swag5quantity: that.state.swag5quantity,
+      swag6quantity: that.state.swag6quantity,
+      swag7quantity: that.state.swag7quantity,
+      swag8quantity: that.state.swag8quantity,
+      swag9quantity: that.state.swag9quantity,
+      swag10quantity: that.state.swag10quantity,
+      email: that.state.loggedInUserEmail
+    }
+   
 
 
-  //  Code below displays all purchase history for user.
+      axios.put("/api/delete", user)
+        .then(function (response) {
+          window.location.reload();
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    
+  }
+
+ 
 
   render() {
     // for (var k = 1; k <= 10; k++){
@@ -156,6 +225,9 @@ class Orders extends Component {
                     <p class = "q">Price: {"199.99"}</p>
                     <p class = "q">Quantity: {this.state.swag1quantity}</p>
                   </div>
+                  <div className="card-btn">
+                    <button className='btn btn-outline-dark' onClick={() => this.deleteItem(this.state.itemId)} itemId={0}>Delete this item</button>
+                  </div>
                 </div>
                 <div className="col-md-2 row align-items-center justify-content-center">
                 </div>
@@ -174,6 +246,9 @@ class Orders extends Component {
                     <p className="card-text card-desc">This 1/6 scale collectible figure of Brienne of Tarth from Season 7 of Game of Thrones will be a great addition to your collection. Standing at 12.5 inches tall, this figure features a stunning likeness of actress Gwendoline Christie as Brienne, including textured hair, piercing eyes, and bold face.</p>
                     <p class = "q">Price: {"229.99"}</p>
                     <p class = "q">Quantity: {this.state.swag2quantity}</p>
+                  </div>
+                  <div className="card-btn">  
+                    <button className='btn btn-outline-dark' onClick={() => this.deleteItem(this.state.itemId)} itemId={1}>Delete this item</button>
                   </div>
                 </div>
                 <div className="col-md-2 row align-items-center justify-content-center">
@@ -194,6 +269,9 @@ class Orders extends Component {
                     <p class = "q">Price: {"208.00"}</p>
                     <p class = "q">Quantity: {this.state.swag3quantity}</p>
                   </div>
+                  <div className="card-btn">
+                    <button className='btn btn-outline-dark' onClick={() => this.deleteItem(this.state.itemId)} itemId={2}>Delete this item</button>
+                  </div>
                 </div>
                 <div className="col-md-2 row align-items-center justify-content-center">
                 </div>
@@ -212,6 +290,9 @@ class Orders extends Component {
                     <p className="card-text card-desc">This Game of Thrones sculpture features a striking rendition of the dragon Drogon. Amazingly detailed and hand painted, this sculpture of Drogon stands approximately 4.5 inches tall.</p>
                     <p className = "q">Price: {"46.95"}</p>
                     <p className = "q">Quantity: {this.state.swag4quantity}</p>
+                  </div>
+                  <div className="card-btn">
+                    <button className='btn btn-outline-dark' onClick={() => this.deleteItem(this.state.itemId)} itemId={3}>Delete this item</button>
                   </div>
                 </div>
                 <div className="col-md-2 row align-items-center justify-content-center">
@@ -232,6 +313,9 @@ class Orders extends Component {
                     <p className = "q">Price: {"14.95"}</p>
                     <p className = "q">Quantity: {this.state.swag5quantity}</p>
                   </div>
+                  <div className="card-btn">
+                    <button className='btn btn-outline-dark' onClick={() => this.deleteItem(this.state.itemId)} itemId={4}>Delete this item</button>
+                  </div>
                 </div>
                 <div className="col-md-2 row align-items-center justify-content-center">
                 </div>
@@ -250,6 +334,9 @@ class Orders extends Component {
                     <p className="card-text card-desc">RISK: Game of Thrones Edition Game escalates Risk, the classic game of strategic conquest, to an epic level of chaos and war in a battle for the Iron Throne. Featuring striking game packaging, two custom-designed game boards, three ways to play, seven finely sculpted armies, and more than 650 total pieces, this game of strategic conquest will test the wits and bravery of both Risk and Game of Thrones fans.</p>
                     <p className = "q">Price: {"74.95"}</p>
                     <p className = "q">Quantity: {this.state.swag6quantity}</p>
+                  </div>
+                  <div className="card-btn">
+                    <button className='btn btn-outline-dark' onClick={() => this.deleteItem(this.state.itemId)} itemId={5}>Delete this item</button>
                   </div>
                 </div>
                 <div className="col-md-2 row align-items-center justify-content-center">
@@ -271,6 +358,9 @@ class Orders extends Component {
                   
                     <p className = "q">Quantity: {this.state.swag7quantity}</p>
                   </div>
+                  <div className="card-btn">
+                    <button className='btn btn-outline-dark' onClick={() => this.deleteItem(this.state.itemId)} itemId={6}>Delete this item</button>
+                  </div>
                 </div>
                 <div className="col-md-2 row align-items-center justify-content-center">
                 </div>
@@ -291,6 +381,9 @@ class Orders extends Component {
                     
                     <p className = "q">Quantity: {this.state.swag8quantity}</p>
                   </div>
+                  <div className="card-btn">
+                    <button className='btn btn-outline-dark' onClick={() => this.deleteItem(this.state.itemId)} itemId={7}>Delete this item</button>
+                  </div>
                 </div>
                 <div className="col-md-2 row align-items-center justify-content-center">
                 </div>
@@ -310,6 +403,9 @@ class Orders extends Component {
                     <p className = "q">Price: {"349.95"}</p>
                     <p className = "q">Quantity: {this.state.swag9quantity}</p>
                   </div>
+                  <div className="card-btn">
+                    <button className='btn btn-outline-dark' onClick={() => this.deleteItem(this.state.itemId)} itemId={8}>Delete this item</button>
+                  </div>
                 </div>
                 <div className="col-md-2 row align-items-center justify-content-center">
                 </div>
@@ -328,6 +424,9 @@ class Orders extends Component {
                     <p className="card-text card-desc">Prove the worth of Valyrian foam by wielding this Foam Catspaw Blade from the hit HBO series Game of Thrones.  This lovely mock weapon is crafted in perfect detail, just like the weapon that almost took Bran from us early in the show!</p>
                     <p className = "q">Price: {"34.95"}</p>
                     <p className = "q">Quantity: {this.state.swag10quantity}</p>
+                  </div>
+                  <div className="card-btn">
+                    <button className='btn btn-outline-dark' onClick={() => this.deleteItem(this.state.itemId)} itemId={9}>Delete this item</button>
                   </div>
                 </div>
                 <div className="col-md-2 row align-items-center justify-content-center">
