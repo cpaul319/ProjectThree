@@ -85,7 +85,7 @@ class OrderNav extends Component {
     const onSuccess = (payment) => {
       console.log('Successful payment!', payment);
       alert("Payment successful! You will receive an e-mail confirming when your item(s) will arrive.");
-      setTimeout(() => {this.props.history.push('/')}, 6000)
+      setTimeout(() => {this.props.history.push('/')}, 4000)
     }
     const onError = (error) =>
       console.log('Erroneous payment OR failed to load script!', error);
