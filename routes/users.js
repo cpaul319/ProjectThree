@@ -27,7 +27,7 @@ userRouter.post("/orders", (req, res) => {
 });
 
 //---------------------------------------------------------------------------------
-
+//use this coding for update routes
 userRouter.put("/api/account", function(req, res)    {
 
     // This routes updates user account.
@@ -81,7 +81,33 @@ userRouter.put("/api/buy", function(req, res)    {
         res.status(400).json({error: err});
     });    
 });
-
+//-------------------------------------------------------------------------------------
+userRouter.put("/api/delete", function(req, res)    {
+    // delete route created!
+    console.log("delete route called");
+    db.Users.update({
+        swag1quantity: req.body.swag1quantity,
+        swag2quantity: req.body.swag2quantity,
+        swag3quantity: req.body.swag3quantity,
+        swag4quantity: req.body.swag4quantity,
+        swag5quantity: req.body.swag5quantity,
+        swag6quantity: req.body.swag6quantity,
+        swag7quantity: req.body.swag7quantity,
+        swag8quantity: req.body.swag8quantity,
+        swag9quantity: req.body.swag9quantity,
+        swag10quantity: req.body.swag10quantity
+    },
+    {
+        where:  {
+            email: req.body.email
+        }
+    }).then(function (dbUsers)  {
+        res.json(dbUsers);
+    }).catch(err => {
+        console.log("weird error");
+        res.status(400).json({error: err});
+    });    
+});
 //---------------------------------------------------------------------------------
 
 userRouter.put("/api/logout/:email", function (req, res)    {

@@ -36,6 +36,16 @@ module.exports = function(sequelize, DataTypes) {
     swag10name: { type: DataTypes.STRING, defaultValue: "Swag 10"},
     swag10quantity: { type: DataTypes.INTEGER, defaultValue: 0 }
   })
+    // Associating User with multiple purchases
+  
+  // User.associate = function (models) {
+  //   User.hasMany(models.Purchase, {
+  //     onDelete: "cascade"
+  //   });
+  // };
+  // sequelize.sync()
+  // .then(() => console.log('users table has been successfully created, if one doesn\'t exist'))
+  // .catch(error => console.log('This error occured', error));
  
   return User;
 };
