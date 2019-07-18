@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "root",
-    "password": "Bootcamp1!?",
+    "username": "triology",
+    "password": "password123",
     "database": "UserDb",
     "host": "localhost",
     "dialect": "mysql"
