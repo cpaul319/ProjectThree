@@ -47,7 +47,7 @@ class Orders extends Component {
       index7:7,
       index8:8,
       index9:9,
-      itemId:11,
+     
       user:"",
       email: "",
       loggedInUserName: "",
@@ -124,7 +124,7 @@ class Orders extends Component {
       
   }
   
-  deleteItem() {
+  deleteItem(itemId) {
 
     //  This function changes user database information appropriately when user deletes an item.
 
@@ -136,25 +136,25 @@ class Orders extends Component {
     
 // console.log(this.props.swag0index);
 //
-    if (that.state.itemId===0) {
+    if (itemId===0) {
       that.state.swag1quantity--;
-    } else if (that.state.itemId===1) {
+    } else if (itemId===1) {
       that.state.swag2quantity--;
-    } else if (that.state.itemId===2) {
+    } else if (itemId===2) {
       that.state.swag3quantity--;
-    } else if (that.state.itemId===3) {
+    } else if (itemId===3) {
       that.state.swag4quantity--;
-    } else if (that.state.itemId===4) {
+    } else if (itemId===4) {
       that.state.swag5quantity--;
-    } else if (that.state.itemId===5) {
+    } else if (itemId===5) {
       that.state.swag6quantity--;
-    } else if (that.state.itemId===6) {
+    } else if (itemId===6) {
       that.state.swag7quantity--;
-    } else if (that.state.itemId===7) {
+    } else if (itemId===7) {
       that.state.swag8quantity--;
-    } else if (that.state.itemId===8) {
+    } else if (itemId===8) {
       that.state.swag9quantity--;
-    } else if (that.state.itemId===9){
+    } else if (itemId===9){
       that.state.swag10quantity--;
     }
     const user = {
@@ -226,7 +226,7 @@ class Orders extends Component {
                     <p class = "q">Quantity: {this.state.swag1quantity}</p>
                   </div>
                   <div className="card-btn">
-                    <button className='btn btn-outline-dark' onClick={() => this.deleteItem(this.state.itemId)} itemId={0}>Delete this item</button>
+                    <button className='btn btn-outline-dark' onClick={() => this.deleteItem(0)} itemId={0}>Delete this item</button>
                   </div>
                 </div>
                 <div className="col-md-2 row align-items-center justify-content-center">
@@ -248,7 +248,7 @@ class Orders extends Component {
                     <p class = "q">Quantity: {this.state.swag2quantity}</p>
                   </div>
                   <div className="card-btn">  
-                    <button className='btn btn-outline-dark' onClick={() => this.deleteItem(this.state.itemId)} itemId={1}>Delete this item</button>
+                    <button className='btn btn-outline-dark' onClick={() => this.deleteItem(1)} itemId={1}>Delete this item</button>
                   </div>
                 </div>
                 <div className="col-md-2 row align-items-center justify-content-center">
@@ -270,7 +270,7 @@ class Orders extends Component {
                     <p class = "q">Quantity: {this.state.swag3quantity}</p>
                   </div>
                   <div className="card-btn">
-                    <button className='btn btn-outline-dark' onClick={() => this.deleteItem(this.state.itemId)} itemId={2}>Delete this item</button>
+                    <button className='btn btn-outline-dark' onClick={() => this.deleteItem(2)} itemId={2}>Delete this item</button>
                   </div>
                 </div>
                 <div className="col-md-2 row align-items-center justify-content-center">
@@ -292,7 +292,7 @@ class Orders extends Component {
                     <p className = "q">Quantity: {this.state.swag4quantity}</p>
                   </div>
                   <div className="card-btn">
-                    <button className='btn btn-outline-dark' onClick={() => this.deleteItem(this.state.itemId)} itemId={3}>Delete this item</button>
+                    <button className='btn btn-outline-dark' onClick={() => this.deleteItem(3)} itemId={3}>Delete this item</button>
                   </div>
                 </div>
                 <div className="col-md-2 row align-items-center justify-content-center">
@@ -314,7 +314,7 @@ class Orders extends Component {
                     <p className = "q">Quantity: {this.state.swag5quantity}</p>
                   </div>
                   <div className="card-btn">
-                    <button className='btn btn-outline-dark' onClick={() => this.deleteItem(this.state.itemId)} itemId={4}>Delete this item</button>
+                    <button className='btn btn-outline-dark' onClick={() => this.deleteItem(4)} itemId={4}>Delete this item</button>
                   </div>
                 </div>
                 <div className="col-md-2 row align-items-center justify-content-center">
@@ -336,7 +336,7 @@ class Orders extends Component {
                     <p className = "q">Quantity: {this.state.swag6quantity}</p>
                   </div>
                   <div className="card-btn">
-                    <button className='btn btn-outline-dark' onClick={() => this.deleteItem(this.state.itemId)} itemId={5}>Delete this item</button>
+                    <button className='btn btn-outline-dark' onClick={() => this.deleteItem(5)} itemId={5}>Delete this item</button>
                   </div>
                 </div>
                 <div className="col-md-2 row align-items-center justify-content-center">
@@ -359,7 +359,7 @@ class Orders extends Component {
                     <p className = "q">Quantity: {this.state.swag7quantity}</p>
                   </div>
                   <div className="card-btn">
-                    <button className='btn btn-outline-dark' onClick={() => this.deleteItem(this.state.itemId)} itemId={6}>Delete this item</button>
+                    <button className='btn btn-outline-dark' onClick={() => this.deleteItem(6)} itemId={6}>Delete this item</button>
                   </div>
                 </div>
                 <div className="col-md-2 row align-items-center justify-content-center">
@@ -382,7 +382,7 @@ class Orders extends Component {
                     <p className = "q">Quantity: {this.state.swag8quantity}</p>
                   </div>
                   <div className="card-btn">
-                    <button className='btn btn-outline-dark' onClick={() => this.deleteItem(this.state.itemId)} itemId={7}>Delete this item</button>
+                    <button className='btn btn-outline-dark' onClick={() => this.deleteItem(7)} itemId={7}>Delete this item</button>
                   </div>
                 </div>
                 <div className="col-md-2 row align-items-center justify-content-center">
@@ -404,7 +404,7 @@ class Orders extends Component {
                     <p className = "q">Quantity: {this.state.swag9quantity}</p>
                   </div>
                   <div className="card-btn">
-                    <button className='btn btn-outline-dark' onClick={() => this.deleteItem(this.state.itemId)} itemId={8}>Delete this item</button>
+                    <button className='btn btn-outline-dark' onClick={() => this.deleteItem(8)} itemId={8}>Delete this item</button>
                   </div>
                 </div>
                 <div className="col-md-2 row align-items-center justify-content-center">
@@ -426,7 +426,7 @@ class Orders extends Component {
                     <p className = "q">Quantity: {this.state.swag10quantity}</p>
                   </div>
                   <div className="card-btn">
-                    <button className='btn btn-outline-dark' onClick={() => this.deleteItem(this.state.itemId)} itemId={9}>Delete this item</button>
+                    <button className='btn btn-outline-dark' onClick={() => this.deleteItem(9)} itemId={9}>Delete this item</button>
                   </div>
                 </div>
                 <div className="col-md-2 row align-items-center justify-content-center">
