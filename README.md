@@ -22,11 +22,11 @@ After the user is logged in, sale page is opened. It has Game of Thrones souveni
 
 If the user navigates to check out page, all previously bought items, including quantities bought are displayed. User can update purchases before checkout by removing items with delete button (screenshot is below).
 
-![order](client/public/images/orders.PNG)
+![order](client/public/images/orders.png)
 
 
 On the checkout page the application uses PayPal for checkout. It grabs a total of the items selected by the user. The user can choose their PayPal to buy times or use guest checkout. The address, phone number user info needed for shipping is grabbed by PayPal. If transaction is successful the message displays stating success and user is redirected to main page.
-![paypal](client/public/images/paypal.PNG)
+![paypal](client/public/images/paypal.png)
 
 # Creation Process
 
