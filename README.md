@@ -20,13 +20,13 @@ After the user is logged in, sale page is opened. It has Game of Thrones souveni
 
 ![sale](client/public/images/sale.PNG)
 
-If the user clicks on buy button next to any item and the user did not add more account information, edit account page is opened with additional information to add like credit card information (shown below). If the user does not enter correct and/or complete information, proper validation messages are displayed. If user enters correct information and clicks submit button, user account is updated with correct information and is able to make purchases.
+If the user navigates to check out page, all previously bought items, including quantities bought are displayed. User can update purchases before checkout by removing items with delete button (screenshot is below).
 
-![account](client/public/images/account.PNG)
+![order](client/public/images/orders.PNG)
 
-If the user navigates to orders page, all previously bought items, including quantities bought are displayed (screenshot is below).
 
-![order](client/public/images/order.PNG)
+On the checkout page the application uses PayPal for checkout. It grabs a total of the items selected by the user. The user can choose their PayPal to buy times or use guest checkout. The address, phone number user info needed for shipping is grabbed by PayPal. If transaction is successful the message displays stating success and user is redirected to main page.
+![paypal](client/public/images/paypal.PNG)
 
 # Creation Process
 
